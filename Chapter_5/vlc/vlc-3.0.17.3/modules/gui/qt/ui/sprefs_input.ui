@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Jean-Baptiste Kempf</author>
+ <class>SPrefsInputAndCodecs</class>
+ <widget class="QWidget" name="SPrefsInputAndCodecs">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>737</width>
+    <height>631</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Codecs</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="14" column="0">
+       <widget class="QLabel" name="x264Label">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>x264 profile and level selection</string>
+        </property>
+        <property name="buddy">
+         <cstring>levelBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="hwAccelLabel">
+        <property name="text">
+         <string>Hardware-accelerated decoding</string>
+        </property>
+        <property name="buddy">
+         <cstring>hwAccelModule</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="2">
+       <widget class="QComboBox" name="hwAccelModule"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="ppLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Video quality post-processing level</string>
+        </property>
+        <property name="buddy">
+         <cstring>PostProcLevel</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0" colspan="3">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QComboBox" name="presetBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="1">
+       <widget class="QComboBox" name="profileBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1" colspan="2">
+       <widget class="QComboBox" name="loopFilterBox"/>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="filterLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Skip H.264 in-loop deblocking filter</string>
+        </property>
+        <property name="buddy">
+         <cstring>loopFilterBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="x264profileLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>x264 preset and tuning selection</string>
+        </property>
+        <property name="buddy">
+         <cstring>tuneBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="2">
+       <widget class="QComboBox" name="tuneBox"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QSpinBox" name="PostProcLevel">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight</set>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>6</number>
+        </property>
+        <property name="value">
+         <number>6</number>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="2">
+       <widget class="QLineEdit" name="levelBox"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="fastSeekBox">
+        <property name="text">
+         <string>Fast seek</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Optical drive</string>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="DVDLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Default optical device</string>
+        </property>
+        <property name="buddy">
+         <cstring>DVDDeviceComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="DVDDeviceComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Files</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QLabel" name="recordLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Record directory or filename</string>
+        </property>
+        <property name="buddy">
+         <cstring>recordPath</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLineEdit" name="recordPath"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="recordBrowse">
+          <property name="text">
+           <string>Browse...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="aviLabel">
+        <property name="text">
+         <string>Damaged or incomplete AVI file</string>
+        </property>
+        <property name="buddy">
+         <cstring>AviRepair</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="AviRepair"/>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QCheckBox" name="mkvPreloadBox">
+        <property name="text">
+         <string>Preload MKV files in the same directory</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Network</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="0">
+       <widget class="QLabel" name="httpProxyLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>HTTP proxy URL</string>
+        </property>
+        <property name="buddy">
+         <cstring>proxy</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="proxy"/>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QRadioButton" name="live555TransportHTTPRadio">
+          <property name="text">
+           <string>HTTP (default)</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="live555TransportRTSP_TCPRadio">
+          <property name="text">
+           <string>RTP over RTSP (TCP)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="live555TransportLabel">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Live555 stream transport</string>
+        </property>
+        <property name="buddy">
+         <cstring>live555TransportHTTPRadio</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Default caching policy</string>
+        </property>
+        <property name="buddy">
+         <cstring>cachingCombo</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="cachingCombo"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>hwAccelModule</tabstop>
+  <tabstop>fastSeekBox</tabstop>
+  <tabstop>PostProcLevel</tabstop>
+  <tabstop>loopFilterBox</tabstop>
+  <tabstop>presetBox</tabstop>
+  <tabstop>tuneBox</tabstop>
+  <tabstop>profileBox</tabstop>
+  <tabstop>levelBox</tabstop>
+  <tabstop>DVDDeviceComboBox</tabstop>
+  <tabstop>recordPath</tabstop>
+  <tabstop>recordBrowse</tabstop>
+  <tabstop>mkvPreloadBox</tabstop>
+  <tabstop>AviRepair</tabstop>
+  <tabstop>cachingCombo</tabstop>
+  <tabstop>proxy</tabstop>
+  <tabstop>live555TransportHTTPRadio</tabstop>
+  <tabstop>live555TransportRTSP_TCPRadio</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

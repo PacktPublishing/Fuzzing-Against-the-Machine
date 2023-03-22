@@ -1,0 +1,3978 @@
+commit 2ac915c53c1f5bc742d01af8d0520ccc56b6821b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sat Dec 30 00:38:19 2000 +0000
+
+    Comments for Henri.
+
+commit 12d3f35f98ecdd1fb75debd83b0f8409adefd000
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Dec 29 14:04:59 2000 +0000
+
+     . fixed default subtitle stream handling (default: no subtitles)
+     . added a few missing break;s
+     (oui je sais je ne fais que des patches de deux lignes � trois balles,
+      mais par telnet c'est pas facile)
+
+commit 671e8844b49e3b3a87fe666ce257b2bb870e5e46
+Author: Henri Fallon <henri@videolan.org>
+Date:   Fri Dec 29 14:03:44 2000 +0000
+
+    - Removed i_iovec_start and i_iovec_end. Used i_data instead
+    - Meuuh : some questions for you in the commentaries
+    
+    Happy new year !
+
+commit 67bef28829f5f759e71f7d851f27d9ed2272cdf3
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 29 12:49:30 2000 +0000
+
+    Fixed THX Cimmarron bug (it was _not_ a synchro bug).
+
+commit 555bac08482b060ca32ec0f5b7e5c2e879a5dc0b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 29 10:52:40 2000 +0000
+
+    * Fixed a bug in the DTS/PTS parsing ;
+    * Fixed a bug in vpar_headers.c synchro handling introduced before ;
+    * Enhanced synchro's handling of dates and frame structure changes.
+
+commit 848944e5074c37692cfabf8c62a2affecca3b73b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 28 18:00:38 2000 +0000
+
+    Cosmetic change of the debug messages.
+
+commit 18af5a197d2c7e5a655b16840688f74d4b6de539
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 28 17:57:39 2000 +0000
+
+    Fixed a bug in the PSM decoder.
+
+commit 2535b235d0f429c5d2b5105142674d7bb04f7bfb
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 27 18:35:45 2000 +0000
+
+    We now read the DTS (but we don't use it for the moment).
+    NB : b_has_pts has disappeared for brevity reasons, use i_pts != 0 instead.
+
+commit a8bca7260e635856b5748c1f3bc829176369d36e
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 27 18:09:02 2000 +0000
+
+    New synchro statistics and warnings.
+
+commit 8a38b8fb17eb0ef8deb15013dfcd19ffc1733947
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Dec 27 09:54:53 2000 +0000
+
+     . avoid calling SafeRead() with a null packet size.
+
+commit 9589dcb78b12905c70c766959ec762b5e660ef68
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Dec 26 19:14:47 2000 +0000
+
+    * Use of ptrdiff_t whenever necessary (IA-64 port) ;
+    * Changed behaviour of preparsing code, faster startup ;
+    * Fixed DecodePSM(), cannot test ;
+    * Cleaned up ParsePES(), fixed a bug which could reject very small but
+      valid PES packets ;
+    * Fixed cosmetic bugs in vpar_synchro frame_rate display.
+
+commit 19324a9843517131fe7035d022857118c6382949
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Dec 24 06:08:04 2000 +0000
+
+     . changed subtitles palette.
+
+commit 4ec43b888ce41177ade750a56309cd097c48814c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Dec 23 03:10:59 2000 +0000
+
+     . SPU decoder now uses Meuuh's GetChunk() code.
+     . lots of cleaning in the SPU decoder.
+     . message queue is flushed before we spawn input.
+     . fixed so that it compiles with VDEC_SMP (no good sync yet though).
+
+commit c3d418231b6fb4f47c64a0896c67c8bd6117cf72
+Author: Arnaud de Bossoreille de Ribou <bozo@videolan.org>
+Date:   Fri Dec 22 18:57:35 2000 +0000
+
+      - sdl resising rulze, still buggy
+
+commit be1eb4bbf37289d27eae30b9e5c4feded8d87936
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 22 17:53:30 2000 +0000
+
+    * Using i_id instead of i_stream_id whenever possible ;
+    * Fixed a bug in -c and -s options.
+
+commit 10dda32d99399292d79edaf98b83ee75f0cd5726
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 22 15:34:24 2000 +0000
+
+    * Fixed a compile pbm in debug mode (f34r d4 1-line fix)
+
+commit 66f4bbb43908161a55ffb4a1d2a9b005a66b88b3
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Dec 22 15:00:42 2000 +0000
+
+     . fixed AC3 and SPU PES reading (ph34r da one-byte patch)
+     . some 79 char wrap.
+
+commit f25dd402dfe98f751b17f8fbf97cb2401117cff6
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Dec 22 13:04:45 2000 +0000
+
+     . no need to add "\n" at the end of intf_*Msg() messages anymore.
+
+commit 174e05473738ae94b77a12a36f6501a03c7f07a4
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 22 10:58:27 2000 +0000
+
+    * Moved input_DecodePES() to input_dec.c ;
+    * Fixed an segfault in input_programs.c ;
+    * Added -fomit-frame-pointer optimization.
+
+commit badd37394f8559bc047045f3cee3aed37bd1b6c1
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 19:33:03 2000 +0000
+
+    * Fixed a *major* memory leak in the pre-parsing code. Hopefully it should
+      be the last one.
+
+commit 91bc3eb7c47df4771743a68732fa695ebc322c6f
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 19:24:27 2000 +0000
+
+    * New decoder spawning API input_dec.c ;
+    * Moved p_input->pp_es -> p_input->stream.pp_es and clean up of
+      input_programs.c & co ;
+    * Fixed memory leaks.
+
+commit 423a3bcf9811ad1def58d439dc5f2595f62ab1e6
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 17:19:54 2000 +0000
+
+    * Moved video_decoder's headers from include/ to src/video_decoder.
+    * Temporarily removed b&w kludge.
+
+commit 434f37965586fc44680ffe726ea99c6f5c9139a1
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 15:01:08 2000 +0000
+
+    * Splitted up p_method_data/p_plugin_data ;
+    * Cleaned up input_ts.c, added it into the Makefile.
+
+commit dca61827d1fcbe30f9f68a62e26ca652ba106ce2
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 14:18:15 2000 +0000
+
+    Fixed various memory leaks.
+
+commit c570d9bc89e5ba50ca6f592e47bb0dba1ca458fa
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 13:54:15 2000 +0000
+
+    * Removed all arbitrary limits on the number of elementary streams.
+
+commit cc50abf7704ffe3b715ca13b0250f4a65686393a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 13:25:51 2000 +0000
+
+    * Removed b_die and b_error from all decoders (obsoleted by decoder_fifo_t).
+    All decoders should now exit cleanly (if it's not the case, it should be
+    referenced as a bug).
+
+commit 3bf927ec7f9d240823a67e6dbb84162abe02b59b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 13:07:45 2000 +0000
+
+    Comments for Henri.
+
+commit 1b7b08f5584c8eb402c374fbf6df8c035ad567b4
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 21 12:38:27 2000 +0000
+
+    * Fixed a bug which prevented the input to exit normally (non-selected
+    ES in the pp_selected_es array).
+
+commit 9679481fdcc6594f30313e91dac683c0ca4e3acf
+Author: Henri Fallon <henri@videolan.org>
+Date:   Thu Dec 21 00:39:49 2000 +0000
+
+    Added netlist support.
+    
+    Warning : it has not been tested. It just make no error at build time.
+
+commit b754a016b941920d9ce4b3ca6c10428ccd84b4ca
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Wed Dec 20 23:24:23 2000 +0000
+
+    D�sol� !
+
+commit 06b3185a56c9949ca3cb83aeec1d84c2b2b39dab
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Wed Dec 20 22:23:24 2000 +0000
+
+    Added U8_Mono audio output
+
+commit 065a61df6df643ad010de226bc1dfaaff20ea65a
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Dec 20 20:09:19 2000 +0000
+
+     . fixed "-a [ mpeg | ac3 | lpcm | off ]" option
+
+commit 6aaf635c356acf87b336f83a57b187657cb9d9f0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 20 18:45:43 2000 +0000
+
+    Only pre-parse the first 32 MB of data.
+
+commit c17287dc78537d0e83014fdde5c94b328400242d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 20 17:49:41 2000 +0000
+
+    * Added -a, -c and -s options. (-a doesn't work but I will let the people
+    who thought it would be cleaner to put config in environment variables
+    correct what's wrong in my code).
+
+commit abcabca628baf7989fde32b378c8d4783e6346df
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Dec 20 16:39:16 2000 +0000
+
+     . now we only try to open plugins which are existing files
+
+commit 50118171a93a426f2f553369aa65bbc42101d8b8
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 20 16:04:31 2000 +0000
+
+    * Big cleanup of the PS input plugin ;
+    * Fixed a bug in AC3 initialization ;
+    * PS streams are now pre-parsed (this can take a while) if possible ;
+    
+    ./configure is required after this update.
+
+commit d719269bc12e17e076163f9ebcf96926b0a7e41f
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Tue Dec 19 22:34:34 2000 +0000
+
+    Move #define from audio_output.h to config.h
+    Change vlan_server_ip to vishnou's ip (but vlans not working yet)
+
+commit 56685c3168ff3540925bdab024ee42e92ae49af3
+Author: Arnaud de Bossoreille de Ribou <bozo@videolan.org>
+Date:   Tue Dec 19 20:01:38 2000 +0000
+
+      - one typo.
+      - one line deleted (it was for debug, bozo.)
+
+commit 0661d2e7defb151f3c0672fb343c6ffc754c6f2a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Dec 19 19:55:35 2000 +0000
+
+    GetChunk() : reads n bytes from the elementary stream and places them
+    in a big buffer (a gift for Sam).
+
+commit deff6eb9e7b079eb8a5a1b150d86660178d56303
+Author: Arnaud de Bossoreille de Ribou <bozo@videolan.org>
+Date:   Tue Dec 19 19:44:09 2000 +0000
+
+    sdl plugin :
+      - Quantic start in fullscreen fixed.
+
+commit 90820464864a0d7fc8bb9428f4d1345aa990d5dc
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Dec 19 19:08:51 2000 +0000
+
+    Input-II now correctly handles private stream 1 (AC3, DVDSPU).
+
+commit 42e8a2e6e4db3d3fe1d3e8b3a80f28a4db53371a
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Dec 19 19:05:46 2000 +0000
+
+     . split the audio decoder into adec_generic, adec_layer1 and adec_layer2
+        (no new code added)
+
+commit da6f02087bfee96959a327e22dedc0820824392f
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Tue Dec 19 17:51:32 2000 +0000
+
+    - fixed the ratio/position problem in YUV, now patching Stable.
+
+commit 7effc0f7a485e65f4a3f2acb26dc2e7a41e5b695
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 18 15:31:47 2000 +0000
+
+    We now display CPU usage statistics for each thread.
+
+commit d54a5f8fb4168124181edef174460f5583231fa2
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 18 10:40:11 2000 +0000
+
+    We can now read from stdin.
+
+commit 1cf5dd7b4b0670e3442e199eac06f62d5b2adf5b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Dec 18 10:02:30 2000 +0000
+
+     . additional fix for Layer 1 mono
+    
+       now vlc plays all of my 125 sample mpeg1 movies !
+    
+       Please try it with yours, and report non-working streams.
+        (`file foo.mpeg' must report "system stream", not "video stream" in
+           order to be playable with the vlc)
+
+commit 2dabbaa9f58d0d51d327cb9a079fbc716f77b516
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Dec 18 07:56:32 2000 +0000
+
+     . indentation fixes
+    
+     . fixed audio syncword detection for mpeg 1 streams (hopefully)
+        FIXME: can anyone confirm we can get rid of adec_byte_stream_next
+        in audio_decoder_thread.c now that we have the new input ?
+    
+     . fixed Layer 2 Mono decoding.
+        FIXME: who created freq_table ? what was the rationale for it, and
+        where does it come from ?
+        FIXME: how can we spare the extra DCT in audio_decoder.c:707 ? I'm too
+        tired to think about it.
+    
+     . proposal: splitting audio_decoder.c in one file per layer.
+
+commit 9632f78e4e41ef8a971e3944fba267f03a0e8b37
+Author: Arnaud de Bossoreille de Ribou <bozo@videolan.org>
+Date:   Mon Dec 18 02:47:09 2000 +0000
+
+      - Hardware YUV overlay (SDL) with real colors ;p It may suck for non
+        4:2:0 streams.
+      - Removed vout code found in intf file to support fullscreen switching.
+        Now only vout_SDL updates SDL data and intf only switch flags such as
+        b_reopen_display and b_fullscreen in p_vout->p_sys.
+      - Fixed a var name typo in input_programs.c which prevents vlc from
+        compiling with --enable-debug option. (i_es_pid -> i_es_id :)
+    
+    There's a segfault in the termination process due to sdl, I don't really
+    know what is the problem and I have to work today. Help me!
+    
+    Good night suckers. I love you too :p
+
+commit 07672a422cd5098930f3c6a3f292bc70a152c9f6
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Sun Dec 17 15:05:30 2000 +0000
+
+    - partial SDL YUV support (green stream for now, please help me !)
+    - "y" key switch between SDL and vlc YUV
+    - autodetection of Overlay support
+    - soon to come, colors :P
+
+commit b185a7ee16900668d240973dc787ee4480e59148
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Sat Dec 16 16:31:11 2000 +0000
+
+    Fixed support for broken MPEG-1 files.
+    
+    --Meuuh
+
+commit 67bc00c9b61ba1b8235345b316711568b737f387
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 15 19:05:23 2000 +0000
+
+    * Cleaned up program and ES management by using input_programs.c whenever
+    necessary.
+    * Cleaned up decoder spawning.
+
+commit 4d26594b02a4b622db90d0367733afca3a1b6bab
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 15 17:21:54 2000 +0000
+
+    Enhanced handling of stream discontinuities.
+
+commit a23f364ad9ee2f867b6d22c7f1897d1bea1b9ab0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 15 13:39:54 2000 +0000
+
+    More comments.
+
+commit d2ca341dd72a0ba8b2875107d2d7265435fa71e2
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 15 13:28:00 2000 +0000
+
+    * Fixed two typos in the Makefile (sam you owe me at least one beer)
+    * Moved b_discontinuity to pgrm_descriptor_t, cleaned up CRDecode
+    (needs some more cleaning for discontinuities)
+    * Added pf_new_pes in plugins
+
+commit 3c7d6bbc87bec270610d8a6073ac6407cd3a696a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 14 10:47:57 2000 +0000
+
+    Some comments for Henri.
+
+commit 9cf26f4194cc118d883787e50271a934aa736f32
+Author: Henri Fallon <henri@videolan.org>
+Date:   Thu Dec 14 02:01:39 2000 +0000
+
+    Netlist embryo :
+     - pes netlist
+     - data netlist
+    
+    Still to do :
+     - iovect netlist
+    
+    It hasen't been tested yet.
+    Meuuh, could you tell me if it works ? ( if yes, gimme some more work :p )
+
+commit 5aadb8d7fd12a0ec75c383b6733036766931887e
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 19:26:57 2000 +0000
+
+    Fix in the SCR parser for high values.
+
+commit 7107b37d1973664865f81a640736d28f97d5f893
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 18:51:28 2000 +0000
+
+    Fixed a bug with DVD's SCR (too close from the PTS).
+
+commit 66b04c2afd282419139e58b682bd1714413331bf
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 17:04:42 2000 +0000
+
+    Another attempt for the audio bug...
+
+commit 20229421990ce68b0611288358330bcba34d101b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 15:29:02 2000 +0000
+
+    Prototypes for netlist functions.
+
+commit fd5a24a4b3af1616c895929dd5dfe870ac42bf9a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 15:06:32 2000 +0000
+
+    Another attempt for the same bug...
+
+commit b593a03bb4cc30b385dfca895c24468b82a38450
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 14:58:30 2000 +0000
+
+    Mmmmh an endianness bug ?
+
+commit 4dc9ef7129c7ffbefa2b58e667d2461454df441d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 14:45:30 2000 +0000
+
+    Attempt to fix the audio.
+
+commit 0edb872610514564d6676a61a3df1d8ce5e1c4a1
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Dec 11 14:34:31 2000 +0000
+
+    Fixed benny's mistakes :pp
+
+commit 10c6c8c961049c000fae66c3041d3fbb23623ea8
+Author: Henri Fallon <henri@videolan.org>
+Date:   Mon Dec 11 13:55:50 2000 +0000
+
+    Same changes that were made in the stbale branch ( FB_NOYPAN support )
+
+commit 39eb5768315e6f2ac797314a5423ff2f4e39e87c
+Author: Benoit Steiner <benny@videolan.org>
+Date:   Sun Dec 10 09:21:58 2000 +0000
+
+    Fixe la gestion des signaux
+
+commit 53c2e3acf70a10efeb412d7a713562ea4fccbd72
+Author: Benoit Steiner <benny@videolan.org>
+Date:   Sun Dec 10 08:08:35 2000 +0000
+
+    Generation d'un makefile presque correct pour les vieilles versions de make
+    Nettoyage: gestion des dependances pour les plugins, suppressions de pas
+    mal de redondances, options de compilations coherentes, etc...
+
+commit 93d8bc1416854a972c0257950d7321b12815b509
+Author: Benoit Steiner <benny@videolan.org>
+Date:   Sun Dec 10 03:55:47 2000 +0000
+
+    debut de portage sous solaris
+
+commit b2181174d0b2dc715e1f079aee08565909377361
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Dec 8 18:50:37 2000 +0000
+
+    * Code to manage es_descriptors and program_descriptors, from benny's
+    input_psi.c
+    (unfinished)
+
+commit 1a36621c472883eab4566e6fd111cc388ad76205
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Dec 7 15:45:18 2000 +0000
+
+    We now correctly parse MPEG-1 SCR and there is no need to kludge to read
+    the stream at the right pace.
+
+commit 7bd6b4e934156075b8d84f38878d554e82721657
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Dec 6 16:41:20 2000 +0000
+
+    * Support for MPEG-1 .mpg files.
+    * Fixed a bug in the synchro with non-P5/B1 streams.
+
+commit 8d211185e6374d374382a0ab979e6c41fd7dd200
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Dec 5 22:30:27 2000 +0000
+
+    The new tasks for the input-II.
+
+commit dc804fe5e107ee240b89daa3b5c85da8ca029380
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Dec 5 19:36:58 2000 +0000
+
+    The input-II. (more info by mail in about an hour)
+
+commit d9cac7cd2ae068bc1d3c123d590e7451e7099a0c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Dec 1 07:35:12 2000 +0000
+
+     . re-changement de vout_sdl.c pour que �a fonctionne en woody.
+
+commit 48b0c5ca3e21f21bc8d022b372e94c08decbd362
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Thu Nov 30 20:57:05 2000 +0000
+
+    . J'en ai oubli� un morceau avant :)
+    
+    NB: je ne pense pas que l'ouverture en mode non-bloquant soit un
+    probl�me, mais ne fait je ne sais pas. Chez moi �a marche !
+
+commit a06f74ac123b4a174183d3432e034734d91914fa
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Thu Nov 30 20:43:16 2000 +0000
+
+    . Test non bloquant de l'ouverture du dsp � l'initialisation du plugin
+     pour le cas o� il est utilis� par esd
+
+commit b207b8f82ed70889a405bcfd5430ebb0bfeae751
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Thu Nov 30 17:37:23 2000 +0000
+
+    . Fixed a segfault
+    . Fixed a SDL API change about clipping (?).
+
+commit 9bc87bff4bad26ed8b41872ec38003512777f22c
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Nov 29 19:02:17 2000 +0000
+
+    . Ajout de la date dans les warning si le mode debug est activ�
+    . Modification du configure pour remmettre le x11 par d�faut, et pour
+    montrer que ppro et mmx sont par d�fauts maintenant.
+
+commit 40b8684fd00c974e129b11f9122bc5435e541e62
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 18:55:04 2000 +0000
+
+    Added -funroll-all-loops and -fstrict-aliasing which seem to make things
+    faster.
+
+commit 50f8da044825d9c7248b4f74ca8d2300911e3f3e
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 17:33:24 2000 +0000
+
+    Added hooks for the fothcoming YUV overlay support.
+
+commit 266e3eabc0ad3b41839d0e6308579d811c2ffdf0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 14:36:20 2000 +0000
+
+    ppro and mmx optimizations are now enabled by default (K6 users should
+    buy real processors).
+
+commit 4676ccbc9a010aae1e3ac19e31668d30283f6e20
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 14:21:53 2000 +0000
+
+    Now using buffer I/O to write debug logs (huge performance increase).
+
+commit c80fb561c6975c5fa781ebd768a54866f011bf57
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 14:05:10 2000 +0000
+
+    * Added debug messages in the video synchro
+    * Fixed a bug in the video synchro time scheduling
+    * Made the vout more precise on display dates
+
+commit 05c3e530d63459bebe1e1155b1d5281dc08d1954
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Nov 29 11:34:22 2000 +0000
+
+    Enhancement for very slooow machines.
+
+commit f666ec10f18fd59c8f836a429fd23232a79be31a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Nov 28 19:58:14 2000 +0000
+
+    More stats.
+    
+    NB : it is necessary to re-run ./configure
+
+commit 8ccff3d77f9136ae1ace45e7a23b22086b907c11
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Nov 28 16:00:38 2000 +0000
+
+    The YUV buffer is now freed after displaying (useful for overlay).
+
+commit aa7cf7baa789185d12cd4aec66839dfba710c97a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Nov 27 17:49:48 2000 +0000
+
+    * Added more stats
+    * Fixed a bug in the parser when trashing an already parsed frame
+    * Simplified (and enhanced) vpar_synchro for B pictures
+    * Lowered the synchro DELTA
+
+commit b335e3b40fdbce2f99d7290d4a079e6c24ae3d88
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Nov 27 10:35:57 2000 +0000
+
+     * vlc is now compiled without the STATS mode by default.
+     * Fixed a bug which made frames go backwards with some displays (the
+       video_decoder thread is now niced).
+     * Made use of intf_WarnMsg() in the most needed places.
+    Also simplified the synchro algorithm and fixed a bug with non-(5/1) streams.
+    Fixed the optimizations in the configure stuff.
+    Warning : this release needs a full rebuild (make clean; make).
+    Warning : I might have broken the BeOS port, could somebody check ?
+
+commit 313cf680c8a0cf202d5ab4b0a4b21e9ee3574394
+Author: Henri Fallon <henri@videolan.org>
+Date:   Thu Nov 23 01:40:31 2000 +0000
+
+    - Cosmetic changes to alsa.c
+    - Configure now checks alsa is present
+
+commit b9079557cb5224754886ea04d95df124552fb73d
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Tue Nov 21 01:41:45 2000 +0000
+
+    .Impl�mentation de intf_WarnMsg( int i_level, char *psz_format, ... ) et
+    intf_WarnMsgImm
+    .on active les messages de warning au lancement avec l'option --warning
+    .le i_level par d�fault est 12 (on ne montre pas les messages de niveau
+    inf�rieur � 12
+    
+    J'esp�re que �a correspond � ce qui a �t� discut� dans videolan-devel.
+
+commit a7dd995f4c336251841143f56ef14450ce04f491
+Author: Henri Fallon <henri@videolan.org>
+Date:   Mon Nov 20 03:31:45 2000 +0000
+
+    Added : alsa support
+    Todo : - test it on several cards
+           - support more than Stereo s16
+           - make configure check for alsa
+
+commit 884bfabe2789a8189f9cc8f1e4b537f559633e99
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sat Nov 18 03:15:01 2000 +0000
+
+    * Added --enable-debug, --enable-stats and --disable-optims (sam could
+    you check I did'nt make a mess of it ?).
+    * Added todo things in the TODO file.
+
+commit 4c3d1e88b603fffca88d9fa5613520684b4747c8
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Nov 14 22:58:44 2000 +0000
+
+    * R�paration du VDEC_SMP. Ca marche sans planter avec la nouvelle
+    synchro.
+    * Remettage du #define STATS parce qu'en fait sinon on n'a pas les infos
+    dans la fen�tre. C'est dommage d'ailleurs qu'on ait � le mettre, parce
+    que du coup �a va nous d�courager de faire des stats sur d'autres
+    parties.
+    * Changements cosm�tiques dans les relations video_parser/video_decoder.
+
+commit 072f4a5225d98617730a56a079d560d4dc5dff53
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Nov 13 22:09:43 2000 +0000
+
+    * Retirage du #define STATS ;
+    * Le warning (late pictures) du vout est d�sormais un DbgMsg (en
+    attendant les WarnMsg) ;
+    * Correction d'un bug en mode debug (sic).
+
+commit bad6f235822f3b32f5d9cc52ed272fab6cde0e69
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Nov 13 13:58:18 2000 +0000
+
+      * Totally new frame dropping algorithm.
+      * Fixed a bug in video_ouput.c which made the stream go backwards
+        sometimes.
+      * Fixed a bug in video_ouput.c which trashed more late pictures than
+        necessary.
+      * Fixed the DEBUG mode in the Makefile.
+      * Fixed a bug in mwait() which made us wait too long.
+    
+    Ca va tuer.
+
+commit 7e4135b39ce88c551a4726fc42b92f2fa253f239
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Fri Nov 10 22:43:59 2000 +0000
+
+    Correction d'un buffer overflow qui cr�ait des plantages al�atoires sous BeOS.
+
+commit 001a2a107c4966400222641516f3ba98cf6bc284
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Fri Nov 3 21:33:16 2000 +0000
+
+    .changed option --novlans to --vlans to test vlan server
+    .removed return 0 in LoadChannels
+    
+    vlc.channels works again and with vlan soon...
+
+commit bedf5ce507c98274bf66406e319e6f12aece7e73
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Oct 29 10:05:14 2000 +0000
+
+     . le mode framebuffer vide l'�cran quand on quitte.
+
+commit aa1be1aaeb3343317a95b4f7b614010d5dc06ca0
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Sun Oct 29 00:07:59 2000 +0000
+
+    .Added window title in sdl output
+    .Removed mouse cursor in fullscreen mode
+    .Changed bits-per-pixel during window creation to X11 current depth
+    
+    Although bits-per-pixel was initialized to 15 in every cases, the quality
+    changed when we switched X11 depth; so I don't know the real effect of this
+    constant in SDL.
+
+commit 9d8d50a8fab8abfed4405269637f7ee8422be602
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Oct 26 15:00:34 2000 +0000
+
+     . ajout de l'option --broadcast en ligne de commande
+
+commit a43bce4eaa2e55396e16caa42aff94bd2b9ac9af
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Thu Oct 26 12:00:02 2000 +0000
+
+    Une l�g�re modification pour le passage B&W � C
+
+commit b69003d6821d1a3cd6453f9206c289f9eac2eb21
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Oct 25 23:14:01 2000 +0000
+
+    . Fixed segmentation fault when sdl output exits.
+    
+    Actually, I don't know why SDLclose was commented out.
+
+commit 653a9c2c307695c0b2e6717aeb728a1da3f6fa12
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Oct 25 20:54:05 2000 +0000
+
+    . Fixed the sdl plugins to match the changes in the version 1.1.5
+    
+    The vlc gives a segfault when exiting if you use sdl. I still don't know why
+
+commit 98484c4bee73d7e6e23283feac8c6195ab726577
+Author: Jean-Philippe Grimaldi <jeanphi@videolan.org>
+Date:   Wed Oct 25 18:40:58 2000 +0000
+
+    vout_glide.c: donne une taille correcte a l'affichage (800x600)
+    
+    yuvmmx: conv. Y4Gray16, les autres sont a venir
+
+commit d102c574882b7f4de322efce54685b2886a85e14
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Wed Oct 25 12:18:25 2000 +0000
+
+    Suppression du d�codage de la chrominance en B&W
+
+commit 9ec47e631b6bc03bc50f7af23fe2b8b88e97033e
+Author: Jean-Philippe Grimaldi <jeanphi@videolan.org>
+Date:   Tue Oct 24 23:16:26 2000 +0000
+
+    lecon de programmation a l'intention des debutants qui ont ecrit
+    input_file.c :
+    - les codes d'erreur sont fait pour etre utilises
+    - quand on ouvre un fichier on le referme
+    -- jeanphi
+
+commit a48f7b6a70147ac5d682d117f54ac3e1c28edfba
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Tue Oct 24 17:36:14 2000 +0000
+
+    . Added a very basic splash screen, to be continued.
+    . fixed a small bug in the idle screen.
+    
+    --
+    Oct.
+
+commit 0a9303538456cba3c83ae85fa62267749ab0c5dc
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Tue Oct 24 16:00:56 2000 +0000
+
+    Modification l�g�re de la gestion du volume
+
+commit ad59f04f5c61117c5ffeedfb2a10bb25397dac0c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Oct 24 09:16:11 2000 +0000
+
+     * correction de l'affichage des fps (affichage, pas calcul).
+     * changements mineurs dans les fichiers Debian.
+
+commit 9c88ff4fd36fd4d177ba348d8fa88264eafd6833
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Oct 23 02:04:48 2000 +0000
+
+    * D�buggage de la vid�o MPEG 1 (=> correction de deux bugs dans le
+    parsage des blocs et d'un bugs dans le parseur des vecteurs de mouvement).
+    
+    --Meuuh
+
+commit 9fe737aa808220c5f758ca14990bb7c3049855b8
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Oct 18 02:42:43 2000 +0000
+
+    * Modification du module gnome pour l'output sous Xfree4 (detection
+    16bits).
+
+commit 3c9727d5d4de9eb8b59b8272894fef23c1253bb4
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Oct 18 02:17:20 2000 +0000
+
+     . correction d'une faute de frappe dans configure.in (�a r�pond � ta
+      question, Stef ? :)
+
+commit b3daf517e2885a7caef8d6c3f78c9c7cef4d4fae
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Tue Oct 17 23:42:13 2000 +0000
+
+    .Fix du probl�me de detection de la profondeur en 16 bits sous XFree 4
+    
+    J'esp�re que �a marche encore avec XFree 3.3
+
+commit 3b8ab8a28b487535cced9eecbac8f304ddb8836c
+Author: Henri Fallon <henri@videolan.org>
+Date:   Wed Aug 30 17:06:00 2000 +0000
+
+    Oui, bon,  j'ai oubli� le changelog, �a peut arriver einh !
+
+commit 4367cb45c6efbea4e4e2e639b92b73e161af93cc
+Author: Henri Fallon <henri@videolan.org>
+Date:   Wed Aug 30 16:24:25 2000 +0000
+
+    Fixed a 100% CPU use bug while no stream is received
+
+commit 506680c9815a2c64c6b81d88d23f6341cf97a381
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Tue Aug 29 00:03:21 2000 +0000
+
+    . Arranged a few things
+    
+    ... still dirty, but the earthquake is coming...
+
+commit 0317810e5cee256dcecc9229e7e442fbc569fed8
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 29 00:01:06 2000 +0000
+
+     . rha mais faisez gaffe au format de la todo list sarass !
+
+commit f71c76a92b56965e8a82a9f6995c958bb03ccd05
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Mon Aug 28 23:12:08 2000 +0000
+
+    . Added a 'f' shortcut to the SDL output (fullscreen/windowed)
+    . Modified the Idle screen of the vlc (seems to suck a lot of CPU anyway :/)
+    . Prayed for a good indentation ;).
+
+commit 534979f922a1e5521e68cdd0c2f8d80c15d2fdc0
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 28 00:37:44 2000 +0000
+
+     . version 0.1.99i
+
+commit 585f8158d042472850386cb3b8b61d0ad4450e53
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 28 00:33:54 2000 +0000
+
+      * cleaned Octplane's crappy indentation.
+      * fixed the --server option which didn't work if a ~/.vlcrc existed.
+
+commit 27fdf30eca90f150016863b225acdf81bb0bc8ce
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Aug 27 22:05:42 2000 +0000
+
+     . rajout du fix de Meuuh dans la todolist.
+
+commit aa9d7e098627002caf829349dbe9cd2a719bef9d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sun Aug 27 21:52:56 2000 +0000
+
+    Correction d'un bug de synchro pour les images monotrames.
+
+commit 9a43a27e3bd3e1ba01761c737a3e0705bff30708
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sun Aug 27 16:31:50 2000 +0000
+
+    Oubli� d'en committer un bout...
+
+commit 98c92aaf4e7babdd95d6c8b5888346b2d02ab2ad
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sun Aug 27 16:21:49 2000 +0000
+
+    Un bug cette fois-ci avec le parseur et un traitement erron� des macroblocs
+    saut�s dans les images B qui provoquait des carr�s.
+
+commit 4958099e6b77423f927d695932334efe5a81acec
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Aug 27 12:32:06 2000 +0000
+
+     . fix� une erreur d'indentation
+    
+    (Oct, tu devrais vraiment regarder ton �diteur. Tu as vu le
+       bordel qu'il a foutu dans src/interface/interface.c ?)
+
+commit 774b4790e8db039c483e67edfc98b2d35bd5989b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Aug 27 10:49:25 2000 +0000
+
+     . update de la TODO list
+    
+      Henri, il y a du nouveau boulot pour toi, regarde la task 0x38,
+     �a ne devrait pas �tre trop dur, �a t'obligera � lire le code de
+     l'audio_output, et surtout �a te fera la bite.
+
+commit 478b6cd11fdcca6fb7ee0a86403425226d0fd1f0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sun Aug 27 01:03:44 2000 +0000
+
+    J'avais oubli� de faire les m�mes modifs dans le motion MMX.
+
+commit 8cf4f1152cae936278612f4ed739b54c98ee8bfe
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Sat Aug 26 14:48:56 2000 +0000
+
+    Fix� une bonne partie du putain de bug des carr�s qui font chier � chaque
+    changement de plan. Si c'est encore moche, c'est pas de ma faute, c'est le
+    scaling.
+
+commit 4991bd57d6b213de5c544304c80c17f19363b4dd
+Author: Henri Fallon <henri@videolan.org>
+Date:   Sat Aug 26 13:07:35 2000 +0000
+
+    Put a test outside a loop : fixes task 0x31
+
+commit d7a54c80bcc005a994bc8cdc2927c23e8fec1e3c
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Thu Aug 24 16:29:22 2000 +0000
+
+    many minor style fixes (thanx to sam).
+
+commit 0765875ab57be4156314514c4d71577a6a4ca1d0
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Thu Aug 24 14:58:51 2000 +0000
+
+    Hello,
+    
+    Some news things:
+    
+     . I am still going on modifiying the key event handling method to make it more flexible. I still have a few things to get what I'd like to
+     . added a keystrokes.h include which contains a generic name of all the VLC keys binding
+     . modified some of the core interface routines to allow the passing of an extra parameter with a keystroke (VLC_CHANNEL).
+     . next step: move all the interface dependent parts (such as the getKey function) to the plugins.
+    
+    Hope this will run on your boxes...
+
+commit c48d981f864d6be34f2829d58dee1d8936fbb4d0
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Aug 24 00:16:25 2000 +0000
+
+     . support pour --synchro I+ (images I et la premi�re P)
+
+commit 6b890a3e14ba04e91a09f5b3f6e6a6c415f1bb11
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Aug 24 00:04:42 2000 +0000
+
+     . support de la touche `q' pour quitter
+
+commit 3bc946fc2c0442f01fbda04a9726641173d228fa
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Aug 23 23:45:27 2000 +0000
+
+     . fixed an other typo
+     . fixed the aliases install
+     . renamed an inconsistent variable in src/input/input_file.c
+
+commit d37f5e1fa3875ddd9cd5c76c9f1592827f2902eb
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Aug 23 22:22:56 2000 +0000
+
+    Fixed another bug in the input_file.
+
+commit adf400021087dbee6a5406fa4b63f6c545d963d0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Aug 23 22:15:28 2000 +0000
+
+    Remplissure du champ AUTHORS des sources.
+
+commit 45b6443fc84d77e5d760d54d57a24f7bd80fc045
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Aug 23 21:38:50 2000 +0000
+
+    We now have support for the field pictures. It shouldn't break teh frame
+    pictures, if you notice anything please ring my bell.
+    
+    --Meuuh (live from Julie)
+
+commit e9345712f65e40e3b5f0fa8b0ffe812d2aee6e52
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 22 15:58:32 2000 +0000
+
+     . fixed PPC .deb build
+
+commit 0a883937783c5480d293b2eb6662071b6ae49358
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 22 00:13:26 2000 +0000
+
+      * added a few sanity checks in the audio mpeg and ac3 decoders.
+      * temporarily got rid of vlc.channels.
+      * added notice in debian/control about unencrypted DVDs.
+      * fixed PowerPC .deb build.
+
+commit 33f9e1734dadcdf2ee5481ee2d9519b1ea0b23b0
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Mon Aug 21 20:16:22 2000 +0000
+
+    Added the beos fixes in the ChangeLog.
+
+commit 99eda04a9187001092fd8475c1d884942d34632d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 21 20:05:42 2000 +0000
+
+     . updated version number
+     . removed a verbose message in intf_sdl.c
+
+commit 0b5a98ad92c709457b3c00a358e4824cd7f86195
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Mon Aug 21 19:57:55 2000 +0000
+
+    A lot of bug fixs for the BeOS side of VideoLAN:
+    - the vlc does not exhaust system resources anymore (it was creating a new
+      mutex each picture so after a while there was no more mutex available in
+      the entire system);
+    - the sound has been corrected and now it works perfectly;
+    - the window has now the right size (there was and additional line before).
+    
+    The (BeOS) threads have also been improved especially with the cond vars
+    (but it is no more compliant with the pthread cond vars).
+    
+    VideoLAN for BeOS now rocks and is ready for its first binary release.
+
+commit d2082e9df73f402bafc55d9f0ebfe7c80225311d
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Mon Aug 21 16:22:03 2000 +0000
+
+    .SDL:
+            .removed the YUV thing from the SDL
+            .cleaned up the makefile to remove it
+            .UNTESTED (seems to compile).
+
+commit 16bba4b625a0f578a54cbebc6311ea6cd6b71917
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Mon Aug 21 09:40:11 2000 +0000
+
+    Plugin handling:
+            . switched low and high order vout plugins
+            . removed yuvsdl plugin.
+
+commit 9ac8c0ec7d1ca8c58e3b90f3e435ca0fe1d57ad2
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Mon Aug 21 09:33:42 2000 +0000
+
+    A few new things:
+    
+            . The interface part:
+                            . created intf_AssignKey, intf_getKey and intf_AssignNormalKeys
+                            these new function are a first abstraction of the the key handling system.                      It makes use of a new structure in the interface : p_keys.
+    
+                            . AssignNormalKeys is commonly used in all the interface plugins.
+                            AssignKey is used to allow the SDL interface to react nicely.
+    
+                            . Now the plugin struct element psz_filename is filled (and freed
+                                    at the end of the program).
+    
+            . the SDL plugin:
+                            works but does only display a green screen for now. so don't use it !
+    
+            . Please try and compile the client on your box with this version.
+                    I've tried a few output plugin but not all.
+
+commit c45d72198afd1e4eee98a7cbdca90688d1e93511
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 21 01:47:19 2000 +0000
+
+      * removed CCFLAGS flags which were improperly used.
+      * added hints for powerpc build.
+      * fixed the input_file exit bug.
+      * fixed a Makefile bug which removed the CVS directory.
+      * removed the frame statistics output.
+
+commit a9b62c64c92197257edc73fa759574c827f2a9d5
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Fri Aug 18 22:35:10 2000 +0000
+
+    Correction d'un bug dans l'audio output de beos, ce dernier causait des
+    plantages al�atoires au lancement (i_buffer_pos n'�tait pas initialis�).
+
+commit 5e870913edc0294254db82d2a329684650d1d547
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Aug 18 17:02:03 2000 +0000
+
+     . removed the sdlvlc alias
+     . added the vlc-sdl package in the Debian control files
+
+commit 812926838648c9e3b41dca51fd8c16b0692b31e9
+Author: Pierre Baillet <octplane@videolan.org>
+Date:   Fri Aug 18 08:25:23 2000 +0000
+
+    My first contribution.
+    
+    * Added SDL plugin
+            * support fullscreen display with --display fullscreen
+            * complete keyboard handling
+    * Added --enable_sdl to configure
+    
+    Octplane.
+
+commit 617bd4db8a97f5c3f29a402622dad5960564368b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Aug 17 14:45:42 2000 +0000
+
+     . new tasks :
+    
+    Description: Fix plugins namespace problem
+    Description: Fix plugin autoloading
+    Description: Real plugin API
+    Description: Enable compiled-in plugins
+    Description: Optimize SPU rendering
+    Description: SPU error recovery
+
+commit 66dca68f861a2d5175cba6b95522ba5c10eb1fd2
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Aug 16 00:28:29 2000 +0000
+
+     * more files needed to build packages
+     * changed "pentiumpro" to "ppro" in the ./configure, it was misleading.
+     * prepared 0.1.99g
+
+commit af22a4b58cb29add7fa57fee36edb7f30b116bea
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 15 23:35:31 2000 +0000
+
+      * fixed a dumb bug in the Makefile that prevented inclusion of the
+        -march=pentium directive. thanks Meuuh, blame sam.
+      * fixed a warning in main.c.
+      * separate Debian packages.
+      * added request for ALSA support in the TODO list.
+
+commit cefc73ef5c6e922c4b02e13e2d8f577e622ddbc3
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Aug 15 17:40:40 2000 +0000
+
+    R�paration de la version BeOS. Le probl�me venait du swab32 de la nouvelle
+    bit stream, la macro pour la conversion de BIGENDIAN vers LITTLEENDIAN ne
+    fonctionnant (toujours) pas.
+    
+    La version BeOS pose encore de gros probl�mes:
+    - des plantages al�atoires lorsqu'on utilise le son,
+    - des performances tr�s en dessous de celles d'anciennes version du vlc,
+    - une synchro son qui ne fonctionne pas correctement,
+    - au bout d'un certain temps d'utilisation, toutes les ressources syst�mes
+      sont consomm�es et le syst�me lui-m�me devient instable (merci d'�viter
+      les commentaires sur la stabilit� de BeOS)
+
+commit 454c7eb8df3e1b396895c6f817f1b5f9b8a002f8
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 15 13:37:43 2000 +0000
+
+     . rajout� build-stamp et debian/tmp dans les .cvsignore
+    
+     . de nouvelles id�es dans la TODO list :
+    
+    Difficulty: Guru    Urgency: Wishlist   Support for RTP
+    Difficulty: Medium  Urgency: Wishlist   Draw a font / support color fonts
+    Difficulty: Medium  Urgency: Important  Layer 2 mono support
+    Difficulty: Hard    Urgency: Wishlist   MP3 support
+    Difficulty: Hard    Urgency: Normal     Support for unencapsulated streams
+    Difficulty: Guru    Urgency: Wishlist   Ogg/Vorbis audio decoder support
+    Difficulty: Hard    Urgency: Normal     Xv video output support
+    Difficulty: Medium  Urgency: Normal     SDL video output support
+
+commit e16affa0e0a6cd6797d4411a03debd19cc4d26b0
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 14 01:13:25 2000 +0000
+
+      * fixed 8bpp YUV.
+      * fixed the fscked up Bresenham algorithm in all YUV functions.
+
+commit b7c5bd56d2717cdd4c27c438444a4c09295383ba
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Aug 13 18:36:57 2000 +0000
+
+      * now scaling is on by default, so that people won't tell that the vlc
+        cannot do scaling :-)
+      * fixed a few long lines.
+      * _almost_ fixed 8bpp YUV.
+
+commit 0615d6b6d49d5dbd5a843a3fdcc2833987afcb72
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Aug 13 17:39:55 2000 +0000
+
+      * removed an unused variable in the MMX YUVs.
+      * fixed 32bpp MMX YUV, made the comments clearer, removed an emms.
+
+commit 65d341df9fe5fe7d51100868768112b1c2f22b6d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Aug 10 23:33:26 2000 +0000
+
+     . chang� l'ordre des t�ches
+
+commit 8ff71feaa37a8d3581106f3a187de1bcd926ccd1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Aug 10 22:52:29 2000 +0000
+
+     . TODO list
+
+commit 57947f9678920848f5d56267b46f0045dd07ae53
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 8 22:51:04 2000 +0000
+
+     . vir� les aliases � xvlc �, � ggivlc � etc. qui faisaient un peu
+      piti�, pour ne laisser que � vlc �, � gvlc � (gnome) et � fbvlc �
+      (framebuffer) ; les autres restent bien entendu accessibles avec
+      par exemple � vlc --vout ggi �.
+    
+     . IMPORTANT - nouvelle option --synchro pour forcer un type de
+      synchro. Pour le moment les options possibles sont :
+    
+        --synchro I     /* n'affiche que les I */
+        --synchro IP    /* affiche les I et toutes les P */
+        --synchro IP+   /* affiche les I, les P, et la moiti� des B */
+        --synchro IPB   /* affiche toutes les images */
+    
+       Toute autre valeur de --synchro sera ignor�e et c'est l'algo
+      par d�faut bas� sur la consommation de processeur qui sera
+      utilis�. Notez que si vous en demandez trop au vlc, il va
+      bien entendu planter, ou tout du moins remplir sa fifo comme
+      un gros cochon. On n'y peut pas grand chose, c'est la vie.
+
+commit 9667c93001de8537e8ccf0edfd1d10590b0ebffd
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Aug 8 12:05:57 2000 +0000
+
+     . d�commentage d'une fonction comment�e par erreur
+     . version 0.1.99f
+     . divers fixes dans la cr�ation des packages
+
+commit 15928ef3ed63aa511ac3250cdfc4bf11c4fd0173
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 7 22:20:47 2000 +0000
+
+     . un peu de m�nage dans le .cvsignore
+
+commit 1c5dd6b4feac9c44359230af0c9d359b2f9736aa
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 7 22:19:00 2000 +0000
+
+     . fichiers manquants
+
+commit f6268f60f4d02aadbb8b14046f0aa96b39af63a8
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Aug 7 22:18:24 2000 +0000
+
+      * vlc.init becomes ~/.vlcrc
+      * removed float operations in the video decoder, and all emms asm functions
+      * borrowed linuxvideo's MMX motion compensation
+      * fixed an undefined symbol in the MMX YUV plugin
+    
+    Meuuh & Sam.
+
+commit 52d7937c89ef32288f99b79dcefd91dd48ae691a
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jul 30 23:42:12 2000 +0000
+
+     . rajout de l'option -Winline
+     . fix de certaines fonctions qui devraient �tre inlin�es
+     . gain de place dans la YUVMMX
+
+commit e13aed00cf01eefa9285cb030486ee0118ea0425
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jul 30 01:59:50 2000 +0000
+
+     . autod�tection des plugins
+     . les aliases "gvlc" "fbvlc" "ggivlc" fonctionne comme il faut
+
+commit 4af2fd109ed63515a163452f8acdeb9bbe7194ea
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jul 20 13:49:24 2000 +0000
+
+     . suppression du d�codeur de r�f�rence qui de toute fa�on ne marcherait
+      plus vraiment avec la structure actuelle du vlc
+     . pr�paration de la 0.1.99e
+
+commit 69da26228eb60cec0403d8ff788e4d2f9cc8a916
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jul 19 00:03:25 2000 +0000
+
+     . nouveau bitstream fait par Meuuh (qui est mortel) et qui nous
+    fait gagner plus de 0.8% en vitesse, ce qui peut para�tre peu, mais
+    en fait au bout de 35 fois on aura d�pass� 30% de gains.
+    
+     . remise de l'ancienne taille d'image par d�faut
+
+commit ab70628c90bd8c45f2295f8d8b92459510614ffa
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jul 18 19:23:00 2000 +0000
+
+    Maintenant le vlc fonctionne correctement sous BeOS (� part la synchro).
+
+commit 3fd735374af8b0c91ab1d8a59e25983d4f07f20c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jul 11 23:04:56 2000 +0000
+
+     . le make snapshot fait un .bz2 aussi
+
+commit b8397f8fc8e651c972be6e32e12aeae3090ae38e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jul 11 23:03:54 2000 +0000
+
+     . changement cosm�tique
+
+commit 5af317cac849faf58ffc29d20887183ef2841451
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jul 11 23:03:15 2000 +0000
+
+     . updated changelog
+
+commit 058859e24726b16178ea885247552447c7ab0c0e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Jul 8 14:29:29 2000 +0000
+
+     . petite correction pour que le RPM puisse �tre construit sur Mandrake
+
+commit d17615d470bf7c85499632533f74bd812a584b12
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jul 6 14:45:51 2000 +0000
+
+     . fix� une b�vue dans la YUV 8 bits
+     . descendu le d�lai de d�marrage � .5 secondes au lieu de 2
+     . un nouvelle synchro qui devrait punixe !!!
+
+commit 57e189eb5d1d387f2036c31720e1e9aa8cb3ea78
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jul 4 02:37:21 2000 +0000
+
+    Bon, puisque �a semble commiter sous BeOS, je commite.
+    
+    Voil� le changelog appoximatif :
+    
+     . fichier INSTALL plus clair
+     . vir� quelques warnings
+     . *PATH sont maintenant d�finis dans config.h
+     . quelques fautes d'orthographe
+     . l'option --enable-ppro n'est pas mise par d�faut car elle ne fonctionne
+      pas sur un K6-2
+     . nouvelle API des plugins
+     . le client framebuffer ne d�truit plus la console quand on quitte
+     . r�paration de la YUV 8 bits
+     . mise des YUV en plugins
+     . transfo YUV 32bits MMX chour�e dans la libmpeg2
+
+commit 3cbfc06dc36bc0d178793558d52d71348e999106
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jun 23 22:28:42 2000 +0000
+
+     . nouveaux plugins - ne fonctionnent pas encore tous
+
+commit 1b79957cebd97494e3ae83cae81be93fd9d3a063
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jun 21 17:59:31 2000 +0000
+
+     Le son fonctionne sous BeOS !
+    
+     Ah, vraiment, on peut dire que BeOS roulaize, les enfants.
+
+commit ea286a76f4e0b8a805cc9ad8705c3db1119cdcb4
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jun 20 01:21:59 2000 +0000
+
+     . g�n�ration de .rpm et .deb via make.
+     . rajout des plugins dummy m�me pour BeOS.
+
+commit 58b377bc71dbe383428844766e640b288b1a6712
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jun 19 16:35:47 2000 +0000
+
+     . vlc.spec pour faire des packages RedHat
+     . un petit peu plus d'aout_beos
+
+commit 16c54baddd3e179aea841331cdf7364a2256d7e6
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Mon Jun 19 00:04:47 2000 +0000
+
+     . correction d'un flag inexistant dans input_file
+     . d�but du support son BeOS
+     . fix d'un warning dans ac3_exponent.c
+
+commit 74daded6bb9ff44b2d6b5a9bd7dbe1e8b3e2e54a
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jun 18 20:20:42 2000 +0000
+
+     . kludge con pour �viter que �a segfaulte plus en sortant
+
+commit 9d08c9c667fceaa44b77b554dfdcb51383e7afeb
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jun 18 16:52:10 2000 +0000
+
+     . r�paration de la page de man
+     . le target GGI fonctionne � nouveau, m�me s'il rame salement
+
+commit e2261b930894f65ce8fa2b8e6a12d9cadde4a72d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jun 18 11:17:01 2000 +0000
+
+     . On peut enfin fermer la fen�tre principale en cliquant sur le bouton
+      fermeture du window manager
+
+commit d79763472671a56e2622ce127d959c34b80a45a7
+Author: Benoit Steiner <benny@videolan.org>
+Date:   Sun Jun 18 08:14:25 2000 +0000
+
+    Le Makefile genere ne gerait pas correctement le mode debug=1
+
+commit 3d1104112bebfdd6f1d3201e03da01db54c93bd6
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Jun 17 01:49:09 2000 +0000
+
+     . ajout� un FIXME pour un bug dans plugins/vout/vout_x11.c
+     . ajout� un ChangeLog
+     . updat� le README
+
+commit fbb3c3d6fb9c744f61f735225baaa7003b9d62a5
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jun 16 14:04:06 2000 +0000
+
+     . le code des VLAN devrait refonctionner
+
+commit e1e77d20763acbcb91bdb0e96b3cba343eb28fbd
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jun 16 12:28:46 2000 +0000
+
+     . vlc.init et vlc.channels sont � nouveau lus et interpr�t�s lorsqu'il
+      n'y a pas de param�tres donn�s en ligne de commande.
+    
+     . cons�quence directe, il faut faire � vlc - � pour lire stdin.
+
+commit 7945499021cd217ca25d0a50c603e6bda22fd3ee
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 15 18:50:42 2000 +0000
+
+     . autoconf
+
+commit 08dcf8d79b770927fe4d50b7626d9f26ae14f029
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 15 18:50:13 2000 +0000
+
+     . petit oubli b�te dans le `make snapshot`
+
+commit 3884fa495b81de2b496b54b99c9dd8f911068d78
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 15 00:51:28 2000 +0000
+
+     et hop, encore une connerie
+
+commit 8a035a9590e7f10ff5bd4a094ff20f26ec0a6fb7
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 15 00:46:34 2000 +0000
+
+     . virage d'une connerie
+
+commit 33a996bb28aa1a89c87d64b700fa23e280715cd0
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 15 00:26:54 2000 +0000
+
+     . r�paration d'un oubli
+
+commit acbd88f26257a29b7225bd0a8dcd83287b09f4dc
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jun 14 23:55:41 2000 +0000
+
+     . input fichier en ligne de commande (le reste a du p�ter, c'est pas
+       possible autrement)
+
+commit fe175c116ab65ff84b7e8b92bf3a99ba58303acc
+Author: Brieuc Jeunhomme <bbp@videolan.org>
+Date:   Wed Jun 14 21:37:36 2000 +0000
+
+    r�paration de mes betises sur la yuv (d�sol� tm), mais je remets ca bientot.
+
+commit c2e97975f7560f6e8bbfef20d7768a243dc2957b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jun 14 20:53:48 2000 +0000
+
+     . disparition de la plupart des printf
+     . moins de warnings dans la YUV MMX
+
+commit 9206b014733f7e9dd1527548076267ca574d965c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jun 9 00:40:00 2000 +0000
+
+     . correction des conneries de BBP :)
+     . typo dans src/interface/main.c
+
+commit 16b22cf4aa29b201dda259712a05cd3c2c93dcf2
+Author: Brieuc Jeunhomme <bbp@videolan.org>
+Date:   Wed Jun 7 02:27:07 2000 +0000
+
+    Petites optims dans SCALE_HEIGHT pour les images de hauteur r�duite.
+
+commit 0eba28c2c9f2b84a54d42103226ab74e69434020
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jun 5 23:58:59 2000 +0000
+
+     . bug dans le code des sous-titres (mauvais scaling en Y)
+     . le vlc ne meurt pas salement en mode framebuffer quand on change
+      de console (par contre, segfault en quittant, je ne sais pas encore
+      pourquoi)
+     . le make est � nouveau un peu plus verbose
+
+commit 2b9f6f3318e4ab265883cc382e39ffc1fb0682cb
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Mon Jun 5 20:49:32 2000 +0000
+
+      Ajout cradement d'une yuv en mmx 4:2:0 en 16 bpp dans video_yuv.c. Pour
+    l'activer / desactiver, d�commentez le define MMX du debut du fichier.
+    
+      Cette modif est exp�rimentale vue qu'elle empeche la correction gamma
+    dans le mode pr�-cit� et que c'est du boulot de salop. A voir si on laisse
+    ou pas d'apr�s les perfs. (impossibles � estimer de visu chez moi).
+    
+      A vot' bon plaisir,
+
+commit f2f5c4a07774a4618a16a3c8ff331f0654073085
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jun 1 15:25:38 2000 +0000
+
+     . petite erreur dans le configure.in qui emp�chait de configurer
+      convenablement les options de compilation
+    
+      maintenant faire: ./configure --enable-fb --enable-blabla
+        (./configure --help pour tous les voir)
+    
+     . correction d'un warning en mode non-MMX
+
+commit 52cbe65fdea8740011f42ac28fe5e7cca6c1ca40
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon May 29 07:29:50 2000 +0000
+
+     . encore un peu plus loin dans le passage � autoconf
+     . giclage de l'ancien d�codeur dans le Makefile
+    
+    n'oubliez pas de relancer ./configure avec les bonnes options !
+    typiquement elles sont du genre :
+    
+       ./configure --enable-fb --enable-mmx --enable-ppro
+
+commit 17a8fa1206c7ad435c6154ccc0117da0d6f2afbb
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun May 28 18:28:42 2000 +0000
+
+     . suppression d'un bug cosm�tique dans l'affichage des plugins qui en
+       plus faisait segfaulter, ce qui n'�tait malheureusement pas top
+
+commit 407c070ee9289e55d4273115984706c8628c1ec4
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun May 28 14:22:06 2000 +0000
+
+     . correction d'un bug dans les sous-titres pour un scaling > 1
+     . correction d'un bug dans l'affichage 8 bits pour un scaling < 1
+
+commit 43df12e74152917d6b0570fe1caf2c81fd7ff9c8
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat May 27 15:37:41 2000 +0000
+
+     . scaling des sous-titres (� proprifier)
+     . position correcte des sous-titres sur l'image
+      �a ne devrait plus segfaulter
+
+commit d1543c2f6a5ae1386abde6c5351b3d03fca010c2
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri May 26 01:55:07 2000 +0000
+
+     . support 8 bits pour X (avec private colormap)
+     . affinement de la dur�e d'affichage des sous-titres
+     . correction d'un bug dans les sous-titres
+
+commit 9cb93a18fa89fd4a9f046d3cce3fd8f765c3c2bc
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed May 24 22:39:44 2000 +0000
+
+     Bon. On ne rit pas, je m'�tais juste plant� dans l'en-t�te des
+    licences. Et puis �a peut arriver � tout le monde :)
+
+commit ba9eb1581f412ba12065e31b8c3010942ab59d7f
+Author: Damien Lucas <nitrox@videolan.org>
+Date:   Wed May 24 21:48:18 2000 +0000
+
+    Ajout des fichiers pour la gestion du lpcm.
+    Il reste � impl�menter le lpcm au niveau de l'input et �crire le d�codage.
+
+commit ed8a78d774583cf0a276ecdcfd0bedce523717f6
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed May 17 14:38:24 2000 +0000
+
+     . corrections de fautes d'orthographe je ne sais plus trop o�
+    
+     . quelques bidouilles dans vout_mga mais de toute fa�on ce n'est pas
+      pr�t de changer et on aura chang� la structure bien avant
+    
+     . encore un meilleur support des sous-titres
+    
+     . exemple d'input fichier dans le vlc.channels, � adapter � votre
+      convenance
+
+commit 9be218d524fe2be7ff56416f404df9eca23ea460
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Wed May 17 14:21:15 2000 +0000
+
+    Ajout des fonctions de r�glage du volume (touches : +, -, m)
+
+commit a61212cc837849351c1c2f82c964dc93333fbec3
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Apr 20 00:54:31 2000 +0000
+
+     . changement dans les headers pour que �a compile sous Linux.
+    
+     Polux, j'ai vir� <byteorder.h> pour le remplacer par <netinet/in.h> car
+     c'�tait comme �a dans tous les autres .c, tu peux v�rifier que �a
+     fonctionne toujours ?
+
+commit 551607d315126846db5538560f52fb2e084a5d6f
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Apr 19 22:13:38 2000 +0000
+
+    Portage du client sous BeOS. Il manque encore l'audio mais �a marche.
+    En cadeau bonux un nouvel input_file qui permet de lire les vob. Il
+    faur rajouter la ligne suivante dans vlc.init:
+    spawn-input method=10 filename=braindead
+
+commit 9a726693158506defdbe4c98f45b80521f32232c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Apr 14 04:19:51 2000 +0000
+
+     9 avril:
+     - r�indentation de quelques bouts de code
+     - les plugins vont �tre cherch�s en priorit� dans . puis ./plugins
+      puis dans le r�pertoire habituel
+     - d�but de communication entre le thread gnome et l'input
+     - l'interface gnome ne segfaulte plus en sortant
+     - le menu "Exit" fonctionne
+    
+    10 avril:
+     - fen�tre Gnome au lieu de fen�tre Gtk
+      *** ATTENTION *** l'interface Gnome n'est vraiment qu'un d�but, soyez
+       gentils de ne pas faire de bug report si un bouton ne fonctionne pas.
+     - popup "About"
+    
+    11 avril:
+     - fen�tre playlist (rien dedans encore)
+     - masquage du pointeur souris
+     - popup menu dans la fen�tre vout
+     - hide/show des fen�tres playlist
+     - les boutons "Exit" fonctionnent quel que soit le menu
+    
+    12 avril:
+     - d�but du cassage des channels
+     - d�but des menus g�n�r�s en runtime
+    
+    13 avril:
+     - ajout du target "snapshot" dans le makefile
+    
+    14 avril:
+     - d�codage de tous les sous-titres connus
+     - spu_decoder.c ne segfaulte plus quand on quitte
+     - rajout du flag b_active dans la structure audio_decoder
+     - le bouton pause fonctionne
+
+commit 3efee7828d1349a4f746178b5407337a6e04cb22
+Author: Henri Fallon <henri@videolan.org>
+Date:   Wed Apr 5 20:43:33 2000 +0000
+
+    Ajout du layer II mono (non test�) et d�but de mise en conformit� avec
+    les r�gles de formattage du code
+
+commit e6f643225a779c1c061044ea62b0aa33396a6853
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Mar 30 12:54:29 2000 +0000
+
+    - Correction du bug de la synchro.
+      Le probl�me provenait d'un d�calage d'une seconde qui avait �t� rajout�
+      dans le calcul de la date dans audio_output.c :
+      p_aout->date = -1000000 + mdate() + ( (((mtime_t)(l_bytes / 4)) * 1000000)
+                                            / ((mtime_t)p_aout->l_rate) );
+      C'est le -1000000 qui faisait retarder le son d'exactement une seconde.
+      J'aimerais bien savoir pourquoi il a �t� rajout� car peut-�tre y-a-t-il
+      d'autres bugs similaires qui ne sont pas visibles pour l'instant.
+    
+    - Nettoyage d'une partie du code de audio_decoder_thread.c
+      Il est vraiment tr�s dommage que les conventions de codage ne soient pas
+      respect�es, si il y en a ce n'est pas pour rien. De plus le m�lange
+      d'espaces et de tabulations rend le code tr�s peu lisible. Je le
+      rappelle, nous n'utilisons que des indentations de 4 espaces et toute
+      tabulation est proscrite. Il serait bien de changer le reste du code
+      pour qu'il respecte les conventions et reste ainsi facilement lisible
+      par tout le monde.
+
+commit e3f56bd88d343d08619853fa5f8ef94399fdab07
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Tue Mar 28 00:22:13 2000 +0000
+
+    Version 2 de mon tutorial sur les DCT et DFT. Les choses sont un peu plus dans
+    l'ordre maintenant, et il y a pas mal d'explications qui ont ete rajoutees pour
+    expliquer comment implementer efficacement l'algo AAN.
+    
+    Si un jour j'ai le courage, j'ecris une routine DCT32 qui torchera celle de
+    regis, na !
+    
+    Pour etre parfait il faudrait rajouter une section sur les DCT en 2 dimensions,
+    mais bon...
+
+commit b1ff86e64fa8cd67815d7ff7b8ac6a7c320704da
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Mar 23 06:27:35 2000 +0000
+
+     . les sous-titres sont affich�s et effac�s � l'heure
+     . une petite optimisation de l'affichage
+     . attention, config.h.in a chang�, n'oubliez pas de refaire ./configure
+
+commit aa79cd1104f75aa27f621a2b26675b6f55a60332
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Mar 22 00:57:10 2000 +0000
+
+     . les sous-titres sont centr�s
+     . la palette des sous-titres par d�faut est moins affreuse.
+    
+    Bugs que j'avais oubli�s:
+     . ne marchent qu'en 16 bits (devrait se fixer vite)
+     . parfois quelques glitches graphiques que je ne comprends pas.
+
+commit 3482c341141f4dbe2e3fd230ca2a9e426e229232
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Mar 21 22:36:01 2000 +0000
+
+    NEWS:
+     . encore un peu de parsage de sous-titres
+     . affichage des sous-titres.
+    
+    BUGS:
+     . �a segfaulte toujours au moment o� on quitte, mais c'est le probl�me
+      habituel, �a sera r�gl�.
+     . pour le moment ils sont en noir et blanc, parce qu'il faut aller
+      chercher cette putain de palette dans les .IFO du dvd et que pour
+      l'instant j'ai la flemme
+     . les sous-titres ne sont pas affich�s comme il faut si la largeur
+      de l'�cran n'est pas 720.
+     . dimensions par d�faut mises � 720x576 (format DVD) au lieu de 640x480
+      pour la raison �voqu�e ci-dessus. mais �a sera r�gl� bient�t.
+     . pas de gestion de transparence, coordonn�es, fade in/fade out
+     . pas de gestion de date : le sous-titre est affich� d�s qu'il est re�u
+      et n'est pas effac� tant qu'on en a pas re�u un nouveau.
+
+commit 3b8adcbd9c198ba59eddc65008fad6e66c5949b1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Mar 20 07:50:55 2000 +0000
+
+     . suppression d'une variable inutile que j'avais laiss�e trainer
+      au pr�c�dent commit.
+     . d�but du d�codeur de sous-titres. Pour le moment il ne fait que
+      parser le flux comme un cochon, c'est tout.
+
+commit b17f6aadad5663e5acf5941578a7c23b8bbd90f3
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Mar 20 04:29:00 2000 +0000
+
+     Bon finalement puisque tout le monde dort, je l'ai fait :)
+    
+      . rajout de i_pes_real_size dans la structure p_pes_packet, qui vaut 0
+       par d�faut, et est initialis� � la taille du payload PES annonc�e dans
+       le header si celle-ci est pr�sente.
+      . � chaque nouveau paquet TS, si i_pes_real_size == i_pes_size on envoie
+       directement le PES au d�codeur sans attendre le d�but du PES suivant.
+      . cr�ation de input_ParsePES pour y mettre le code dupliqu� de
+       input_DemuxPES.
+    
+     Ca fait 1 test de plus par paquet TS, donc n�gligeable. Par contre si
+    des gens ayant boss� sur l'input ont le temps de v�rifier que je n'ai pas
+    fait de connerie, �a peut �tre int�ressant :)
+
+commit ee9f4f3ea12a70af9ee920f57ffb2010168bb824
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Sun Mar 19 06:29:52 2000 +0000
+
+    Un petit tutorial sur les DCT et DFT... enfin non pas sur leur representation
+    "physique" mais plutot sur les differentes methodes de calcul utilisables.
+    
+    Ca n'est pas franchement indispensable mais disons que j'ai eu du mal a trouver
+    de la doc sur le sujet donc je me dis que ca peut pas faire de mal de
+    rassembler ce qu'on a...
+
+commit fec6ded4bf47c3367152b0a37459fa058b2cf3f3
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Wed Mar 15 02:10:47 2000 +0000
+
+    reecriture du deco mpeg audio
+    
+    * support du layer 1 mono et stereo
+    * support du layer 2 stereo (j'ai pas encore fait le mono)
+    * support des low bitrates proposes par le mpeg2 (non teste)
+    * passage des tests de compliance mpeg :)
+    * moins de macros qu'avant, mais je dois encore propriser un peu le code.
+
+commit abe1132d5ad3ab1addc2bf17293fadc4102f177e
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Mar 13 21:55:07 2000 +0000
+
+    * Correction du Bug introduit lors de mon commit.
+    
+    Chez moi, �a marche avec Taxi, Matrix et la ba de twine.
+
+commit 704d5d692713314e578536723ff3669a02ec239e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Mar 13 21:32:31 2000 +0000
+
+     . gestion de la souris sous X (essentiellement le bouton du milieu
+      qui cache le pointeur, tr�s pratique quand on regarde un DVD)
+     . rajout de 3 fichiers d'installation pour le package Debian
+     . correction de "usefull" et "successfull" � une dizaine d'endroits dans
+      le code parce que �a commen�ait � m'horripiler
+     . erreur de syntaxe dans la page de man.
+     . un peu plus de choses dans l'interface gnome, mais rien ne marche
+      pour le moment.
+
+commit 68bcfdfc7ac3385ee28a6ee153aaea15d5ca4d39
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Mar 13 04:08:10 2000 +0000
+
+     . ajout de quoi faire des packages debian :
+       - fichiers de contr�le pour dpkg-buildpackage
+       - une ic�ne de merde - que les artistes la remplacent
+       - page de man
+     . les donn�es qui ne sont pas platform-dependant sont maintenant
+      dans le r�pertoire share ( et plus lib )
+     . le client va chercher les polices dans le r�pertoire courant
+      et dans /usr/share/videolan/vlc/
+     . le message pr�c�dent �tait l'ajout du r�pertoire share/ mais
+      les scripts CVS semblent avoir d�conn�
+
+commit 35d266307272aaab1f28b0b224edd60dc071a884
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Mar 13 03:20:46 2000 +0000
+
+    * Proprification de decodeMPEG2 (+optim)
+    * Ecriture de decodeMPEG1
+    
+    Le Mpeg1 n'est pas encore test�.
+
+commit d733dbbe4676c1e9b66ba0fa98209e07bef83569
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Sun Mar 12 22:45:16 2000 +0000
+
+    J'ai retire gnome du build par defaut afin que ca ne cree pas de probleme
+    chez ceux qui n'ont pas les includes appropries...
+    
+    Je sais que cette solution n'est pas ideale mais peut on se mettre d'accord
+    pour ne construire par defaut que les outputs X et dummy pour la video, et
+    dsp et dummy pour l'audio ?
+    
+    (a la rigueur si on dit que dans le cvs on ne construit que les dummy je suis
+    d'accord aussi)
+    
+    ou alors ca sert peut etre a rien de se mettre d'accord et ca sera regle par
+    le ./configure bientot ?
+
+commit c5e3d5536b1b883c993cb494e0a570698855a6a1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Mar 12 21:04:28 2000 +0000
+
+     . suppression d'un warning pour les machines n'ayant pas usleep()
+     . correction d'une boulette que j'ai faite dans netutils.c
+     . d�but de intf_gnome. vout_gnome est une copie de vout_x11 pour l'instant
+
+commit 8153d415270f0847aa2a3682e49afb845b372cf5
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Sun Mar 12 19:05:58 2000 +0000
+
+    Proprification du decodeur mpeg audio, comme j'avais fait pour l'ac3 :
+    separation de ce qui est specifique videolan et de ce qui est generique.
+    
+    Je compte encore bidouiller pas mal la partie generique, mais deja la ca
+    marche donc...
+
+commit 4eed2dd0c013d3ac16175fe1cab9bbad50b7cb33
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Sat Mar 11 00:05:16 2000 +0000
+
+    Quelques ajustements pour beos. Les plugins ne compilent toujours pas.
+
+commit 86054cbfbac62dcd172ebe579c87998d67159e77
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Mar 10 01:24:53 2000 +0000
+
+     . r�gl� un petit oubli dans le Makefile
+     . dernier commit pour tester les scripts ;
+          �a devrait bien marcher � pr�sent
+
+commit 78efa04e237aea926b31aafe2a090a762fe51129
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Mar 10 00:57:50 2000 +0000
+
+     ben oui, encore un poliotage. mais �a me permet de tester les scripts
+     de commit en cachette :)
+
+commit 18e6f1a82064625389fb6ed09d7fee63872ed10b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Mar 10 00:47:17 2000 +0000
+
+     . suppression de quelques #define SYS_* (mais pas encore tous)
+     . include/config.h devient include/config.h.in et config.h sera
+      g�n�r� par ./configure. Le but est d'�viter les options -DFOO de gcc
+     . suppression d'un 'Resources' qui trainait encore dans config.h
+
+commit d3a8f7e2921d1b125c943894a2396132ecc0f792
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Mar 9 12:30:15 2000 +0000
+
+     . la version et le codename sont d�finis uniquement dans configure.in
+     . plus de #ifdef SYS_* dans threads.h, on utilise defs.h
+     . re-test des scripts de tibob :)
+
+commit c36d3ca686c1152838674eba175823b33f36eeb1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Mar 9 10:08:50 2000 +0000
+
+     . normalement on devrait se prendre 1 seul mail par commit gr�ce aux
+      top scripts de tibob.
+     . suppression de Makefile
+     . rajout de include/defs.h.in qui g�n�re include/defs.h
+    
+     pour g�n�rer le Makefile et defs.h il faut lancer ./configure
+    
+     pour ceux qui voudraient toucher � configure.in, "include/defs.h.in" est
+    g�n�r� par la commande autoheader, et "configure" est g�n�r� par autoconf
+
+commit e092ce6bd25f32b4783c378c46165ec842fa0270
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Mar 8 10:44:25 2000 +0000
+
+     . remise du vieux Makefile en attendant celui g�n�r� par ./configure
+
+commit ce02beab1c940383aa5de8e46dde41920f5b514c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Mar 8 10:33:28 2000 +0000
+
+     ./configure puis make, et �a devrait compiler.
+
+commit 12422fe0b1726327a63e0f0c6ecdbb62486ed902
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Mar 8 10:22:45 2000 +0000
+
+     Premiers fichiers n�cessaires � autoconf
+
+commit ac08ae30411f18fccf735b337927ee7abd04a009
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Sat Mar 4 22:33:01 2000 +0000
+
+    D�but du portage BeOS. Beaucoup de fuchiers ont �t� modifi� car il a fallu
+    r�organiser les headers pour que ce soient les headers les plus proches
+    du syst�me qui se retrouvent en premier (threads.h devrait toujours �tre
+    le premier des headers non syst�mes). J'ai du aussi rajouter un type
+    plugin_id_t et par la m�me occasion inclure plugins.h dans la plupart
+    des fichiers. Voici en vrac les modifs les plus importantes que j'ai op�r�:
+    
+    o L�g�re r�organisation pour les raisons �voqu�es ci-dessus (certaines
+      macros comme MIN et MAX peuvent �tre d�j� d�finies par le syst�me et
+      interf�rer avec celles d�finies dans common.h ou autre)
+    
+    o Dans intf_msg j'ai du remplacer les vasprintf par des vsprintf
+      dans le cas o� ARCH=BEOS.
+    
+    o la commande hostname du Makefile n'�tait pas compatible et je
+      l'ai donc enlev�, en avons-nous besoin ? Auquel cas il suffit de
+      rajouter un ifeq.
+    
+    o J'ai aussi remplac�  les bzero et bcopy par memset et memmove.
+    
+    o plugin.c, mtime.c et threads.h et quelques fichiers de l'input
+      ont �t� adapt�s � BeOS � grand coup de #ifdef SYS_*.
+    
+    TODO:
+    
+    o Ecrire intf_beos.cpp, vout_beos.cpp et aout_beos.cpp
+    
+    Je suis sous linux et je viens de tester le client qui marche tr�s
+    bien, mais il est n�anmoins possible que j'ai introduit quelques
+    probl�mes de compilations pour certains modules, si c'est le cas
+    pr�venez moi.
+
+commit ec9bf58ab3453691a110fcf144d05e18f8b39183
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Mar 4 11:52:48 2000 +0000
+
+     - �a compile sous FreeBSD (mais �a ne tourne pas)
+     - les d�pendances sont cach�es dans .deps/ au lieu de deps/
+     - suppression d'encore quelques #include inutiles.
+     - la gestion des plugins est maintenant encapsul�e dans misc/plugin.c
+      un peu comme les threads, pour faciliter le portage.
+     - l�ger remaniement de l'output pour --help et --version
+     - les p_ts_packet sont cast�s en (void *) pour �viter un warning sous
+      certaines architectures.
+     - ajout de la GPL dans un fichier COPYING
+     - fichier README avec rien dedans pour le moment, � part la liste de
+      toutes les personnes ayant particip� au projet. J'en ai *forc�ment*
+      oubli� certains, alors si vous avez un nom, rajoutez-le. de m�me, s'il
+      y a un gros con que j'ai mis par erreur dans la liste et qui n'a jamais
+      rien fait pour le projet, n'h�sitez pas � le supprimer sournoisement.
+     - fichier AUTHORS avec la liste des gens ayant boss� sur le client. j'ai
+      mis toutes les personnes ayant fait au moins un commit, ainsi que Henri
+      parce que je sais qu'il bosse sur l'audio, et HPReg, Steve et Oli parce
+      qu'ils ont boss� dessus aussi. Par contre ici aussi j'ai fort probable-
+      ment oubli� des gens. Corrigez !
+     - r�pertoire debian/ qui servira � cr�er des packages
+     - rajout d'une entr�e pour faire `make install' (pas encore parfait)
+     - nom de code de la future release 0.2 : `Onatopp' :)
+
+commit 44bcfed01477db0b57e6f08048bbee72f032aa7e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Mar 3 07:03:34 2000 +0000
+
+     Encore un commit venu tout droit des abysses de l'enfer, d�sol� pour
+    le flood, c'est la derni�re fois.
+    
+      . apr�s le demoronifier, le GPLifier: il y a les ent�tes de la GPL dans
+       chaque fichier ; votre mission, si vous l'acceptez, est de mettre votre
+       nom dans chaque fichier qui est votre oeuvre ou auquel vous avez
+       particip�, pour qu'on sache qui a fait quoi. Pas de fausse modestie,
+       c'est plus pour des raisons pratiques que pour la gloire.
+    
+      . rajout de -lthreads pour que �a linke sous Hurd
+    
+      . rajout de quelques #include pour que �a compile sous FreeBSD
+       (d'ailleurs �a compile mais �a ne linke pas, je ne sais pas comment
+       linker avec la libpthread sur la machine de Dae)
+    
+      . quelques #ifdef SYS_BSD �� et l�.
+
+commit 296df89a57da3ad22edcec40539403563b3be75e
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Fri Mar 3 01:26:17 2000 +0000
+
+    modification du deco ac3 pour le rendre plus robuste.
+    
+    normalement le client ne devrait plus segfaulter... enfin, normalement :)
+
+commit 7a0afd69fd2574bf075be9ed566f547dd93efd37
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Mar 3 00:59:56 2000 +0000
+
+     . portage des vlc_threads aux cthreads de Mach pour GNU/Hurd
+     . rajout de #ifdef SYS_LINUX autour du code concernant les interfaces
+     . suppression de quelques #include <sys/soundcard.h> qui trainaient encore
+     . option PPRO dans le Makefile (si vous avez des erreurs
+        'Illegal instruction', �a venait probablement de l�)
+     . rajout de quelques commentaires pour expliquer en quoi certains #include
+        sont n�cessaires, aux endroits o� je ne comprenais pas, et suppression
+        de #include qui semblaient inutiles.
+
+commit a5e77c46eb6ef40745d282462a1aeb1efc5b0ab2
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Wed Mar 1 23:51:08 2000 +0000
+
+    Created a small&clean public interface for the ac3 decoder (see ac3_decoder.h)
+    
+    Modified ac3_decoder_thread to use this interface
+    
+    Find ac3 sync words not by scanning the ac3 stream but by using the magic
+    bytes at the start of the ac3 pes packets
+
+commit c6313a9b1b5765dd6d0d155505b7161e084c6d51
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Mon Feb 28 02:35:41 2000 +0000
+
+    Separation du decodeur ac3 et de la partie specifique a videolan
+    
+    Les interfaces du deco ac3 ne sont pas encore bien propres et documentees
+    mais ca viendra dans un second temps. Les fichiers ac3 ne dependent plus
+    d'includes videolan. C'est deja une bonne premiere etape.
+    
+    Au niveau du bitstream compresse, l'interface avec le decodeur ac3 ne se fait
+    plus par le fichier decoder_fifo.h. En effet, le decodeur ac3 a besoin de
+    connaitre la structure exact d'un bitstream_t, donc cette interface n'etait
+    pas la plus propre. La nouvelle interface se compose d'une fonction
+    ac3_byte_stream_next (ac3_byte_stream_t * p_byte_stream) que le decodeur
+    ac3 appelle lorsqu'il a besoin d'un nouveau buffer de donnees compressees.
+    
+    ac3_byte_stream_t est une structure comprenant les champs
+    u8 * p_byte (pointeur sur le debut du buffer),
+    u8 * p_end (pointeur sur la fin du buffer),
+    void * info (utilisation libre pour implementer ac3_byte_stream_next)
+    
+    L'implementation actuelle de ac3_byte_stream_next () dans ac3_decoder_thread.c
+    fait un peu double emploi avec misc/decoder_fifo.c mais je reglerai tout ca
+    plus tard.
+
+commit 7373cdfb77f77d4570bdbcd8fcace21e0a389ff5
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Fri Feb 25 02:45:09 2000 +0000
+
+    Decoupage de vdec_motion en deux parties :
+    
+    vdec_motion_inner contient le code plus ou moins bourin qui calcule les pixels
+    (je pense que c'est la que la majorite du temps est ecoulee, et qu'il y aurait
+    eventuellement un avantage a rechercher des optimisations particulieres pour
+    ce fichier, genre debouclage de boucles ou quelque chose du genre)
+    
+    Le code dans vdec_motion contient quand a lui des tests sur le type exact
+    de prediction a effectuer, des calculs de pointeurs en fonction des motion
+    vectors, et les appels a vdec_motion_inner.
+    
+    La fonction MotionComponent de vdec_motion a ete modifiee pour appeler
+    directement la bonne fonction de vdec_motion_inner en fonction des parametres.
+    La encore en raison de la gestion d'inlines faite a la compilation, pour chaque
+    appel les parametres i_width, i_height et b_average sont deja connus et
+    donc l'appel de MotionComponent devrait s'etendre a un simple switch (i_select)
+    et un appel de la fonction correspondante dans vdec_motion_inner.
+    
+    Le code dans vdec_motion presente toujours une apparence contestable mais
+    je n'ai pas modifie son fonctionnement (seulement la fonction MotionComponent).
+
+commit 5f0e921cd9491687b817c465ea5a4bac5198d287
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 23 03:09:33 2000 +0000
+
+      rha ! deux fichiers oubli�s.
+
+commit 36ac163c85ad618a41f903da87c1e8e3eeb458af
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 23 03:04:50 2000 +0000
+
+     Le retour du demoronifier qui n'est pas content.
+    
+       . 11 moronic long lines destroyed
+       . 1282 trailing spaces eradicated
+       . 4 ugly macros fixed
+       . 5 innocent a_bit_long lines shortened
+    
+       . 5987 tabulations transform�es en espaces
+       . 153 '??' transform�s en 'XXX??' ou 'FIXME??'
+        (ptyx, j'esp�re que ce compromis te convient)
+    
+       . commentaires en // corrig�s en /* */
+        (je parle bien des commentaires, pas des morceaux de code
+         mis en // comme les printf de debug par exemple)
+    
+    Au passage :
+    
+       . version du vlc modifi�e en 0.1.99 (la release sera la 0.2.0)
+       . suppression de video_x11.h
+       . correction d'un warning dans intf_ctrl.c
+
+commit 3f8bf7fb1991c383b1b4e5b9918ed70132a63daf
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Tue Feb 22 22:55:07 2000 +0000
+
+    oops, j'ai oublie un fichier
+
+commit 6ec1835e8742e52d1ec2f236cfac05ee098ad2e0
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Tue Feb 22 22:54:22 2000 +0000
+
+    travail sur l'ac3_decoder : debut de separation de ce qui est specifique a
+    videolan (ac3_decoder_thread) et de ce qui ne l'est pas. Ce n'est pas encore
+    ideal, la partie "videolan" fait des inits a l'interieur de la partie
+    "ac3"... il faudra que je fasse une belle interface pour ca.
+    
+    Le probleme des includes n'est pas non plus regle, mais c'est a cause des
+    bit_streams :) patience.
+
+commit d9f73a7039063f0b0d38486fbef8252549854dd8
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Tue Feb 22 14:09:51 2000 +0000
+
+    Modification mineure MotionComponent : changement d'une boucle imbriquee
+    sur i_y et i_y1 en une boucle simple sur i_y... Le changement en vitesse comme
+    en taille est chouillatique mais neanmoins positif. Ca n'a pas d'effet sur
+    l'unrolling de boucle car celui-ci est effectue sur une boucle plus interne...
+
+commit 02752c7ccc03a5038ef952c831d98afd45bf0da2
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 21 09:15:49 2000 +0000
+
+     3 vilains fichiers avaient disparu
+
+commit 0374d3332fe0c67405513699c6bb3f227edab014
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 21 09:15:04 2000 +0000
+
+     chargement dynamique de plugins audio/video/interface
+    
+     utilisation: c'est tout con, �a marche comme avant. pour le moment
+      il n'y a pas de v�rification des symboles mais �a viendra.
+    
+     seule restriction, il faut �tre dans le r�pertoire vlc quand on lance
+      le client, parce que le chemin des plugins est relatif, mais �a aussi
+      �a va changer.
+    
+     le Makefile devient pas tr�s beau, il faudra songer � passer � automake
+
+commit f8371eed12d58aa8b1fd8db64fe8796d37f83c59
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 21 04:21:52 2000 +0000
+
+     . ajout de l'audio output pour Esound
+     . pas encore tr�s au point � cause d'un bug dans esd_get_latency() mais
+     j'en ai besoin pour tester le chargement dynamique de plugins.
+
+commit ae697f31bc6704784f817a9ea364b4acc42280e6
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Mon Feb 21 02:19:54 2000 +0000
+
+    Une partie de patch qui ne devrait pas etre trop controversee : j'ai juste
+    change les #define MACHIN_DELAY pour qu'ils soient definis en tant que
+    multiples de CLOCK_FREQ
+    
+    :>
+
+commit 1399f00e702fa0f34dabfb7d008731405c283947
+Author: Renaud Dartus <reno@videolan.org>
+Date:   Sun Feb 20 23:24:38 2000 +0000
+
+    Ajoute du support son U8_Stereo
+    
+    --
+    Reno
+
+commit 2dab23fc4598424f28d82a7da69723f3d99de5c9
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Sat Feb 19 00:39:03 2000 +0000
+
+    Yop,
+    
+    Bon ben voila, j'ai commence a bouger les .h comme je voulais le faire...
+    
+    C'est encore un peu le bordel et j'en suis desole. Mais je compte bien
+    deplacer des trucs jusqu'a ce que ca soit a nouveau bien range :)
+
+commit 66f08a821a38b26e34ba476e8340c884946ab3ee
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Feb 19 00:11:26 2000 +0000
+
+     deux changements cosm�tiques de rien du tout et suppression d'un warning
+
+commit 25f0492374daa0d57ed99d89df4cc680c39723bb
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Fri Feb 18 00:26:23 2000 +0000
+
+    Modification du decoder_fifo : le GetByte devrait etre un chouilla plus rapide,
+    ce qui devrait au minimum compenser la perte due a ma derniere modification.
+
+commit 2f2ce6f4d1d67057c2db76a5463e6f9870e7cbe9
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Feb 17 22:17:35 2000 +0000
+
+    La plupart des causes de segfault de la video ont �t� �limin�es, les messages
+    d'erreur qui sont affich�s sur stderr vous donnerons une bonne id�e du nombres
+    d'occasions de planter qui se pr�sentent au client.
+    
+    J'ai aussi remis le flag DEBUG � 1 et commenter omit-frame-pointer pour que
+    tout le monde puisse avoir la chance de participer � la chasse aux segfaults
+    avec son gdb. Les bugs report sont le bienvenu (surtout si c pour l'audio ;).
+
+commit 7d73d8fda76a39c8e9e8016f21a2f479b88409ab
+Author: Michel Lespinasse <walken@videolan.org>
+Date:   Thu Feb 17 19:28:00 2000 +0000
+
+    Modification de decoder_fifo.h : le cas ou on passe d'un buffer a l'autre
+    lors de la lecture d'un octet n'est plus inline. Precedemment le code etait
+    inclus a chaque invocation de NeedBits ou GetBits...
+    
+    Vu l'etat de la synchro je n'ai pas pu mesurer d'impact precis sur les fps
+    mais je ne m'attends pas a ce qu'il soit mesurable de toute facon : on troque
+    un apel de fonction contre un meilleur comportement du cache code...
+    
+    Premier checkin de ma part, mais il devrait en venir d'autres.
+
+commit 7b7bbbbe3b41fab163e2850a3154c96ad8bad3c0
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Feb 17 18:04:38 2000 +0000
+
+    Petite modif dans la synchro, peut-�tre que cela marchera mieux, qui sait ?
+
+commit e4f6091296056b54f1654113544d87fd34e8982d
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Feb 17 16:36:25 2000 +0000
+
+    Premier service pack de la POLUX_SYNCHRO:
+     o 0 bug fixe
+     o several bugs added
+     o synchro is now slower than ever
+    
+    Si par chance cela marchait chez vous pr�venez moi vite.
+    
+    Mise � 0 du flag DEBUG pour tester la synchro dans les meilleures conditions
+    possibles, attention les acc�s disque du mini-server ainsi que les nombreuses
+    irr�gularit�s du flux peuvent perturber le client de fa�on non n�gligeable.
+
+commit 12f127632a349f314224f9363d3f908a1216a10f
+Author: Andres Krapf <dae@videolan.org>
+Date:   Thu Feb 17 11:04:52 2000 +0000
+
+    remaniement de quelsques includes pour que ca passe sous BSD.
+
+commit 6aaf8121f3445f8b2f3c9a5479599a8efda8f0ad
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Feb 17 06:07:37 2000 +0000
+
+     o remise de b_stereo dans les structures audio en attendant que soit
+      d�finie une api pour la gestion de plus de 2 voies, qui de toute fa�on
+      est loin d'�tre une priorit�. je dirais m�me qu'on s'en fout.
+     o argument suppl�mentaire pour GetBufInfo() pour que la m�thode dummy
+      attende un temps convenable, et correction de aout_dummy.c
+     o le test sur la variable DEBUG dans config.h est maintenant conforme
+      � ce que dit le Makefile.
+     o suppression d'une variable inutile dans intf_fb.c
+     o --long-help devient --longhelp comme dans mpg123
+     o version du programme arbitrairement mise � 0.95.0
+     o commentaire d'une variable inutilis�e dans Synchronize (video_output.c)
+     o correction du "LIN" en "LIB" dans le Makefile, qui doit tra�ner l�
+      depuis des si�cles
+     o proprification de quelques routines du Makefile
+    
+    le code de s�lection de m�thode audio/video est loin d'�tre propre, je
+    dirais m�me que c'est du gros caca, mais j'y bosse.
+    
+    bonne nuit,
+
+commit 62ee3e006812818f41fb448887ed2870bc6cbd16
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Feb 17 00:43:58 2000 +0000
+
+    Corrections de quelques petits bugs et surtout nouvelle synchro qui ne semble
+    pas trop mal marcher sur ma machine mais qui j'en suis s�r ne marchera pas du
+    tout sur la votre.
+    
+    A noter qu'il existe maintenant 3 synchros que l'on peut choisir en changeant
+    le define dans vpar_synchro.h (POLUX_SYNCHRO, SAM_SYNCHRO, MEUUH_SYNCHRO)
+
+commit 2ebf6c0302a5fdc7f4e39d4e8346aba387e4a16f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 16 07:27:26 2000 +0000
+
+     o renommage arbitraire et totalitaire de idctmmx.S en vdec_idctmmx.S
+     o correction d'une typo d�bile dans audio_output au commit pr�c�dent
+     o b_stereo est remplac� par i_channels
+     o suppression de la structure aout_dsp_t dont les membres d�pendant
+      de l'output se retrouve dans aout_*_sys_t, et les autres directement
+      dans aout_thread_t, on se fait pas chier.
+
+commit 2733b268c43a8b66930fd9582a0cf7b203f8d052
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 16 03:54:07 2000 +0000
+
+     o changement de nom des fonctions sp�cifiques BeOS
+     o d�but de l'�clatage de l'audio_output :
+       . giclage des variables *dsp* en faveur de *sys*
+       . aout_*GetBufInfo renvoie l_bytes pour que video_output.c ne d�pende
+        plus de la structure audio_buf_info sp�cifique � <linux/soundcard.h>
+       . cr�ation de la m�thode audio 'dummy' qui ne fait rien.
+     o nouvelle option --aout acceptant 'dummy' et 'dsp' pour le moment
+
+commit 8e016bb0b4dbbb64cad4dfabc902e2ff748930ec
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 16 00:35:19 2000 +0000
+
+     . virage de cette #@!#@@#@#!@#@#!!@#@!!#@!@!!@# de d�pendance du Makefile
+
+commit a69f01ceec9c9351f3b6c5a9cb3df624251ed9ea
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Feb 15 05:25:49 2000 +0000
+
+     . am�lioration de la YUV 8bpp
+     . nettoyage du code de gestion des m�thodes vout
+     . nouvelle option --vout
+     . pr�paration de l'�clatage de l'audio output comme �a a �t�
+      fait avec le vout.
+     . nouvelle commande --long-help
+    
+    La s�lection de la m�thode vout est encore plus simple. Pour s�lectionner
+    le framebuffer par exemple : "vlc --vout fb". Par d�faut, X11 est choisi.
+
+commit 89a64c6143da74ed12d625b7eb01baca52687f2f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 14 08:44:59 2000 +0000
+
+     . fix� une erreur de syntaxe dans video_fb.c
+     . *3dfx* devient *glide*
+     . suppression de tabulations dans quelques fichiers
+     . suppression des 2 warnings dans sam_synchro
+     . video_* devient vout_* quand ce sont des m�thodes de vout
+     . tentative de correction de la d�tection de MMX pour BeOS
+     . nouvelle option vlc_vout_method (faute de mieux pour le moment)
+     . modification du Makefile pour supporter plusieurs VIDEO_*
+    
+    dor�navant on peut compiler plusieurs output diff�rents dans le
+    client. la pr�f�rence se fait dans l'ordre x11, fb, ggi, glide...
+    
+    si on le compile avec x11 et fb, par d�faut il se lancera en X.
+    pour le lancer en framebuffer :
+    ./vlc vlc_vout_method=fb
+    
+    (il faut que je proprifie un peu le choix de l'output, et que je
+    facilite l'ajout d'un nouveau vout_*)
+
+commit ce72276454c762bae2b16e8f65808c6ba4739c35
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Feb 13 19:43:02 2000 +0000
+
+     . d�tection d'un processeur MMX.
+     . l'output fb remet le terminal comme il faut en sortant.
+     . s�paration du flag MMX et de l'architecture dans le Makefile
+
+commit 2ad5fa640d389a2261699c0b657484b436aef23e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Feb 13 04:31:35 2000 +0000
+
+     Je vous avais pr�venu. Le demoronifier a frapp�.
+    
+     D�sol� pour le flood. Les en-t�tes de fonctions ne font plus 81
+    caract�res, et il n'y a plus d'espaces inutiles, Tous les trailing
+    spaces ont disparu, j'ai essay� de v�rifier que �a ne p�tait rien,
+    mais j'ai pu oublier un truc con. J'accepte tous types de ch�timents
+    � base d'orties fra�ches.
+    
+     D�sol� d'avoir aussi modifi� les fichiers de ceux qui formataient
+    bien proprement leurs en-t�tes � 80 et pas 79 sans emb�ter personne,
+    mais j'ai d� choisir entre les deux.
+    
+     Dor�navant ce serait bien de formater les en-t�tes et les commentaires
+    justifi�s � droite � 79 colonnes, ou au pire � 80.
+    
+     . 1343 moronic long lines destroyed
+     . 12893 trailing spaces eradicated
+     . 115 ugly macros fixed
+     . 959 innocent a_bit_long lines shortened
+     But hey, 40054 lines were OK !
+
+commit db2b7d18c2c5349ec8d62e43c94fcb4fd8c0fb70
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Feb 10 05:57:10 2000 +0000
+
+     Juste une modif � la con dans video_output pour que le message "waiting
+     for stream" s'affiche d�s le lancement du vlc. En m�me temps �a me
+     permet de tester que la migration du CVS sur shiva a fonctionn�.
+
+commit 3c7673b96f34fe8aa8e162159da7d93f2ed68275
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Feb 10 03:15:16 2000 +0000
+
+     . double buffering avec locks pour 3dfx
+     . gestion des touches pour l'interface 3dfx
+     . proprification de la gestion des touches en framebuffer
+
+commit c139cb708226c44e05819667004aa0493369853f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 9 05:50:25 2000 +0000
+
+     . video output pour 3dfx.
+     . le premier qui se marre gagne le droit de venir voir comment ma 3dfx1
+      fait l'overlay, le scaling et la YUV en hard (nan je d�conne, elle fait
+      rien de tout �a, et en plus �a rame).
+
+commit dc4e19ea4280a33d85dcbe20165a9abf4de1c99b
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Feb 9 02:04:28 2000 +0000
+
+     . un peu de m�nage dans video_fb.c
+     . r�cup�ration des masks dans la structure framebuffer, ce qui fait que
+      l'output framebuffer fonctionne � nouveau.
+
+commit c4a60506b6f958201ff69612e229d2e38f2182fe
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Feb 8 05:08:15 2000 +0000
+
+     . gestion du gamma en 8bpp grayscale
+     . optimisations dans la YUV 8bpp
+     . l'output framebuffer ne bloque plus la console
+     . rajout d'une fonction dans la structure vout pour allouer une palette
+     . r�initialisation de l'ancienne palette en quittant
+    
+    bugs restant:
+     . pas d'allocation de palette en 8bits sous X11
+     . bugs du scaling en 8bits sous X11 (sans doute d� � l'alignement sur 1
+      octet au lieu de 2)
+     . l'output framebuffer est toujours p�t�e pour 16 et 32 bits
+     . pas de correction gamma en 8bits couleur
+     . c'est tout moche pendant la fraction de seconde du changement de palette
+
+commit f7217115dd622e478ee20b4b6e0888db9204c914
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 7 05:13:22 2000 +0000
+
+     . suite de l'output 8 bits couleur/n&b
+     . correction d'un bug dans la g�n�ration de la palette optimale
+     . YUV avec dithering mortel qui tue
+    
+    todo:
+     . x11 (�a ne marche qu'en framebuffer pour le moment)
+     . mettre la g�n�ration de palette dans video_yuv
+     . refaire marcher l'output framebuffer pour bpp!=8
+
+commit 4351c7ef81d385e21bdbc1d95b933504c8d75310
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Feb 7 04:54:01 2000 +0000
+
+     . rajout du mode video 'dummy' pour les gens qui n'ont pas de carte
+      video. Le premier qui se marre se prend une claque.
+
+commit 0a16e81deca325ee7d9e636b75b53b2cdb9dd7fd
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Feb 6 15:48:53 2000 +0000
+
+     . yuv pour le 8 bits noir et blanc
+     . yuv 8 bits couleur (bon c'est moche pour le moment, mais �a vient)
+     . correction de "convertion" en "conversion" un peu partout :)
+    
+    � faire encore : allouer dynamiquement la lookup table pour la YUV 8 bits,
+    parce que directement dans p_vout �a pue un peu, faire le changement de
+    palette qui va bien au passage couleur / n&b.
+
+commit 4f5536772bb90f39ae9a4142b325a36326ed2951
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Sun Feb 6 13:13:10 2000 +0000
+
+    IMPORTANT:
+            p_vout->i_depth est maintenant la profondeur SIGNIFICATIVE de
+                    l'�cran (8, 15, 16 ou 24)
+            p_vout->i_bytes_per_pixel est la profondeur r�elle (1, 2, 3 ou 4)
+    
+    Ajout du calcul des d�calages � video_output.
+    Refonte de l'initialisation des tables.
+    D�tection correcte des profondeurs 24/24 et 24/32 en X11
+    Correction de bugs dans le scaling en 1, 3 et 4 Bpp.
+    R�cup�ration des masques depuis le materiel en X11 et GGI.
+    
+    FrameBuffer cass� pour le moment: il faut rajouter les masques de couleur
+    (des valeurs par d�faut sont au d�but de video_yuv.c) et le calcul des
+    nouvelles profondeurs d'�cran.
+
+commit fb0eb672a4fa14db9e91ab909233f206c27b770d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Feb 5 01:57:36 2000 +0000
+
+     . prototypes de fonctions pour le 8bpp
+     . virage d'un bug dans le calcul de bytes_per_line (sauf fumage de ma part)
+     . suppression de quelques #@@#@!!#@@#!@#@#! d'espaces en fin de ligne
+     . quelques reformatages � 79 colonnes au lieu de @@#@!!#@@#!@#@#!# 81.
+
+commit 5017b4667d0c2af7e79e779333928c6caa58f905
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Fri Feb 4 22:03:32 2000 +0000
+
+    * ac3_decoder/ac3_decoder.c, audio_decoder/audio_decoder.c :
+    - `msleep' de `INPUT_PTS_DELAY' et non `(3 * INPUT_PTS_DELAY) / 4'
+    avant le d�marrage des d�codeurs audio ;
+
+commit 4b504cfc6d165dc9646e94e7f546705ff6d76b19
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Fri Feb 4 20:52:16 2000 +0000
+
+    * ac3_decoder/ac3_decoder.c :
+    - suppression des `#ifdef AC3_SIGSEGV' ;
+    - correction d'un bug de la fonction `InitThread()' (scotchage �
+    l'initialisation du d�codeur AC3 dans certaines conditions tr�s
+    particuli�res) ;
+    - support du bool�en `b_invalid' permettant de d�tecter des frames
+    suppos�es invalides ;
+    
+    * ac3_decoder/ac3_exponent.c :
+    - suppression des `#ifdef AC3_SIGSEGV' ;
+    - d�tection des frames invalides et support du bool�en `b_invalid' ;
+    
+    * ac3_decoder/ac3_mantissa.c :
+    - suppression des `#ifdef AC3_SIGSEGV' ;
+    - d�tection des frames invalides et support du bool�en `b_invalid' ;
+    - optimisation de la fonction `mantissa_unpack()' ;
+    
+    * audio_decoder/audio_decoder.c :
+    - correction d'un bug de la fonction `InitThread()' (scotchage �
+    l'initialisation du d�codeur MPEG2 dans certaines conditions tr�s
+    particuli�res) ;
+    
+    * include/ac3_decoder.h :
+    - suppression du `#define AC3_SIGSEGV' ;
+    
+    * include/vpar_synchro.h :
+    - d�claration explicite de la fonction `vpar_SynchroKludge()' lorsque
+    `SAM_SYNCHRO' n'est pas activ�e ;
+    
+    * interface/intf_ctrl.c :
+    - initialisation � `-1' des variables `i_input' et `i_pid' de la
+    fonction `SelectPID()' ;
+    
+    * video_output/video_yuv.c :
+    - mise en commentaire de la fonction inutilis�e `yuvToRgb24()' ;
+    
+    * video_parser/video_parser.c :
+    - int�gration du patch propos� dans videolan-devel ;
+    
+    * video_parser/vpar_blocks.c :
+    - int�gration du patch propos� dans videolan-devel ;
+    
+    NdlR : apu warnings � la compilation :-)
+
+commit 3b84e676f9e8b8a6ca6432bb3bb7e210308a1f6c
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Fri Feb 4 14:48:34 2000 +0000
+
+    Support 4:2:2, 4:4:4 et niveaux de gris en 15, 16 et 32 bpp complet.
+
+commit 82b00a6bf08b7d5ed5a806e1dcb805bb1c3c00eb
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Fri Feb 4 13:20:22 2000 +0000
+
+    Correction du segfault en gris.
+
+commit d9c9414e72831aeff854be80288bd35a5221308d
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Feb 3 13:38:13 2000 +0000
+
+    Suppression de la ligne verte.
+    Scaling encore optimis�.
+    Suppression d'un bug causant un segfault sur certaines tailles de fenetre.
+
+commit 558e35cc038e2cb6fb9d1bf2c0736ab56d2ab22b
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Feb 3 12:40:03 2000 +0000
+
+    Correction du bug de calcul du masque (fontes outlines, point sous les ]).
+    Vive les ^ qui suivent les ].
+
+commit dbb405d1fde68c99b1a1572073de1a4962121da2
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Thu Feb 3 04:46:29 2000 +0000
+
+    * spu_decoder/spu_decoder.c :
+    - �a devrait bien se passer maintenant :-)
+
+commit 741fd7ec2008bbe70bba3405ec9d736b57ff7360
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Thu Feb 3 03:37:46 2000 +0000
+
+    * audio_output/audio_output.c :
+    - suppression du fprintf() de debug ;
+    
+    * spu_decoder/spu_decoder.c :
+    - suppression des fprintf() de debug ;
+    - la nouvelle version est pr�te mais je ne la commit pas encore ;
+    
+    * input/input_psi.c :
+    - le d�codeur spu �tait autospawn� uniquement si b_audio �tait � 1...
+    remplacement de b_audio par b_video (g bon sam ?) ;
+
+commit 6961ec33126dfaf14160e176911a59bcbe05c00f
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Feb 3 01:23:21 2000 +0000
+
+    Synchro am�lior�e X et Y, dans les 2 sens
+
+commit d1cd2a9c216aaf70241ba6a823d7989aba456eed
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Wed Feb 2 21:52:20 2000 +0000
+
+    * audio_output/audio_output.c, interface/intf_ctrl.c :
+    - suppression de deux warnings � la noix de cajou polym�re ;
+
+commit 3a45b93f119ea9a918d9057a954912af5386d761
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Feb 1 23:13:54 2000 +0000
+
+    Scaling horizontal >=1
+
+commit 01fcd5af58fba801a9f13b142339dc2768dd3bbd
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Feb 1 09:30:10 2000 +0000
+
+    Scaling vertical dans les 2 sens en YUV walken.
+
+commit 1c5e6d000adfd2f49d4138b9fc817001e38a89ab
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Tue Feb 1 03:00:16 2000 +0000
+
+    * Fonctions addblock et copyblock en inline MMX (pour ceux qui en ont...
+      du MMX).
+    * Pour tout defaut suppos� d'affichage � la suite du changement,
+      mailez-moi.
+
+commit 807e7ab017c22b353e1cd2662b7d1637d9f0a60c
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Feb 1 02:16:56 2000 +0000
+
+    Rajout de #define SAM_SYNCHRO si sam veut reprendre son code.
+
+commit 008db60827693f6b21d4672c73af327a64bcc917
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Feb 1 01:38:06 2000 +0000
+
+    Un Makefile qui est parti un peu vite...
+
+commit 0112fd6b1ae8f5443d10ef9a84a258ce7dcba778
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Feb 1 01:37:18 2000 +0000
+
+    Re-tentative de sauvetage de la synchro.
+
+commit d8fe284af9011ca43c5190f2a791290cf019e5cd
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Feb 1 00:50:29 2000 +0000
+
+    Temporaire (�a segfaulte si on le chatouille un peu).
+    YUV walken avec resize. Y et + seulement pour le moment.
+
+commit fc6b9b04a27ae836c3aaddf356bf039cac8ec579
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Feb 1 00:13:07 2000 +0000
+
+    Tentative d'amelioration de la synchro.
+
+commit c1094d9907ba35145888aa6dbbcc2666ca4720c5
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 31 23:11:34 2000 +0000
+
+    Synchro de base.
+
+commit 2f30d77a12f8a9af41f8103f91b6bc008ea5286e
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 31 16:56:37 2000 +0000
+
+    Changement de cha�ne configurable depuis un fichier texte.
+    Quelques corrections esthetiques dans vout.
+
+commit c80107b2311bbe124d1f2392abea9ed7541fa090
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 31 14:00:05 2000 +0000
+
+    Correction du bug 100% CPU en idle.
+
+commit 28115de8beb4e8d07ebcec0fb14d5478c595aacd
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 31 13:32:33 2000 +0000
+
+    Mise place du scaling, episode II
+    Alignement am�lior�
+    Effacement 'intelligent' des zones modifi�es
+    Correction d'une memory corruption
+    Structure d'acceuil pour les subpictures
+    ggi et fb fonctionnent (pas mieux qu'avant, mais ils compilent)
+    
+    Ca rame. C'est normal, c'est la YUV en C qui est utilis�e. C'est aussi normal
+    parce que l'effacement, �a prends un peu de temps (et �a c'est d�finitif).
+    Ce n'est pas beau: normal, il n'y a que du croping pour le moment, le scaling
+    arrive.
+
+commit 46acf4993c0ae01d277c757006a7abcfd6b61d9f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jan 31 05:03:45 2000 +0000
+
+     . initialisation du d�codeur de sous-titres
+     . correction du bug de quit
+
+commit d8f0cef9c9b0fc93b16a6af0fa7db4df9c1b3c49
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jan 31 03:42:07 2000 +0000
+
+     . remis le kludge du i_coding_type == I_CODING_TYPE en attendant qu'on
+      comprenne pourquoi �a merde (�a doit �tre tout con, mais je trouve pas)
+
+commit 50dded2770cd3e38f9773dec062ec69ca668c9b8
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Jan 31 02:29:13 2000 +0000
+
+    Ca ne devrait plus segfaulter maintenant. Correction d'un bug dans l'input.
+    
+    --Meuuh
+
+commit 9629dd8a75ee68238354df36422dcf877bdda104
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Mon Jan 31 01:16:00 2000 +0000
+
+    IMPORTANT :
+    * ce commit devrait corriger les probl�mes de fermeture du vlc, commentaires
+    souhait�s (et obligatoires) ;
+    * le probl�me de la synkro initiale de l'audio devrait �tre corrig� : reports
+    souhait�s (et obligatoires) gr�ce aux messages "aout debug" ;
+    * en clair FAITES PETER UN MAIL avec vos messages "aout debug" et vos coups
+    de gueule/coups de coeur quant � la fermeture du vlc ;-)
+    
+    * ac3_decoder/ac3_decoder.c, audio_decoder/audio_decoder.c :
+    - rajout d'un msleep() en d�but de fonction RunThread() afin de
+    contrebalancer le d�lai entre la r�ception d'un paquet TS et la
+    pr�sentation de son contenu (INPUT_PTS_DELAY) ;
+    - rajout d'un cond_signal() dans la fonction EndThread() ;
+    
+    * audio_output/audio_output.c :
+    - activation des messages de debug ;
+    - r��criture de la fonction NextFrame() ;
+
+commit a57bfee7be03c6808b6e588f888a9b4e64345ee1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jan 31 00:35:13 2000 +0000
+
+     . le d�codeur de sous-titres s'appelle maintenant spu_decoder
+     . auto spawn du spu_decoder (pour le moment �a chie)
+
+commit b25b4229c62f9ffbc9ecd016a4416dae91550dea
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Sun Jan 30 23:31:26 2000 +0000
+
+    Am�lioration de la synchro.
+    
+    --Meuuh
+
+commit a2972b3c0ea526645d0e67e94481b5639b2b320d
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Sun Jan 30 15:08:59 2000 +0000
+
+    Nouvelle interface, effacement des zones modifi�es d'une image sur 2,
+    calcul de la taille optimale d'une image, scaling.
+    
+    -Le scaling donne de bonnes tailles, mais les conversions YUV ne peuvent
+    pas suivre pour le moment.
+    -J'ai peut etre un peu cass� le fb et ggi (trop long � compiler pour tester).
+    En cas de probl�me, je corrige de suite.
+    -Les idle screens ("no stream") sont temporairement hors service.
+
+commit 32414c55fdfa77f9b30b4c6d5802bea801f08fc6
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Jan 28 02:10:08 2000 +0000
+
+    * Correction d'un message d'erreur erronn� dans l'input ;
+    * Correction d'un bug de synchro ;
+
+commit ff57ac76bce318dd3e6575650c359d582a5187f7
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Jan 28 01:20:53 2000 +0000
+
+    Fix pour le bug de la chrominance qui saute.
+
+commit eeddf916f0f8b15e99d7bb0d4f2a6f3fabc9c89a
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Fri Jan 28 00:12:32 2000 +0000
+
+    . D�placement de deux structures de lookup dans le parseur
+
+commit 84cf8734a1ca31c5b5cc624e3870a0dfb3338b55
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Jan 27 23:12:03 2000 +0000
+
+    Tentative de fix pour le segfault du d�codeur (qui est en fait une erreur
+    du parseur).
+
+commit 5b22bedfa74a7a7da80ff06e017681d37810cac9
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 27 18:30:01 2000 +0000
+
+    Nouveau moteur de fontes.
+
+commit aab60d4871a4e64f7ac713b6d25f1de98c8f58c7
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 26 23:16:11 2000 +0000
+
+    Nettoyage et commentationnement.
+
+commit ba8d1d4c965b0d6e62073ebdd5c893b45802e2c5
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 26 22:46:37 2000 +0000
+
+     . nouvelle synchro. �a devrait d�j� fonctionner correctement en monothread
+
+commit 82c006196cb112d4f694e1d526964f30cd6c15ca
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 26 21:08:19 2000 +0000
+
+    Fichier d�sormais inutile.
+
+commit c79648fea40a703f1253f838c19ab84fc4f452db
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 26 20:48:35 2000 +0000
+
+    * Optimisation du video_parser ; define VPAR_OPTIM_LEVEL dans config.h
+      pour r�gler le temps de compilation ;
+    * virage d'un printf dans l'idct et d'une fonction inutile.
+
+commit 060c6b7a88262c6fa7e6603551648d20f66528aa
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Wed Jan 26 18:59:32 2000 +0000
+
+    * audio_output/audio_output.c :
+    - mise en commentaire de l'affichage de l'aout_debug ;
+
+commit 28fc7c187e48fd1b07d3a868a966a86e25249071
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 26 16:33:23 2000 +0000
+
+     . encore un peu plus de synchro. si �a saccade c'est normal, �a sera
+      r�gl� dans l'heure, mais j'ai commit� pour qu'on puisse enfin voir
+      des B avec le nouveau d�codeur (qui torchaize)
+
+commit 1e6848bd70868d317cf2173ef4cab9273f536add
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 26 02:57:45 2000 +0000
+
+    vpar_motion.c n'est plus n�cessaire d�sormais.
+
+commit 93ff7f1c5ab92c4e75906ae00c5eea1e4084ce0a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 26 02:38:42 2000 +0000
+
+    * Optimisation du parseur ;
+    * R�activation du motion DMV ;
+    
+    Pour info, on torche largement le d�codeur de r�f�rence (50 %).
+
+commit e05c74bf10ed04b016f89e64b8e85dc43067f970
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 26 01:25:21 2000 +0000
+
+     . synchro qui marchouille de plus en plus
+
+commit 93ad3d1a263fc46f5492c7afd2a07670e3e16308
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Tue Jan 25 19:02:50 2000 +0000
+
+    * audio_output/audio_output.c :
+    - rajout de messages de debug en attendant de trouver le coefficient de
+    synkro optimal ;
+    - modification du coefficient de synkro (8 -> 256) ;
+
+commit 3f579ea23e42c86f60fc38737d574eec5d52413f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 25 05:44:12 2000 +0000
+
+     . correction d'un bug dans l'interface framebuffer
+     . d�but de synchro qui marchouille, mais tous mes flux merdent
+
+commit 5d7967a8b58fbe51074b95f68c409c7614d0f959
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 25 01:51:50 2000 +0000
+
+    * Ajout d'un flag VDEC_SMP � commenter si on n'a qu'un seul
+    microprocesseur.
+
+commit 57f098228319c25fab93a948ba22686fce16c70a
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Tue Jan 25 00:23:26 2000 +0000
+
+      Ajout de fonctions yuv permettant un scaling 'exotique' en fin du
+    fichier. Elles seront testees des que l'output le permettra.
+
+commit 796346ac800b3a3571f87f427e9c9cfc9d51d9dc
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 25 00:09:39 2000 +0000
+
+    * Optimisation de vdec_motion.c et video_decoder.c ;
+    * Passage des fonctions de la video_fifo en inline ;
+    * Correction d'un bug provoquant un overflow des messages dans
+    vpar_headers.c.
+
+commit e6521494f43f48068e59575c78c51154ff23196d
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 24 12:53:49 2000 +0000
+
+    Makefile et config.
+
+commit 1cc50a23354d1e7220a2a59ede150b0bc709e9c1
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jan 24 06:53:03 2000 +0000
+
+     fichiers oubli�s qui faisaient que �a compile pas
+
+commit 0759c952c3ead3e17d59068ae5f12cf5cf3f9ed4
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Mon Jan 24 03:28:44 2000 +0000
+
+     . un chti peu plus de synchro video, mais c'est pas encore �a
+     . suppression des #include "X11/*" pour que �a compile sans X
+     . alban, t'es mortel
+
+commit 01461d528477fb6242fcba39d4b1610c382b4eec
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Mon Jan 24 02:07:29 2000 +0000
+
+    * audio_output/audio_output.c :
+    - impl�mentation de la synkro (qui punit m�chant) ;
+    
+    * audio_decoder/audio_decoder.c, ac3_decoder/ac3_decoder.c :
+    - rajout de vlc_cond_signal() afin de pr�venir l'audio_output que de
+    nouveaux samples ont �t� d�cod�s ;
+    
+    * Makefile :
+    - rajout de l'options de compilation -g ;
+    - utilisation du old decoder (synkro) ;
+    
+    * include/config.h :
+    - suppression des messages de debug ;
+
+commit e97f189cf38f519b45a6e7445720d2926a9f13dd
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Mon Jan 24 00:16:38 2000 +0000
+
+    * GoldenEye rewlz :
+    - explications du commit au prochain commit :-)
+
+commit 07f2392f6b29c5fa6b3526295b7403fe116ad55a
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Sun Jan 23 20:58:39 2000 +0000
+
+    * Activation des Sparses idct dans le video parser;
+    * Utilisation de la mmx pour la dct si l'architechture s'y pr�te
+      (modif de Makefile et vdec_idct)
+    * idctmmx.S avec une forme d'appel identique a vdec_idct a ete ajoute a
+      video_decoder.
+
+commit bb7b993349295dfd1ed65efbcd35d6ec28d6a200
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Sun Jan 23 09:05:32 2000 +0000
+
+    * audio_output/audio_output.c :
+    - suppression d'une macro inutile ;
+    - proprification d'une ligne de code obscur ;
+
+commit 2c8ca2d5badcbfb0f202ec57f968fe1aa6e900ea
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Sun Jan 23 02:32:41 2000 +0000
+
+    CA MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARCHE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    --Meuuh
+
+commit 385368dbcef796d7cbe015290d31dee74663223b
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Sat Jan 22 22:48:14 2000 +0000
+
+    Petites corrections de bug dans le motion compensation et le parsage des
+    blocks non intra.
+
+commit 4dd00e658e17dcaacd30b84f6b3ae3efa4441f41
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sat Jan 22 22:22:50 2000 +0000
+
+     . ajout des flags pour Linux Sparc (au fait, jimmy, t'es con :p)
+
+commit 9584ba3dbfdf4fffb81a06fd7a272f0a9868a8de
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Sat Jan 22 22:02:49 2000 +0000
+
+    Correction du bug de la premiere image verte (putain mais quel con)
+
+commit 34aa37623bdd9a529fbd757e6b5eba5791b56e64
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Jan 21 23:18:17 2000 +0000
+
+    Corrections de bugs mineurs divers et vari�s, dont :
+    * video_parser.c : d�placement de l'initialisation de la synchro dans
+      InitThread(), correction d'un memory leak ;
+    * vpar_headers.c : correction d'un segfault potentiel, erreur dans une
+      en-t�te dont on se bat les couilles.
+
+commit ee589c5962d012203a64eb63926c894360ba0bd8
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jan 21 11:31:01 2000 +0000
+
+     . support framebuffer
+     . input clavier limit�e mais fonctionnelle
+
+commit 665782c80db9d47bd458d1232a39db08c1edbd2d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jan 21 06:59:11 2000 +0000
+
+     l'output framebuffer fonctionne presque.
+     ca va *pas* merder.
+
+commit 4ffdf05c6729b03936b81b853cbaf54cc6e24fb1
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Fri Jan 21 04:52:32 2000 +0000
+
+    * ac3_decoder/ac3_decoder.c, audio_decoder/audio_decoder.c :
+    - correction d'un bug dans la fonction d'initialisation des d�codeurs
+    (freeze lorsqu'aucun paquet PES n'est envoy� aux d�codeurs) ;
+    
+    * audio_output/audio_output.c :
+    - correction d'un bug dans l'initialisation du flag b_die des fifos des
+    d�codeurs ;
+    - correction d'un bug dans la lecture des flags b_die des fifos des
+    d�codeurs (les fifos n'�taient pas d�truites avant la mort du thread
+    audio_output) ;
+
+commit dfc77d2cd74f2d2a944e981bf7a2a3f7cc6d23c6
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Thu Jan 20 18:48:21 2000 +0000
+
+    * include/decoder_fifo.h :
+    - correction d'un bug dans la fonction GetByte (freeze �ventuel des
+    d�codeurs lors du suicide du thread input) ;
+
+commit 000cd66f41aaa39e16dbfe7b2d9c074560cc4f15
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 20 18:18:17 2000 +0000
+
+    Gras de parametres en ligne de commande ou en variables d'environnement,
+    afin de ne pas avoir a recompiler le client en cas de loose.
+
+commit 47caa07d5a214139fa242d32048b195edc5aa6b5
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Jan 20 18:12:41 2000 +0000
+
+    Correction d'un bug, mais pas DU bug.
+    (putain quel con)
+
+commit 9220f1ac7878a644f7b75b317d514e27d307d9d1
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 20 17:17:41 2000 +0000
+
+    Desactivation du changement de chaine en --novlan
+
+commit 694d473dd2ca9755fa2a92a160084b24d9a376f3
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 20 17:10:07 2000 +0000
+
+    Timeout pour les changements de vlan
+
+commit 92c69994381c98ebe52701143af65c44b49d4549
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 20 16:12:01 2000 +0000
+
+    Changement de chaine. Delicat encore, mais il marche. Quelques corrections
+    esthetiques, un timeout pour les vlans et le frame buffer et c'est la
+    release d�mo (en ce qui me concerne) !
+
+commit 07686534e8dfad7045997698d09eabbc02ebf24b
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Thu Jan 20 13:30:38 2000 +0000
+
+    * ac3_decoder/ac3_decoder.c :
+    - m�j de la fr�quence th�orique de chaque frame ac3 ;
+    
+    * audio_output/audio_output.c :
+    - d�tection des bouclages de flux et resynkronisation automatique sur la
+    fr�quence th�orique ;
+
+commit f5c7fdfa549b89d12cee7a438fe6a1c071b26edc
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Thu Jan 20 11:23:17 2000 +0000
+
+    * Makefile :
+    - DECODER=old et non DECODER=new ;
+    
+    * include/ac3_decoder.h :
+    - rajout, dans la structure ac3dec_thread_t, du membre b_invalid (utilis�
+    pour skipper une frame ac3 invalide) ;
+    
+    * ac3_decoder/ac3_decoder.c :
+    - rajout du support de b_invalid ;
+    
+    * ac3_decoder/ac3_exponent.c :
+    - optimisations ;
+    
+    * ac3_decoder/ac3_mantissa.c :
+    - d�tection d'une mantisse invalide et m�j de b_invalid ;
+    
+    * audio_output/audio_output.c :
+    - resynkro en cas de bouclage du flux ;
+
+commit fa033ac38bcf8974af37dd2c415871bad4d0be97
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Jan 20 11:16:13 2000 +0000
+
+    Correction de l'YUV en 15 bpp.
+
+commit f6cca5c7e8799361e3796cbff308cf70578f3d62
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jan 20 04:10:30 2000 +0000
+
+     et paf ! n'a pu les sales fichiers .new
+
+commit 85ae4a075df959f6140ca5c5254224c50c577c87
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Thu Jan 20 04:09:39 2000 +0000
+
+     giclage de ces putains de .old et .new qu'� chaque commit je me plante
+    et � chaque update aussi, alors pouf, des #ifdef �a va aussi..
+
+commit a28f0233e55e92916589f69d517a5f7aaba465bd
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 21:03:34 2000 +0000
+
+     rajoout d'includes pour que �a compile sous FreeBSD (thx Dae)
+
+commit 5033ec099fbc0bb4f87ae0a39b16b9676c3c7f2e
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 20:59:51 2000 +0000
+
+     . ajout des patches ac3 de MaXX dans le nouveau d�codeur
+     . fix� ce #@!#@! de idct.c.new qui fait _chier_
+
+commit 7295c009c0ba0f9cd1acc4aa1164d53bde24875a
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jan 19 20:27:57 2000 +0000
+
+    Avancement du debuggage du motion.
+
+commit 784b971fe42aec7502bd7ec15ca20f66ef1fb457
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 19:48:31 2000 +0000
+
+     commit du chti patch de Meuuh, sinon il est �cras� � chaque update
+
+commit 9c24f64dd035fee44608410f08b5c966a217afd9
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 18:43:17 2000 +0000
+
+    D�but du changement de chaine.
+
+commit cf49edcd645674ee51fdfbecc70b1690ca456633
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 19 17:39:09 2000 +0000
+
+    support de vout_DatePicture().
+
+commit 6f1316be154336348e099b68a6158713efa26a11
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 19 17:09:57 2000 +0000
+
+    Support pour le motion DMV.
+
+commit 1346af346fd3d0a5f02cefa93673f2e60cf581e2
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 16:45:11 2000 +0000
+
+    API vout_DatePicture termin�e.
+
+commit 4c7b58769b042f78c9a7df0d5d3549b1c10b56a7
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 16:38:01 2000 +0000
+
+     . pr�paration de la modification de l'API synchro
+
+commit 8d9902765e53aede0d51d03e2f574ec55c45a04e
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 16:25:23 2000 +0000
+
+    Resize qui fonctionne.
+
+commit 0fe4da877f8946eb6ba85cecded6c2a559997c36
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 19 16:17:27 2000 +0000
+
+    Support pour les chrominances 422 et 444.
+
+commit efcc6cf8c4ccec063fcc5c7481c6b45b827aaabe
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 13:38:17 2000 +0000
+
+     . augmentation de VOUT_FPS_SAMPLES pour un calcul un peu plus r�aliste
+      des fps, sachant qu'il y a 30 images par seconde sur un DVD, faire une
+      moyenne sur 5 images me parait un peu d�bile.
+
+commit 2d82e8bfba9876a7ce4b35aa6eec03965911b883
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 19 13:11:36 2000 +0000
+
+    Corrections de bugs dans le motion.
+
+commit bb54532128a0ccc2455ab4d0b3b2781ea2b08c19
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 12:28:25 2000 +0000
+
+    API vout_DateImage (mais �a ne marche pas)
+    Suite nettoyage
+
+commit 3c6ac119d3d1cb392d913f50153a9a28707490c1
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jan 19 12:25:01 2000 +0000
+
+    Avancement du motion.
+
+commit dabae7902762d9d278de289b69a86e1b46bb80a9
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 10:52:47 2000 +0000
+
+    Ajout d'une fonction de deboguage � UnlinkPicture
+    VS: ----------------------------------------------------------------------
+
+commit 27e0b63d601cbfe625fc698a16cd5bcfeda44edd
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 10:04:23 2000 +0000
+
+    Nettoyage.
+
+commit 6dcda4bbeb32e2fbc62cee6079a908a7660aef8e
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Wed Jan 19 09:47:56 2000 +0000
+
+    * Documentation/bugs, Documentation/todo :
+    - mise � jour des sections concernant les d�codeurs audio ;
+
+commit 75885ca57b1a95368b91ed48c2f3133f26923e7c
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 06:06:08 2000 +0000
+
+     . dernier fichier n�cessaire � la compilation du subtitle decoder
+
+commit edca99283e7d1d68cbda77a1d0b5b1de3ff31f64
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 06:00:49 2000 +0000
+
+     . ultimisation des calculs de pr�diction dans la synchro
+     . squelette du subtitle_decoder
+
+commit 177c1590e5f6ca8e8495f555ae46fcf75fd6f413
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Wed Jan 19 02:49:34 2000 +0000
+
+     . initialisation propre de la synchro
+     . messages de debug � la con pour essayer de voir o� j'en suis
+
+commit 7e618974c2436ebd2cb18176da8dd75e02c65756
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Wed Jan 19 02:25:00 2000 +0000
+
+    * Le bug des pixels invers�s de la dct mmx � �t� corrig� (et non plus sau-
+      vagement kludg�).
+    
+    * La sparse idct fonctionne.
+    
+    * Plusieurs versions de la dct ont �t� inclues dans vdec_idct pour pou-
+      voir choisir la plus performante quand tout marchera.
+
+commit 57509f7586194e57440e33b40ec308bd66409db6
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 19 02:15:30 2000 +0000
+
+    Toujours du nettoyage.
+    Une API pour les sous titres.
+
+commit 653053d27067877a47959b52725bcf9505e8602c
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jan 19 01:57:57 2000 +0000
+
+    Avancement du debuggage du motion.
+    
+    --Meuuh+Stef+Polux+Jimmy
+
+commit a47bce5ff4348f9628028b361f4ce838e5ff2939
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Wed Jan 19 00:01:26 2000 +0000
+
+    * ac3_decoder/ac3_decoder.c, audio_output/audio_output.c :
+    - modification de la synkro, d�tection de la fr�quence du flux ac3 ;
+
+commit e4ea0558d6671b8e0d62b2d15bfd1a0480f6af68
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 18 23:48:13 2000 +0000
+
+    ah ben forc�ment, �a risquait pas de compiler si j'inversais new et old
+
+commit cc44598df520ffb69ef432a665103a53f01d2ca3
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 18 23:43:52 2000 +0000
+
+    YUV MMX, avec aspect ratio !!!
+
+commit db6d4f7d4e786bbcd408cd0c676ded5c70058aed
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 18 23:16:57 2000 +0000
+
+    YUV en couleurs.
+
+commit ba2a0abbc3b589f4e87b022725088a50b6217d7f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 18 22:33:16 2000 +0000
+
+    d�but de la synchro. �a n'influe pas sur le reste pour le moment, mais
+    la base des algos � deux balles est l�.
+
+commit dd4339a97d62b245b01d1cf14d2df3a6adb9531b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 18 22:29:35 2000 +0000
+
+    Le motion compensation. Notez que �a ne marche pas (encore).
+
+commit e70d9d1f539d3d06901d19436b1f7979a849ac46
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 18 21:50:53 2000 +0000
+
+    Changement de l'API de vout (chroma_width)
+    Nettoyage des YUV.
+    
+    Ne marche qu'en -g pour le moment, le reste arrive.
+
+commit c871659c7fde2ab294cd9c81e9a9c179ceb42b14
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 18 20:39:12 2000 +0000
+
+    Le parser fonctionne maintenant avec les I, les P et les B.
+    Reste a implementer la synchro et finir le decodeur.
+
+commit 66c9723637f723ab05469fb41c4f2586365e1780
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Tue Jan 18 18:42:16 2000 +0000
+
+    * ac3_downmix.c :
+    - suppression des gros scrountchs immondes (c) (qui sont �galement des
+    pouics parfois) ;
+    
+    * ac3_bit_allocate.c, ac3_exponent.c, ac3_mantissa.c :
+    - suppression de tests et messages de debug ;
+    
+    * ac3_decoder/ac3_decoder.c :
+    - impl�mentation de la synkro qui punix ;
+
+commit d9e357826abcfe74e53c3fda9d3a7022f02cca26
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Tue Jan 18 16:33:14 2000 +0000
+
+    * ac3_decoder/ac3_bit_allocate.c, ac3_decoder/ac3_decoder.c :
+    - ac3-alpha rewlz :-)
+
+commit 217926d6e6d7fef7d6d91176426048fdb43f862f
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 18 16:22:12 2000 +0000
+
+     faut pas �tre trop press�s dans la vie :)
+
+commit ed8ff732d0e3a146ccabfbe987c7824871d9eec9
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 18 16:17:26 2000 +0000
+
+     petit patch pour faire marcher l'AC3
+
+commit 60f77057d246ca797105a81078655934b772248b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 18 15:00:32 2000 +0000
+
+    i_aspect_ratio et i_matrix_coefficients pour Ptyx.
+
+commit 33b2319e0568bb5c1f95955167826bb26ba58d2d
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Tue Jan 18 14:34:47 2000 +0000
+
+     le bug de input_psi �tait fourbement r�apparu.
+
+commit eee5172fe346ffcbe8a253cebe89c1f6fdb2bb43
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 18 14:09:58 2000 +0000
+
+    Ajout de quelques membres a picture_t
+
+commit 6bc7ac7c38396945c07fdc3764a2e88c3291278a
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Tue Jan 18 13:55:43 2000 +0000
+
+    * Modification de l'input afin de spawner un d�codeur ac3 lorsqu'un tel flux
+    est d�tect� ;
+    
+    * Impl�mentation du d�codeur ac3 ;
+    
+    * Il est rewlz(ac3dec) - 2h00 :-)
+
+commit b9dc0c52b5a34aff07f588bf89f520cff6713ca7
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 18 04:09:13 2000 +0000
+
+    Nettoyage global. Le vlc se ferme proprement, elem_t devient dctelem_t, le
+    macroblock perdu a �t� retrouv�, et bien plus...
+
+commit f0be4ee446e9f9df5ad1c73c027d11121425b398
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 18 00:43:52 2000 +0000
+
+    Redimensionnement de la fenetre en fonction de la taille des images sous X11.
+
+commit 9b4528b5d24fda6f4fb7b1ff0c3c3932879fe54b
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 17 23:43:26 2000 +0000
+
+    Gestion des touches en GGI (ouf !)
+
+commit 22c1b3b106dc3c81b8e9c003d94d315be0cbd986
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Mon Jan 17 21:52:36 2000 +0000
+
+    * Rajout du d�but du d�codeur ac3 ;
+
+commit b278b2a6b27b370c3d4b90a7415169082489de69
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Mon Jan 17 21:51:35 2000 +0000
+
+    * Makefile :
+    - rajout de ac3_decoder ;
+    - rajout de l'option MMX ;
+    
+    * Makefile.dep :
+    - suppression de lignes vides ;
+    
+    * include/audio_decoder.h, audio_decoder/audio_decoder.c :
+    - remplacement de AOUT_FRAME_SIZE par ADEC_FRAME_SIZE et aout_frame_t par
+    adec_frame_t ;
+    
+    * include/audio_constants.h :
+    - mise en commentaire du tableau inutilis� ADEC_FRAME_SIZE ;
+    
+    * include/audio_output.h :
+    - corrections typographiques ;
+    
+    * include/vlc.h :
+    - rajout de ac3_decoder.h ;
+
+commit 8204a960f7ede9faaf1cf41ae936239720543fbf
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Mon Jan 17 21:35:33 2000 +0000
+
+    Les I marchent !!!!!!!!!!!!!!!!!!!!!!!!
+    Le gros bug est mort.
+
+commit 2faf51032f01e3c62bc07cdd3ba2d4073642510d
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 17 16:43:04 2000 +0000
+
+    Nettoyage, ajout du gamma, pr�paration de la yuv walken.
+
+commit a6bc5de8fe07438302b223cfc80cefb7da87175d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 17 14:52:25 2000 +0000
+
+    Suite des images I.
+
+commit f0f225c412fa38cd5c5463ee947ad6381017ea0d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 17 13:49:25 2000 +0000
+
+    Fin du parsage des I.
+
+commit ecc98c96528fe09acfc7fa85e8775dfd2d854ec4
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Jan 17 13:44:41 2000 +0000
+
+    Rajout de la quantification ,�limination de plusieurs warning,
+    plus decodage des blocks non intra.
+
+commit dd5458578e9db00ae4d4923aa5c731600a543d80
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 17 12:54:39 2000 +0000
+
+    Virationnement d'un warning avec l'ancien d�codeur (j'ai vraiment du temps �
+    perdre).
+
+commit 35e8bb43464ea14b96a0cacbf7cf88fc60390345
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 17 12:31:39 2000 +0000
+
+    Resize sous X11, gestion du screen saver.
+    Nettoyage de config.h
+    Nettoyage de vout et intf
+
+commit 023206d07b1da8a9ff58f54c8cc4bffe4397c4d1
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Mon Jan 17 04:56:29 2000 +0000
+
+    Il est 6 heure du matin et le parser ... parse !!!!!!!!
+    Ca � l'air de pas trop mal marcher. Parmis les bugs les plus sauvages
+    on trouve :
+    1) le DumpBits sans NeedBits (corrig� par un RemoveBits)
+    2) Une table � laquelle il manquait une ligne
+    3) le test de fin de boucle du d�codage des coef dct �tait mal plac�
+    
+    Meuh, � toi de jouer
+    
+    Stef & Polux
+
+commit 8d158ef4a5e8bb95e7994424bc683da4603e3b6b
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 17 00:00:52 2000 +0000
+
+    Virationnement de quelques warnings.
+
+commit 18a8363d5271e29054a60c9101c66d5f1b0d01bc
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Sun Jan 16 20:39:47 2000 +0000
+
+    R�cup�ration du kludge level dans display.c pour pouvoir afficher autre
+    chose que les I...
+
+commit d81e21d51453a17b665902e801aacb394588d79f
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Sun Jan 16 19:17:15 2000 +0000
+
+    Mise au point du driver GGI.
+
+commit 5742908865a654fc94d1694343e51ed968d88df0
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Sun Jan 16 16:43:10 2000 +0000
+
+    Integration de display.c � vout.
+    Mise au point du driver X11 (plus de XShm error).
+    Incrustation de texte en X11, calcul des FPS, etc...
+    Int�gration de la conversion MMX.
+    Mode 'niveaux de gris' pour les machines lentes non MMX (les pauvres !)
+    Attention: les drivers GGI et FB ne sont pas � jour...
+
+commit cf9e7c61acc9b4ddb2de61766f40610c72d2b22c
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Sat Jan 15 14:26:29 2000 +0000
+
+    Le debuggage du parser avance ... lentement.
+
+commit e95de90dbf9e51b87d739be03998fba2305132a2
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Sat Jan 15 10:51:55 2000 +0000
+
+    * Un petit peu de d�buggage dans le video parser
+
+commit 2408a923da099c86a3f3255ec410fb494729f2f8
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Sat Jan 15 03:03:53 2000 +0000
+
+    * Ajout d'un flag b_mpeg2 qui manquait dans le parser
+    * R��criture de fonctions d'initialisation du parseur
+    * Changement des fonctions MPEG2decode qui �taient bugg�es
+    
+     V�rification avec polux tout � l'heure
+
+commit 4c1e42491706df9ceede5d7f63b33b4d4b65f427
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Fri Jan 14 23:07:55 2000 +0000
+
+    GGI fonctionnel. N'oubliez pas de d�finit GII_INPUT.
+    Nettoyage de video_* et intf_*.
+
+commit fa66a86a67847c3ff14a61a93c3ba13f16142a39
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Fri Jan 14 14:12:17 2000 +0000
+
+    D�but bu vrai d�buggage du parser. Maintenant le vlc segfaulte
+    dans Pictureheader au lieu de segfaulter dans l'initialisation
+    du parser.
+
+commit 54accec0a5c85d1e9d29187b7841e6bc204dd515
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Fri Jan 14 13:00:22 2000 +0000
+
+    Suppression des fichiers .raw du CVS (ils sont sur zen dans vlc-Resources).
+
+commit 9ba8deb9bee2ad6e4e9e263f425ceb8b58035c82
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Fri Jan 14 11:15:47 2000 +0000
+
+     correction d'une typo
+
+commit 6ed1e2d85f4cd96c8b9a39e963257ab66dce332c
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Thu Jan 13 18:52:22 2000 +0000
+
+    YUV 15,16 et 32 bits integr�e au vout (sans le MMX pour le moment).
+    En 24bpp, � vos risques et perils...
+
+commit e4263587f9d27e5eaf56b8e4fdfb0b0957fdeb16
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Thu Jan 13 10:44:27 2000 +0000
+
+    Rajout d'un vlc.h.new que j'avais oublie lors du dernier commit.
+    Changement du mode d'affichage par defaut du makefile sur X11.
+
+commit f73dedb8ee2809b08a2b8b636c259b1a59472fa2
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jan 12 22:38:34 2000 +0000
+
+    Pour la plus grande joie de tous, le client compile correctement. Attention
+    il compile non seulement avec l'ancien video decoder mais aussi avec le
+    nouveau. Pour passer de l'un a l'autre il faut changer le flag DECODER
+    du Makefile ET utiliser l'utilitaire new2old.sh gracieusement mis a votre
+    disposition par ptyx dans le module utils du CVS. Ce programme switche
+    quelques fichiers et permet dons de passer de l'ancien client au nouveau
+    et vis verca. Mais ATTENTION : IL NE FAUT PAS COMMITER LE CLIENT LORSQU'IL
+    EST EN CONFIGURATION NEW, avant de commiter il faut tout remettre en
+    configuration old.
+
+commit 61ce43f4b02f2aadd52cf39466019d0ad722a37c
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 12 21:23:27 2000 +0000
+
+    Et le .h qui va avec le nouveal .c
+
+commit ba20f5aa682d2b4becd2eb13738d680adf00f242
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 12 21:17:54 2000 +0000
+
+    Suppression de vlc.h
+
+commit 3458099d029c3c7de94440652cfca3fe3a5adad3
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Jan 12 18:50:06 2000 +0000
+
+    * Fonction de d�codage des blocs MPEG2 non intra
+
+commit 46919aa04158194dc5c92b7dec624df8342c8b12
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Wed Jan 12 15:35:45 2000 +0000
+
+    Ajout du framebuffer (initialisation/terminaison) - ne fonctionne pas en VESA.
+    La fonction d'affichage des images envoie une ligne dans le log � chaque image.
+
+commit c2c756049238d481fbb196d5d4e7a6693713fe1e
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Wed Jan 12 15:31:59 2000 +0000
+
+    Correction de conneries de stef....
+    Merci de NE PAS COMMITER VIDEO_DECODER.H, sinon ca ne compile pas !
+
+commit 6a7b7ae713344c8ff93b84565475c9806e77910b
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Jan 12 13:14:51 2000 +0000
+
+    * Fonction de d�codage des Blocs MPEG2intra.
+    * Correction d'erreurs sur la gestion des tables de lookup
+
+commit 77fdd47e7e022fda5f96f8809eb8786902e2998c
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 11 21:34:04 2000 +0000
+
+    Encore une petite modif pour permettre au parser de compiler.
+
+commit feeb6cc041bde119cc3e9ae209ebbd367903a6a7
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 11 21:32:58 2000 +0000
+
+    Le video parser compile mais n'est pas termine, n'est-ce pas stef ? ;)
+
+commit d5300df11f3cfe160b1a3c00187c041d4bdeb9a1
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 11 18:02:00 2000 +0000
+
+    Modifs diverses et variees. Le mode FB compile (mais ne fait rien).
+
+commit 4c83ad1ebe187a6b0d6e6de5e611e3a985ae7a0d
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 11 14:45:15 2000 +0000
+
+    Encore du debuggage.
+
+commit 98b9a12ce0542cb2fdcf3533878731510184e838
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 11 14:43:06 2000 +0000
+
+    Debuggage.
+
+commit 4e7e69d037a32d72509b8325746e3613a1622247
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Tue Jan 11 11:05:46 2000 +0000
+
+    Correction de quelques erreurs dans l'interface et vout.
+    Changement du type vlc_thread_func en vlc_thread_func_t dans le d�codeur.
+    Utilisation de 2 displays au lieu d'un au cas ou la Xlib ne serait pas thread-safe.
+    Ajout de droits corrects au fichier de log.
+    
+    Le bug li� � XShm � la fin est 'normal' (li� au serveur X, pas � moi) : il
+    disparaitra � condition qu'au moins une image soit affich�e.
+    
+    Le plantage sauvage de la Xlib � la fin du programme est li� � display.c.
+
+commit d87283ed19e26dd2efa6eda507e605beeadb8cf0
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Tue Jan 11 09:59:22 2000 +0000
+
+    Correction de 2 petites erreurs :
+    - vdec_idct.h : oubli d'un point virgule
+    - video_parser.h : dupplication du champs pppl_dct_dc_size
+
+commit 1a1ae383ad396a69373a8cf3b41ad6a5f3b8b822
+Author: Vincent Seguin <seguin@videolan.org>
+Date:   Mon Jan 10 23:36:06 2000 +0000
+
+    A tout kass�.
+
+commit 7929ae1b9befc2f3f53b8907cb96315f0a1573f8
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 10 23:29:41 2000 +0000
+
+    Heureusement que j'avais dit de faire gaffe a ne pas committer le mauvais
+    video_decoder.h :-ppppp
+
+commit 81b0f1753baa5df42943afc8362ac8cc93e50a6f
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Mon Jan 10 22:45:40 2000 +0000
+
+      Et le petit toast qui va avec...
+
+commit 4d8747f732cb1c1991785072baafb26eaa84fdac
+Author: Gaël Hendryckx <jimmy@videolan.org>
+Date:   Mon Jan 10 20:32:22 2000 +0000
+
+      Du rififi dans la DCT.
+    
+    --
+    jimmy
+
+commit c609a04c8b4fc564849b69b59ac5366514157fa8
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Mon Jan 10 01:09:37 2000 +0000
+
+    * Modifications d'erreurs dans  MacroBlockAddressIncrement
+    * Ajout des fonctions vpar_*MBtype
+    * Ajout de tables de lookup (pour les tableaux B1 � B4 et B9)
+    * Ajout de vpar_CodedPattern420
+    
+    Il manque encore pas mal de fonctions (en particulier DecodeMPEG)
+
+commit a551606dcce15404f6a3f86a6de74b78cdd70041
+Author: Michel Kaempf <maxx@videolan.org>
+Date:   Sun Jan 9 23:38:46 2000 +0000
+
+    * Makefile :
+    - rajout de l'option de compilation qui marche bien -fomit-frame-pointer ;
+    
+    * include/audio_output.h, audio_output/audio_output.c :
+    - modification de la m�thode de lecture d'un flux provenant d'un d�codeur
+    audio : qu'il s'agisse d'un flux audio MPEG2, AC3 ou MPEG12, l'algorithme
+    reste le m�me ;
+    
+    * include/audio_decoder.h, audio_decoder/audio_decoder.c :
+    - rajout de la constante AOUT_FRAME_SIZE et de la structure aout_frame_t
+    qui d�crivent la forme sous laquelle les samples audio d�cod�s sont
+    transmis � l'audio_output (cf point pr�c�dent) ;
+
+commit 853d3d6b4b67a3e08369a3b8335c6b347bc0334d
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Sun Jan 9 20:54:22 2000 +0000
+
+    Debut de la partie parser du motion compensation.
+
+commit 5fc945b61fa6f8bc4e693e255f0183b19c2adf0e
+Author: Jean-Marc Dressler <polux@videolan.org>
+Date:   Fri Jan 7 16:18:46 2000 +0000
+
+    Refonte de la synchro qui devrait eliminer les problemes rencontres
+    lors des changements de flux.
+
+commit 5671a4b5d493dad3f0a7dec2f945b052e49a9f6a
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Thu Jan 6 00:13:19 2000 +0000
+
+    video_decoder : ajout de la crop table dans AddBlock ;
+    video_parser : correction d'une erreur dans le commit pr�c�dent (on ne
+    fera pas la saturation dans le cas d'une DFT, de toute fa�on)
+
+commit bb5805a327dcf518d12aeab42e6dd4e9ca697397
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 5 23:50:19 2000 +0000
+
+    D�finition des matrices de quantification par d�faut, du balayage,
+    et cr�ation de la crop table pour la saturation qu'on fera pas.
+
+commit 5e62636f43248840b603ed6556b29af6a2eccb80
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 5 20:13:23 2000 +0000
+
+    Adaptation de l'input au video_parser.
+
+commit c3c8af96d5d318d47fc100a499ddef2dc2fc092d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 5 18:25:19 2000 +0000
+
+    * vpar_blocks.c : Correction d'une erreur introduite hier soir avec
+      AddBlock en chrominance 420 ;
+    * vpar_headers.c : R�ordonnancement des fonctions (les fonctions inline
+      doivent etre en tete sinon elles ne sont pas optimis�es en inline par
+      gcc) ;
+
+commit 6a8fb63a8eda94c9682084b71071c52bc08b2638
+Author: Stéphane Borel <stef@videolan.org>
+Date:   Wed Jan 5 03:42:43 2000 +0000
+
+    * Ajout de la fonction MacroBlockAddressIncrement dans vpar_blocks.c
+
+commit 7190bee5ec45dc1c0c8b709ba07a4352fb344acf
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Wed Jan 5 02:32:49 2000 +0000
+
+    J'en ai chi� mais j'ai enfin pondu le AddBlock du video_decoder.
+
+commit c3a438c74add8c98e2e8a279514395a0647d4952
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 4 17:57:19 2000 +0000
+
+    Ajout des fichiers de la synchro un peu partout.
+
+commit 667b4eb4b0f356d7ea3ac9dfce14635ab9f411d0
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 4 15:07:23 2000 +0000
+
+    Correction de 1242 fautes de frappe et includes foireux. Presque tout
+    compile presque.
+
+commit ea23960c2d7f556ba049c4d603688ca408a0101d
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Tue Jan 4 00:01:05 2000 +0000
+
+    video_fifo.c et vpar_headers.c compilent � peu pr�s. Correction d'environ
+    4212 fautes de frappe.
+
+commit 56bb12917e2270e26f9506c7301c830b68b3ccce
+Author: Christophe Massiot <massiot@videolan.org>
+Date:   Mon Jan 3 20:38:32 2000 +0000
+
+    * Makefile : ajout du nouveau d�codeur (comment�) ;
+                 suppression du video_output pour que Ptyx puisse committer
+                 ses trucs sans craindre de tout casser le cvs ;
+    * interface/* : d�sactivage du video_output ;
+    * include/config.h : plein de directives pour le parseur et le d�codeur ;
+    * include/decoder_fifo.h : nouvelles primitives pour le parseur ;
+    * le reste : ben de quoi faire compiler video_parser.c, bug fixes
+      essentiellement ;
+    
+    Eviv Bulgroz !
+
+commit f12401078d52dea1a6400e2970b607e08f54d155
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jan 2 06:00:35 2000 +0000
+
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+     - je ne ferai plus de commits d�biles � 5h du mat
+
+commit 5e22d74d16c42737b2cc397b2f684ffb55c09461
+Author: Sam Hocevar <sam@videolan.org>
+Date:   Sun Jan 2 04:42:16 2000 +0000
+
+     - include des PES de type AC3 pour pr�parer une bidouille inf�me
+     - reformatage des commentaires � 80 colonnes au lieu de 81 parce que
+      �a a le don de m'�nerver prodigieusement.

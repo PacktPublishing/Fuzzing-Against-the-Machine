@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "VLC ingin mengakses kamera seperti yang diminta oleh pengguna.";
+"NSMicrophoneUsageDescription" = "VLC ingin mengakses mikrofon seperti yang diminta oleh pengguna.";
+"NSAppleEventsUsageDescription" = "VLC ingin menjeda dan melanjutkan pemutar media eksternal.";
+"NSDesktopFolderUsageDescription" = "VLC ingin mengakses folder desktop seperti yang diminta oleh pengguna.";
+"NSDocumentsFolderUsageDescription" = "VLC ingin mengakses folder dokumen seperti yang diminta oleh pengguna.";
+"NSDownloadsFolderUsageDescription" = "VLC ingin mengakses folder unduhan seperti yang diminta oleh pengguna.";
+"NSNetworkVolumesUsageDescription" = "VLC ingin mengakses sebuah jaringan seperti yang diminta oleh pengguna.";
+"NSRemovableVolumesUsageDescription" = "VLC ingin mengakses volume/disk yang dapat dilepas seperti yang diminta oleh pengguna.";

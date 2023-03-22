@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Jean-Baptiste Kempf</author>
+ <class>OpenNetwork</class>
+ <widget class="QWidget" name="OpenNetwork">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>487</width>
+    <height>273</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Network Protocol</string>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Please enter a network URL:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="examples">
+        <property name="styleSheet">
+         <string notr="true">color: #838383; </string>
+        </property>
+        <property name="text">
+         <string notr="true">http://www.example.com/stream.avi
+rtp://@:1234
+mms://mms.examples.com/stream.asx
+rtsp://server.example.org:8080/test.sdp
+http://www.yourtube.com/watch?v=gg64x</string>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+        <property name="indent">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QComboBox" name="urlComboBox">
+        <property name="maximumSize">
+         <size>
+          <width>600</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::NoInsert</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>urlComboBox</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

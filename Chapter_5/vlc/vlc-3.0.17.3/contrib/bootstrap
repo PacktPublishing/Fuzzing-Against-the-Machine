@@ -1,0 +1,403 @@
+#! /bin/sh
+# Copyright (C) 2003-2011 the VideoLAN team
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+
+#
+# Command line handling
+#
+usage()
+{
+	echo "Usage: $0 [--build=BUILD] [--host=HOST] [--prefix=PREFIX]"
+	echo "  --build=BUILD    configure for building on BUILD"
+	echo "  --host=HOST      cross-compile to build to run on HOST"
+	echo "  --prefix=PREFIX  install files in PREFIX"
+	echo "  --disable-FOO    configure to not build package FOO"
+	echo "  --enable-FOO     configure to build package FOO"
+	echo "  --disable-disc   configure to not build optical discs packages"
+	echo "  --disable-net    configure to not build networking packages"
+	echo "  --disable-sout   configure to not build stream output packages"
+	echo "  --enable-small   optimize libraries for size with slight speed decrease [DANGEROUS]"
+	echo "  --disable-gpl    configure to not build viral GPL code"
+	echo "  --disable-gnuv3  configure to not build version 3 (L)GPL code"
+	echo "  --enable-ad-clauses configure to build packages with advertising clauses"
+	echo "                   (USE AT YOUR OWN LEGAL RISKS)"
+	echo "  --disable-optim  disable optimization in libraries"
+	echo "  --enable-pdb     generate debug information in PDB format"
+}
+
+BUILD=
+HOST=
+PREFIX=
+PKGS_ENABLE=
+PKGS_DISABLE=
+BUILD_ENCODERS="1"
+BUILD_NETWORK="1"
+BUILD_DISCS="1"
+GPL="1"
+GNUV3="1"
+AD_CLAUSES=
+WITH_OPTIMIZATION="1"
+ENABLE_PDB=
+
+while test -n "$1"
+do
+	case "$1" in
+		--build=*)
+			BUILD="${1#--build=}"
+			;;
+		--help|-h)
+			usage
+			exit 0
+			;;
+		--host=*)
+			HOST="${1#--host=}"
+			;;
+		--prefix=*)
+			PREFIX="${1#--prefix=}"
+			;;
+		--disable-disc)
+			BUILD_DISCS=
+			;;
+		--disable-net)
+			BUILD_NETWORK=
+			;;
+		--disable-sout)
+			BUILD_ENCODERS=
+			;;
+		--disable-optim)
+			WITH_OPTIMIZATION=
+			;;
+		--enable-pdb)
+			ENABLE_PDB=1
+			;;
+		--enable-small)
+			ENABLE_SMALL=1
+			;;
+		--disable-gpl)
+			GPL=
+			;;
+		--disable-gnuv3)
+			GNUV3=
+			;;
+		--enable-ad-clauses)
+			AD_CLAUSES=1
+			;;
+		--disable-*)
+			PKGS_DISABLE="${PKGS_DISABLE} ${1#--disable-}"
+			;;
+		--enable-*)
+			PKGS_ENABLE="${PKGS_ENABLE} ${1#--enable-}"
+			;;
+		*)
+			echo "Unrecognized options $1"
+			usage
+			exit 1
+			;;
+	esac
+	shift
+done
+
+if test -n "$AD_CLAUSES" -a -n "$GPL" -a -z "$GNUV3"
+then
+	echo "Error: advertising clauses are not compatible with GPLv2!" >&2
+	exit 1
+fi
+
+if test -z "$BUILD"
+then
+	printf "Guessing build system... "
+	BUILD="`${CC:-cc} -dumpmachine | sed s/windows-gnu/mingw32/`"
+	if test -z "$BUILD"; then
+		echo "FAIL!"
+		exit 1
+	fi
+	echo "$BUILD"
+fi
+
+if test -z "$HOST"
+then
+	printf "Guessing host system...  "
+	HOST="$BUILD"
+	echo "$HOST"
+fi
+
+printf "Packages licensing...    "
+if test -n "$GPL"
+then
+	if test -n "$GNUV3"
+	then
+		LICENSE="GPL version 3"
+	else
+		LICENSE="GPL version 2"
+	fi
+else
+	if test -n "$GNUV3"
+	then
+		LICENSE="Lesser GPL version 3"
+	else
+		LICENSE="Lesser GPL version 2.1"
+	fi
+fi
+test -z "$AD_CLAUSES" || LICENSE="$LICENSE, with advertisement clauses"
+echo "$LICENSE"
+
+if test "$PREFIX"
+then
+	# strip trailing slash
+	PREFIX="${PREFIX%/}"
+fi
+
+#
+# Prepare files
+#
+echo "Creating makefile..."
+test -e Makefile && unlink Makefile
+exec 3>Makefile || exit $?
+cat >&3 << EOF
+# This file was automatically generated.
+# Any change will be overwritten if ../bootstrap is run again.
+BUILD := $BUILD
+HOST := $HOST
+PKGS_DISABLE := $PKGS_DISABLE
+PKGS_ENABLE := $PKGS_ENABLE
+EOF
+
+add_make()
+{
+	while test -n "$1"
+	do
+		echo "$1" >&3
+		shift
+	done
+}
+
+add_make_enabled()
+{
+	while test -n "$1"
+	do
+		add_make "$1 := 1"
+		shift
+	done
+}
+
+check_ios_sdk()
+{
+    if test "$VLCSDKROOT"
+    then
+	    SDKROOT="$VLCSDKROOT"
+    else
+		if test -z "$SDKROOT"
+		then
+		   SDKROOT=`xcode-select -print-path`/Platforms/iPhone${PLATFORM}.platform/Developer/SDKs/iPhone${PLATFORM}${SDK_VERSION}.sdk
+		   echo "SDKROOT not specified, assuming $SDKROOT"
+		else
+		   SDKROOT="$SDKROOT"
+		fi
+    fi
+
+    if [ ! -d "${SDKROOT}" ]
+    then
+       echo "*** ${SDKROOT} does not exist, please install required SDK, or set SDKROOT manually. ***"
+       exit 1
+    fi
+    add_make "IOS_SDK=${SDKROOT}"
+}
+
+check_macosx_sdk()
+{
+   if [ -z "$SDKROOT" ]; then
+      SDKROOT=$(xcrun --show-sdk-path)
+      echo "SDKROOT not specified, assuming $SDKROOT"
+   fi
+
+   if [ ! -d "$SDKROOT" ]; then
+      echo "*** $SDKROOT does not exist, please install required SDK, or set SDKROOT manually. ***"
+      exit 1
+   fi
+
+   add_make "MACOSX_SDK=${SDKROOT}"
+}
+
+check_android_sdk()
+{
+	[ -z "${ANDROID_NDK}" ] && echo "You must set ANDROID_NDK environment variable" && exit 1
+	add_make "ANDROID_NDK := ${ANDROID_NDK}"
+	[ -z "${ANDROID_ABI}" ] && echo "You must set ANDROID_ABI environment variable" && exit 1
+	add_make "ANDROID_ABI := ${ANDROID_ABI}"
+	[ -z "${ANDROID_API}" ] && echo "You should set ANDROID_API environment variable (using default android-9)" && ANDROID_API := android-9
+	add_make "ANDROID_API := ${ANDROID_API}"
+	[ ${ANDROID_ABI} = "armeabi-v7a" ] && add_make_enabled "HAVE_NEON"
+	[ ${ANDROID_ABI} = "armeabi-v7a" ] && add_make_enabled "HAVE_ARMV7A"
+	[ ${ANDROID_ABI} = "arm64-v8a" ] && add_make_enabled "HAVE_NEON"
+	[ ${ANDROID_ABI} = "arm64-v8a" ] && add_make_enabled "HAVE_ARMV8A"
+	[ ${ANDROID_ABI} = "armeabi" -a -z "${NO_ARMV6}" ] && add_make_enabled "HAVE_ARMV6"
+}
+
+check_tizen_sdk()
+{
+	[ -z "${TIZEN_SDK}" ] && echo "You must set TIZEN_SDK environment variable" && exit 1
+	add_make "TIZEN_SDK := ${TIZEN_SDK}"
+	[ -z "${TIZEN_ABI}" ] && echo "You must set TIZEN_ABI environment variable" && exit 1
+	add_make "TIZEN_ABI := ${TIZEN_ABI}"
+	[ ${TIZEN_ABI} = "armv7l" ] && add_make_enabled "HAVE_NEON"
+	[ ${TIZEN_ABI} = "armv7l" ] && add_make_enabled "HAVE_ARMV7A"
+}
+
+test -z "$PREFIX" || add_make "PREFIX := $PREFIX"
+test -z "$BUILD_DISCS" || add_make_enabled "BUILD_DISCS"
+test -z "$BUILD_ENCODERS" || add_make_enabled "BUILD_ENCODERS"
+test -z "$BUILD_NETWORK" || add_make_enabled "BUILD_NETWORK"
+test -z "$ENABLE_SMALL" || add_make_enabled "ENABLE_SMALL"
+test -z "$GPL" || add_make_enabled "GPL"
+test -z "$GNUV3" || add_make_enabled "GNUV3"
+test -z "$AD_CLAUSES" || add_make_enabled "AD_CLAUSES"
+test -z "$WITH_OPTIMIZATION" || add_make_enabled "WITH_OPTIMIZATION"
+test -z "$ENABLE_PDB" || add_make_enabled "ENABLE_PDB"
+
+if [ "`uname -o 2>/dev/null`" = "Msys" ]; then
+    add_make "CMAKE_GENERATOR := MSYS Makefiles"
+    add_make "export CMAKE_GENERATOR"
+fi
+
+#
+# Checks
+#
+OS="${HOST#*-}" # strip architecture
+case "${OS}" in
+	*-darwin*)
+		if test -z "$BUILDFORIOS"
+		then
+			check_macosx_sdk
+			add_make_enabled "HAVE_MACOSX" "HAVE_DARWIN_OS" "HAVE_BSD"
+
+			case "${HOST}" in
+			    *arm64*|*aarch64*)
+			    add_make "PLATFORM_SHORT_ARCH := arm64"
+			    add_make_enabled "HAVE_NEON"
+			    ;;
+			    *x86_64*)
+			    add_make "PLATFORM_SHORT_ARCH := x86_64"
+			    ;;
+			esac;
+		else
+			check_ios_sdk
+			add_make_enabled "HAVE_IOS" "HAVE_DARWIN_OS" "HAVE_BSD" "HAVE_FPU"
+
+			case "${HOST}" in
+			    *armv7s*)
+			    add_make "PLATFORM_SHORT_ARCH := armv7s"
+			    add_make_enabled "HAVE_NEON" "HAVE_ARMV7A"
+			    ;;
+			    *arm*)
+			    add_make "PLATFORM_SHORT_ARCH := armv7"
+			    add_make_enabled "HAVE_NEON" "HAVE_ARMV7A"
+			    ;;
+			    *arm64*|*aarch64*)
+			    add_make "PLATFORM_SHORT_ARCH := arm64"
+			    ;;
+			    *x86_64*)
+			    add_make "PLATFORM_SHORT_ARCH := x86_64"
+			    ;;
+			    *86*)
+			    add_make "PLATFORM_SHORT_ARCH := i386"
+			    ;;
+			esac;
+		fi
+		if test "$BUILDFORTVOS"
+		then
+			add_make_enabled "HAVE_TVOS"
+		fi
+		;;
+	*bsd*)
+		add_make_enabled "HAVE_BSD"
+		;;
+	*android*)
+		check_android_sdk
+		add_make_enabled "HAVE_LINUX" "HAVE_ANDROID"
+		case "${HOST}" in
+			*arm*)
+			add_make "PLATFORM_SHORT_ARCH := arm"
+			;;
+			*arm64*|*aarch64*)
+			add_make "PLATFORM_SHORT_ARCH := arm64"
+			;;
+			*i686*)
+			add_make "PLATFORM_SHORT_ARCH := x86"
+			;;
+			*x86_64*)
+			add_make "PLATFORM_SHORT_ARCH := x86_64"
+			;;
+			*mipsel*)
+			add_make "PLATFORM_SHORT_ARCH := mips"
+			;;
+		esac
+		;;
+	*linux*)
+		if [ "`${CC} -v 2>&1 | grep tizen`" ]; then
+			check_tizen_sdk
+			add_make_enabled "HAVE_TIZEN"
+			case "${HOST}" in
+				*arm*)
+				add_make "PLATFORM_SHORT_ARCH := arm"
+				;;
+				*i386*)
+				add_make "PLATFORM_SHORT_ARCH := x86"
+				;;
+			esac
+		fi
+
+		add_make_enabled "HAVE_LINUX"
+		;;
+	*mingw*)
+		add_make_enabled "HAVE_WIN32"
+		case "${HOST}" in
+			*winphone*|*windowsphone*)
+			add_make_enabled "HAVE_WINDOWSPHONE"
+			;;
+		esac
+		case "${HOST}" in
+			*winphone*|*windowsphone*|*winrt*|*uwp*)
+			add_make_enabled "HAVE_WINSTORE"
+			;;
+		esac
+		case "${HOST}" in
+            armv7*)
+                add_make_enabled "HAVE_ARMV7A"
+                ;;
+        esac
+		;;
+	*solaris*)
+		add_make_enabled "HAVE_SOLARIS"
+		;;
+esac
+
+#
+# Results output
+#
+BOOTSTRAP_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+CURRENT_PATH="$( pwd -P )"
+# location of the contrib/src folder from the root of the contrib build folder
+TOPSRC=$(python3 -c "import os; print(os.path.relpath('$BOOTSTRAP_PATH', '$CURRENT_PATH'))")
+# location of the contrib/src folder from a built library folder
+TOPSRC_BUILT=$(python3 -c "import os; print(os.path.relpath('$BOOTSTRAP_PATH', '$CURRENT_PATH/libfoo'))")
+add_make "TOPSRC = $TOPSRC"
+add_make "TOPSRC_BUILT = $TOPSRC_BUILT"
+add_make "TOPDST = .."
+add_make "-include config.mak"
+add_make 'include $(TOPSRC)/src/main.mak'
+echo "Bootstrap completed."
+make help
+mkdir -p $BOOTSTRAP_PATH/tarballs || exit $?

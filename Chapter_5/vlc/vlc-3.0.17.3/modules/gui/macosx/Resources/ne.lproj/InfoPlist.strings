@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार क्यामेरामा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSMicrophoneUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार माइक्रोफोनमा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSAppleEventsUsageDescription" = "VLC ले बाह्य मिडिया प्लेयरहरू पज गर्न र पुनः निरन्तरता दिन चाहन्छ।";
+"NSDesktopFolderUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार डेस्कटप फोल्डरमा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSDocumentsFolderUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार कागजातहरूको फोल्डरमा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSDownloadsFolderUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार डाउनलोडहरूको फोल्डरमा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSNetworkVolumesUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार सञ्जाल भोल्युममा पहुँच प्राप्त गर्न चाहन्छ।";
+"NSRemovableVolumesUsageDescription" = "VLC ले प्रयोगकर्ताले अनुरोध गरे अनुसार हटाउन मिल्ने भोल्युममा फोल्डरमा पहुँच प्राप्त गर्न चाहन्छ।";

@@ -1,0 +1,5 @@
+video_filter/deinterlace/merge_arm64.lo: \
+ video_filter/deinterlace/merge_arm64.S /usr/include/stdc-predef.h \
+ video_filter/deinterlace/../../arm_neon/asm.S
+/usr/include/stdc-predef.h:
+video_filter/deinterlace/../../arm_neon/asm.S:

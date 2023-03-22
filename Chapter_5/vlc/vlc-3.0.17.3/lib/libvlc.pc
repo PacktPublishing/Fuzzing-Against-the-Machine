@@ -1,0 +1,11 @@
+prefix=/home/jezz/vlc-compile/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: LibVLC control API
+Description: VLC media player external control library
+Version: 3.0.17.3
+Cflags: -I${includedir}
+Libs: -L${libdir} -lvlc
+Libs.private: -lvlccore 

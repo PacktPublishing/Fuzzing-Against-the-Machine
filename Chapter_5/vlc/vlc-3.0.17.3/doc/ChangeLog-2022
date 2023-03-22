@@ -1,0 +1,2507 @@
+commit 758b718347094af7e7e35ec18359d32f8928766e
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Tue Feb 22 18:43:48 2022 +0100
+
+    Update more NEWS for 3.0.17
+
+commit 66f425110705a7e3de6754ad8040920c97f48f2e
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Feb 21 14:15:07 2022 +0100
+
+    Update NEWS
+
+commit ff0e412d421aff53b92fad3a788d982767a093fd
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Feb 21 13:34:52 2022 +0100
+
+    tools: protoc: fix compilation with recent clang
+    
+    Similar to 553ed5fa94c932da67e4cf6bb3a61b52bcbd18e5 found in contribs.
+    
+    Co-authored-by: Martin Storsjö <martin@martin.st>
+
+commit e4869da270e1adb526fa0bebf2071d3301a6c18e
+Author: Vikram Fugro <vikram.fugro@gmail.com>
+Date:   Sun Sep 27 23:57:59 2020 +0530
+
+    gstdecode: handle fourcc mismatch between gst vlc
+    
+    Add raw video fourcc conversion support to convert
+    from gstreamer representation (for strings that are
+    not equal to length 4) to vlc representation.
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit a6c52d8943cd172ed0853c00d61dcf5b090edd41)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 7ecfff94877b53505f2a8e1d176e992f4df77647
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Mon Feb 7 20:37:13 2022 -0500
+
+    gstdecode: add AV1
+    
+    (cherry picked from commit 58202004426ce9ac2d8e32ede722a3353a5cbad1)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit f12b4ed70075917c9042ac3fcc41e376af3642c0
+Author: Vikram Fugro <vikram.fugro@gmail.com>
+Date:   Sun Sep 27 14:42:57 2020 +0530
+
+    gstdecode: Add support for more video codecs
+    
+    Add support for vp9 and hevc
+    
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+    (cherry picked from commit 9894f84b1286cadf3d2d15362e153dab6c4038cf)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit d3e78c235b349fe25e3952980ead13a49d39b136
+Author: Mitch Capper <mitch.capper@gmail.com>
+Date:   Mon Nov 8 13:05:11 2021 -0800
+
+    croppadd: handle metadata rotated videos
+    
+    (cherry picked from commit 419ad46d792b586ba038c452eddb59c96d9befc2)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 4d0cc7a55f3da63e7e3270065c3e06dad786df29
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Thu Feb 17 11:41:23 2022 +0100
+
+    fourcc: add more GeoVision FOURCC
+    
+    Fixes GeoVision video playback via the avi demuxer.
+    
+    (cherry picked from commit 6372cce4c9bcc5443e931027c15d7018bc493b12)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 553ed5fa94c932da67e4cf6bb3a61b52bcbd18e5
+Author: Martin Storsjö <martin@martin.st>
+Date:   Thu Feb 17 12:46:41 2022 +0200
+
+    contrib: protobuf: Apply a patch to avoid relying on transitive includes
+    
+    This fixes build breakage with latest nightly libc++. Since
+    https://github.com/llvm/llvm-project/commit/2e2f3158c604adb8401a2a44a03f58d4b6f1c7f9,
+    fewer libc++ headers transitively include <algorithm>.
+    
+    This protobuf header uses std::fill unconditionally, which is a
+    function provided by <algorithm>. (The surrounding code comment was
+    wrong/outdated - <algorithm> was needed on all platforms.)
+    
+    The same seems to have been fixed in upstream protobuf as part
+    of a larger code sync:
+    https://github.com/protocolbuffers/protobuf/commit/ab4585a6956675ce14a1cba5d321fde980bbf12b#diff-5cc9e8e347380b7bbc8fac8c06dc98100f3b5c076fcffa177e8ce11e753d4f7c
+    
+    (cherry picked from commit 5f6776416e903200941db906e16efea56454ed25)
+
+commit 8276f2d90ff56a56f2a92e703852b58d8673441a
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Feb 14 19:24:32 2022 +0100
+
+    Contribs: update libarchive to 3.6.0
+    
+    Fixes CVE-2021-31566, CVE-2021-36976
+    
+    (cherry picked from commit e308b8c851490c672883813c7c0004dee95fc2fc)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 548ee5da6cf3f943ed058ea6dcffc52389f74c7c
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Feb 16 19:45:53 2022 +0100
+
+    macOS build.sh: Blacklist linkat and unlinkat
+    
+    Those are only available starting macOS 10.10.
+
+commit 0d20e689e2bfba12503717dc6e728e6945ccc1c2
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Feb 14 17:05:55 2022 +0100
+
+    Contribs: update NFS to 5.0.1
+    
+    (cherry picked from commit 50baf5674016a5ed27b393d308d7aa9ebf1539db)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 329b852d6ffc0257f9d6906c1a36222cb27f9688
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Feb 14 16:50:39 2022 +0100
+
+    Contribs: update mpg123 to 1.29.3
+    
+    (cherry picked from commit d67176127c795f373e5d9af1371108b4b567f225)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 1ce898456a89f061e28051fdb1bba237a18ca189
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Feb 14 16:34:41 2022 +0100
+
+    Contribs: update Twolame to 0.4.0
+    
+    (cherry picked from commit fb1dd7706ba60c02055fcf4e0a5c3bb38c731a2d)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit a448c9597124b256b41e8641f1e1073c42f6596c
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Feb 14 17:01:48 2022 +0100
+
+    Contribs: update SRT to 1.4.4
+    
+    (cherry picked from commit 9a289291d01a393294c62ee7406487f59e25f4ed)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit fe971a8f176d7b64c92f5d108aaf54ea36bea96c
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Jan 18 18:13:58 2022 +0100
+
+    contribs: srt: Fix build with gcc11
+    
+    (cherry picked from commit a49c449f1dd344087c4086fc03ecf4a5d69a6bf9)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d0b91750401e2bfe060efd0d3066ec91c2cf154c
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 20:00:13 2021 +0800
+
+    access_output/srt: send data in payload_size chunks
+    
+    Fix #26048
+    
+    To avoid sending a lot of small UDP packets.
+    
+    (cherry picked from commit 84bc80de2334747c29e319bb3695bae1f2d2ade9) (rebased)
+    rebased:
+    * 3.0 doesn't have struct typedefs
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 4c7cf49f5c96dd4107aa0c9cba292f331e8cb6e9
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 17:44:25 2021 +0800
+
+    access_output/srt: simplify always true condition
+    
+    (cherry picked from commit 853df2675c619733ab874482847e93e5691a2820)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 29faf90e38bbc17b777fc75c2ad4b88807745876
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 11:39:35 2021 +0200
+
+    access_output/srt: obsolete SRT_PARAM_CHUNK_SIZE
+    
+    It's the same thing as SRT_PARAM_PAYLOAD_SIZE.
+    
+    (cherry picked from commit c90ef66a553d1da90276d09cd2551cd77225904e) (edited)
+    edited:
+    * 3.0 doesn't have struct typedefs
+    * 3.0 has advanced parameter in some settings
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d7146aca48d939fb9daa7874a8f8cbc37d8277dd
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 01:19:55 2021 +0800
+
+    srt: comment out too verbose log
+    
+    (cherry picked from commit e6b547ccdc13c259c8322dcfc5620223640f0859)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 67faec333265ef910611179807f7b6ce9f2a261d
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 00:45:36 2021 +0800
+
+    srt: initialize p_sys->sock to SRT_INVALID_SOCK
+    
+    Otherwise the zero initialized p_sys->sock will be closed in
+    srt_schedule_reconnect().
+    
+    (cherry picked from commit e452063d6e25df6b22f0088f1f3edc4b976bfc64) (rebased)
+    rebased:
+    * 3.0 has vlc_mutex_destroy()
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit e010ae8e47335f80fbd570d48bfead41da37d19b
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Mon Aug 30 00:35:43 2021 +0800
+
+    srt: Fix missing srt_cleanup on error path
+    
+    (cherry picked from commit 52e3f716bc922664188b7f0dce744b3d92eb24a5) (rebased)
+    rebased:
+    * 3.0 is freeing psz_host
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 2534aa80b50c2818594ac76782770b44449e7f60
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sun Aug 29 00:20:35 2021 +0800
+
+    srt: obsolete SRT_PARAM_CHUNK_SIZE and SRT_PARAM_PAYLOAD_SIZE
+    
+    Firstly, SRTO_PAYLOADSIZE has no effect for receiver. Secondly,
+    since there is no negotiation of payload size between sender and
+    receiver, the receiver should use a buffer at least
+    SRT_LIVE_MAX_PLSIZE bytes, otherwise the data can be truncated.
+    So the default value of option SRT_PARAM_CHUNK_SIZE is
+    inappropriate. User may know exactly the sender's payload size
+    to set the value for SRT_PARAM_CHUNK_SIZE, but there is no much
+    gain for doing that.
+    
+    (cherry picked from commit 0b0cc7ff60b3104f59af305d6de8051807bb2577) (edited)
+    edited:
+    * 3.0 had the advanced flag in obsolete parameters
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 5eae57a0f8ea1effa1ee20a6f82612065eee8770
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Nov 9 18:50:15 2020 +0100
+
+    contribs: bump srt to 1.4.2
+    
+    fixes crashes
+    removes now unused patches
+    
+    (cherry picked from commit 0e7afc72a24f3a0f2a000fd1c9611f75f1c29172)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit e19fdb24d201d656231813ff8bdb815284bbba2d
+Author: Yohann D'ANELLO <yohann.danello@gmail.com>
+Date:   Wed Oct 28 14:36:37 2020 +0100
+
+    srt: add stream ID option
+    
+    This patch allows the use of the streamid option when using the SRT
+    protocol.  For example, we can query the URL
+    srt://localhost:9710?streamid=demo if a stream server is listening on
+    localhost:9710 that supports multiple streams on the same server. Like
+    the others already implemented, this parameter can be overwritten in the
+    settings of the transport.
+    
+    In a future patch, it may be good to support the full options.  The
+    complete list can be found here:
+    https://github.com/Haivision/srt/blob/master/docs/APISocketOptions.md#list-of-options
+    A human-friendly version of this list can be found in the ffmpeg
+    documentation: https://ffmpeg.org/ffmpeg-all.html#srt
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit a55c95a9ccb051066b73f103f1a1e25586a97773)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 8db1f5e94fa0dc3813ef3db98625881ee8c890ac
+Author: Julien Montant <julien.montant@gmail.com>
+Date:   Tue Oct 13 21:45:15 2020 +0200
+
+    srt: fix build issue with recent SRT library
+    
+    The deprecated macro `SRTO_TSBPDDELAY` has been deleted from SRT.
+    This prevents the compilation with SRT versions >= v1.4.2.
+    
+    See the corresponding SRT commit 0e2201aff6b379979cec43fee5e8f162717f6346.
+    ```
+    -   SRTO_TSBPDDELAY = 23,     // DEPRECATED. ALIAS: SRTO_LATENCY
+    ```
+    
+    The (unrecommended) `SRTO_LATENCY` should be used instead, which was
+    already available back then. See notice next to SRTO_LATENCY in the SRT
+    library source code for details on why it's not recommended.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    (edited message)
+    (cherry picked from commit 6e8d77431127c482196115a6eeb769daf56347b3)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 9b590f6e2ef26a41a7839303b57c21a2cd1237d9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Aug 17 11:41:29 2020 +0200
+
+    access: srt: use define for variables
+    
+    (cherry picked from commit 179579703bd600f3760e3aa61794250cfad96b81)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit b39736759617fce1c20bf0b1b261040742034097
+Author: Aaron Boxer <aaron.boxer@collabora.com>
+Date:   Wed Apr 3 13:11:56 2019 -0400
+
+    srt: fix bug in setting passphrase
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit ce386056d0dd9234bb52e057dbd6435dea74e140)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6b7bc6e2ec6cc19bf51596936fdfeeb83eaa30dc
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Wed Mar 20 15:43:44 2019 +0100
+
+    access_out: srt: fix missing config.h include
+    
+    (cherry picked from commit e7e608e84e9e218886700a6c90e8788a01f46b4f) (rebased)
+    rebased:
+    * 3.0 doesn't have struct typedefs
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 2721173c27b8d9741bd1657952e67c1cfc696f14
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Mar 20 21:11:19 2019 +0100
+
+    configure.ac: Require at least srt 1.3.0
+    
+    Recent commits use defines like SRT_LIVE_DEF_PLSIZE, which are
+    only available starting with that srt version.
+    
+    (cherry picked from commit 80b149ddf92226d12e71d4de6e6233f52b1ea2bb) (edited)
+    edited:
+    * 3.0 was restricting to < 1.3.0
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d5f59f92e03925306af3ad48f553ca1a2f926ec5
+Author: Aaron Boxer <boxerab@gmail.com>
+Date:   Tue Mar 19 13:35:34 2019 +0100
+
+    srt: parse url and set options
+    
+    for latency, maximum bandwidth, etc.
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit f98585725a2d599bc014dae9af014ac9202a892b) (edited)
+    edited:
+    * 4.0 used N_() on removed strings
+    * 3.0 needs advanced flag for add_password()
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 9ef542afc0bc5fac84185aed77d8575b695dd103
+Author: Aaron Boxer <boxerab@gmail.com>
+Date:   Tue Mar 19 08:34:30 2019 -0400
+
+    srt: move common code to single file
+    
+    1. code can be shared between access/srt.c and access_output/srt.c
+    2. created a URL parser for SRT parameters stored in URL
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit 15dea8ecb86f4ec36467bea381afc16493263d1c) (edited)
+    edited:
+    * access out was missing dummy.cpp on 3.0
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d1a26ef553326709e673f0f84a0b7292d400b5d5
+Author: Roman Diouskine <rdiouskine@haivision.com>
+Date:   Mon Oct 15 17:45:16 2018 +0200
+
+    srt: Read several chunks per blocking read call
+    
+    libsrt input is asynchonously buffered internally and it makes sense to empty
+    those receive buffers as much as possible on every signaled receive event from
+    epoll. Doing so reduces context switching/re-scheduling and improves
+    performance.
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit ca7b0fcc3376f858f9002f96f0bec42288785d09) (rebased)
+    rebased:
+    * master has direct stream_sys_t typedef
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit bcd9305655f6ba97cf12dfa331fabc64564f46a7
+Author: Olivier Crête <olivier.crete@collabora.com>
+Date:   Mon Jul 23 17:30:32 2018 -0400
+
+    srt: Remove eof code
+    
+    It is possible to get an empty read from libsrt and it should not be treated as
+    EOF.
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit 34048bef8ed5e2b5e7c265bfbd0cee1db4b1159b)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit e5f7110383a352bdc9cac72936ed1a16263afc11
+Author: Olivier Crête <olivier.crete@collabora.com>
+Date:   Thu Jul 19 17:39:29 2018 -0400
+
+    contribs: srt: Fix pkgconfig file generation
+    
+    VLC doesn't use pkg-config --static but hacks the .pc files, so do
+    the same here. Also fix srt to produce valid pc files.
+    
+    Signed-off-by: Konstantin Pavlov <thresh@videolan.org>
+    (cherry picked from commit dd597699c3a99b93c0ed9862ebf668315484aaca)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 85d3a0505c57d94b2d5fe1d551f5e9851ac0c950
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Jul 11 22:44:09 2018 +0200
+
+    Contribs: srt, don't link to pthreadGC2 on Mingw
+    
+    (cherry picked from commit e9ed3a579bee9aa59c6c71fadedaf4822ca95b1e)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6b1c2c4527e7ec4a0b1366a4eed3c596aeae0851
+Author: Olivier Crête <olivier.crete@collabora.com>
+Date:   Tue Jul 10 14:31:38 2018 -0400
+
+    contrib: Update SRT to 1.3.1
+    
+    Almost the same as the previous one but squashing two patches which should have been and improving the inet_ntop() removing patch.
+    
+    Skipping 1.3.0 as it was a bad version. Also removed all
+    custom patches are they don't seem to be required anymore, but
+    added new ones to make it build with MingW.
+    
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+    (cherry picked from commit e4e95613cc2d7f78acf80072b626d52da575f718) (edited)
+    edited:
+    - don't force pthreadGC2 but pthread
+    - removed non-gnu detection
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 4524690456a0aaf8850d1d0b1dbb768123f4810d
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Jul 1 21:38:22 2018 +0300
+
+    srt: remove tautology
+    
+    (cherry picked from commit 90b7919115cf2906e020a215a752d9137321f936)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 55dd7e85e3f418f048e3835638f7ea06fd8f8c93
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Jul 1 21:38:22 2018 +0300
+
+    srt: remove tautology
+    
+    (cherry picked from commit d36c9ea4d1c0d696375c608d66f017741c40bfe8)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit a72f1f8d94595f409db9a3ca4a945dfda090934e
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Jul 1 21:37:10 2018 +0300
+
+    srt out: remove redundant code
+    
+    (cherry picked from commit ae882e18727ab6f3761c982254b2e61d122fb8ef)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit aed2108cd182b45db0693eafc62e891226667496
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Jul 1 21:37:10 2018 +0300
+
+    srt: remove redundant code
+    
+    (cherry picked from commit 198f754d838788a43885b0d30c1092a00747f94f)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 08b36ec7e38ace0c7e198f34273e15858450473a
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 11 20:22:40 2021 +0100
+
+    demux: avformat: fix IORead EOF value
+    
+    (cherry picked from commit b7c97da03be864d20713054d52eddfb9d93773bb)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 58aba0bc595d1119154a6a8295eac38fecc62a1d
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Wed Feb 16 06:51:13 2022 +0100
+
+    samba: limit the read size
+    
+    Fixes #22909
+    
+    (cherry picked from commit abf527b59d632db06fae67b1322890c273a241c6)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit b15e4043c672e2059318114152b78b24f6fca73e
+Author: Ronald S. Bultje <rsbultje@gmail.com>
+Date:   Fri Feb 4 15:22:07 2022 -0500
+
+    dav1d: continue decoding on recoverable errors
+    
+    Fixes #26259 (closed), #26579 and dav1d/#383.
+    
+    (cherry picked from commit e890cc923355b87d4c40d035dbf16a4924fe95b2)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 58729fb1b148d53b5fbaa90fa0762c303e4a5ca0
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Thu Feb 10 20:09:35 2022 +0100
+
+    contrib: bluray: Enable bdjava for arm macOS again
+    
+    OpenJDK builds now exist for arm macOS, and both compilation and execution
+    of java blurays seem to work fine.
+    
+    Closes #26023
+    
+    (cherry picked from commit 25556bcb4eed9ba69ab0299af06e0e3235fbb2cd)
+
+commit 1b500a19695aa3e0c4179e89abccbe8e5bfce285
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Feb 9 15:53:17 2022 +0100
+
+    contrib: srt: link directly with pthread on Windows
+    
+    That's the winpthread we build and depend on.
+    
+    And apply the pthread patch on all targets like it was before this patchset.
+
+commit b608c5f655a88933af6f91fabb12dcf6055ec298
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 11 09:34:20 2022 +0100
+
+    contrib: ffmpeg: add pthread dependency for win32
+    
+    As for other contribs that rely on the winpthread/pthread-w32.
+
+commit 3ce799b884ad98a00fc32fc4eba16db75c7c90cf
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Feb 9 13:40:03 2022 +0100
+
+    contrib: ffmpeg: disable threading API on builds supporting Win XP
+    
+    CancelIOEx() is not supported. And pthread support is not mandatory.
+
+commit df9a89828d41c291f3576637848a02dc3f498626
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Feb 9 15:37:23 2022 +0100
+
+    contrib: zvbi: remove unused extra compilation flags
+    
+    (cherry picked from commit e1ebf07d6e2a9c95db006950dfe0782e1cb9e775)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 01945fc33813785097841c01b60cba0971c28eef
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Feb 9 15:10:59 2022 +0100
+
+    contrib: zvbi: fix pthread dependency
+    
+    (cherry picked from commit 1ae503e45da0e4b8ea92d36956d750ad9872090e)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit def528101124e4703ad6787799886e6191fb7c64
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Feb 9 13:05:42 2022 +0100
+
+    contrib: zvbi: remove deprecated patch
+    
+    We no longer build with pthreadGC2 since f1bf4b45ce547578db7048331e368188a7f6b8ec
+    
+    (cherry picked from commit 3837f53f97ec6f85f8441a22f3ed7e032929a06e)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 2c6d2bb028ebc4dbe2cd8a95674d6a982780e314
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Wed Jan 19 20:11:36 2022 +0100
+
+    extras/tools: meson: create bin folder if needed
+    
+    Fixes the "build" of meson that could randomly fail when no target
+    created the folder already.
+    
+    (cherry picked from commit 1649e121586f4bfd0f9f430d6f07e423a7eedc7d)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 962cadadaf47271580e8e2a2b5bde29dd4e42490
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Dec 13 15:02:28 2021 +0100
+
+    tools: Fix protobuf compiler build with recent compilers
+    
+    This is a manual backport of
+    https://github.com/protocolbuffers/protobuf/commit/01a05a53f40ca2ac5f0af10c6cc0810bee39b792
+    
+    (cherry picked from commit c580054e4f3a166f93c91f94416f97d89be83c16)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 54802179b3c3011533caaf3f2d01b6286b99a0a5
+Author: Sean McGovern <gseanmcg@gmail.com>
+Date:   Sat Jul 31 21:56:04 2021 -0400
+
+    contrib: upnp: hosting moved from SourceForge to GitHub
+    
+    (cherry picked from commit 0d2b80c01c37c928821b5f35bf75f4693335af4c)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit cc62c44d384f87105c4605be4465231a1dda363e
+Author: Biswapriyo Nath <nathbappai@gmail.com>
+Date:   Mon Jan 27 20:15:30 2020 +0530
+
+    contrib: pthreads: update mingw-w64 to v7.0.0
+    
+    * The deleted patch was added in mingw-w64 v7.0.0
+    
+    Signed-off-by: Biswapriyo Nath <nathbappai@gmail.com>
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+    (cherry picked from commit d4948bc28effbe801fbce6c581c1735518c9da0d)
+
+commit f61e85e78640334cd8e12d0eeb83f4d3cedb5d34
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Tue Mar 5 09:09:12 2019 +0100
+
+    zvbi: do not link against non existent pthreadGC2
+    
+    (cherry picked from commit f91f18e43cf61e05e6e2d8709124595de2b339bf) (edited)
+    edited:
+    * master had it for winstore only
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit e92fbe6e5d31fc0dee67ce9c19d00b1b1f114cc1
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Mar 4 10:02:29 2019 +0100
+
+    contrib:aom: don't use the old pthreadGC2 anymore
+    
+    (cherry picked from commit ba189e92f8ea393f6355dee1a0f7c2f6eb573bc6) (edited)
+    edited:
+    * 3.0 has different android patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 71f5df11ba737d42fed8498792400984dee2ece0
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Jan 15 11:48:32 2019 +0100
+
+    contrib: upnp: Force -lpthread into libupnp.pc
+    
+    This is a partial revert (with modifications) of
+    1d156f093dbeca94a20c7355708e2f7bdce586b4
+    
+    (cherry picked from commit db1d637fce6731fad870304e8e2d309f9781b268)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit cf31dd35ad4965cd4771d59b2568287b1f580998
+Author: Martin Storsjö <martin@martin.st>
+Date:   Sun Jul 1 23:27:24 2018 +0300
+
+    contrib: vpx: Remove a leftover patch for pthread-w32
+    
+    (cherry picked from commit d942c7a0d4f840a93c074c774ea16226517c8865) (edited)
+    edited:
+    * 3.0 doesn't have the same aarch64 patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 8a76af750428de040d3e925af8c8c50cb27dde0b
+Author: Martin Storsjö <martin@martin.st>
+Date:   Mon May 21 12:08:50 2018 +0300
+
+    contrib: pthreads: Backport a winpthreads patch to fix building for armv7/aarch64
+    
+    (cherry picked from commit 8ceae50d2e3c037dade05953b175ebabf3fdd7c3) (rebased)
+    rebased:
+    * 4.0 didn't some of the patches used in 3.0
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6320e6496f55443f8c3c0eea6f9d110d3301f20c
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 17 21:54:46 2018 +0200
+
+    contrib: pthreads: winpthreads is not GPL
+    
+    (cherry picked from commit be8644102b0045f40c0537df95db015d48fe8994)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit c61028af5a9aa4608aff3f005891750b43d24362
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 17 14:27:06 2018 +0200
+
+    contribs: enable winpthreads on all Windows targets
+    
+    (cherry picked from commit f1bf4b45ce547578db7048331e368188a7f6b8ec) (rebased)
+    rebased:
+    * aom has slightly diffent .mak context
+    * srt has slightly diffent .mak context
+    * zvbi had removed macos hack already
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 0885d5e47aa7b10a0d3e9e8d1162714317705b0b
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 17 14:13:58 2018 +0200
+
+    contrib: replace pthreads-w32 with winpthreads
+    
+    (cherry picked from commit 1d156f093dbeca94a20c7355708e2f7bdce586b4) (edited)
+    
+    edited:
+    * pthreadGC2 had extra pacthes in 3.0 and different URL
+    * aom had different android patches and HOSTVARS placed differently
+    * mysofa is building with CMAKEBUILD
+    * DBUILD_SHARED_LIBS doesn't have set in 3.0
+    * upnp uses LIBUPNP_ECFLAGS on 3.0
+    * vpc uses VPX_HOSTVARS on 3.0
+    * zvbi has removed the macos hack already
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 13188e48c80ea6712581195bcabed5f56f7e3e71
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 17 12:37:30 2018 +0200
+
+    contrib: limit the use of pthreads-w32 to winstore builds for now
+    
+    (cherry picked from commit 6f20847b5ddb4ca30edeffe0c490eaf56a478d01) (edited)
+    edited:
+    * aom has different android patches
+    * srt has extra fix-partial-availability patch
+    * upnp is using LIBUPNP_ECFLAGS on 3.0
+    * vpx is using VPX_HOSTVARS on 3.0
+    * zvbi has the pthreads dependency for all targets, already has ZVBI_CFLAGS and removed macos hack already
+    * srt doesn't have some gcc/pthread patches and had CMakeLists.txt-let-cmake-find-pthread patch
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit e641bf59a88bd4efdac0411151b5cff596ec8e9f
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 17 12:26:50 2018 +0200
+
+    contrib: pthreads: only use pthreads-w32 on winstore builds
+    
+    For now, we should probably switch to winpthread as well.
+    
+    (cherry picked from commit a77bf1c60b9daf6a10dc3f8afb8dd6da139c3bc4)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit c7afbc4b6f7cb051965355ca5d09fdcf21a04581
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 16 15:30:11 2018 +0200
+
+    contrib: aom: make sur we use pthreads-win32 on Windows
+    
+    (cherry picked from commit b7bbf72878edfd230bd17d799a198c9bed395058) (rebased)
+    rebased:
+    - 3.0 has more android patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6b47697233d751b36350a16b8602b62d634c3b70
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 16 12:21:34 2018 +0200
+
+    contrib: vpx: make sure we use pthreads-win32 on Windows
+    
+    (cherry picked from commit 2916292eb7c3a3b77d5aea677372a8725b52a18c) (edited)
+    edited:
+    * 3.0 doesn't have the same aarch64 patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit a02853f8361941afcf04b66091a0d4a17f4de821
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 16 10:51:15 2018 +0200
+
+    contrib: zvbi: make sure we use pthreads-win32 on windows
+    
+    (cherry picked from commit 707b9000194c85c6a23b55357ca72afb197b111b)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d0dfeefebe56bfc3ef4bc1ed3d564c62c0481944
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Sun May 13 11:23:50 2018 +0200
+
+    contrib: srt: fix dependency handling
+    
+    (cherry picked from commit e94213427ef84e278b236e803b100a94df2674fe) (rebased)
+    rebased:
+    * 3.0 has slightly different patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 5c999faac3e4a4764dd9790379b999c3fdb123d4
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Tue Feb 8 13:38:47 2022 +0100
+
+    d3d11: release the debug interface we queried
+    
+    The doc doesn't say we have to release it but it makes sense. If it was received
+    by a ComPtr it would be.
+    
+    Similar to b8e1ef211c8cfbc0d7681decc905b1e267563491 on 4.0
+
+commit 8ff7dd99bc57e855807a75e412a17fe96667445d
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Jan 3 07:09:24 2022 +0100
+
+    2022 is here
+    
+    (cherry picked from commit f1603b6994de7b4166662834ce3050eebc82de52)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit bfca6804525d6d748d261e1a3cf57a59612102dc
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Dec 29 16:16:15 2021 +0100
+
+    Contribs: update libass to 0.15.2
+    
+    (cherry picked from commit 827394029074561a7f44ec7c0c477f6f7b483768)
+
+commit 8fbafa234fd2386303cb87c92a706c2922ea5375
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Dec 29 16:53:55 2021 +0100
+
+    Contribs: update freetype to 2.11.1
+    
+    (cherry picked from commit b3e9723f00d8a8b75b34dbb65c8d5c0d22bb4557)
+
+commit 8a0968e75f686351129cf569295fc345c8c2f591
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Dec 29 16:50:16 2021 +0100
+
+    Contribs: update fribidi to 1.0.11
+    
+    (cherry picked from commit 6109444881af2525e24f846dc8cd4bd135a7f64c)
+
+commit 17172c046df0294f10919f77410dd4d93804afe2
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Dec 29 10:22:41 2021 +0100
+
+    Contribs: update dav1d to 0.9.2
+    
+    (cherry picked from commit d59532b08e0158945d55779e61f3e01bbb3fa3dd)
+
+commit d37f1f61673fab94ac6b95c08de248c50fa0926d
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Oct 5 15:04:32 2018 +0200
+
+    decoder: the max DPB size for AV1 is 10 frames
+
+commit d44f57277c2b30b207d164fdf09a26fe9f558d35
+Author: Peter Frost <mail@pfrost.me>
+Date:   Thu Jan 20 20:55:08 2022 +0000
+
+    debux: adaptive: Fix missing vlc_tick macro
+
+commit 97867416201533742be3effa2abfe3c02fafd95c
+Author: Ilkka Ollakka <ileoo@videolan.org>
+Date:   Fri Jun 18 10:31:00 2021 +0300
+
+    avformat: remove pts hack on recent libavformat
+    
+    The field AVStream.cur_dts has been removed in libavformat 59.2.103.
+    
+    Refs vlc4/c2ba623f0ad425e7743fca0bdc251d5bc9289e77
+    Refs ffmpeg/591b88e6787c4e678237f02a50421d101abd25c2
+
+commit 00bd7590f33357047b555d85d6e935feed033333
+Author: Mehdi Sabwat <mehdisabwat@gmail.com>
+Date:   Thu Apr 9 21:59:56 2020 +0200
+
+    avformat: add support for url field in AvFormatContext
+    
+    Since Jan 21, 2018 filename field was deprecated in favor
+    of `url` which now has no length restrictions.
+    
+    From doc/APIChanges:
+    ```
+    2018-01-28 - ea3672b7d6 - lavf 58.7.100 - avformat.h
+      Deprecate AVFormatContext filename field which had limited length, use the
+      new dynamically allocated url field instead.
+    ```
+    
+    The URL field is freed by libavformat in avformat_free_context() in
+    avformat_CloseMux().
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    (cherry picked from commit a2ce2e3a8436845378af3b1828f2bb0fa0f4a268)
+    
+    Refs ffmpeg/30f7021aa0be2c978aefb73894b643c9bafbf51c
+
+commit 6feb18dadcb6176ae5cc2b4ae57f27f65fa93fdb
+Author: Ilkka Ollakka <ileoo@videolan.org>
+Date:   Fri Jun 18 10:08:44 2021 +0300
+
+    avcodec: move picture type to use sidedata on encoding
+    
+    Sidedata AV_PKT_DATA_QUALITY_STATS has been present since 2015 on
+    version 56.51.100. Also previous coded_frame->pict_type doesn't seem to
+    be present anymore in ffmpeg master.
+    
+    (cherry picked from commit 8ed4f2a7a2dbc9522c3feebb39b2e4ccc7bf5d24)
+    
+    Refs ffmpeg/11bc79089378a5ec00547d0f85bc152afdf30dfa
+
+commit 781082eea3c3aea140c6725d7405cdf09124e190
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Tue Jan 18 15:12:26 2022 +0100
+
+    avcodec: replace removed FMT_VAAPI_VLD enum value
+    
+    Replace AV_PIX_FMT_VAAPI_VLD by AV_PIX_FMT_VAAPI.
+    
+    libav/d264c720f7b74286840719e506daba39f83b438b (deprecation)
+    ffmpeg/9f8e57efe4400ca86352277873792792279c3b15 (deprecation)
+    ffmpeg/ad524cb9eeb298f7a60d923094fbebb1fda7e0e3 (removal)
+
+commit bd8533e0c8b50773e49be8f8b5b61a9782de386f
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Tue Jan 18 15:06:28 2022 +0100
+
+    avcodec: fix condition to use AVFrame.pkt_pts
+    
+    The field AVFrame.pkt_pts was removed in lavc 56.24.0 / 57.61.100:
+    
+    > Decoders now export the frame timestamp as AVFrame.pts. It was
+    > previously exported as AVFrame.pkt_pts, which is now deprecated.
+    
+    Fix the inverted deprecation check and use LIBAVCODEC_VERSION_CHECK() to
+    target the exact version.
+    
+    Refs vlc4/991ba74b018a201cc6cc73da713fb3d62fd7ff60
+    Refs ffmpeg/32c8359093d1ff4f45ed19518b449b3ac3769d27 (deprecation)
+    Refs ffmpeg/6e30b35b85b81c802e52a1078ec7a3097e353c6d (removal)
+
+commit abb201b79367311e43e619dcda3d4a9348da42ec
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Tue Jan 18 15:08:38 2022 +0100
+
+    avcodec: do not use field removed in API 60
+    
+    AVCodecContext.thread_safe_callbacks will be removed in API 60:
+    
+    > Thread-unsafe get_buffer2() implementations will be invalid starting
+    > with LIBAVCODEC_VERSION_MAJOR=60; in other words, libavcodec will
+    > behave as if this field was always set to 1.
+    
+    In current FFmpeg 5.0 (API 59), we must still set the variable, and it
+    is already deprecated, so we can't get rid of the deprecation warning.
+    
+    ffmpeg/a83098ab03a47179d54a9b9c8bcefc81b9c6aafd (deprecation)
+    ffmpeg/54e5d21acabb452e5680de5db3bf7567d351d68e (doc)
+    
+    (cherry picked from commit 02e8981b57c647641b188f8612a6e4b1e31a660a)
+
+commit 07e0beb5b6ecccb2cde134f3a3bd45071bce0dae
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Tue Jan 18 15:16:39 2022 +0100
+
+    avcodec: adapt AVCodec API constification
+    
+    Refs ffmpeg/626535f6a169e2d821b969e0ea77125ba7482113
+    
+    (cherry picked from 3312a960cb5a218d47c0a23405aff6c2688f8320)
+    
+    The condition has been adapted from the original commit because VLC3
+    supports both ffmpeg and libav contrary to VLC4.
+
+commit 591f658223bb6320ea61248976753e20a985c8dc
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Wed Jan 19 15:00:21 2022 +0100
+
+    avformat: adapt AVInputFormat API constification
+    
+    Refs ffmpeg/56450a0ee4fdda160f4039fc2ae33edfd27765c9
+    
+    (cherry picked from commit 5069e1cc38fe25e40d8e58ddb387c92da1bef793)
+    
+    The condition has been adapted from the original commit because VLC3
+    supports both ffmpeg and libav contrary to VLC4.
+
+commit 66b647fd696b7f449b09b200f4028789c2d210a8
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Tue Jan 18 15:43:27 2022 +0100
+
+    avformat: adapt AVOutputFormat API constification
+    
+    Refs ffmpeg/56450a0ee4fdda160f4039fc2ae33edfd27765c9
+    
+    (cherry picked from commit d0710040f0749a74a66aa19976ab1c0edbab0b0b)
+    
+    The condition has been adapted from the original commit because VLC3
+    supports both ffmpeg and libav contrary to VLC4.
+
+commit 37bf74e6645d3023c1ebcbd81ffae1e552d3a73e
+Author: Niklas Haas <git@haasn.dev>
+Date:   Tue Jan 18 18:03:48 2022 +0100
+
+    opengl: drop unneeded GetIntegeri_v
+    
+    This causes issues on some platforms, and we don't need it
+
+commit 645cbd6fac5bd07d1c973be9fc048b0f329c087c
+Author: Niklas Haas <git@haasn.dev>
+Date:   Tue Jan 18 17:19:27 2022 +0100
+
+    opengl: don't error on no-op libplacebo shader
+    
+    See 6efc345d81a12
+
+commit 6d145e38c03d4ffa5b6bff31e358a5ca6ceb3461
+Author: Niklas Haas <git@haasn.dev>
+Date:   Tue Jan 18 17:07:25 2022 +0100
+
+    opengl: vout_helper: use pl_shader_params.glsl
+    
+    This is the proper way to limit the GLSL version when using standalone
+    shaders without an associated GPU backend.
+
+commit 110d69c8245bb2bc1f0cf183dcdd6ba636973bfc
+Author: Niklas Haas <git@haasn.dev>
+Date:   Tue Jan 18 16:47:22 2022 +0100
+
+    Revert "opengl: vout_helper: use pl_gpu_dummy for shaders"
+    
+    This reverts commit 2437484d7684a4661048df1e095484a276bbea0b.
+    
+    The referenced commit is not a good way of fixing the issue described in
+    its commit message. Attaching a dummy GPU to the pl_shader makes the
+    shader think a GPU is actually available, and can lead to e.g. the use
+    of a dither texture (which VLC has no mapping code for, and would thus
+    result in a shader compilation error).
+    
+    All of the queried limits are also irrelevant for the way we use shaders
+    in this code, since they only affect GPU resources (which we can't use)
+    or texture sampling (which we don't use).
+    
+    Fixes #26503 by removing the conflicting code
+
+commit 7d014e8d4b7a911a0d823075658d3ea390ddf5dc
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Thu Jan 13 21:45:04 2022 +0100
+
+    macosx: Disables safe area compatibility mode in Info.plist
+    
+    Signal that the compatibility mode is not needed and VLC takes
+    care about the safe area directly.
+
+commit eb73710144cb4b336099047ffdf32642494b7eaa
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Thu Jan 13 21:40:48 2022 +0100
+
+    macosx: Support safe area of new M1 macs for VLC fullscreen
+    
+    New M1 Macs contain a notch, covering part of the screen. Analog to
+    the Quicktime player, when implementing VLCs internal fullscreen,
+    the video is scaled inside the safe area of the notch only, leaving
+    the top area black.
+    
+    Fixes #26291
+
+commit 02448d19dd7b4965718ffc97faba3a659f356d7b
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Jan 12 17:45:15 2022 +0200
+
+    contribs: rectify minimum libdvdnav version
+    
+    The current code base won't compile with 5.0.3 or less.
+
+commit 794d986264f6f98107abf1d8569208d2360b299e
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Jan 12 17:45:15 2022 +0200
+
+    configure: rectify minimum libdvdnav version
+    
+    The current code base won't compile with 5.0.3 or less.
+
+commit 584bf4f6414daf73adba01fd10f7b0aafdc1330d
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Wed Jan 12 19:48:59 2022 +0100
+
+    upnp: fix browsing of certain servers
+    
+    This is a partial revert of 785c6dfe. Some servers (notably PLEX, UMS,
+    and some TV sets) amend the exposed media type with additional subtypes
+    for further differentiation not relevant to VLC, so it is actually
+    correct to compare the beginning of the string only.
+    
+    For instance "object.container" can turn into
+    "object.container.storageFolder" or "object.container.person.musicArtist"
+    so the plain strcmp will fail to recognize the container nature.
+    
+    Fixes vlc-ios#1239
+    
+    (cherry picked from commit 741f1f90cdb1f972d4552c4f45eafd24b3092621)
+
+commit fe93f2269c9840f14487c7df8cb9146da2d4e410
+Author: Maxime Chapelet <umxprime@videolabs.io>
+Date:   Fri Jan 7 11:39:48 2022 +0100
+
+    ios : consider other application states to allow display initialization
+    
+    the display can be created when the application state is active or inactive
+    inactive state actually happens when the application comes back from background and becomes active just after a very short amount of time
+    hence we should allow vout initialization only when application state is not background
+    
+    (cherry picked from commit 012b57cd9b595d6ab8801ad57d8fd7334fa2d101)
+
+commit 423bb86ae7bbdcb0aaac0be43422d8a72ceeedec
+Author: Maxime Chapelet <umxprime@videolabs.io>
+Date:   Fri Jan 7 11:34:24 2022 +0100
+
+    videotoolbox : reload module if vout initialisation fails
+    
+    (cherry picked from commit f702e7423d89fa7110e51157fd73107a730c23f1)
+
+commit 0f21d3ec9492658370ef8e9788fc8a3720aea2da
+Author: Maxime Chapelet <umxprime@videolabs.io>
+Date:   Mon Jan 10 16:36:35 2022 +0100
+
+    ogg : fix demux control to get attachements
+    
+    (cherry picked from commit 19fc95b3eace9f53dbfebdfcfc53af2fa48551ad)
+
+commit 0b72ae60d25e40a960fa4ecd54ac30a66ef60e0b
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Thu Jan 6 22:28:14 2022 +0100
+
+    bin: Add Frameworks directory to vlc-osx RPATH
+    
+    vlc-osx is used to generate the final VLC executable, and therefore
+    the RPATH to the Frameworks directory is needed as well, in order
+    to find the Sparkle framework.
+    
+    Followup fix for !1155.
+
+commit 80742f9ad2ee6b0ee58f574be1e5b973e8d559e1
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Dec 31 18:01:19 2021 +0100
+
+    demux: mp4: add support for ISO/IEC 23003-5 audio
+    
+    refs #26427
+    
+    (cherry picked from commit c8d319ed0f7df205ac5d278119e2819f7653549b)
+
+commit 33ae16084a579437a96910263153a592c39e03be
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 5 15:05:44 2022 +0100
+
+    demux: adaptive: fix description leak
+
+commit 0b23c96a037cb9572223778b6e08ee8345bd8a34
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Jan 3 22:58:11 2022 +0100
+
+    contrib: sparkle: do not change install_name
+    
+    Changing the install name is no longer necessary since
+    0831e42ecb6878bec2b3a0e07d56123a730d6a98
+    and doing so breaks the ad-hoc code signing leading to a broken
+    bundle and pseudo-bundle on arm64 which requires ad-hoc signing.
+    
+    Fix #26127
+
+commit 939b047078d6f742ebee92803109dbd4fb9c8383
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Jan 3 22:54:31 2022 +0100
+
+    macosx: add rpath for Frameworks
+    
+    The Frameworks folder was missing in the rpath, leading to Frameworks
+    like Sparkle requiring change of the install_name after it was built
+    instead of just using rpath properly.
+
+commit 307931a3d3282bb88bb7be5d7c7520de00a7a21f
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Sun Dec 26 09:28:42 2021 +0100
+
+    upnp: inherit SAT>IP options
+    
+    This correctly deploys custom values set through mobile apps
+    
+    (cherry picked from commit c9b8080252c3861ff2eded566d67d1e016f9f794)
+
+commit b9499494965e5d8ccd560a8636657a035419fc12
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Sun Nov 1 12:34:19 2020 +0100
+
+    adaptive: PlaylistManager: remove useless mutex lock
+    
+    (cherry picked from commit 551734e0ac03308560c402626d83eb99ba356bb9)
+
+commit 3599c9b9001bfdfb3e80138bacebe0633802a1d0
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Sun Nov 1 12:34:17 2020 +0100
+
+    adaptive: PlaylistManager: remove savecancel
+    
+    We don't use cancellation in this code.
+    
+    (cherry picked from commit b7f6debac6e981c97be9443128e39224a4731f5e)
+
+commit fce30e7a3b763c8271c1ecb60195a5d3cae27cdd
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Dec 30 16:12:08 2020 +0100
+
+    demux: hls: remove unused member
+    
+    (cherry picked from commit 305c390d74a38bd9a0d57f0a3694e14bf51ab06f)
+
+commit f32b65b57eb48874ff9fc654706989c058af7084
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 23 22:40:08 2021 +0100
+
+    demux: hls: read framerate
+    
+    (cherry picked from commit 0d61e9a1b8d27df6af5bf1c4ff1f6d51ede4594b)
+
+commit 88caedb6cfb933edd86b123dc25bc0f1b8fa2acf
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Apr 9 09:22:24 2021 +0200
+
+    demux: adaptive: split download queues
+    
+    prioritize manifests over data chunks
+    
+    (cherry picked from commit 7b4eff1ccc01302a057f8348c626514b2ed4207d)
+
+commit 374b01f3f6843a1e0a99cace70187fe753c68d33
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Apr 7 21:50:05 2021 +0200
+
+    demux: adaptive: pass source back to manager for deletion
+    
+    (cherry picked from commit 3e32bbeb059bb18d8603449a628de2e62657ff1a)
+
+commit 472dad921188ca67acc17f270fe90621ae2c19ff
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Aug 4 23:37:06 2021 +0200
+
+    demux: adaptive: set segment source chunk type
+    
+    (cherry picked from commit b85ef41f6b2ad6e5f464bb8d4e3b0368614a1041)
+
+commit 410e8676cea38353cfe71655a21405885f713d19
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jun 10 16:11:35 2021 +0200
+
+    demux: adaptive: clear discontinuity on new demux first chunk
+    
+    (cherry picked from commit cdd1dda3c3c5a8e14c3a0d56e963c2578155ecac)
+
+commit 19d8f903a534f6d223a12024405a37dc7ac55189
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Jul 26 17:49:30 2021 +0200
+
+    demux: adaptive: fix firstchunk, peek and restart
+    
+    (cherry picked from commit 33fb9022907360d8f2618384f56b57a8c7a5e136)
+
+commit 945d8a676d492ae8e3f6c030b0d65fa5c2ce91c6
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Aug 6 16:12:14 2021 +0200
+
+    demux: adaptive: order sets on insert
+    
+    (cherry picked from commit f36a0c559577d911bffc8c9f421e3f7fe9de72ac)
+
+commit d0a772a27aa50a4ec7c0c9ce8e4752ac97cc31ef
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Aug 6 18:18:00 2021 +0200
+
+    demux: adaptive: use enum class for Role
+    
+    (cherry picked from commit af72f0bb1aa8fa5f948dffcd81973f474dc59cfd)
+
+commit ea805f327ae7ca2be443c4a025672d4f5757d11a
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Aug 6 14:55:52 2021 +0200
+
+    demux: adaptive: remove null adaptationSet checks
+    
+    now checked in parsers
+    
+    (cherry picked from commit 76fd9eadc3e3cb1ceb5b3d11a2e98eb5ea278295)
+
+commit 52a1fed3dabc4a5fa8657e55441a77f2612f43fe
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jul 16 18:27:56 2021 +0200
+
+    demux: adaptive: improve webvtt probing
+    
+    (cherry picked from commit a01153660bdb865fe70d3129170cdf34ce15eb0e)
+
+commit 6ebcf5b906d27572725754cfb34d624fac0d62e4
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jul 23 16:02:41 2021 +0200
+
+    demux: adaptive: remove arbitrary read size
+    
+    (cherry picked from commit 451f6242c51d5d8d8ac3a7627877d1cfb522d8fc)
+
+commit 1945a109b40fd120213395b95c474c396b7005ef
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Sep 14 14:57:00 2021 +0200
+
+    demux: adaptive: request optional compression
+    
+    Allow server to compress manifests and text subtitles
+    
+    (cherry picked from commit be436e0ed29642489af90a1ca2cabbca38a511c6)
+
+commit 673baa8f7e18bdafc9a10a16406aa0d82fb580c8
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Sep 13 22:21:39 2021 +0200
+
+    demux: adaptive: remove native connection
+    
+    (cherry picked from commit 98fd0b741052ade76a9ca29de3deae08ad446232)
+
+commit 7ba4392ed7d28de2b0b692670e6c03ed558f248e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Sep 13 22:20:11 2021 +0200
+
+    demux: adaptive: replace maxconnect const var with namespaced constexpr
+    
+    (cherry picked from commit 238baeb83ce7fa5e4a2791a1738803d8dab74ef8)
+
+commit da5cb24df4285ba367195bc08ca79a666e305315
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Sep 1 20:31:45 2021 +0200
+
+    demux: adaptive: use libvlchttp for default connections
+    
+    (cherry picked from commit 207a2c1592d014c9a97a032ba73861a0ba69f376)
+
+commit 3db6fc859e39539ae969da62ac6b58cc571013b8
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Sep 1 16:05:19 2021 +0200
+
+    demux: adaptive: add libvlchttp based connection
+    
+    (cherry picked from commit f5c3393339ebfafe35c4ff43fe59bcee71d93692)
+
+commit fae8b59ad4bc61dcef78eae2f92637561ae70236
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Sep 8 13:17:23 2021 +0200
+
+    demux: adaptive: remove useless parent method indirection
+    
+    (cherry picked from commit 3db241a3c507cbab7ab0646d475bcc86f8d70869)
+
+commit 8694578afa1dc462db7b9bbfe811ade74235e886
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Sep 2 21:42:18 2021 +0200
+
+    demux: adaptive: use connection bytesRead instead of readsize
+    
+    (cherry picked from commit 087f81bb5a972c5589758a712d1da4b89edfd3e9)
+
+commit 1bf2d97f5c1788a605b49808de615028c4c92a95
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Sep 1 16:01:53 2021 +0200
+
+    demux: adaptive: store redirection into abstractconnection
+    
+    (cherry picked from commit 7501fae4cea2b4061bf216be330c158c31d277ce)
+
+commit 4c65e88cf2951345b74e3d22b3e7dbf0a8a5005f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Sep 1 11:15:28 2021 +0200
+
+    adaptive: add missing virtual keyword
+    
+    (cherry picked from commit 708a187152f6bdb6949af9a18d61fa757eaa61c9)
+
+commit a743c12a56401bcbd10029bf6534b041d50f6ca7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jul 6 12:03:07 2021 +0200
+
+    demux: adaptive: start with lowest non audio on NearOptimal Logic
+    
+    (cherry picked from commit e469c589a7c1ec61ff38d746ff8ef073ac33b9c3)
+
+commit 393aa67bebabbaa8b574332edd1e8da7c7ab03ee
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 1 14:54:30 2021 +0200
+
+    demux: hls: add support for Ogg streams
+    
+    Ignore the worst standard for the worse
+    refs #25781
+    
+    (cherry picked from commit baca970d740ba35b4653d96fb57573e8c72b4783)
+
+commit 114cddedf1cfc1610e3b84a252743a91e5d8cdd9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 1 13:37:47 2021 +0200
+
+    demux: hls: handle packed MP3 and AC-3
+    
+    refs #25781
+    
+    (cherry picked from commit fb6354a1541a2d429d12b1f312688d52df4cc120)
+
+commit 40ae2576d1a6de3967854cea4152ea5363e0d050
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 1 17:29:10 2021 +0200
+
+    demux: adaptive: use enum class for format
+    
+    (cherry picked from commit 7fd99fbf0b674983929a7e8c064277af8218a4ec)
+
+commit 87652318e7ac37ec295442713cb495764a554025
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 17 15:30:38 2021 +0200
+
+    demux: adaptive: remove unused code
+    
+    (cherry picked from commit e97d492a8c886ad8a91da419daef088a5ff274fd)
+
+commit c909bf9069781171a4951cd4147367108c4ecf92
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Apr 19 17:10:19 2021 +0200
+
+    demux: adaptive: early fail on unsupported format
+    
+    (cherry picked from commit 590b7bb1ef8f118a8f55521a76701910e89df99f)
+
+commit a29267feb7b6b397b4d4b596b5005d9f7aa24bc3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 3 15:58:30 2021 +0200
+
+    demux: adaptive: provide way to signal end of commands group
+    
+    Having to deal with es_Add or Del sequences forces the command
+    queue to expect another type of input on the esout before
+    recycling es, creating delay in multiple cases.
+    
+    (cherry picked from commit 077d5489adfe1288f33e564a420892f9686d40b5)
+
+commit a26feabe10545cfa8f8ee525ded378fcb8a0e819
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 22 17:45:04 2021 +0100
+
+    demux: adaptive: add time event on segment change
+    
+    (cherry picked from commit 5efc4c4a4f3e9a4e9ac31371546e7e0cc3a3a8cb)
+
+commit 88b7116fd525392c9bb936e4a86daf43ef09d309
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Apr 23 15:24:58 2021 +0200
+
+    demux: adaptive: replace utcTime with displaytime
+    
+    (cherry picked from commit 9f4df658434416624de39b5393be626f171ae6cb)
+
+commit 6467b3dcae27757f8659620b3bb5c382f65462f5
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 30 20:11:32 2021 +0200
+
+    demux: hls: compute pdt time for pre discontinuity
+    
+    (cherry picked from commit 8aeb1940264e488324753b6a898dddaec93c3b60)
+
+commit 9c15397a8a0034b62f31e355ababa05126b6f552
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Apr 23 15:23:10 2021 +0200
+
+    demux: adaptive: add segment displaytime
+    
+    (cherry picked from commit e6766256d492104dc954be39aeba107c3c8f57fb)
+
+commit ac9b1267f34f8d088f4c15fdba79faabec99ea1d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 27 16:43:27 2021 +0200
+
+    demux: adaptive: move esidentifier to abstract class
+    
+    (cherry picked from commit 2e1d434508b5341b6db708412764f0a60e3f6851)
+
+commit f092d95979e200b4d0a60a9a3e80943425298129
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 27 16:30:20 2021 +0200
+
+    demux: adaptive: add EsType to queued commands
+    
+    (cherry picked from commit e5413d5f56f60da4aed1e95a4bda3589cc17df34)
+
+commit efb322480e3272724275ce18de9f2a0a63eb779e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 20 11:19:50 2021 +0200
+
+    demux: adaptive: add type on abstract es
+    
+    (cherry picked from commit 5eb8cc953a4bc64182fa1ca423462c48c54832d6)
+
+commit 2f37d0fe7d4395a018b29127355297ee214b56bd
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 30 10:22:04 2021 +0200
+
+    demux: adaptive: improve commands latency
+    
+    (cherry picked from commit e469eadd94ee79ec427aa2d8b01162719f9b5625)
+
+commit 6c52663cd32d9ed2648d08c5eae50f0373d19a9f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Apr 19 16:53:14 2021 +0200
+
+    demux: adaptive: simplify logic case with single rep
+    
+    (cherry picked from commit 36eb43a78218a02f6f46c31fb73aa8f5dbcf2765)
+
+commit 78c3b4aa24d81b4bc92ac042f96f29f899d52e9f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Apr 19 16:55:42 2021 +0200
+
+    demux: adaptive: improve restart condition debugging
+    
+    (cherry picked from commit e1def12f549a3625a31749a87e35632ea1f3948f)
+
+commit e53d914ab5e1191de46cfe1050da938430320a02
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Apr 21 16:55:18 2021 +0200
+
+    demux: adaptive: remove unused code
+    
+    (cherry picked from commit 81086b74f72a1a84f27b616962d9cc6e2aadb34c)
+
+commit 667fc99fd8fc241823865a27142d51a9ada719be
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 20 15:28:06 2021 +0200
+
+    demux: adaptive: add commandsqueue interface
+    
+    (cherry picked from commit 6665407d0a2435ce5379a71779024c924296b6f8)
+
+commit 9964c70096fe8e6ee7a694cf79d156ebfd02e99e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 18 17:34:21 2021 +0100
+
+    demux: adaptive: change commands factory ownership
+    
+    (cherry picked from commit 5924cb42a5c71a2583b606ec4c49c4c9ddb5f2c4)
+
+commit 2b9b27900097775dab38618dced5bb7d5c93d952
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Apr 15 17:54:01 2021 +0200
+
+    demux: adaptive: fix possible bogus huge buffer level
+    
+    (cherry picked from commit 0d457f141f59752640df7f7e2483523607620f83)
+
+commit 6e70b9ff66c0edc388cdc3a49a0ac4db9f7d04a4
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Apr 16 16:47:37 2021 +0200
+
+    demux: adaptive: remove left indirect returns since lock removal
+    
+    (cherry picked from commit b18243fc04d1f9c124ed69ac2320ae4fdddc98f7)
+
+commit fc7bf9ec87d7fd2496e484989ee2e42910a82826
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 18 21:03:29 2021 +0100
+
+    demux: adaptive: delegate chunk source creation to manager
+    
+    (cherry picked from commit 3de1584a8dfda97871aa0696629ffc06f7864f94)
+
+commit 4d6319bd714a35f9b1ef8615bdd7a2de436829a0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 18 13:48:11 2021 +0100
+
+    demux: adaptive: always create chunk with range
+    
+    (cherry picked from commit a5a67754cc0e059eb383273be09466d19845c809)
+
+commit d4dade4fa223caf204f1a3d18d4e652b2e6234e6
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 18 11:26:53 2021 +0100
+
+    demux: adaptive: add getter for chunk type
+    
+    (cherry picked from commit da69089732b850ef27f0b3e55f45c76cad5e883b)
+
+commit b9df56c5503c4504b5a9c037a4d6d29e34839742
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sun Jan 10 17:05:02 2021 +0100
+
+    demux: adaptive: add inheritable wrapper deleter
+    
+    (cherry picked from commit 7744c8b69d3d32de6dda061c62c7eab7b77db6b9)
+
+commit ad7ba7165b2c610fc2a2fe3d6acc71685ad7eaf5
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 22:38:58 2021 +0100
+
+    demux: adaptive: add namespace on time
+    
+    (cherry picked from commit 04f2b9562a0af67a47046faf6ef45c10f5373f1d)
+
+commit ce6e0961f5c2afdbc8581f94ab24fe70c1b5d79b
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 18 00:48:16 2021 +0100
+
+    demux: adaptive: no more need for probing fallback
+    
+    (cherry picked from commit b293c8eb3edd55e9e2ca0047e16c94c60a417a6c)
+
+commit 84620c0dcd793956768c484110e487cbdbe74fdd
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 6 09:58:36 2021 +0200
+
+    demux: adaptive: fix probing with multiple ID3
+    
+    regression regarding #24237 after chunk probe only change
+    
+    (cherry picked from commit 4e87c5494cfd34d85fa42d4f5e6bbf094f2c6f9b)
+
+commit de58fc839fd4c4e312bfd2fbb25a7b52a07e1f36
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 30 15:43:37 2021 +0200
+
+    demux: adaptive: fix canceling current chunk without full download
+    
+    read data could be infinite (stream)
+    refs #25562
+    
+    (cherry picked from commit fbebef63e6cb9f2f200c6012bbdb0dbc4fa3aa9b)
+
+commit a5662fa4a75a5e313068d0fd33eedc8dd3c50afb
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 24 20:01:39 2021 +0100
+
+    demux: adaptive: handle startsegment number offset
+    
+    ref #25518
+    
+    (cherry picked from commit fc6790c950f274d4eae8fbc2d331627a9aaa5b0b)
+
+commit 0da5e9d252679bae96ac2bfe0bcf6136495cac04
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 16 20:25:41 2021 +0100
+
+    demux: adaptive: add missing virtual destructor
+    
+    (cherry picked from commit 39297dbf18f1e6a5252a75a50c912395eb8bdfd1)
+
+commit c9649bffcda2b0df276cda27bbe90e665145e792
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 15 17:57:11 2021 +0100
+
+    demux: adaptive: remove streams/source ContentType propagation
+    
+    (cherry picked from commit cf71d9197fce6a7a1e160e66d9dc6f68c64638fa)
+
+commit c7b0c476eef4955453d56c158bcdc0e40fe7b915
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 15 17:53:35 2021 +0100
+
+    demux: adaptive: remove MimeDemuxer
+    
+    (cherry picked from commit b9f4904d44e9a8971cbd5b66a6610f4da7286cd6)
+
+commit d4bbabf843f0334b15da596021f34aa3bcfff81b
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sun Mar 14 20:14:07 2021 +0100
+
+    demux: adaptive: detect format change by from segmentchunk
+    
+    (cherry picked from commit 126cb62893a177916d4c863da89252edf4e7c75a)
+
+commit 37a986cf38feb990d480c4eba6b084986b5292ed
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Mar 12 12:10:03 2021 +0100
+
+    demux: adaptive: make chunk data probe able
+    
+    (cherry picked from commit ddfbcedb00fabbae5716121804166658dc0e2767)
+
+commit 1e2d13b0472623d9be74a298d804204d25c6f126
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Mar 12 10:11:10 2021 +0100
+
+    demux: adaptive: add common chunk/chunk source interface
+    
+    (cherry picked from commit 51293726f526342aa9805b292a3dfceb32e84003)
+
+commit 6676647f69e5ee68d4efff687b228ab326511337
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 15 21:14:56 2021 +0100
+
+    demux: adaptive: split chunk computation & processing
+    
+    (cherry picked from commit cfdfa43bab1a358bb8d592c7053fb230dfa83f1f)
+
+commit c1721d7cb5ef0700f549463492629deaf92fd049
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Mar 11 10:52:40 2021 +0100
+
+    demux: adaptive: improve stream buffer debugging
+    
+    (cherry picked from commit 20bb1529cd74ce63b7506a8634cb9313159935c1)
+
+commit c4e4a67d8e47578c9264a82174603548e5c75329
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Nov 30 20:20:01 2020 +0100
+
+    demux: adaptive: add preparsing case
+    
+    (cherry picked from commit 8450f76040f6ab59f278ca873fa4681088ea4b91)
+
+commit c7f5bba362d15845edca7d60278f97972f03ee6d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 3 14:44:10 2021 +0100
+
+    demux: adaptive: pass latency to stats
+    
+    (cherry picked from commit b32c7d9635b6f0445a55d638d3be3445acfd99c1)
+
+commit a34e688ba72b8b2e2b824e247e03d5f1f85e702f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 3 14:00:31 2021 +0100
+
+    demux: adaptive: compute latency from request
+    
+    (cherry picked from commit e8c855dea80be91bba876e4c4709e4022e479f6e)
+
+commit d8a78806c57d0620d25db682e5391fdb547ff652
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sat Feb 27 16:50:05 2021 +0100
+
+    demux: adaptive: add buffering target info
+    
+    (cherry picked from commit f2e76681111e82d84c616b6a7c1a718583d89b2c)
+
+commit d3c0a11bba8c1c6932408fb80f01d440cbad1cac
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 23 17:50:30 2021 +0100
+
+    demux: adaptive: have intheritance on commonattributes
+    
+    (cherry picked from commit 630f86677df6767162c86609d19ea01ad10ca46b)
+
+commit a73c66424f49162101d777f049f84a416e7b2a80
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 23 15:58:00 2021 +0100
+
+    demux: adaptive: handle AR/rates in codecdesc
+    
+    (cherry picked from commit 9aec7be7e7b2796913c795beef53109e0ba380ca)
+
+commit f5d95dffb19ecdf1af276b53375c816ca1f0da5b
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 23 15:57:38 2021 +0100
+
+    demux: adaptive: add missing common attributes
+    
+    (cherry picked from commit 56251ef310918e43a0b2c2ac04c370e867fcabd6)
+
+commit d49d39fb9f47321ba2ca6a3d2da3fe8a0124d3b5
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sat Feb 27 19:52:18 2021 +0100
+
+    demux: adaptive: only use segments for bw estimation
+    
+    (cherry picked from commit 152883b6980fb7f6369c16a69e2bc1d65a7e120a)
+
+commit f490f5e08384f7fe05a639b01048e0946b09d9c9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sat Feb 27 17:26:37 2021 +0100
+
+    demux: adaptive: add type to retrieved chunks
+    
+    (cherry picked from commit 1ef4b4f824b744437a7b397c5289f56742e08114)
+
+commit 649e9c21d43ebc0fc335a7e8d451a62f052db363
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Feb 26 17:55:55 2021 +0100
+
+    demux: adaptive: evaluate unknown demux restart condition on switch event
+    
+    Format change needs a restart, but when demuxer has been probed, we
+    only need to handle restart/reprobing when switching variants.
+    
+    (cherry picked from commit 854f425603c01dc2aaf124420104a21f561e594d)
+
+commit 9b7dd2671e198c506dd195d4203ba9db876c8df3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 2 14:39:21 2021 +0100
+
+    demux: adaptive: remove sets copies
+    
+    (cherry picked from commit 7c09a9349d322729bb4fc0d2a0c26293c5151a2d)
+
+commit 87d99a88361ea89299da1382162af11a7f4c7331
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 2 14:37:32 2021 +0100
+
+    demux: adaptive: constify getByID()
+    
+    (cherry picked from commit ec9f0e8da2bc54c652ed76ac00689907c6b8c56b)
+
+commit a659db4118c038cf7b1f5d6f0b604a2548d73c29
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 2 14:32:47 2021 +0100
+
+    demux: adaptive: constify getRepresentations()
+    
+    (cherry picked from commit a5863ff7a95a44545bf0b4c7fdfce6e6e71c5ca7)
+
+commit 3bd62d4472c82861af19421156e194e94140503a
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 2 13:51:33 2021 +0100
+
+    demux: adaptive: improve demux restart debugging
+    
+    (cherry picked from commit 76c2e6ab6bf371d4b6d85e1861def569745b06f4)
+
+commit fac65faeff0d2b0608dda065e51526ffaf6e8b92
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Feb 25 19:06:52 2021 +0100
+
+    demux: adaptive: don't wait min rebuffering on discontinuity
+    
+    (cherry picked from commit 3c3536afd72bc2a380b801764b221f5c76948979)
+
+commit dfad1d185b54b2ba8d2fd12a4395c38bc0d4cc05
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Feb 25 10:05:37 2021 +0100
+
+    demux: adaptive: don't declare ES type that can't be selected by core
+    
+    (cherry picked from commit 19617f1061b57b07994403a45144a948502e27ce)
+
+commit e502ee15d2b9f98fe843ae493ccaca3539326d83
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Jan 11 16:35:55 2021 +0100
+
+    demux: adaptive: create description list for declaring es
+    
+    (cherry picked from commit 57a1fb0ee608afca54bc5e60ccda69027b9e3043)
+
+commit 901eecfb66a83dec29473cb0f552da40a1b772b2
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Feb 24 14:24:33 2021 +0100
+
+    demux: adaptive: remove unused global drain
+    
+    (cherry picked from commit 72e0a0015252defec31c4fdbc54c8d521caa61d6)
+
+commit 79d0ac834c3222a0632ba659f01fd26d813e4fec
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Feb 9 15:03:07 2021 +0100
+
+    adaptive: BasePeriod: mark getPeriodDuration as override
+    
+    Fix the warning:
+    
+    ../../modules/demux/smooth/playlist/../../adaptive/playlist/BasePeriod.h:49:36: warning: 'getPeriodDuration' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+                    virtual vlc_tick_t getPeriodDuration() const;
+                                       ^
+    
+    (cherry picked from commit 2906b93d005de3212bca73896ac8143cd4138286)
+
+commit 060b849a5bd52552ece1e31f5e6b98e7c0999f1a
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Feb 9 15:03:06 2021 +0100
+
+    adaptive: AbstractAdapatiationLogic: mark getPeriodDuration as override
+    
+    Fix the warning:
+    
+    ../../modules/demux/adaptive/logic/AbstractAdaptationLogic.h:51:45: warning: 'updateDownloadRate' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+                    virtual void                updateDownloadRate     (const ID &, size_t, vlc_tick_t);
+                                                ^
+    
+    (cherry picked from commit e57bd2aca049bc9ad2a014c2a552b6c68235a5ed)
+
+commit 3888d24e55a316555e868b8772ffe7cddbdfafd9
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Feb 9 15:03:05 2021 +0100
+
+    adaptive: Segment: mark debug as override
+    
+    Fix warning:
+    
+    ../../modules/demux/dash/mp4/../mpd/../../adaptive/playlist/Segment.h:103:30: warning: 'debug' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+                    virtual void debug(vlc_object_t *,int = 0) const;
+    
+    (cherry picked from commit f65953ef4db7b14ae99884dd6a5ca62dc1991837)
+
+commit fd8635e55fa607ee309a64247f83b2353cdb10d4
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Wed Feb 10 11:50:25 2021 +0100
+
+    adaptive: SegmentBase: remove unused lambda capture
+    
+    (cherry picked from commit 1c6c7f23b236f7daedd6473d966dc9cfbf92e41d)
+
+commit 725562b5f9065a5821badd683b839907c666796f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Dec 21 14:17:35 2020 +0100
+
+    demux: adaptive: add more unit tests
+    
+    (cherry picked from commit fc25e9b42b2833f015b4b753c7a74061c88299e2)
+
+commit 3568a389a41df0d0b0dde163aa81c30c2bab9b1e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 17 11:17:55 2020 +0100
+
+    tests: adaptive: run tests against static lib
+    
+    (cherry picked from commit b4c035ca978c3196c5fb6c4d7d9458747f303093)
+
+commit 3c4d208ea5a217b56aec2746e3b56b22b4fa2d5f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 17 10:13:39 2020 +0100
+
+    demux: adaptive: split build with static lib
+    
+    (cherry picked from commit 692dde04ad106f692a2ea0397f29c4106f86f1eb)
+
+commit 8681d053c5104390251435d0d3e237beecbe42e6
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jan 22 18:24:59 2021 +0100
+
+    demux: adaptive: rename libtool conflicting objects
+    
+    (cherry picked from commit 42dd2b06d87034a944f732768f1319d4e1e2f5dc)
+
+commit dc37835c69e65b1c244c16c202c7c205dac41b9d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue May 21 15:43:21 2019 +0200
+
+    demux: hls: handle broken EXTINF
+    
+    ex: https://livestream.peer5.com/video/kite/index.m3u8
+    (cherry picked from commit d97111e384bb3ea39fb3eda83c5a74d1ce7b20a3)
+
+commit c81830c33d507df956d787c11018435a91b1b2d0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 20 15:51:28 2018 +0100
+
+    demux: hls: end attribute when closing quotes
+    
+    (cherry picked from commit e53149b6b194109bf05ab91087acb38f52b5fed9)
+
+commit 97bef2f5903f47b5de5837fa29004cc096771be7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 20 15:49:38 2018 +0100
+
+    demux: hls: strip invalid padding chars from attributes
+    
+    (cherry picked from commit 698a857c775224e0c4c17e870fd8e2c31e6aa648)
+
+commit e4edf6b3bf98782251e53070e88c3aaec0a1a873
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Thu Dec 3 03:47:45 2020 -0800
+
+    adaptive: Use std::string::npos instead of a literal -1
+    
+    MSVC complains about a negative number being assigned to an unsigned
+    variable
+    
+    (cherry picked from commit eaebf7d18c332316b89a8a1e550cae241a42b3eb)
+
+commit 19fab53435b2d8424b52c0b7a3ac6a13313071c7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 09:16:00 2021 +0100
+
+    demux: dash: remove useless subclass
+    
+    (cherry picked from commit a79c4f637dd2cd6c0f921696a646f85edc0b1a51)
+
+commit a1c0636bc4e8eb73d68896bec01d7fc813f2e14f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jul 31 09:32:03 2018 +0200
+
+    demux: dash: use uri token replacement helper
+    
+    fixes escaping and missing format strings
+    
+    (cherry picked from commit 2f757ca5149a7e1a1d3b83ef12d5b183e99b5fe8)
+
+commit 6c967a8542fe1267ae9e468febefabd0420eda6c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jul 31 12:42:06 2018 +0200
+
+    demux: dash: add Token replacement helper
+    
+    (cherry picked from commit 0841a8cc3a351e2dec1812c8495a676c046ac0ae)
+
+commit 9d995da7cd180d80560090dd2b5d38d85acca2bc
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 14 14:04:12 2021 +0100
+
+    demux: adaptive: enable pause
+    
+    (cherry picked from commit f8ac5e2c52f85d5e85d3b74de5aae9be321c74d7)
+
+commit 7677318f44a2a66e6dae3deedbc18279785eefb9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 20 20:34:45 2021 +0100
+
+    demux: adaptive: handle position change through event
+    
+    (cherry picked from commit 704c48efa653154d1373bcdb380b033db804d7dc)
+
+commit b58d65828c86e2e22e222e21ff318cb001177da0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 20 19:35:54 2021 +0100
+
+    demux: adaptive: add position event
+    
+    (cherry picked from commit 1fced8e7f70f5407df9fd02325446a7849992393)
+
+commit cd6e08636273ddaa6eac4d0944f7e4d590ed5ebc
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 20 19:23:00 2021 +0100
+
+    demux: adaptive: change tracker Events
+    
+    (cherry picked from commit 79ca05e2e228fa7c62a101bedcf3292284713740)
+
+commit fbe4f23a806b7450df11ef21e34fe57766536931
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 14 14:03:26 2021 +0100
+
+    demux: adaptive: refactor getting available buffering
+    
+    (cherry picked from commit 37f75e10ccd43949c71eaa76887a8a853d0dc3c1)
+
+commit 272dd5df67b590dff426b2a5551f0cceaa559d62
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jan 15 10:09:25 2021 +0100
+
+    demux: adaptive: make commandsqueue to use only abstract objects
+    
+    (cherry picked from commit 817cb824b9534017484fdae3f19048ec94b90b4d)
+
+commit bea315e99974d45500a5839cb70cbfef7a51dc39
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 14 23:39:35 2021 +0100
+
+    demux: adaptive: add missing override specifier
+    
+    (cherry picked from commit 14e226fe6fdebbb71fece9b3967dfb19d4447456)
+
+commit cc30e916dad1f5f38a1bed29b18d9d6e7a6132dc
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 14 20:38:04 2021 +0100
+
+    demux: adaptive: fix commands comparison
+    
+    strictly weak ordering was not preserved with same pts pkts
+    (assumed a & b were compared in stored order)
+    
+    Causing corruption with non standard split IFrames as < 2^16
+    PES size.
+    
+    refs #25380
+    
+    (cherry picked from commit e3ae28bcb236c51a3a1102354d93901b40e91e55)
+
+commit 2c593de6e931986eea2b33c00d63c6ebaa51d6db
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Jan 18 15:18:59 2021 +0100
+
+    demux: adaptive: fix empty commandqueue duration
+    
+    (cherry picked from commit 33874d6d903ad6407849a563bb7a0f7e9bfd9f7f)
+
+commit db3087a31b0d11047e100d73f36a0eaa77771f4d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jan 8 15:09:25 2021 +0100
+
+    demux: adaptive: remove useless overload
+    
+    (cherry picked from commit 3c099d21956adda9f7cfe5ab3363500b73795636)
+
+commit 1b7f22c156c839d6ce18946d1d6f6043a8933d73
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 7 13:05:02 2021 +0100
+
+    demux: dash: fix debug overloading
+    
+    (cherry picked from commit c9732cfeeb31fc616f092276d4db2cf45ae92768)
+
+commit 7979c08d712b372a11d3c2d5be7eafe811685510
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 7 19:37:33 2021 +0100
+
+    demux: adaptive: re-check out of range timeline
+    
+    (cherry picked from commit 91ba5afbb5beb24c4a42e518f0b91fa2724f4788)
+
+commit 3c124b0fab9caca96ac8d2fbfd671677d6ff0e74
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Jan 7 13:04:48 2021 +0100
+
+    demux: adaptive: add missing override specifiers
+    
+    (cherry picked from commit b1aad929d4e15d01d9badd60a6c08e69ffe339b6)
+
+commit bb577da24ae697ee88809f474ca2d63f99687a71
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 22:04:49 2021 +0100
+
+    demux: adaptive: use override specifier
+    
+    (cherry picked from commit 70dc21e257a8d06b6afdd62d25a3f5c89a6b7e2d)
+
+commit c508a4a3caaa179286751438851ce63aa48301eb
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 6 19:33:20 2021 +0100
+
+    demux: adaptive: pass sequence to chunks
+    
+    (cherry picked from commit 94e9250b5db88499ba5955835e88db7719fefac6)
+
+commit 8203c7454b94a76a0b865ddae06bd03a388cbc74
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 22:20:38 2021 +0100
+
+    demux: adaptive: fix smooth template overloading
+    
+    regression by refactoring changes in b15abfbf556c53b23a6bd86d3fd4ac4a4accec7d
+    
+    (cherry picked from commit 0e1610fa42fd9cb9843e1347c7e994bdcdaee144)
+
+commit 8619ff66494128f1c16987c23bdc9bc886be3a47
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 6 16:11:16 2021 +0100
+
+    demux: adaptive: replace now single segment vector in template
+    
+    (cherry picked from commit cdf4d24370b8edb0d4975cab73cab6f8cd5c1d70)
+
+commit d3652633a18456c7df9a69aac8d531f1a3e7b266
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 11:49:45 2021 +0100
+
+    demux: adaptive: use nullptr
+    
+    (cherry picked from commit fdb307387efd1e7f41313881e4582cf2ac5bb2cc)
+
+commit d1d0a7ae0197efd24e592d70244d97a80d38fea7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 5 16:10:32 2021 +0100
+
+    demux: adaptive: simplify segmentbase
+    
+    (cherry picked from commit a7006c698c943d58da2d84033a28fe86d4758154)
+
+commit 3576a02e89953a3a7647b3ba90376f9b3afd8492
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Jan 4 21:19:59 2021 +0100
+
+    demux: adaptive: strip off segmentlist ts offset
+    
+    (cherry picked from commit dcb64419f0f35c1628bce77780d0697b3c98cc69)
+
+commit cf7613dbd79b3a7577691ff40f05f20a0511fb11
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Dec 30 10:48:50 2020 +0100
+
+    demux: adaptive: move definition
+    
+    (cherry picked from commit aabb85b7aa20368d441f2e9ef56e2ab1d303a932)
+
+commit 50f97cc79db04b4327f455980838c9c8756bac00
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 17:49:30 2020 +0100
+
+    demux: adaptive: remove unused member
+    
+    (cherry picked from commit 1197d7335a13128d647d3cdcbc6387091eb993f3)
+
+commit b6d14f7cafc18c81cdfea45fee124f02b15495f1
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 17:43:25 2020 +0100
+
+    demux: adaptive: replace typedef
+    
+    (cherry picked from commit 9e4a0070f785965d11b4b83a2e3df31b95682314)
+
+commit 9a3918e9cc94cbecad26d3ff1310706c035021dc
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 13:31:00 2020 +0100
+
+    demux: adaptive: remove segment classid
+    
+    (cherry picked from commit 1f07df28663123ddd757ffa7df146b41ce152f3d)
+
+commit dcaa82322c9dd87d8bd4b2e696c1fe6d8cff54b3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 10:28:09 2020 +0100
+
+    demux: adaptive: inheritables: remove copy assignment
+    
+    (cherry picked from commit ad34063b4c9a7461748171be0c3c9e0383ee5194)
+
+commit 1af1bbbf072ccdb01f5f707ea836b1d0974da2c4
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 15:05:53 2020 +0100
+
+    demux: adaptive: use enum class
+    
+    (cherry picked from commit b0a0cd26760a3a32de6a49d2f1840db00fbf5d44)
+
+commit d3cf12e9c2658d3f9c1b95410a1516f0d59e519c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 31 15:19:30 2020 +0100
+
+    demux: adaptive: use enum classes for statuses, fix return value
+    
+    (cherry picked from commit 5afa6c17d9938f9069c56ed46f3d6d9c4a9e1e4d)
+
+commit b2091a43d1a33de6a5337f3510419a6e64130823
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Jul 6 18:41:22 2020 +0200
+
+    demux: adaptive: check active streams and don't deselect last
+    
+    (cherry picked from commit 14529c484736e23f1e8b380a0c39e5a05a2063c6)
+
+commit f4133a007f0e19a2590e35990bbbbe00f56d02ed
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu May 23 11:44:57 2019 +0200
+
+    demux: smooth: set timeshift buffer
+    
+    (cherry picked from commit dad3c2d7d702cbe4e0454858bb4090fd61e98c3f)
+
+commit b8d2a055d82e50c7fc1c2a9fbad9da31ed8c56e9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed May 16 16:18:43 2018 +0200
+
+    demux: adaptive: reactivate stream using playback time, not buffers pcr
+    
+    (cherry picked from commit 1388783c7e4c6037ca2f7bca3d661e2b3173990b)
+
+commit cbf4eb8970e01732fd4dfb0df650dc194ded1707
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Dec 29 16:32:23 2020 +0100
+
+    demux: adaptive: fix timeline total length after truncation
+    
+    (cherry picked from commit 84a82941ac205fe639d6e8661951cae8dd77cabd)
+
+commit 89a428d028d97c4c5252e763e5299d2a7b6d493c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Dec 28 22:51:45 2020 +0100
+
+    demux: adaptive: fix timeline ahead time
+    
+    (cherry picked from commit dfcc76295c96ca0dc90c969b4ecec82d87463d7b)
+
+commit 8a89cf50214d15dd864231032db2710bb7639edf
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Dec 30 09:08:22 2020 +0100
+
+    demux: adaptive: playlist is no longer abstract
+    
+    (cherry picked from commit 5b73d3b813abf257bdb9ab1fe002ce30d631270c)
+
+commit 18989cb76d3cb439c2978825f77cc60ac94c4bb2
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Dec 24 12:44:07 2020 +0100
+
+    demux: adaptive: allow to override default resources
+    
+    (cherry picked from commit 5357940b0eb4feeb39a4ad1847f3ae5a4601a705)
+
+commit 19952ee21353e4ec45bc5ed781ed570d86922631
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Dec 21 19:53:35 2020 +0100
+
+    demux: adaptive: fix segmentlist default duration
+    
+    (cherry picked from commit b3e43b51f6d7134a74cbbfc039e095954b1d0b1b)
+
+commit 08cbfa905d1210177071d5ce006e881318a1ac28
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Dec 21 14:17:22 2020 +0100
+
+    demux: adaptive: fix include
+    
+    (cherry picked from commit 9f25d92b25e27c763d1bf354aef10c26421b7d33)
+
+commit a7cd839918f0e6c660dc07f6cac83395086fe4b0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Dec 15 10:11:01 2020 +0100
+
+    demux: adaptive: use static_cast
+    
+    (cherry picked from commit 04bd233760a57cb57a33f07130167c1399c16697)
+
+commit f62b0c87f124a22dcae2fc7ee42bcfd0287b4fb9
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Thu Dec 10 15:08:15 2020 +0100
+
+    adaptive: playlist: Fix list cleanup
+    
+    Calling front() on an empty container is undefined behavior
+    
+    (cherry picked from commit 7e305be5d43d5dc2aa6f62e09a31fa24af822314)
+
+commit a430c53b2e65ab5a2d5807b8c0918ad08ca33dde
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Thu Dec 3 10:15:58 2020 -0800
+
+    adaptive: BufferingLogic: Fix variable shadowing
+    
+    (cherry picked from commit 0390f40ca7700c1b262333ef34733473608086ad)
+
+commit fe81edd2ac5df9d337e61b1404ac2bff7428b529
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Nov 19 10:29:09 2020 +0100
+
+    demux: adaptive: remove timescaleable
+    
+    (cherry picked from commit c336bf114e081f320da91ef26ef6f069d7880bb7)
+
+commit c32e781609ec7cbda27ebb215a69863e354d1a7f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Nov 18 10:26:27 2020 +0100
+
+    demux: smooth: use simple timescale member for forged segments
+    
+    (cherry picked from commit d3549e4fadb7e838b1314357d5d3e6c335f465ca)
+
+commit 305bc6c909bd5c624b695b99cf33247ddadd64f2
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Oct 27 11:24:56 2020 +0100
+
+    demux: adaptive: rework attributes inheritance to match siblings first
+    
+    (cherry picked from commit 573752cfad0e024806e29ccef23986aaff0166db)
+
+commit 0471d1aac54ce175477e20e2ec4bda2bc749e752
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Nov 24 16:23:36 2020 +0100
+
+    demux: adaptive: move unique mixin
+    
+    (cherry picked from commit 14fa7b3e76ec2e25d2c671b586726a28834a8b2f)
+
+commit 05e0a3ac468338d965d65cbd4bf2229196910532
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Oct 22 00:28:49 2020 +0200
+
+    demux: adaptive: add stream switch debug
+    
+    (cherry picked from commit e4f18c55761380099dc81b2810956d8f11f72a60)
+
+commit 90d72f9f3a081b497462fe4d3b661865ed023f53
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Nov 20 10:11:26 2020 +0100
+
+    demux: adaptive: remove unused getMediaSegments
+    
+    (cherry picked from commit ff4b81dd12f1692cc460380dbcd43273e9e0b37a)
+
+commit cb9552ba75481b1b741b054929fc29a7cddf84a0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Oct 22 21:11:25 2020 +0200
+
+    demux: adaptive: adapt buffering logic for any timeline
+    
+    (cherry picked from commit ceef5624d6fc5ccfdfb8b18ed5e03d1832cca8aa)
+
+commit 3264291c6e560a88b46ebe380279fae9098ec22c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Oct 16 15:51:24 2020 +0200
+
+    demux: adaptive: rework profile specific types for global timeline
+    
+    (cherry picked from commit b15abfbf556c53b23a6bd86d3fd4ac4a4accec7d)
+
+commit 6ad6ac10c8fa60c8173c0c2025b41c14dca9ab0b
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Oct 14 21:52:41 2020 +0200
+
+    demux: adaptive: simplify segment methods and avoid temp lists
+    
+    (cherry picked from commit 844f58a8abee1196ff9c3bcc7af6d511edb1a377)
+
+commit fe2a671f2e62212ad031773c88d0421c4f5224b4
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Oct 14 21:16:33 2020 +0200
+
+    demux: adaptive: download and use index once
+    
+    (cherry picked from commit 4cf6ba8e06e9e1f75a6a9d0509463cbbc24bf136)
+
+commit fa753ee23ef536bd6dc6e3791a8ac09283897824
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Oct 14 17:56:23 2020 +0200
+
+    demux: adaptive: simplify subsegments
+    
+    (cherry picked from commit 961c06b95899d0b9f6246d0e2e7e6860c29eb72e)
+
+commit 29d288afd6f0c5fdde3257c257600c123749ff23
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Oct 1 20:49:41 2020 +0200
+
+    demux: adaptive: move computation to representation
+    
+    (cherry picked from commit 7d4c094510c2269c1689f78abd008f93f67b74cf)
+
+commit 3430ce4bff6ec312b63ea763ec99e88fa14b5541
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Dec 23 11:26:43 2020 +0100
+
+    adaptive: simplify connection factory selection
+    
+    (cherry picked from commit f352c422338a5bf68a29c252e4570622c3896400)
+
+commit dc78cd2679f2f8017acef744ed41ea7bf54e989a
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Oct 28 18:04:22 2020 +0100
+
+    demux: adaptive: change downloader lock contention
+    
+    don't hold lock while downloading, allowing to early cancel
+    
+    (cherry picked from commit dae323a91070adcec52769cc4a1c7c6d5d5ee572)
+
+commit 9d1c84153fe5839313b186b35ff8dbde8cb3c772
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Wed Sep 16 00:43:48 2020 +0200
+
+    adaptive: downloader: remove useless savecancel
+    
+    Cancellation is not used at all for this thread in the Downloader code
+    and the thread is owned by the Downloader itself.
+    
+    (cherry picked from commit 1ec799f3ddd8def60b41c725693489f6d38c9eae)
+
+commit 5c1348daeb6f278572d7f765309469671cd04b4d
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Wed Sep 16 01:04:07 2020 +0200
+
+    adaptive: chunk: fix spurious condition
+    
+    (cherry picked from commit 54056a364365f8426d84483b08f1db907ede33df)

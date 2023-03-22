@@ -1,0 +1,99 @@
+Release HOWTO
+-------------
+
+[ Note: this howto is probably useful to core vlc developers only ]
+
+ * Tests: compilation, regression tests ...
+
+ * Changes on the git repository
+   - Check that the version number everywhere it's needed
+     · configure.ac
+     · NEWS
+   - Update important things and add them to the NEWS file
+   - Close the milestone on Trac https://trac.videolan.org/vlc
+   - Update OpenGPG key embedded in include/vlc_update.h if needed
+   - Increase the libvlccore and libvlc revisions in src/Makefile.am
+      _if_and_only_if_ the ABI number has not been increased instead, in
+      which case the revision goes back to zero.
+
+ * Commit
+ * "Tag" the release
+    git tag -a -m "VLC Release VERSION" <VERSION>
+    (Create an annotated tag, you can skip -a if you used -m)
+    git push origin <VERSION>
+
+ * Tarballs (Use a clean tree !!!)
+  - Use 'make distcheck' to make sure all files are exported correctly
+  - copy the tar.xz file on ganesh.videolan.org
+  - generate SHA, MD5 hashes and OpenPGP signature of these files :
+        for file in vlc*; do
+            for sum in md5 sha1 sha256; do
+                ${sum}sum --binary $file > $file.$sum
+            done
+            gpg -sb -u VideoLAN\ Release --armor --force-v3-sigs $file
+        done
+
+ * Contribs
+  - Put a copy of the libraries or git snapshot in ftp://ftp.videolan.org/pub/contrib/
+  - Put the relevant win32 and Mac OS contrib package
+  - Update s.v.o/vlc and www.v.o/vlc/download-sources.html
+
+ * Win32 Packages
+  - configure using the extras/package/win32/configure.sh script
+  - copy the packages files on ganesh.videolan.org
+  - copy the vlc-2.0.4 and symbols-2.0.4 to balthazar for stacktraces
+
+ * Mac OS X packages
+  - configure using the extras/package/macosx/configure.sh script
+  - use extras/package/macosx/codesign.sh with options and key to sign it.
+  - copy the package to ganesh.videolan.org
+
+ * Sign all the files and move the signed files on /opt/ftp/pub/videolan/vlc/X.X.X
+  - At first block access to this directory by http or ftp. Only authorize rsync.
+    This is to avoid leak as some journalists and forums seem to watch the ftp.
+  - Update the "last" symlink
+
+ * Update the website
+  - edit the /index.php /vlc/*.php, include/os-specific.php files
+  - create a /vlc/release/X.X.X page
+  - add a news item to news.msg
+  - update the front page OS dependent screenshots if the interface changed.
+  - update the md5
+
+ * "Check for updates" functionality
+  - edit update.videolan.org/vlc/status
+  - gpg -u VideoLAN\ Release -t --sign --detach --armor
+  - for i in *asc;do gpg --verify $i || echo $i;done
+
+ * Mirrors
+  - Forwarn the mirror admins (optional for any minor release)
+  - Go to https://get.videolan.org/<path-to-the-file>?mirrorlist
+  - Ensures there is enough mirrors able to serve the file in each region
+    or just wait few more hours before doing the release.
+    Suggested number of mirrors:
+        - > 70% for a minor release
+        - > 80% for a major release
+        - > 80% for any auto-update
+  - Keep an eye on https://get.videolan.org/?mirrorstats during the release
+
+ * Update the wiki
+  - edit http://wiki.videolan.org/Template:VLC:latest_version
+
+ * Announce on www.freecode.com (let jb or sam do it, if you lack the account)
+  - go to https://freecode.com/projects/vlc/
+  - chose "Submit a release" in the right menu, in "Administration"
+  - Do the steps and wait (the update can take several hours)
+
+ * Announce on Twitter, Facebook and G+
+  Unfortunately, those are more followed than the all other mediums combined
+
+ * Announce email and forum topic
+  - Write something along the lines of previous releases
+  - Post in videolan-announce (moderated), vlc et vlc-devel
+    You are advised to add the author list for this version using
+    'git shortlog -s PREVIOUS_VERSION..VERSION'
+    And to add git diff --stat PREVIOUS_VERSION..VERSION if it's relevant.
+    You can play a bit with git to show the piece of information that may be
+    interesting.
+  - Add a sticky thread in the "General VLC media player discussion" forum
+

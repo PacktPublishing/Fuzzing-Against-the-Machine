@@ -1,0 +1,57 @@
+#! /usr/bin/make -f
+
+build-npapi: fetch-npapi
+	$(MAKE) install-npapi
+
+fetch-npapi:
+	rm -f -- stamp-npapi.tmp
+	if test -d npapi-vlc; then \
+		cd npapi-vlc && \
+		git fetch origin && \
+		git reset --hard origin/3.0.x; \
+		git submodule update; \
+	else \
+		git clone -b 3.0.x --single-branch https://code.videolan.org/videolan/npapi-vlc.git npapi-vlc && \
+		cd npapi-vlc && \
+		git submodule update --init; \
+	fi
+	git --git-dir=npapi-vlc/.git describe --long --always > stamp-npapi.tmp
+	if diff stamp-npapi.tmp stamp-npapi >/dev/null 2>&1; then \
+		rm -f -- stamp-npapi.tmp ; \
+	else \
+		mv -f -- stamp-npapi.tmp stamp-npapi ; \
+	fi
+
+stamp-npapi:
+	$(MAKE) fetch-npapi
+
+npapi-vlc/configure: stamp-npapi
+	cd npapi-vlc && \
+	$(SHELL) ./autogen.sh
+	touch $@
+
+if ENABLE_PDB
+ENABLE_PDB_OPTION := --enable-pdb
+endif
+
+npapi-vlc/Makefile: npapi-vlc/configure
+	cd npapi-vlc && \
+	$(SHELL) ./configure \
+		--prefix=/ \
+		--host=$(host_alias) --build=$(build_alias) \
+		$(ENABLE_PDB_OPTION) \
+		CPP="$(CPP)" CPPFLAGS="$(CPPFLAGS)" \
+		CC="$(CC)" CFLAGS="$(CFLAGS)" \
+		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+		LD="$(LD)" LDFLAGS="$(LDFLAGS)" \
+		SHELL="$(SHELL)" \
+		PKG_CONFIG_PATH="$(libdir)/pkgconfig:$(CONTRIB_DIR)/lib/pkgconfig" \
+		PKG_CONFIG="$(PKG_CONFIG)"
+	touch $@
+
+npapi-vlc/npapi/npvlc.la: npapi-vlc/Makefile
+	$(MAKE) -C npapi-vlc
+
+install-npapi: npapi-vlc/npapi/npvlc.la
+	$(MAKE) -C npapi-vlc \
+		DESTDIR="$(abs_builddir)/npapi-vlc/installed" install

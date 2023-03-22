@@ -1,0 +1,40 @@
+xmm_quantize_sub.c: In function 'init_xrpow_core_sse':
+xmm_quantize_sub.c:65:18: warning: SSE vector return without SSE enabled changes the ABI [-W
+psabi]
+     const __m128 vec_fabs_mask = _mm_loadu_ps(&fabs_mask._float[0]);
+                  ^
+In file included from xmm_quantize_sub.c:37:0:
+/usr/lib/gcc/i686-w64-mingw32/4.9.0/include/xmmintrin.h:933:1: error: inlining failed in call to always_inline '_mm_loadu_ps': target specific option mismatch
+ _mm_loadu_ps (float const *__P)
+ ^
+xmm_quantize_sub.c:65:18: error: called from here
+     const __m128 vec_fabs_mask = _mm_loadu_ps(&fabs_mask._float[0]);
+                  ^
+--- lame/libmp3lame/vector/xmm_quantize_sub.c.orig	2018-10-12 09:58:30.173001621 +0300
++++ lame/libmp3lame/vector/xmm_quantize_sub.c	2018-10-12 09:57:39.850108435 +0300
+@@ -53,10 +53,13 @@
+ 
+ /* make sure functions with SSE instructions maintain their own properly aligned stack */
+ #if defined (__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 2)))
+-#define SSE_FUNCTION __attribute__((force_align_arg_pointer))
++#define REALIGN __attribute__((force_align_arg_pointer))
++#define TARGET(x) __attribute__((target(x)))
+ #else
+-#define SSE_FUNCTION
++#define REALIGN
++#define TARGET(x)
+ #endif
++#define SSE_FUNCTION REALIGN TARGET("sse")
+ 
+ 
+ SSE_FUNCTION void
+@@ -132,6 +135,9 @@
+ }
+ 
+ 
++#undef SSE_FUNCTION
++#define SSE_FUNCTION REALIGN TARGET("sse2")
++
+ SSE_FUNCTION void
+ fht_SSE2(FLOAT * fz, int n)
+ {

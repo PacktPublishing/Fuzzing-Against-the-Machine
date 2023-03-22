@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "VLC haluaa lupaa käyttää kameraa käyttäjän pyynnöstä.";
+"NSMicrophoneUsageDescription" = "VLC haluaa lupaa käyttää mikrofonia käyttäjän pyynnöstä.";
+"NSAppleEventsUsageDescription" = "VLC haluaa pysähtyä ja jatkaa toisilla mediasoittimilla.";
+"NSDesktopFolderUsageDescription" = "VLC haluaa lupaa käyttää työpöydän kansiota käyttäjän pyynnöstä.";
+"NSDocumentsFolderUsageDescription" = "VLC haluaa lupaa käyttää asiakirjat kansiota käyttäjän pyynnöstä.";
+"NSDownloadsFolderUsageDescription" = "VLC haluaa lupaa käyttää lataukset kansiota käyttäjän pyynnöstä.";
+"NSNetworkVolumesUsageDescription" = "VLC haluaa lupaa käyttää verkkolevyä käyttäjän pyynnöstä.";
+"NSRemovableVolumesUsageDescription" = "VLC haluaa lupaa käyttää siirrettävää levyä käyttäjän pyynnöstä.";

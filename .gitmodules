@@ -1,0 +1,6 @@
+[submodule "Chapter_5/AFL++/AFLplusplus"]
+	path = Chapter_5/AFL++/AFLplusplus
+	url = https://github.com/AFLplusplus/AFLplusplus.git
+[submodule "Chapter_5/metasploit/metasploit-framework"]
+	path = Chapter_5/metasploit/metasploit-framework
+	url = https://github.com/rapid7/metasploit-framework.git

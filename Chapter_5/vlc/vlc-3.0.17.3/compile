@@ -1,0 +1,8 @@
+#! /bin/bash
+rm -f .error$$
+ERROR=0
+export PATH="/home/jezz/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games" LANG=C
+(make V=1 $@ 2>&1 || touch .error$$)| ./extras/buildsystem/make.pl
+test -f .error$$ && ERROR=1
+rm -f .error$$
+exit $ERROR

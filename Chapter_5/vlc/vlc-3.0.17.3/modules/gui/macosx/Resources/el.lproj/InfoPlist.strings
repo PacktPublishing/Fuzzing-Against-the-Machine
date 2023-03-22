@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση στην κάμερα όπως ζητήθηκε από τον χρήστη.";
+"NSMicrophoneUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση στο μικρόφωνο όπως ζητήθηκε από τον χρήστη.";
+"NSAppleEventsUsageDescription" = "Το VLC θέλει να θέτει σε παύση και αναπαραγωγή εξωτερικά προγράμματα αναπαραγωγής πολυμέσων.";
+"NSDesktopFolderUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση στο φάκελο της επιφάνειας εργασίας όπως ζητήθηκε από τον χρήστη.";
+"NSDocumentsFolderUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση στο φάκελο έγγραφα όπως ζητήθηκε από τον χρήστη.";
+"NSDownloadsFolderUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση στο φάκελο λήψεις όπως ζητήθηκε από τον χρήστη.";
+"NSNetworkVolumesUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση σε έναν δικτυακό τόμο όπως ζητήθηκε από τον χρήστη.";
+"NSRemovableVolumesUsageDescription" = "Το VLC θέλει να αποκτήσει πρόσβαση σε εξωτερικό τόμο όπως ζητήθηκε από τον χρήστη.";

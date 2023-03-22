@@ -1,0 +1,2 @@
+#! /bin/sh
+exec /home/jezz/vlc-3.0.17.3/install/bin/vlc -I "dummy" "$@"

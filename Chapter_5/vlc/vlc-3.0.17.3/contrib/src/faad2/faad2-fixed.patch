@@ -1,0 +1,13 @@
+diff -ru faad2-2.7/libfaad/common.h faad2/libfaad/common.h
+--- faad2-2.7/libfaad/common.h  2009-02-05 02:51:03.000000000 +0200
++++ faad2/libfaad/common.h      2009-09-01 20:41:20.000000000 +0300
+@@ -79,6 +79,8 @@
+ #define FIXED_POINT
+ #endif
+ 
++#define FIXED_POINT
++
+ #define ERROR_RESILIENCE
+ 
+ 
+ 

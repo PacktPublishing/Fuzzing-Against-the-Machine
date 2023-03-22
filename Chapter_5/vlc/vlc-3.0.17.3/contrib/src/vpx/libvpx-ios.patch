@@ -1,0 +1,126 @@
+diff -ru libvpx-1.9.0/build/make/configure.sh libvpx-1.9.0/build/make/configure.sh
+--- libvpx-1.9.0/build/make/configure.sh	2020-07-30 21:59:15.000000000 +0200
++++ libvpx-1.9.0/build/make/configure.sh	2020-11-29 18:05:12.000000000 +0100
+@@ -832,96 +832,6 @@
+   # PIC is probably what we want when building shared libs
+   enabled shared && soft_enable pic
+ 
+-  # Minimum iOS version for all target platforms (darwin and iphonesimulator).
+-  # Shared library framework builds are only possible on iOS 8 and later.
+-  if enabled shared; then
+-    IOS_VERSION_OPTIONS="--enable-shared"
+-    IOS_VERSION_MIN="8.0"
+-  else
+-    IOS_VERSION_OPTIONS=""
+-    IOS_VERSION_MIN="7.0"
+-  fi
+-
+-  # Handle darwin variants. Newer SDKs allow targeting older
+-  # platforms, so use the newest one available.
+-  case ${toolchain} in
+-    arm*-darwin*)
+-      add_cflags "-miphoneos-version-min=${IOS_VERSION_MIN}"
+-      iphoneos_sdk_dir="$(show_darwin_sdk_path iphoneos)"
+-      if [ -d "${iphoneos_sdk_dir}" ]; then
+-        add_cflags  "-isysroot ${iphoneos_sdk_dir}"
+-        add_ldflags "-isysroot ${iphoneos_sdk_dir}"
+-      fi
+-      ;;
+-    x86*-darwin*)
+-      osx_sdk_dir="$(show_darwin_sdk_path macosx)"
+-      if [ -d "${osx_sdk_dir}" ]; then
+-        add_cflags  "-isysroot ${osx_sdk_dir}"
+-        add_ldflags "-isysroot ${osx_sdk_dir}"
+-      fi
+-      ;;
+-  esac
+-
+-  case ${toolchain} in
+-    *-darwin8-*)
+-      add_cflags  "-mmacosx-version-min=10.4"
+-      add_ldflags "-mmacosx-version-min=10.4"
+-      ;;
+-    *-darwin9-*)
+-      add_cflags  "-mmacosx-version-min=10.5"
+-      add_ldflags "-mmacosx-version-min=10.5"
+-      ;;
+-    *-darwin10-*)
+-      add_cflags  "-mmacosx-version-min=10.6"
+-      add_ldflags "-mmacosx-version-min=10.6"
+-      ;;
+-    *-darwin11-*)
+-      add_cflags  "-mmacosx-version-min=10.7"
+-      add_ldflags "-mmacosx-version-min=10.7"
+-      ;;
+-    *-darwin12-*)
+-      add_cflags  "-mmacosx-version-min=10.8"
+-      add_ldflags "-mmacosx-version-min=10.8"
+-      ;;
+-    *-darwin13-*)
+-      add_cflags  "-mmacosx-version-min=10.9"
+-      add_ldflags "-mmacosx-version-min=10.9"
+-      ;;
+-    *-darwin14-*)
+-      add_cflags  "-mmacosx-version-min=10.10"
+-      add_ldflags "-mmacosx-version-min=10.10"
+-      ;;
+-    *-darwin15-*)
+-      add_cflags  "-mmacosx-version-min=10.11"
+-      add_ldflags "-mmacosx-version-min=10.11"
+-      ;;
+-    *-darwin16-*)
+-      add_cflags  "-mmacosx-version-min=10.12"
+-      add_ldflags "-mmacosx-version-min=10.12"
+-      ;;
+-    *-darwin17-*)
+-      add_cflags  "-mmacosx-version-min=10.13"
+-      add_ldflags "-mmacosx-version-min=10.13"
+-      ;;
+-    *-darwin18-*)
+-      add_cflags  "-mmacosx-version-min=10.14"
+-      add_ldflags "-mmacosx-version-min=10.14"
+-      ;;
+-    *-darwin19-*)
+-      add_cflags  "-mmacosx-version-min=10.15"
+-      add_ldflags "-mmacosx-version-min=10.15"
+-      ;;
+-    *-iphonesimulator-*)
+-      add_cflags  "-miphoneos-version-min=${IOS_VERSION_MIN}"
+-      add_ldflags "-miphoneos-version-min=${IOS_VERSION_MIN}"
+-      iossim_sdk_dir="$(show_darwin_sdk_path iphonesimulator)"
+-      if [ -d "${iossim_sdk_dir}" ]; then
+-        add_cflags  "-isysroot ${iossim_sdk_dir}"
+-        add_ldflags "-isysroot ${iossim_sdk_dir}"
+-      fi
+-      ;;
+-  esac
+-
+   # Handle Solaris variants. Solaris 10 needs -lposix4
+   case ${toolchain} in
+     sparc-solaris-*)
+@@ -1110,12 +1020,6 @@
+               add_cflags -isysroot ${alt_libc}
+             fi
+ 
+-            if [ "${LD}" = "${CXX}" ]; then
+-              add_ldflags -miphoneos-version-min="${IOS_VERSION_MIN}"
+-            else
+-              add_ldflags -ios_version_min "${IOS_VERSION_MIN}"
+-            fi
+-
+             for d in lib usr/lib usr/lib/system; do
+               try_dir="${alt_libc}/${d}"
+               [ -d "${try_dir}" ] && add_ldflags -L"${try_dir}"
+@@ -1133,12 +1037,6 @@
+                 fi
+                 ;;
+             esac
+-
+-            if [ "$(show_darwin_sdk_major_version iphoneos)" -gt 8 ]; then
+-              check_add_cflags -fembed-bitcode
+-              check_add_asflags -fembed-bitcode
+-              check_add_ldflags -fembed-bitcode
+-            fi
+           fi
+ 
+           asm_conversion_cmd="${source_path}/build/make/ads2gas_apple.pl"

@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "VLC нужно обращаться к камере по запросу пользователя.";
+"NSMicrophoneUsageDescription" = "VLC нужно обращаться к микрофону по запросу пользователя.";
+"NSAppleEventsUsageDescription" = "VLC нужно приостанавливать/продолжать воспроизведение на внешних плеерах.";
+"NSDesktopFolderUsageDescription" = "VLC нужно обращаться к папке на рабочем столе по запросу пользователя.";
+"NSDocumentsFolderUsageDescription" = "VLC нужно обращаться к папке документов по запросу пользователя.";
+"NSDownloadsFolderUsageDescription" = "VLC нужно обращаться к папке с загруженными файлами по запросу пользователя.";
+"NSNetworkVolumesUsageDescription" = "VLC нужно обращаться к сетевому ресурсу по запросу пользователя.";
+"NSRemovableVolumesUsageDescription" = "VLC нужно обращаться к съёмному носителю по запросу пользователя.";

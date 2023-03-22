@@ -1,0 +1,10 @@
+/* Localized versions of Info.plist keys */
+
+"NSCameraUsageDescription" = "VLCk kamera erabili nahi du erabiltzaileari eskatu bezala.";
+"NSMicrophoneUsageDescription" = "VLCk mikrofonoa erabili nahi du erabiltzaileari eskatu bezala.";
+"NSAppleEventsUsageDescription" = "VLCk kanpoko multimedia erreproduzigailuak pausarazi eta berrekin nahi ditu.";
+"NSDesktopFolderUsageDescription" = "VLCk mahaigaineko karpeta erabili nahi du erabiltzaileari eskatu bezala.";
+"NSDocumentsFolderUsageDescription" = "VLCk dokumentuen karpeta erabili nahi du erabiltzaileari eskatu bezala.";
+"NSDownloadsFolderUsageDescription" = "VLCk deskargen karpeta erabili nahi du erabiltzaileari eskatu bezala.";
+"NSNetworkVolumesUsageDescription" = "VLCk sareko bolumen bat erabili nahi du erabiltzaileari eskatu bezala.";
+"NSRemovableVolumesUsageDescription" = "VLCk bolumen aldagarri bat erabili nahi du erabiltzaileari eskatu bezala.";

@@ -1,0 +1,21 @@
+demux/adaptive/playlist/libvlc_adaptive_la-Role.lo: \
+ demux/adaptive/playlist/Role.cpp /usr/include/stdc-predef.h ../config.h \
+ ../include/vlc_fixups.h /usr/include/features.h \
+ /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+ /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+ /usr/include/aarch64-linux-gnu/bits/long-double.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h \
+ demux/adaptive/playlist/Role.hpp
+/usr/include/stdc-predef.h:
+../config.h:
+../include/vlc_fixups.h:
+/usr/include/features.h:
+/usr/include/aarch64-linux-gnu/sys/cdefs.h:
+/usr/include/aarch64-linux-gnu/bits/wordsize.h:
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h:
+demux/adaptive/playlist/Role.hpp:

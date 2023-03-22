@@ -1,0 +1,8 @@
+audio_filter/spatializer/allpass.lo: audio_filter/spatializer/allpass.cpp \
+ /usr/include/stdc-predef.h audio_filter/spatializer/allpass.hpp \
+ audio_filter/spatializer/denormals.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h
+/usr/include/stdc-predef.h:
+audio_filter/spatializer/allpass.hpp:
+audio_filter/spatializer/denormals.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h:

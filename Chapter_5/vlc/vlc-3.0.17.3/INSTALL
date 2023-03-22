@@ -1,0 +1,64 @@
+INSTALL file for the VLC media player
+=====================================
+
+More extensive information for *nix, Windows and Mac OS X users can be
+found here: http://wiki.videolan.org/Compile_VLC
+
+People installing VLC for Windows from source MUST read:
+http://wiki.videolan.org/Win32Compile
+
+Bootstrapping VLC
+=================
+
+If you retrieved VLC from the git server and do not have yet a "configure"
+script, please run:
+
+    ./bootstrap
+
+Configuring VLC
+===============
+
+A typical way to configure VLC is:
+
+   ./configure
+
+See `./configure --help' for more information.
+
+If you intend to debug stuff, you may want to compile with debugging
+symbols:
+
+   make distclean ; ./configure --enable-debug
+
+We recommend using GCC to build VLC, though some people reported success
+with the Intel C compiler (version 8) as well. GCC version 4.8 or higher is
+required. On older systems (e.g. FreeBSD 4.x), please select a more recent
+version manually by setting the CC and CXX environment variables
+appropriately while running the ./configure shell script.
+
+
+Building VLC
+============
+
+Once configured, run `make' to build VLC.
+
+
+Installing and running VLC
+==========================
+
+You can install the VLC and its plugins by typing:
+
+   make install
+
+But you don't need to install it if you don't want to; VLC can be launched
+from the current directory as well:
+
+   ./vlc
+
+
+Building packages
+=================
+
+To build a Debian package, you need to get the packaging info
+   git clone git://git.debian.org/pkg-multimedia/vlc.git debian
+and then
+   git-buildpackage

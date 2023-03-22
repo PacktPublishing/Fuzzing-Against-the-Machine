@@ -1,0 +1,12 @@
+--- libass-0.13.0/libass/ass_fontconfig.c.orig	2015-10-06 16:03:01.104710780 +0200
++++ libass-0.13.0/libass/ass_fontconfig.c	2015-10-06 16:03:00.216719387 +0200
+@@ -282,6 +282,9 @@
+                 "file found, using fallback.");
+         FcConfigDestroy(fc->config);
+         fc->config = FcInitLoadConfig();
++        FcConfigAppFontAddDir(fc->config, "~/Library/Fonts");
++        FcConfigAppFontAddDir(fc->config, "/Library/Fonts");
++        FcConfigAppFontAddDir(fc->config, "/Network/Library/Fonts");
+     }
+     if (fc->config)
+         rc = FcConfigBuildFonts(fc->config);

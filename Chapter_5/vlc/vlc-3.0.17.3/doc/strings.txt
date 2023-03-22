@@ -1,0 +1,2 @@
+This documentation is outdated. Please refer to the appropriate Wiki page :
+http://wiki.videolan.org/index.php/VideolanStringGuidelines

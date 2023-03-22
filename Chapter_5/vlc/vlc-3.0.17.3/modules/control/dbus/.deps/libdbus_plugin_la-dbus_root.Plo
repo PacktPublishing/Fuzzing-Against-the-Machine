@@ -1,0 +1,293 @@
+control/dbus/libdbus_plugin_la-dbus_root.lo: control/dbus/dbus_root.c \
+ /usr/include/stdc-predef.h ../config.h ../include/vlc_fixups.h \
+ /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+ /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+ /usr/include/aarch64-linux-gnu/bits/long-double.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h /usr/include/threads.h \
+ /usr/include/time.h /usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h \
+ /usr/include/aarch64-linux-gnu/bits/time.h \
+ /usr/include/aarch64-linux-gnu/bits/types.h \
+ /usr/include/aarch64-linux-gnu/bits/timesize.h \
+ /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+ /usr/include/aarch64-linux-gnu/bits/time64.h \
+ /usr/include/aarch64-linux-gnu/bits/timex.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+ /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+ /usr/include/aarch64-linux-gnu/bits/endian.h \
+ /usr/include/aarch64-linux-gnu/bits/endianness.h \
+ /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h \
+ /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+ /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+ ../include/vlc_common.h ../include/vlc_config.h /usr/include/stdlib.h \
+ /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+ /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+ /usr/include/aarch64-linux-gnu/bits/floatn.h \
+ /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+ /usr/include/aarch64-linux-gnu/sys/types.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h \
+ /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+ /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+ /usr/include/aarch64-linux-gnu/sys/select.h \
+ /usr/include/aarch64-linux-gnu/bits/select.h \
+ /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+ /usr/include/aarch64-linux-gnu/bits/select2.h \
+ /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+ /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+ /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+ /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+ /usr/include/alloca.h \
+ /usr/include/aarch64-linux-gnu/bits/stdlib-bsearch.h \
+ /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/aarch64-linux-gnu/bits/stdlib.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stdarg.h /usr/include/string.h \
+ /usr/include/strings.h \
+ /usr/include/aarch64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/aarch64-linux-gnu/bits/string_fortified.h \
+ /usr/include/stdio.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
+ /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h \
+ /usr/include/aarch64-linux-gnu/bits/stdio_lim.h \
+ /usr/include/aarch64-linux-gnu/bits/sys_errlist.h \
+ /usr/include/aarch64-linux-gnu/bits/stdio.h \
+ /usr/include/aarch64-linux-gnu/bits/stdio2.h /usr/include/inttypes.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stdint.h /usr/include/stdint.h \
+ /usr/include/aarch64-linux-gnu/bits/wchar.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stdbool.h \
+ ../include/vlc_mtime.h ../include/vlc_threads.h /usr/include/unistd.h \
+ /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+ /usr/include/aarch64-linux-gnu/bits/environments.h \
+ /usr/include/aarch64-linux-gnu/bits/confname.h \
+ /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+ /usr/include/aarch64-linux-gnu/bits/unistd.h \
+ /usr/include/aarch64-linux-gnu/bits/unistd_ext.h /usr/include/pthread.h \
+ /usr/include/sched.h /usr/include/aarch64-linux-gnu/bits/sched.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_sched_param.h \
+ /usr/include/aarch64-linux-gnu/bits/cpu-set.h \
+ /usr/include/aarch64-linux-gnu/bits/setjmp.h /usr/include/semaphore.h \
+ /usr/include/aarch64-linux-gnu/bits/semaphore.h ../include/vlc_arrays.h \
+ ../include/vlc_messages.h ../include/vlc_objects.h \
+ ../include/vlc_variables.h ../include/vlc_main.h \
+ ../include/vlc_configuration.h ../include/vlc_interface.h \
+ ../include/vlc_input.h ../include/vlc_es.h ../include/vlc_fourcc.h \
+ ../include/vlc_text_style.h ../include/vlc_viewpoint.h \
+ /usr/include/math.h /usr/include/aarch64-linux-gnu/bits/math-vector.h \
+ /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/aarch64-linux-gnu/bits/fp-logb.h \
+ /usr/include/aarch64-linux-gnu/bits/fp-fast.h \
+ /usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/aarch64-linux-gnu/bits/mathcalls.h \
+ /usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/aarch64-linux-gnu/bits/iscanonical.h \
+ /usr/include/aarch64-linux-gnu/bits/mathinline.h ../include/vlc_meta.h \
+ ../include/vlc_epg.h ../include/vlc_events.h ../include/vlc_input_item.h \
+ ../include/vlc_vout.h ../include/vlc_picture.h \
+ ../include/vlc_subpicture.h ../include/vlc_vout_osd.h \
+ ../include/vlc_plugin.h ../include/vlc_playlist.h ../include/vlc_aout.h \
+ /usr/include/assert.h ../include/vlc_es.h ../include/vlc_block.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/limits.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/syslimits.h \
+ /usr/include/limits.h /usr/include/aarch64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/aarch64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/aarch64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/aarch64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/aarch64-linux-gnu/bits/uio_lim.h control/dbus/dbus_root.h \
+ control/dbus/dbus_common.h /usr/include/dbus-1.0/dbus/dbus.h \
+ /usr/lib/aarch64-linux-gnu/dbus-1.0/include/dbus/dbus-arch-deps.h \
+ /usr/include/dbus-1.0/dbus/dbus-macros.h \
+ /usr/include/dbus-1.0/dbus/dbus-address.h \
+ /usr/include/dbus-1.0/dbus/dbus-types.h \
+ /usr/include/dbus-1.0/dbus/dbus-errors.h \
+ /usr/include/dbus-1.0/dbus/dbus-protocol.h \
+ /usr/include/dbus-1.0/dbus/dbus-bus.h \
+ /usr/include/dbus-1.0/dbus/dbus-connection.h \
+ /usr/include/dbus-1.0/dbus/dbus-memory.h \
+ /usr/include/dbus-1.0/dbus/dbus-message.h \
+ /usr/include/dbus-1.0/dbus/dbus-shared.h \
+ /usr/include/dbus-1.0/dbus/dbus-misc.h \
+ /usr/include/dbus-1.0/dbus/dbus-pending-call.h \
+ /usr/include/dbus-1.0/dbus/dbus-server.h \
+ /usr/include/dbus-1.0/dbus/dbus-signature.h \
+ /usr/include/dbus-1.0/dbus/dbus-syntax.h \
+ /usr/include/dbus-1.0/dbus/dbus-threads.h
+/usr/include/stdc-predef.h:
+../config.h:
+../include/vlc_fixups.h:
+/usr/include/features.h:
+/usr/include/aarch64-linux-gnu/sys/cdefs.h:
+/usr/include/aarch64-linux-gnu/bits/wordsize.h:
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h:
+/usr/include/threads.h:
+/usr/include/time.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stddef.h:
+/usr/include/aarch64-linux-gnu/bits/time.h:
+/usr/include/aarch64-linux-gnu/bits/types.h:
+/usr/include/aarch64-linux-gnu/bits/timesize.h:
+/usr/include/aarch64-linux-gnu/bits/typesizes.h:
+/usr/include/aarch64-linux-gnu/bits/time64.h:
+/usr/include/aarch64-linux-gnu/bits/timex.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
+/usr/include/aarch64-linux-gnu/bits/types/clock_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/time_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h:
+/usr/include/aarch64-linux-gnu/bits/endian.h:
+/usr/include/aarch64-linux-gnu/bits/endianness.h:
+/usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/timer_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
+/usr/include/aarch64-linux-gnu/bits/types/locale_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/__locale_t.h:
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+../include/vlc_common.h:
+../include/vlc_config.h:
+/usr/include/stdlib.h:
+/usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
+/usr/include/aarch64-linux-gnu/bits/waitflags.h:
+/usr/include/aarch64-linux-gnu/bits/waitstatus.h:
+/usr/include/aarch64-linux-gnu/bits/floatn.h:
+/usr/include/aarch64-linux-gnu/bits/floatn-common.h:
+/usr/include/aarch64-linux-gnu/sys/types.h:
+/usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
+/usr/include/endian.h:
+/usr/include/aarch64-linux-gnu/bits/byteswap.h:
+/usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
+/usr/include/aarch64-linux-gnu/sys/select.h:
+/usr/include/aarch64-linux-gnu/bits/select.h:
+/usr/include/aarch64-linux-gnu/bits/types/sigset_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
+/usr/include/aarch64-linux-gnu/bits/select2.h:
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes.h:
+/usr/include/aarch64-linux-gnu/bits/thread-shared-types.h:
+/usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
+/usr/include/aarch64-linux-gnu/bits/struct_rwlock.h:
+/usr/include/alloca.h:
+/usr/include/aarch64-linux-gnu/bits/stdlib-bsearch.h:
+/usr/include/aarch64-linux-gnu/bits/stdlib-float.h:
+/usr/include/aarch64-linux-gnu/bits/stdlib.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stdarg.h:
+/usr/include/string.h:
+/usr/include/strings.h:
+/usr/include/aarch64-linux-gnu/bits/strings_fortified.h:
+/usr/include/aarch64-linux-gnu/bits/string_fortified.h:
+/usr/include/stdio.h:
+/usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
+/usr/include/aarch64-linux-gnu/bits/types/__FILE.h:
+/usr/include/aarch64-linux-gnu/bits/types/FILE.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h:
+/usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h:
+/usr/include/aarch64-linux-gnu/bits/stdio_lim.h:
+/usr/include/aarch64-linux-gnu/bits/sys_errlist.h:
+/usr/include/aarch64-linux-gnu/bits/stdio.h:
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:
+/usr/include/inttypes.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stdint.h:
+/usr/include/stdint.h:
+/usr/include/aarch64-linux-gnu/bits/wchar.h:
+/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stdbool.h:
+../include/vlc_mtime.h:
+../include/vlc_threads.h:
+/usr/include/unistd.h:
+/usr/include/aarch64-linux-gnu/bits/posix_opt.h:
+/usr/include/aarch64-linux-gnu/bits/environments.h:
+/usr/include/aarch64-linux-gnu/bits/confname.h:
+/usr/include/aarch64-linux-gnu/bits/getopt_posix.h:
+/usr/include/aarch64-linux-gnu/bits/getopt_core.h:
+/usr/include/aarch64-linux-gnu/bits/unistd.h:
+/usr/include/aarch64-linux-gnu/bits/unistd_ext.h:
+/usr/include/pthread.h:
+/usr/include/sched.h:
+/usr/include/aarch64-linux-gnu/bits/sched.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_sched_param.h:
+/usr/include/aarch64-linux-gnu/bits/cpu-set.h:
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
+/usr/include/semaphore.h:
+/usr/include/aarch64-linux-gnu/bits/semaphore.h:
+../include/vlc_arrays.h:
+../include/vlc_messages.h:
+../include/vlc_objects.h:
+../include/vlc_variables.h:
+../include/vlc_main.h:
+../include/vlc_configuration.h:
+../include/vlc_interface.h:
+../include/vlc_input.h:
+../include/vlc_es.h:
+../include/vlc_fourcc.h:
+../include/vlc_text_style.h:
+../include/vlc_viewpoint.h:
+/usr/include/math.h:
+/usr/include/aarch64-linux-gnu/bits/math-vector.h:
+/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
+/usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
+/usr/include/aarch64-linux-gnu/bits/fp-logb.h:
+/usr/include/aarch64-linux-gnu/bits/fp-fast.h:
+/usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h:
+/usr/include/aarch64-linux-gnu/bits/mathcalls.h:
+/usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h:
+/usr/include/aarch64-linux-gnu/bits/iscanonical.h:
+/usr/include/aarch64-linux-gnu/bits/mathinline.h:
+../include/vlc_meta.h:
+../include/vlc_epg.h:
+../include/vlc_events.h:
+../include/vlc_input_item.h:
+../include/vlc_vout.h:
+../include/vlc_picture.h:
+../include/vlc_subpicture.h:
+../include/vlc_vout_osd.h:
+../include/vlc_plugin.h:
+../include/vlc_playlist.h:
+../include/vlc_aout.h:
+/usr/include/assert.h:
+../include/vlc_es.h:
+../include/vlc_block.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/limits.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/syslimits.h:
+/usr/include/limits.h:
+/usr/include/aarch64-linux-gnu/bits/posix1_lim.h:
+/usr/include/aarch64-linux-gnu/bits/local_lim.h:
+/usr/include/linux/limits.h:
+/usr/include/aarch64-linux-gnu/bits/posix2_lim.h:
+/usr/include/aarch64-linux-gnu/bits/xopen_lim.h:
+/usr/include/aarch64-linux-gnu/bits/uio_lim.h:
+control/dbus/dbus_root.h:
+control/dbus/dbus_common.h:
+/usr/include/dbus-1.0/dbus/dbus.h:
+/usr/lib/aarch64-linux-gnu/dbus-1.0/include/dbus/dbus-arch-deps.h:
+/usr/include/dbus-1.0/dbus/dbus-macros.h:
+/usr/include/dbus-1.0/dbus/dbus-address.h:
+/usr/include/dbus-1.0/dbus/dbus-types.h:
+/usr/include/dbus-1.0/dbus/dbus-errors.h:
+/usr/include/dbus-1.0/dbus/dbus-protocol.h:
+/usr/include/dbus-1.0/dbus/dbus-bus.h:
+/usr/include/dbus-1.0/dbus/dbus-connection.h:
+/usr/include/dbus-1.0/dbus/dbus-memory.h:
+/usr/include/dbus-1.0/dbus/dbus-message.h:
+/usr/include/dbus-1.0/dbus/dbus-shared.h:
+/usr/include/dbus-1.0/dbus/dbus-misc.h:
+/usr/include/dbus-1.0/dbus/dbus-pending-call.h:
+/usr/include/dbus-1.0/dbus/dbus-server.h:
+/usr/include/dbus-1.0/dbus/dbus-signature.h:
+/usr/include/dbus-1.0/dbus/dbus-syntax.h:
+/usr/include/dbus-1.0/dbus/dbus-threads.h:

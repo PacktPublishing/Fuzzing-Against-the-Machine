@@ -1,0 +1,1752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExtVideoWidget</class>
+ <widget class="QTabWidget" name="ExtVideoWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>654</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="tab">
+   <attribute name="title">
+    <string>Essential</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_8">
+    <item row="0" column="0" rowspan="3">
+     <widget class="QGroupBox" name="adjustEnable">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="title">
+       <string>Image adjust</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Hue</string>
+         </property>
+         <property name="buddy">
+          <cstring>hueSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="hueSlider">
+         <property name="minimum">
+          <number>-180</number>
+         </property>
+         <property name="maximum">
+          <number>180</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Brightness</string>
+         </property>
+         <property name="buddy">
+          <cstring>brightnessSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSlider" name="brightnessSlider">
+         <property name="maximum">
+          <number>200</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="brightnessThresholdCheck">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Brightness Threshold</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Contrast</string>
+         </property>
+         <property name="buddy">
+          <cstring>contrastSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QSlider" name="contrastSlider">
+         <property name="maximum">
+          <number>200</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Saturation</string>
+         </property>
+         <property name="buddy">
+          <cstring>saturationSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QSlider" name="saturationSlider">
+         <property name="maximum">
+          <number>300</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Gamma</string>
+         </property>
+         <property name="buddy">
+          <cstring>gammaSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QSlider" name="gammaSlider">
+         <property name="maximum">
+          <number>1000</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QGroupBox" name="sharpenEnable">
+      <property name="title">
+       <string>Sharpen</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>Sigma</string>
+         </property>
+         <property name="buddy">
+          <cstring>sharpenSigmaSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="sharpenSigmaSlider">
+         <property name="maximum">
+          <number>200</number>
+         </property>
+         <property name="pageStep">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>50</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGroupBox" name="gradfunEnable">
+      <property name="title">
+       <string>Banding removal</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_32">
+         <property name="text">
+          <string>Radius</string>
+         </property>
+         <property name="buddy">
+          <cstring>gradfunRadiusSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="gradfunRadiusSlider">
+         <property name="minimum">
+          <number>4</number>
+         </property>
+         <property name="maximum">
+          <number>32</number>
+         </property>
+         <property name="pageStep">
+          <number>4</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>4</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QGroupBox" name="grainEnable">
+      <property name="title">
+       <string>Film Grain</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_50">
+         <property name="text">
+          <string>Variance</string>
+         </property>
+         <property name="buddy">
+          <cstring>grainVarianceSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="grainVarianceSlider">
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>40</number>
+         </property>
+         <property name="pageStep">
+          <number>4</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>4</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab_3">
+   <attribute name="title">
+    <string>Crop</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_11">
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Top</string>
+      </property>
+      <property name="buddy">
+       <cstring>cropTopPx</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QSpinBox" name="cropTopPx">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="suffix">
+       <string> px</string>
+      </property>
+      <property name="maximum">
+       <number>4095</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>Left</string>
+      </property>
+      <property name="buddy">
+       <cstring>cropLeftPx</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <spacer>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::MinimumExpanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="4">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Right</string>
+      </property>
+      <property name="buddy">
+       <cstring>cropRightPx</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Bottom</string>
+      </property>
+      <property name="buddy">
+       <cstring>cropBotPx</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QSpinBox" name="cropBotPx">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="suffix">
+       <string> px</string>
+      </property>
+      <property name="maximum">
+       <number>4095</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="4">
+     <widget class="QCheckBox" name="topBotCropSync">
+      <property name="text">
+       <string>Synchronize top and bottom</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="4">
+     <widget class="QCheckBox" name="leftRightCropSync">
+      <property name="text">
+       <string>Synchronize left and right</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QSpinBox" name="cropLeftPx">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="suffix">
+       <string> px</string>
+      </property>
+      <property name="maximum">
+       <number>4095</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="5">
+     <widget class="QSpinBox" name="cropRightPx">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="suffix">
+       <string> px</string>
+      </property>
+      <property name="maximum">
+       <number>4095</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab_2">
+   <attribute name="title">
+    <string>Colors</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_10">
+    <item row="0" column="0" rowspan="3">
+     <widget class="QGroupBox" name="extractEnable">
+      <property name="title">
+       <string>Color extraction</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Color</string>
+         </property>
+         <property name="buddy">
+          <cstring>extractComponentText</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="extractComponentText">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="inputMask">
+          <string>&gt;HHHHHH;#</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QCheckBox" name="invertEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Negate colors</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QCheckBox" name="posterizeEnable">
+      <property name="text">
+       <string>Posterize</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" rowspan="2">
+     <widget class="QGroupBox" name="gradientEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Gradient</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>Mode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QComboBox" name="gradientModeCombo">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="gradientTypeCheck">
+         <property name="text">
+          <string>Color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="gradientCartoonCheck">
+         <property name="text">
+          <string>Cartoon</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0" rowspan="2">
+     <widget class="QGroupBox" name="colorthresEnable">
+      <property name="title">
+       <string>Color threshold</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_19">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Color</string>
+         </property>
+         <property name="buddy">
+          <cstring>colorthresColorText</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="colorthresColorText">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="inputMask">
+          <string>&gt;HHHHHH;#</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Saturation</string>
+         </property>
+         <property name="buddy">
+          <cstring>colorthresSaturationthresSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSlider" name="colorthresSaturationthresSlider">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Similarity</string>
+         </property>
+         <property name="buddy">
+          <cstring>colorthresSimilaritythresSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSlider" name="colorthresSimilaritythresSlider">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QGroupBox" name="sepiaEnable">
+      <property name="title">
+       <string>Sepia</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Intensity</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sepiaIntensitySpin">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>30</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab_5">
+   <attribute name="title">
+    <string>Geometry</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_13">
+    <item row="0" column="0">
+     <widget class="QCheckBox" name="magnifyEnable">
+      <property name="text">
+       <string>Interactive Zoom</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <widget class="QGroupBox" name="wallEnable">
+      <property name="title">
+       <string>Wall</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Rows</string>
+         </property>
+         <property name="buddy">
+          <cstring>wallRowsSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>Columns</string>
+         </property>
+         <property name="buddy">
+          <cstring>wallColsSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="wallColsSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="wallRowsSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="transformEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Transform</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="_4">
+       <item row="0" column="0">
+        <widget class="QComboBox" name="transformTypeCombo"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QGroupBox" name="rotateEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Rotate</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_28">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Angle</string>
+         </property>
+         <property name="buddy">
+          <cstring>rotateAngleDial</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="VLCQDial" name="rotateAngleDial">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximum">
+          <number>359</number>
+         </property>
+         <property name="value">
+          <number>180</number>
+         </property>
+         <property name="sliderPosition">
+          <number>180</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QGroupBox" name="puzzleEnable">
+      <property name="title">
+       <string>Puzzle game</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>Rows</string>
+         </property>
+         <property name="buddy">
+          <cstring>puzzleRowsSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="puzzleRowsSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <number>16</number>
+         </property>
+         <property name="value">
+          <number>4</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Columns</string>
+         </property>
+         <property name="buddy">
+          <cstring>puzzleColsSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="puzzleColsSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <number>16</number>
+         </property>
+         <property name="value">
+          <number>4</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab_8">
+   <attribute name="title">
+    <string>Overlay</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0" rowspan="4">
+     <widget class="QGroupBox" name="logoEnable">
+      <property name="title">
+       <string>Add logo</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_1">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_19">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Logo</string>
+         </property>
+         <property name="buddy">
+          <cstring>logoFileText</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3">
+        <widget class="QLineEdit" name="logoFileText"/>
+       </item>
+       <item row="0" column="4">
+        <widget class="QToolButton" name="logoBrowseBtn">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Top</string>
+         </property>
+         <property name="buddy">
+          <cstring>logoYSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QSpinBox" name="logoYSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="maximum">
+          <number>4096</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Left</string>
+         </property>
+         <property name="buddy">
+          <cstring>logoXSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QSpinBox" name="logoXSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="maximum">
+          <number>4096</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="5">
+        <widget class="QSlider" name="logoOpacitySlider">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>32</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="4">
+        <widget class="QLabel" name="label_49">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>full</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+         </property>
+         <property name="buddy">
+          <cstring>logoOpacitySlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="3">
+        <widget class="QLabel" name="label_22">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Opacity</string>
+         </property>
+         <property name="buddy">
+          <cstring>logoOpacitySlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_48">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>none</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="buddy">
+          <cstring>logoOpacitySlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="5">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="3">
+     <widget class="QGroupBox" name="marqEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Add text</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="_2">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>Position</string>
+         </property>
+         <property name="buddy">
+          <cstring>marqPositionCombo</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>Text</string>
+         </property>
+         <property name="buddy">
+          <cstring>marqMarqueeText</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="marqMarqueeText"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="marqPositionCombo"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QGroupBox" name="eraseEnable">
+      <property name="title">
+       <string>Logo erase</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Top</string>
+         </property>
+         <property name="buddy">
+          <cstring>eraseYSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Left</string>
+         </property>
+         <property name="buddy">
+          <cstring>eraseXSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QSpinBox" name="eraseXSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="maximum">
+          <number>4096</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="eraseYSpin">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="maximum">
+          <number>4096</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="eraseMaskText"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Mask</string>
+         </property>
+         <property name="buddy">
+          <cstring>eraseMaskText</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QToolButton" name="eraseBrowseBtn">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab_9">
+   <attribute name="title">
+    <string>Advanced</string>
+   </attribute>
+   <layout class="QGridLayout" name="gridLayout_7">
+    <item row="2" column="1" rowspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="anaglyphEnable">
+        <property name="text">
+         <string>Anaglyph 3D</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mirrorEnable">
+        <property name="text">
+         <string>Mirror</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="psychedelicEnable">
+        <property name="text">
+         <string>Psychedelic</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="waveEnable">
+        <property name="text">
+         <string>Waves</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="rippleEnable">
+        <property name="text">
+         <string>Water effect</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="motiondetectEnable">
+        <property name="text">
+         <string>Motion detect</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="gaussianblurEnable">
+      <property name="title">
+       <string>Spatial blur</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_17">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>Sigma</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="gaussianblurSigmaSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="motionblurEnable">
+      <property name="title">
+       <string>Motion blur</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_16">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Factor</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="blurFactorSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="antiflickerEnable">
+      <property name="title">
+       <string>Anti-Flickering</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_18">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>Soften</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="antiflickerSofteningSizeSlider">
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="2">
+     <widget class="QGroupBox" name="hqdn3dEnable">
+      <property name="title">
+       <string>Denoiser</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_12">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_44">
+         <property name="text">
+          <string>Spatial luma strength</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QSlider" name="hqdn3dLumaSpatSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="label_45">
+         <property name="text">
+          <string>Temporal luma strength</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QSlider" name="hqdn3dLumaTempSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_46">
+         <property name="text">
+          <string>Spatial chroma strength</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QSlider" name="hqdn3dChromaSpatSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_47">
+         <property name="text">
+          <string>Temporal chroma strength</string>
+         </property>
+         <property name="buddy">
+          <cstring>blurFactorSlider</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QSlider" name="hqdn3dChromaTempSlider">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>127</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QGroupBox" name="cloneEnable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Clone</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_0">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Number of clones</string>
+         </property>
+         <property name="buddy">
+          <cstring>cloneCountSpin</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="cloneCountSpin">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>2</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>VLCQDial</class>
+   <extends>QDial</extends>
+   <header>util/customwidgets.hpp</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>adjustEnable</tabstop>
+  <tabstop>hueSlider</tabstop>
+  <tabstop>brightnessSlider</tabstop>
+  <tabstop>brightnessThresholdCheck</tabstop>
+  <tabstop>contrastSlider</tabstop>
+  <tabstop>saturationSlider</tabstop>
+  <tabstop>gammaSlider</tabstop>
+  <tabstop>sharpenEnable</tabstop>
+  <tabstop>sharpenSigmaSlider</tabstop>
+  <tabstop>gradfunEnable</tabstop>
+  <tabstop>gradfunRadiusSlider</tabstop>
+  <tabstop>grainEnable</tabstop>
+  <tabstop>grainVarianceSlider</tabstop>
+  <tabstop>cropTopPx</tabstop>
+  <tabstop>cropLeftPx</tabstop>
+  <tabstop>cropRightPx</tabstop>
+  <tabstop>cropBotPx</tabstop>
+  <tabstop>topBotCropSync</tabstop>
+  <tabstop>leftRightCropSync</tabstop>
+  <tabstop>extractEnable</tabstop>
+  <tabstop>extractComponentText</tabstop>
+  <tabstop>colorthresEnable</tabstop>
+  <tabstop>colorthresColorText</tabstop>
+  <tabstop>colorthresSaturationthresSlider</tabstop>
+  <tabstop>colorthresSimilaritythresSlider</tabstop>
+  <tabstop>invertEnable</tabstop>
+  <tabstop>posterizeEnable</tabstop>
+  <tabstop>gradientEnable</tabstop>
+  <tabstop>gradientModeCombo</tabstop>
+  <tabstop>gradientTypeCheck</tabstop>
+  <tabstop>gradientCartoonCheck</tabstop>
+  <tabstop>sepiaEnable</tabstop>
+  <tabstop>sepiaIntensitySpin</tabstop>
+  <tabstop>magnifyEnable</tabstop>
+  <tabstop>transformEnable</tabstop>
+  <tabstop>transformTypeCombo</tabstop>
+  <tabstop>rotateEnable</tabstop>
+  <tabstop>rotateAngleDial</tabstop>
+  <tabstop>wallEnable</tabstop>
+  <tabstop>wallRowsSpin</tabstop>
+  <tabstop>wallColsSpin</tabstop>
+  <tabstop>puzzleEnable</tabstop>
+  <tabstop>puzzleRowsSpin</tabstop>
+  <tabstop>puzzleColsSpin</tabstop>
+  <tabstop>logoEnable</tabstop>
+  <tabstop>logoFileText</tabstop>
+  <tabstop>logoBrowseBtn</tabstop>
+  <tabstop>logoYSpin</tabstop>
+  <tabstop>logoXSpin</tabstop>
+  <tabstop>logoOpacitySlider</tabstop>
+  <tabstop>eraseEnable</tabstop>
+  <tabstop>eraseMaskText</tabstop>
+  <tabstop>eraseBrowseBtn</tabstop>
+  <tabstop>eraseYSpin</tabstop>
+  <tabstop>eraseXSpin</tabstop>
+  <tabstop>marqEnable</tabstop>
+  <tabstop>marqMarqueeText</tabstop>
+  <tabstop>marqPositionCombo</tabstop>
+  <tabstop>antiflickerEnable</tabstop>
+  <tabstop>antiflickerSofteningSizeSlider</tabstop>
+  <tabstop>motionblurEnable</tabstop>
+  <tabstop>blurFactorSlider</tabstop>
+  <tabstop>gaussianblurEnable</tabstop>
+  <tabstop>gaussianblurSigmaSlider</tabstop>
+  <tabstop>cloneEnable</tabstop>
+  <tabstop>cloneCountSpin</tabstop>
+  <tabstop>hqdn3dEnable</tabstop>
+  <tabstop>hqdn3dLumaSpatSlider</tabstop>
+  <tabstop>hqdn3dLumaTempSlider</tabstop>
+  <tabstop>hqdn3dChromaSpatSlider</tabstop>
+  <tabstop>hqdn3dChromaTempSlider</tabstop>
+  <tabstop>anaglyphEnable</tabstop>
+  <tabstop>mirrorEnable</tabstop>
+  <tabstop>psychedelicEnable</tabstop>
+  <tabstop>waveEnable</tabstop>
+  <tabstop>rippleEnable</tabstop>
+  <tabstop>motiondetectEnable</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

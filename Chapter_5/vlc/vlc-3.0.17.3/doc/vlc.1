@@ -1,0 +1,121 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH VLC 1 "Feb 14, 2005"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+vlc, qvlc, svlc, nvlc, rvlc, cvlc \- the VLC media player
+.SH SYNOPSIS
+.B vlc
+.RI [ OPTIONS ]
+.RI [ ITEMS ]...
+.SH DESCRIPTION
+This manual page documents briefly the
+.B VLC
+multimedia player and server.
+
+.SH OPTIONS
+.B VLC
+follows the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+For a precise description of options, please use "vlc \-\-help".
+
+The complete list of
+.B VLC
+options depends on what plugins are installed because they automatically
+add their own options. Please use "vlc \-\-longhelp \-\-advanced" for a
+complete list of available options.
+
+.SH ITEMS
+.B VLC
+recognizes several URL-style items:
+.TP
+.B *.mpg, *.vob, *.avi, *.mp3, *.ogg, *.opus
+Various multimedia file formats
+.TP
+.B dvd://[<device>][@<raw device>][#[<title>][:[<chapter>][:<angle>]]]
+DVD device (for instance dvd:///dev/dvd). The raw device is optional and
+must have been prepared beforehand.
+.TP
+.B vcd://[<device>][@{E|P|E|T|S}[<number>]]
+VCD device (for instance vcd:///dev/cdrom).
+.TP
+.B udp://[@[<multicast address>][:<local port>]]
+UDP stream, such as one sent by VLS or another VLC.
+Usually "udp://" is enough.
+.TP
+.B http://<server address>[:<server port>]/[<file>]
+HTTP stream
+.TP
+.B rtsp://<server address>[:<server port>]/<stream name>
+RTSP Video On Demand stream
+.TP
+.B vlc://<command>
+Execute a playlist command. Commands are:
+.B pause
+(pause execution of other items), and
+.B quit
+(close VLC).
+
+.SH ENVIRONMENT VARIABLES
+The following environment variables may affect VLC:
+
+.TP
+.B DISPLAY
+The X11 display server address.
+
+.TP
+.B http_proxy
+The HTTP proxy server URL.
+
+.TP
+.B OSSAUDIO_DEV
+The default audio output device,
+used by the OSSv4 output plugin.
+
+.TP
+.B VLC_DATA_PATH
+The directory containing VLC run-time data files (e.g. /usr/share/vlc).
+
+.TP
+.B VLC_PLUGIN_PATH
+An extra directory to load VLC plugins from.
+
+.TP
+.B VLC_VERBOSE
+The level of verbosity for log messages
+(0: silent, 1: error/info, 2: warning, 3: debug).
+
+.TP
+.B XDG_CACHE_DIR XDG_CONFIG_DIR XDG_DATA_DIR
+The directories to store user cached data, user configuration files and
+user data files respectively.
+
+.TP
+.B XDG_DOCUMENTS_DIR XDG_DOWNLOAD_DIR XDG_MUSIC_DIR XDG_PICTURES_DIR XDG_VIDEO_DIR
+The directories to fetch or store user text files,
+downloads, music, pictures (i.e. snapshots), and video respectively.
+
+.TP
+.B XDG_SESSION_COOKIE
+The unique identifier of the desktop session,
+used by the PulseAudio output plugin.
+
+.SH SEE ALSO
+Online documentation: http://www.videolan.org/doc/
+.PP
+.SH AUTHOR
+This manual page was written by Sam Hocevar <sam@zoy.org>, for the Debian
+GNU/Linux system (but may be used by others).

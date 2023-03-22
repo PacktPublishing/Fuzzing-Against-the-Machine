@@ -1,0 +1,5340 @@
+commit b014a4825d0ebcfd4fe43b3f6f0bc47d14847d53
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sun Dec 19 21:33:54 2021 +0800
+
+    demux: mp4: continue to next trun instead of return eof
+
+commit a308e178dd576c52d7e465bab6ed18701fc6adc7
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sun Dec 19 21:06:37 2021 +0800
+
+    demux: mp4: fix dead loop
+    
+    The first pass select track A, then the second pass select track B,
+    FragDemuxTrack(B) return EOF, the loop continue forever.
+
+commit a004ccdb9bc2d2af4013b6277c4fbcabc06275c4
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sun Dec 19 20:46:03 2021 +0800
+
+    demux: mp4: fix inverted logic
+    
+    (cherry picked from commit b79dabdd05cb9e575d4c8b44607833ef803f37ac)
+
+commit 870c1376343bf25edef9376e059c4343b1a55bc5
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Nov 15 11:25:00 2021 +0100
+
+    Update NEWS
+
+commit 58770529c9f7dedf763db1e6ef6e7d712d372075
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Dec 13 11:27:34 2021 +0100
+
+    On the road to 3.0.17
+
+commit a31161d93ea2dc3a0e8b864c88476bacef2579da
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Thu Jun 6 02:36:00 2019 +0100
+
+    upnp: fix bad option default
+    
+    the lowercase "auto" default option value did not match the uppercase
+    "Auto" in the choice list.
+    
+    option values should typically be lowercase. this fixes the mistake with
+    the case of the choice value, whilst maintaining backwards compatibility
+    with existing CLI usage and from saved settings files. this was the
+    clear preference for fixing this resulting from the MR discussion.
+    
+    (cherry picked from commit 230068f35d3b243c131853992f91e27313e6f7b3)
+    Signed-off-by: Felix Paul Kühne <felix@feepk.net>
+
+commit 6e995d58cc5cbcf52e879dbb30a2a96678c9c7a8
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Tue May 4 01:37:30 2021 +0100
+
+    upnp: improve auto mode handling code
+    
+    (no functional change)
+    
+     - better prepare for the next commit where we need to support both "Auto"
+       and "auto".
+     - avoid multiple `strdup()`.
+     - avoid avoidable string comparisons.
+    
+    (cherry picked from commit 31f283ad76a791fbe2344404ed42fff5da0fe8ac)
+    Signed-off-by: Felix Paul Kühne <felix@feepk.net>
+
+commit ca1279d1cd1b45bea081c7943173e0cdced0608c
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Thu Jun 6 02:44:32 2019 +0100
+
+    upnp: fix some misuse of strncmp()
+    
+    we do not want to be doing a 'starts with' check in these cases, they
+    should be an equality check
+    
+    (cherry picked from commit 785c6dfeb8961b975e6b8acab511aea4e8c8d70a)
+    Signed-off-by: Felix Paul Kühne <felix@feepk.net>
+
+commit aedf1d4a24239be24d66d2e3f82077612ed9cfe5
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Dec 7 11:32:10 2021 +0100
+
+    VLSub: Fix userdata directory creation
+    
+    Fix #26356
+    
+    (cherry picked from commit e25389467299a73bf95d3a3d7d05e93f52eaf1df)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 2090e1ea9a6a6f34f614218eeaf667d428f2f9c7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Nov 24 21:35:04 2021 +0100
+
+    demux: ts: check pcr offset with value prior matching sync code
+    
+    otherwise the last value is always overwritten with a more recent one
+    and triggers the dts < pcr case
+    
+    ref #25034
+    
+    (cherry picked from commit 225e0bc09b847167433d49a591b25a8da4e7655f)
+    Signed-off-by: Francois Cartegnie <fcvlcdev@free.fr>
+
+commit b6b665522cf56f6622fd85b1ce341172e29c7799
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Dec 7 22:40:09 2021 +0100
+
+    gui/qt: disable "Advanced controls" item if none availble
+    
+    If the user disabled the advanced controls widgets in the
+    interface customization options, it would still show the
+    menu item for them, but interactions with the menu item
+    would just do nothing.
+    
+    Instead properly disable the menu item when there is no
+    advanced buttons widget to show/hide.
+    
+    Ref: #14217
+
+commit a0f2b981fc8440407e9c8c3fc949a270f3d47bf8
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Dec 7 22:37:27 2021 +0100
+
+    gui/qt: add method to check if advanced widget exists
+
+commit aac177eea60de1fc4498abc7e1a998723ac04e32
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Dec 6 20:31:31 2021 +0100
+
+    gui/qt: standardpanel: add menu item to shuffle playlist
+
+commit 0a8fe5568f45fcd4ba578e7a05b37ccf9b2b67d3
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Dec 6 20:30:56 2021 +0100
+
+    gui/qt: playlist_model: add action to shuffle playlist
+
+commit 7332d1f3a489a4d3ab10532962ec2e05ec78d03a
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Dec 6 20:28:48 2021 +0100
+
+    gui/qt: playlist_model: add sortInternal helper
+    
+    Moves all relevant sorting logic into the new helper function
+    that exposes the arguments to playlist_RecursiveNodeSort
+    directly, need to use sort orders that are not linked to any
+    column.
+
+commit 42cf4c4ce7f52aecb9fda3b166c1fb23e9ff8a18
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Thu Dec 2 18:41:14 2021 +0200
+
+    sout/rtp: add support for E-AC-3
+    
+    (cherry picked from commit d41fb4e1d515ec0bd7b923333200c7f0d05169d8)
+
+commit 080ba0dbf3ffe13e29f59966c77238aa3663b5ad
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Dec 1 20:07:54 2021 +0200
+
+    rtp out: fix AC-3 payload header
+    
+    This was complete garbage.
+    
+    (cherry picked from commit 1e902c11902cfb3744b5f7a2d66239ba97459f7f)
+
+commit 22d8f09a881e06d26a0554049538af97330cc3ba
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 23:02:42 2021 +0100
+
+    contrib: ncurses: update to 6.3
+    
+    (cherry picked from commit 564aa40971215f85d995b1d4c0f4903ee779eb86)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit feb161ae72c24fc5c8df3f180f92630ff6ed2bc6
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Dec 6 14:51:41 2021 +0100
+
+    NEWS: Mention libsmb2 update
+
+commit 1819e17f4c51d24d29ce5c518f5a2eab3d41c453
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 14:23:18 2021 +0100
+
+    contrib: smb2: update to a more recent version
+    
+    Update libsmb2 to a more recent (unfortunately unreleased)
+    git sha to fix it sometimes converting to invalid UTF-8.
+    
+    Fix #26324
+    
+    (cherry picked from commit 5e89e4465377f345ea7b419010f2283929b89f6a)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit ff50ff1e67f9591de4b73c7769ba0291fbb698a9
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Mon Sep 13 18:33:08 2021 +0300
+
+    url: add test case
+    
+    (cherry picked from commit ff0a252270401c4a0f09580c692f544430ec8883)
+
+commit 59b3fa840835ce06aa5b6b236c99196dbd8d042e
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Fri Sep 10 22:58:44 2021 +0300
+
+    url: allow brackets in path part
+    
+    As brackets are separators only within the authority part, thier use
+    within (or on the edges of) the path does not create any ambiguity.
+    
+    (cherry picked from commit 721751d4f8f902ce042ffd015c70134aba373a2b)
+    
+    Fixes #26092
+    Fixes #26348
+
+commit f759c3483130847ff43e9e7f436c19acec649116
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Wed Dec 1 16:43:21 2021 +0100
+
+    service_discovery/bonjour: fix smb discovery
+    
+    The module was checking if it could handle the protocol by checking
+    if a module matching the module name is present, but for smb the
+    module names are dsm and smb2.
+    
+    Fix vlc-ios#917
+    
+    (cherry picked from commit 08891a8df34c2be265678843d23b3cb3ae23c7c2)
+
+commit f5dfb2f8c7269534cb41113e504fe5564ce29d99
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 21:59:09 2021 +0100
+
+    macosx: add ability to shuffle playlist
+
+commit 0601a14dc479ef6a0d0c3e488158e2fc5c899b5f
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 21:25:33 2021 +0100
+
+    macosx: move playlist sorting into separate function
+
+commit 9226bae4920ae575f5249fab95c7e5abfeee4031
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 15:47:57 2021 +0100
+
+    NEWS: Mention DAV support
+
+commit 0b52a373472d858e08aa220ca08db6afad7e51c5
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 16:35:43 2021 +0100
+
+    msi: add DAV file extension association
+    
+    (cherry picked from commit 82347d93d526df00c1ebf73805534b7f4081859a)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit e70b3532b17dfe7a1cd3bd83894ab61936f26425
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Wed Dec 4 15:51:52 2019 +0100
+
+    vlc_interface: Add DAV file extension
+    
+    (cherry picked from commit d0cdf8e5e1589f7b933edc6c71a55dc9a2f6b7d5)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 4d467d9ea143fd8d10b052a732f1ab87dd34f379
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Nov 30 15:45:29 2021 +0100
+
+    macosx: Add DAV file extension association
+    
+    (manual backport of d18a840b7b38b0a9cd3d189865219ec514b30f34)
+
+commit 99ea4e70fbd60dccb3ba2434e61008035e388b40
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Wed Dec 4 15:19:14 2019 +0100
+
+    NSIS: Add DAV file extension association
+    
+    (cherry picked from commit 608eff9a36cf096cf9398e65a4c9817e1f09fe42)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 2437484d7684a4661048df1e095484a276bbea0b
+Author: Louis Régnier <louis.videolabs@gmail.com>
+Date:   Mon Nov 29 10:05:04 2021 +0100
+
+    opengl: vout_helper: use pl_gpu_dummy for shaders
+    
+    Without specifying the version, libplacebo might generate shaders with
+    a different version from the one we specified, leading to usage of
+    function that might not be available.
+    
+    A typical failure would lead to such error messages:
+    
+        gl gl: Initialized libplacebo v3.120.3 (API v120)
+        gl gl error: shader 0: 0:22(13): error: no matching function for
+        call to `mix(vec3, vec3, bvec3)'; candidates are:
+    
+        0:22(13): error:    float mix(float, float, float)
+        0:22(13): error:    vec2 mix(vec2, vec2, float)
+        0:22(13): error:    vec3 mix(vec3, vec3, float)
+        0:22(13): error:    vec4 mix(vec4, vec4, float)
+        0:22(13): error:    vec2 mix(vec2, vec2, vec2)
+        0:22(13): error:    vec3 mix(vec3, vec3, vec3)
+        0:22(13): error:    vec4 mix(vec4, vec4, vec4)
+    
+    Fixes #25324
+    
+    Co-authored-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 0da425a2f0ef91eb0a787e7b0d250615302e930a
+Author: Louis Régnier <louis.videolabs@gmail.com>
+Date:   Mon Nov 29 10:18:02 2021 +0100
+
+    opengl: add glGetIntegeri_v
+
+commit 576630ee395d25d506e01a9a21de4475381644ec
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Nov 24 10:07:56 2021 +0100
+
+    demux: mkv: shift the timestamps based on the biggest CodecDelay
+    
+    The CodecDelay needs to be substracted from the PTS of all frames of that
+    track. That may result in negative DTS, PTS and PCR which is not well handled.
+    So we just shift all timestamps based on the biggest CodecDelay so all
+    timestamps are always positive.
+    
+    This is in line with how libavformat reports the timestamps on frames from a
+    track with a CodecDelay.
+    
+    This is done per segment as other segments may use a different CodecDelay
+    per track.
+    
+    Fixes #25129
+    
+    (cherry picked from commit 450363175621f1b6893a8cc833508b5129bfd938) (edited)
+    edited:
+    - 3.0 uses mtime_t instead of vlc_tick_t
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit db55aaa090a94a43588233a2136e9777a6f44ee1
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Thu Oct 28 14:59:57 2021 +0200
+
+    build: use DYLD_LIBRARY_PATH on macOS
+    
+    cf. https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/DynamicLibraryUsageGuidelines.html#//apple_ref/doc/uid/TP40001928-SW12
+    
+    """
+    When the library name is a filename (that is, when it doesn’t include
+    directory names), the dynamic loader searches for the library in several
+    locations until it finds it, in the following order:
+    
+     - $LD_LIBRARY_PATH
+     - $DYLD_LIBRARY_PATH
+     - The process’s working directory
+     - $DYLD_FALLBACK_LIBRARY_PATH
+    
+    When the library name contains at least one directory name, that is,
+    when the name is a pathname (relative or fully qualified), the dynamic
+    loader searches for the library in the following order:
+    
+     - $DYLD_LIBRARY_PATH using the filename
+     - The given pathname
+     - $DYLD_FALLBACK_LIBRARY_PATH using the filename
+     """
+    
+    Conclusion: DYLD_LIBRARY_PATH on macOS behave like LD_LIBRARY_PATH on
+    Linux but LD_LIBRARY_PATH on macOS has a different behavior than
+    LD_LIBRARY_PATH on Linux, so DYLD_LIBRARY_PATH should be used on macOS.
+    Specially since we can't really control if the library name will include
+    a path or not (relative or absolute).
+    
+    (cherry picked from commit abbe7f3b8bea7ceffae797cb924d5154b43c5d14)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit fb1519ba6e41e4e41fdcd1795ffe4320e2319db8
+Author: Hannes Domani <lamisedaxeh@yahoo.com>
+Date:   Tue Dec 22 02:00:18 2020 +0100
+
+    lua: icecast: fix nil value error for some streams
+    
+    Due to a bug in the directory, some streams lack a listen URL.
+    
+    Fix #25309
+    
+    (cherry picked from commit c8c78f75e7117498f1552f22c4ba53a229f50997)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit d5e53764ba89d36ca5c300e0cc0f5261b0abe8ac
+Author: Alexandre Janniaux <alexandre.janniaux@gmail.com>
+Date:   Mon Nov 22 11:20:31 2021 +0100
+
+    qt: interface_widgets: honor --no-mouse-events
+    
+    With --no-mouse-events, the mouse events were correctly disabled on
+    every window platform but not in the Qt provider.
+
+commit 1d2c7f2b00dda88db6a646132e206fb07f4675ab
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Nov 15 14:46:04 2021 +0100
+
+    muxer: avformat: Add missing av_packet_free
+    
+    (cherry picked from commit c2549ced70d5a6c56fd2411519b185b4a04c36d2)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 84ff84a8f6d29c29c127ce841d9b4a114f327746
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Nov 15 14:43:05 2021 +0100
+
+    avcodec: encoder: Don't unref frame twice
+    
+    The frame is unref'ed in the callsite
+    
+    (cherry picked from commit ecdd9957744b04d3270774eb7c19920698641b70)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 869e2119bf8b5e3910599bcc6c02b21436a13595
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Nov 15 14:39:03 2021 +0100
+
+    avcodec: encoder: Fix leak on error
+    
+    (cherry picked from commit b04e2c5d9f2cc55d64a84161fcdd24b35e9092b4)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit a77f45d0c3e5c3814062566f8fd210a8fe7fb46b
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Tue Apr 14 19:25:07 2020 +0300
+
+    avcodec: fix flawed logic
+    
+    Cannot find any codec.
+    
+    Regression from 21d5a1933275edb7f67d05ea62a762464e07c2cb.
+    
+    (cherry picked from commit 067dcd0a1974b00a92e900b0e5c976349ad13859)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 0094e5b4214cade58303cf315ce4c128d76f9e32
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Wed Apr 8 15:07:15 2020 +0200
+
+    avcodec: remove deprecation warning for av*_register_all
+    
+    From doc/APIchanges:
+    
+        2018-02-06 - 0694d87024 - lavf 58.9.100 - avformat.h
+          Deprecate use of av_register_input_format(), av_register_output_format(),
+          av_register_all(), av_iformat_next(), av_oformat_next().
+          Add av_demuxer_iterate(), and av_muxer_iterate().
+    
+        2018-02-06 - 36c85d6e77 - lavc 58.10.100 - avcodec.h
+          Deprecate use of avcodec_register(), avcodec_register_all(),
+          av_codec_next(), av_register_codec_parser(), and av_parser_next().
+          Add av_codec_iterate() and av_parser_iterate().
+    
+    They are no-op since those updates. If compiling with a recent release,
+    just don't call av*_register_all to prevent warnings.
+    
+    (cherry picked from commit 21d5a1933275edb7f67d05ea62a762464e07c2cb)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 2da109684a662a51989aa581bfc6cd1888f6c68c
+Author: Ilkka Ollakka <ileoo@videolan.org>
+Date:   Fri Jun 18 10:23:35 2021 +0300
+
+    avcodec/subtitle: stop using removed setter for pkt timebase
+    
+    Removed from ffmpeg repo in commit 23bb78d2ea4f0e3a0835744d59708efed50abccc.
+    
+    (cherry picked from commit e7190e7a70e9701754c50348f5b6357759440657)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 37427cab7df0ec5611493a1207f69445853738ef
+Author: Ilkka Ollakka <ileoo@videolan.org>
+Date:   Wed Jul 7 12:37:58 2021 +0000
+
+    avcodec: remove use of av_init_packet as it is deprecated in new ffmpeg major version
+    
+    av_init_packet is deprecated in new major version of ffmpeg.
+    
+    Also use av_packet_free instead of unref.
+    
+    Use av_packet_clone and AVPacket * in vlc_av_packet_t.
+    
+    (cherry picked from commit 16fd46fa506424134beb53ec88be3eea1b42a221)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 73439b6b5839ec045462a1d98e37192328225bca
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Nov 22 15:53:56 2021 +0100
+
+    demux: mkv: make sure we send the first valid PCR before we send a valid block
+    
+    Negative or VLC_TICK_INVALID timestamps are not sent as a PCR but there might
+    still be such blocks sent before the PCR.
+    
+    (cherry picked from commit a18356f3f364b8d673b267bddab5dd64f1c12b72) (edited)
+    
+    edited:
+    * vlc 3.0 branches uses VLC_TS_INVALID instead of VLC_TICK_INVALID
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 80708059d0496b7a3d8138c0e0313c2b6f62c865
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Nov 22 15:52:26 2021 +0100
+
+    demux: mkv: turn the PCR update into a function
+    
+    (cherry picked from commit 7a5eede42d1a80a1be0171adc813d6310f118186) (edited)
+    
+    edited:
+    * 3.0 branch uses mtime_t instead of vlc_tick_t
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 1353e52693d8deb4e629e153d9c73d7dc69afc13
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Nov 22 12:10:17 2021 +0100
+
+    contrib: Bump taglib to 1.12
+    
+    fix #26309
+    
+    (cherry picked from commit c651b10d33dc0fb7b9670208f93f94f850ba8ca4)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit ebbd474f79cd145094d2a5c524487938fe412934
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Nov 23 18:22:04 2021 +0100
+
+    youtube.lua: exponential form integers in "n" descrambling input data
+    
+    They now appear; add support for parsing them.
+    
+    Fixes #26317
+    
+    (cherry picked from commit 6b5bc195a9811c6bb666ef3a30a100db7bb71092)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 72fc254d3bae128b81fc2d0eeb7baa3cda7eedea
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Nov 23 18:07:33 2021 +0100
+
+    youtube.lua: document an "n" descrambling transformation
+    
+    (cherry picked from commit 84ba044df10bb7e9cbf293fa6eefbd77e370c398)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 7b43e275feb8835393cc1bad6771f561b591b557
+Author: Martin Storsjö <martin@martin.st>
+Date:   Wed Feb 21 13:55:30 2018 +0200
+
+    include: Don't use the gnu_printf format attribute with clang
+    
+    Clang doesn't support this attribute yet.
+    
+    (cherry picked from commit 070fcc422e270939fdb91f855690cca447c4d3ab)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit d616f01fa9c735b0def82fbfcf10d46d04ef9acf
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Sun Nov 14 05:41:18 2021 +0100
+
+    demux: mp4: fix reading vpcC box
+    
+    The VP Codec ISO Media File Format Binding specification
+    states that the VP codec configuration box (vpcC) extends the
+    FullBox and a FullBox starts with a 1 byte version followed by
+    3 bytes flags.
+    
+    Even though we are not interested in the flags, we still have to
+    read them, else all following reads will read from the wrong position,
+    resulting in, among other things, bogus values in the i_codec_init_datasize
+    which is supposed to be always 0 for VP8 and VP9.
+    
+    (cherry picked from commit b08e179241c3e6f5fc0253731e9272a9e67ae066)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 906bc892f8cae064ebaf3116c8932aa0baecd7bd
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Nov 15 00:58:35 2021 +0100
+
+    youtube.lua: add "n" descrambling split compound transformations
+    
+    A new variant of compound transformation has the Base64 alphabet
+    generation and the compounding itself as two separate data array
+    elements, contrary to what was observed so far. Add support for those.
+    
+    Fixes #26285
+    
+    (cherry picked from commit 7f6614cbafb76e19257551a833375642a7dc3949)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 367970ff65d37f7d62c913e9e8b2294de589432e
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Nov 15 00:39:15 2021 +0100
+
+    youtube.lua: "n" descrambling transformations with two extra arguments
+    
+    A new standalone compound transformation, taking its Base64 alphabet
+    as extra input argument, has revealed itself. We support parsing and
+    passing this one more argument from the script section.
+    
+    Technically this last argument can be a function or rather the result
+    of its call, but with no argument, we know what's always returned, and
+    don't need to treat it as a function. This is less clean but simpler and
+    will do for now.
+    
+    (cherry picked from commit fd2e937f28bc35dfa24096f4d10e7acff44cabb1)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit c060c7933a5c8876b6c7db0a3143b085832ce5a0
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Nov 15 00:20:46 2021 +0100
+
+    youtube.lua: simplify "n" descrambling compound transformation
+    
+    Newly observed transformations reveal that the uncertain character
+    code variable used as constant offset, really isn't one and is simply
+    supposed to be the alphabet's length. Thus even more so, it is a no-op
+    on the alphabet's algebraic modulo group, and probably just an artifact
+    of how modulo of negative numbers is handled in javascript. Simplify it
+    away.
+    
+    (cherry picked from commit 174e12b3bcab5ab4164da10cc0e499d6c7893991)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit baf5223dff873ca066f00b20f13c89b47ca6e878
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Wed Jun 30 10:19:23 2021 +0200
+
+    doc: QtPlayer: check _WIN32 for windows plugins
+    
+    QWindowsIntegrationPlugin is supposed to be linked against only when the
+    example is being compiled for Windows platform.
+    
+    Cherry-picked from commit ce4e4085c60a0abdde8660673c5293c5fff46108.
+    
+    Signed-off-by: Alexandre Janniaux <alexandre.janniaux@gmail.com>
+
+commit 8f8c442e3283b9a016961b206ad85d8ebb33b562
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 26 16:15:03 2021 +0100
+
+    doc: QtPlayer: add QWindowsIntegrationPlugin plugin
+    
+    Similar to the one in the QtGl sample.
+    
+    Cherry-picked from commit 930b5ef4f977febc8faf7817eceab231b8d21723.
+    
+    Note that QtGl sample doesn't exist in the 3.0.x branch.
+    
+    Signed-off-by: Alexandre Janniaux <alexandre.janniaux@gmail.com>
+
+commit 0e9f464114de93361313b47dd932f384e2f42ebd
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Thu Nov 19 14:37:28 2020 +0100
+
+    doc: QtPlayer: update .pro file to use pkg-config
+    
+    It allows to configure the example with, for instance, the following
+    command line:
+    
+        PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/ qmake ..
+    
+    PKG_CONFIG_PATH can be adapted to the path where libvlc has been
+    installed and/or where Qt is available.
+    
+    This also remove the unused parts, and add QT += widgets which is needed
+    to compile.
+    
+    Cherry-picked from commit d99c280178ef5c09923d101a0fa103f0aa0c1b3c.
+    
+    Signed-off-by: Alexandre Janniaux <alexandre.janniaux@gmail.com>
+
+commit de4d6d510e6e8e8626809fc1838b6bb1da9f0c43
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu May 7 08:28:34 2020 +0200
+
+    QtPlayer example: fix compilation with newer Qt/libvlc
+    
+    Cherry-picked from 0ade21ad07f88f77fbf296af0fc71bec179ee7ab, with the
+    libvlc 4.0 part removed.
+    
+    Signed-off-by: Alexandre Janniaux <alexandre.janniaux@gmail.com>
+
+commit e69264f8edd9e01ebb5f66cbb11cc1849e4082e3
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Wed Oct 20 14:53:02 2021 -0400
+
+    live555: fill in Opus extradata
+    
+    This does not make the live555 module dependent on libopus, just the helper
+    functions in opus_header.{c,h}
+    
+    (cherry picked from commit c73d61a5f541a4b2566da2968c725b62ccac96cc)
+
+commit cf0973bb7ffe26d82a8cc05551df5a78d3ec3557
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Nov 9 08:58:37 2021 +0100
+
+    audiounit_ios: don't register the aout in case of failure
+    
+    (cherry picked from commit 6fd238d9c9b7f640cd862b0ebca543ad8fb642e2)
+    Signed-off-by: Felix Paul Kühne <felix@feepk.net>
+
+commit b0bb16804bb922d0d3e24f794a352cf28cda3d58
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Mon Nov 8 11:34:32 2021 +0100
+
+    audiounit_ios: setup the RouteSharingPolicy
+    
+    Starting iOS 11.0
+    
+    Setting it to LongFormAudio or LongFormVideo will select audio devices
+    that are used for long playback (music or video) in priority.
+    
+    (cherry picked from commit 5abc4ea8534128368a36c291fe38ad97f439b4f2)
+    Signed-off-by: Felix Paul Kühne <felix@feepk.net>
+
+commit fb79c1242d8c6b640124a7c36126e5002107cae8
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Wed Mar 7 03:20:54 2018 -0500
+
+    vpx: decode WebP's VP8 chunks
+    
+    Fixes #19446
+    
+    (cherry picked from commit ac9038e9ac46792f294e2fe348d66f1e12340d2e)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 3ad9f3c23a48a1cda6aeed227afd2b0c00d1fa0b
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Tue Mar 6 01:22:34 2018 -0500
+
+    demux: image: add WebP probing
+    
+    Refs #19446
+    
+    (cherry picked from commit 816f1630123b781a74cab3591583e9a05e7a29a3)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit ff6820d5631dc33b2610cb1473133b5a8e771962
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Tue Mar 6 01:18:54 2018 -0500
+
+    fourcc: add WebP image format
+    
+    Refs #19446
+    
+    (cherry picked from commit ca04206095232821323f5624113c570f610e2659)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit a108715f1d0f6e7c878a5b9ba01c799f08dc78f3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 18:28:54 2019 +0100
+
+    packetizer: dts: handle LBR (fix #21973)
+    
+    (cherry picked from commit ddf8716a0d749e9af01b6d1a32f6f99ab7aed340)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 6572382a3583644224656a9625e424bb1405a8f3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 18:28:22 2019 +0100
+
+    packetizer: dts: add LBR header parser
+    
+    (cherry picked from commit 60cca0eadead0682e6625f825f6c7294999a49ee)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit ee3c348ab79496b41e6301f12fa247e3d4cd8655
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 18:13:04 2019 +0100
+
+    packetizer: dts: renaming and store second header
+    
+    (cherry picked from commit 4b0798f6875d48c90641dfa5106bf4d0f9f6a7ce)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 865f5423a7070421870694520dac6e1d1b763fce
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 18:08:02 2019 +0100
+
+    packetizer: dts: split second sync substream state
+    
+    (cherry picked from commit 1f42cfc37622602babf1f50338a19981150f2457)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 73ec8e8930d4a8f5487e42054c81b08a6225ce02
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 12:24:35 2019 +0100
+
+    packetizer: dts: handle substream in a dedicated state
+    
+    (cherry picked from commit 516246a4bc518386c56854b90aa2a2db3522c8a0)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 340583eb83eb26167ea4d14c6e3d6be6e914d3cf
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Mar 8 18:01:00 2019 +0100
+
+    packetizer: dts: store substream header size
+    
+    (cherry picked from commit fcea1a345187062c49cf6747c8bff3106f3e5bf4)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 0515027882576f839d9c54004242f593e8cb046e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Mar 8 17:04:19 2019 +0100
+
+    packetizer_helper: add custom state offset
+    
+    (cherry picked from commit 0ab18a89d6cbef7d88a77061334f59d7d84cf2de)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 264b6c63331f927e8ffbeec53f6287684ac04539
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 11 15:10:49 2019 +0100
+
+    packetizer: dts: test and return sync word
+    
+    (cherry picked from commit e23d066b5183f6cf6d75f1fbab5d938bd4dc5452)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit dfb2c62402b4441b411724e35298093f8546b474
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Nov 8 01:58:49 2021 +0100
+
+    es_out: fix flapping PREROLL flag on non dated packets
+    
+    Saves pts to perform preroll target comparison against.
+    refs #25129
+    
+    In some cases, the packets are sent interleaved with non dated packets
+    SEND 1
+    SEND TS_INVALID
+    (...) multiple times, simplified to 1 occurence
+    PCR 1
+    SEND 719996
+    SEND TS_INVALID
+    PCR 719996
+    SEND 1439992
+    SEND TS_INVALID
+    PCR 1439992
+    SEND 2160008
+    SEND TS_INVALID
+    PCR 2160008
+    
+    Until preroll_end (file caching) is reached, all packets
+    are flagged as PREROLL.
+    
+    Entering preroll has effect on audio output by flushing
+    previous content, and silencing dropped buffers.
+    
+    Due to non dated interleaving, the stateless es_out keeps
+    flipping PREROLL packets and triggering the in-stream PREROLL
+    behaviour (like SET_NEXT_DISPLAY_TIME).
+    The effect being (here with alsa) to re-enter preroll each
+    time, extending decoder preroll until pts >= preroll_end
+    and flushing decoders.
+    
+    Stream buffering done (1439 ms in 0 ms)
+    ModuleThread_PlayAudio pts 1 preroll end -9223372036854775808
+    inserting 3840 zeroes / 80 ms
+    cannot write samples: Relais brisé (pipe)
+    ModuleThread_PlayAudio pts 120001 preroll end 9223372036854775807
+    (...)
+    ModuleThread_PlayAudio pts 719996 preroll end 719996
+    end of audio preroll
+    inserting 34804 zeroes / 725 ms 719996
+    ModuleThread_PlayAudio pts 839996 preroll end 9223372036854775807
+    (...)
+    ModuleThread_PlayAudio pts 1439992 preroll end 1439992
+    end of audio preroll
+    inserting 69172 zeroes / 1441 ms 1439992
+    ModuleThread_PlayAudio pts 1559992 preroll end 9223372036854775807
+    (...)
+    ModuleThread_PlayAudio pts 2160008 preroll end 2160008
+    end of audio preroll
+    inserting 103601 zeroes / 2158 ms 2160008
+    ModuleThread_PlayAudio pts 2280008 preroll end -9223372036854775808
+    (...)
+    
+    (manual backport from commit b752ffe13b605de5dfc40ff48ad4659dd4df0d15)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 493b7a037da7d490c6eb62a021fd8eaba46ac755
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Oct 21 13:15:33 2021 +0200
+
+    fourcc: add AV1 MS FourCC
+    
+    (cherry picked from commit 374a7cf675b701666ec95c1287f5f8b6d128cd15)
+
+commit bc62c5132d2d582436d494525a18931550f1fe86
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Oct 21 13:28:42 2021 +0200
+
+    fourcc: fix E-AC-3 MP4RA fourcc direct mapping
+    
+    (cherry picked from commit 99e92fd79afe79c8a78759acf4fdd5390667f6d3)
+
+commit e22c0ba505d347c494dd39b3fbb807cf65d3b014
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Oct 19 00:48:06 2021 +0200
+
+    youtube.lua: descramble "n" video URL parameter by parsing javascript
+    
+    User agents are apparently now expected to do this; failure to do so
+    results in the video file data transfer getting throttled down to rates
+    such as 80 kB/s, 60 kB/s or 40 kB/s, below playback rate, and usually
+    resulting in a video that hangs upon loading or every few seconds, and
+    is impossible to play. This behavior seems to have first appeared in
+    June, but been fully rolled out only last week.
+    
+    Just like with URL signatures, we interoperate with YouTube by
+    fulfilling what's apparently expected from us, using the same approach
+    as so far: we parse the descrambling rules from the javascript code, and
+    apply them.
+    
+    Fixes #26174
+    
+    (cherry picked from commit 03e6957832952e118ea173955485c32783438abe)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 346d6a2f6e537e6166af041aa1f100adddbb46ca
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Oct 19 00:37:30 2021 +0200
+
+    youtube.lua: retry fetching descrambling javascript asset once
+    
+    This should help against transient errors, and parsing of the javascript
+    URL isn't the part that's most likely to break.
+    
+    (cherry picked from commit f3963e68c1f0dd3a3cdb65a17ac118550de35628)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 90a116967763fe6f69176aaad90c14fc1c363c34
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Oct 19 00:20:41 2021 +0200
+
+    youtube.lua: factor out descrambling javascript fetching
+    
+    We'll be descrambling the "n" parameter in addition to the URL signature
+    using this same javascript web asset, so we want to be able to share and
+    reuse it.
+    
+    (cherry picked from commit 4cfa8b65efa200aa1185a53e2bf4b58d05d5bb22)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit fb44f5fd6c072caa5b422b0bb12afff347e95019
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Oct 18 23:20:37 2021 +0200
+
+    youtube.lua: rename signature descrambling function
+    
+    Use a more specific name as this isn't the only parameter anymore that
+    we'll be descrambling by parsing and emulating javascript.
+    
+    (cherry picked from commit 095f093093923e2f0557aff16e88bbb6c1802a44)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 17a2d54803b405c5b5eea12bb6922cd75f24b10c
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Oct 18 23:09:38 2021 +0200
+
+    youtube.lua: rework error handling for signature descrambling
+    
+    (cherry picked from commit 8473b3bf3bb82681e0fb0a33886b63ae6801d2e6)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 773f23dd29a0a892daf4f09f0ec1a396eafd42f9
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Oct 18 21:32:09 2021 +0200
+
+    youtube.lua: fix up signature descrambling function name extraction
+    
+    Javascript variables can contain other, special characters, also %a
+    depends on the locale.
+    
+    (cherry picked from commit a17869127051c8c96af2c9348ef51fb353ae30e6)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 09ebe203a8bf7e9d06be971ab4cd4431b8901ac3
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Oct 18 19:55:56 2021 +0200
+
+    youtube.lua: remove fallback to retired alternate video info API
+    
+    After tightening access restrictions to it, the get_video_info YouTube
+    API was completely retired around July 2021, with an HTTP 410 Gone code.
+    All this fallback achieves anymore is poor UX.
+    
+    (cherry picked from commit c7b4efcf75e0d1815cfc104f806f2c46bd8a9e52)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit aa5766e387110c0aaeee84bcebbc6d18e79aba49
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Mon Oct 18 19:28:58 2021 +0200
+
+    youtube.lua: add extra "out of use" comment
+    
+    (cherry picked from commit b2c32b5eda0d996cfe8f3571af0ba2d92cb0f8ae)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit c900a2183f8988f32e60afdcae3aa398387295f1
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Wed Oct 20 11:40:21 2021 +0200
+
+    audiotrack: disable DynamicsProcessing before Android 12
+    
+    cf. videolan/vlc-android#2221
+    
+    (cherry picked from commit 639b9d93c194ff5f7473aac7603db16c80d94d76)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 2e23dacc89d1e72ed297a1ca98b2a9bc0bc0c5a0
+Author: Johannes Kauffmann <johanneskauffmann@hotmail.com>
+Date:   Sat Oct 16 10:40:13 2021 +0200
+
+    contrib: mfx: fix linking with x86 DLL on UWP
+    
+    intel_gfx_api-x86.dll exports InitialiseMediaSession and
+    DisposeMediaSession, but libqsv_plugin.dll imports
+    InitialiseMediaSession@12 and DisposeMediaSession@4. The name
+    decorations are caused by the APIENTRY modifier, resulting in
+    libqsv_plugin.dll not being able to load intel_gfx_api-x86.dll. It
+    fails with an Entry Point Not Found error. On debug mode UWP, this
+    will crash the CoreCLR.
+    
+    Should fix https://code.videolan.org/videolan/LibVLCSharp/-/issues/374.
+    
+    Backport from upstream mfx_dispatch, fixed since
+    https://github.com/lu-zero/mfx_dispatch/commit/7e4d221c36c630c1250b23a5dfa15657bc04c10c.
+    
+    (cherry picked from commit 18a7251119c712a0b19a73d197427db8565cdb76)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 9bc28dabb7e17bdbc4483f7ebc74820da9c665a9
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Tue Oct 19 13:00:20 2021 +0200
+
+    NEWS: mention spatial audio on iOS/tvOS
+
+commit 50b424a8acee3a3c43efc99501c2c5428be0e08b
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Wed Oct 6 17:39:48 2021 +0200
+
+    aout iOS: add support for spatial audio
+    
+    This adds support for the spatial audio API introduced in iOS 15.
+    
+    (cherry picked from commit 744248f5ee6e2ffa205e2282036f9450025bc80f)
+
+commit 14a4dc04a504638936e28237a70fbf858b84bf7b
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Oct 13 15:17:44 2021 +0200
+
+    qt: fix compilation with --disable-update-check
+    
+    The "ifdef" doesn't seem to be taken in account. It's as if the define was
+    always set. Now that the define is properly used we need to pass it to moc.
+    
+    (cherry picked from commit 568aba0b02e803afcbaceff5beece882f10d4fce) (edited)
+    edited:
+    - on 3.0 the files are not in a dialog subfolder
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 904e9cd79b08310200aa4419886c36119194c7f2
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Oct 13 10:43:14 2021 +0200
+
+    qt: fix qt-error-dialogs inherit type
+    
+    Running the (3.0) code with --no-qt-error-dialogs asserts.
+    
+    (cherry picked from commit 0733018f8a5346e711dc549d1ba9a46e25af9c43) (edited)
+    edited:
+    - on 3.0 the files are not in a dialog subfolder
+
+commit 1f870b73e0e65901b42a1fcf33dbb031c9a1e163
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jul 20 21:23:13 2021 +0200
+
+    Revert "codec: libass: add support for sub-text-scale"
+    
+    This reverts commit 72fd3b20f855198959e0dfb6b331acc5cb4502c6.
+    
+    we can't recurse object tree properly
+
+commit aa51750767f722debbfbe9bda4cb59aef8901cd8
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Sun Sep 19 17:18:09 2021 +0200
+
+    avcapture: fix PTS conversion and usage
+    
+    CMTime is **not** equivalent to vlc_tick_t. In particular, the timescale
+    doesn't match. So it should be converted before usage.
+    
+    In addition, GET_TIME is supposed to return where the access is
+    currently reading, which should also match the timestamps of the output
+    frames from the access.
+    
+    Fixes #26101
+    
+    Cherry-picked from commit ca04b74fa6724c6d770cf277d97b1bfb4d18fe20.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit a4e07fb9f4854f5756dda6a8914ecf0866d6fba8
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Sun Sep 19 16:26:43 2021 +0200
+
+    avcapture: signal missing protocol implemented
+    
+    AVCaptureVideoDataOutputSampleBufferDelegate is implemented by
+    VLCAVDecompressedVideoOutput but wasn't signalled, leading to warnings
+    when compiling.
+    
+    Cherry-picked from commit 2a3074cc36f708c0048e11347c9f337f017e1e47.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit d9eb0075be5c09556ac6933afedb749256848094
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 20:57:50 2021 +0200
+
+    avcapture: use a separate class for ARC
+    
+    ARC is not supported when storing NSObject in a structure. But it is
+    well-supported when storing a NSObject as (__bridge_retained void*) into
+    the p_sys until (__bridge_tranfer) releases it.
+    
+    It highly simplify the whole handling of ARC objects and avoid using
+    CFRelease/CFRetain in the code, unifying with other Objective-C modules
+    like VLCVideoUIView or VLCOpenGLES2VideoView.
+    
+    Cherry-picked from commit 3571e7ed3ad7df8aa62a3f360bed07bedb56bdda.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit a71f62e75f39bfc0b8697607e12d3d95bae6e4e8
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 18:36:50 2021 +0200
+
+    avcapture: use video_format_Print
+    
+    ...instead of using custom debug strings
+    
+    Cherry-picked from commit 3e9507cd6b48f1d6a26e1710f56e6a6a856dbf80.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 8f07b5cd2e00bce0f9243cd4dd9e550dc22927ef
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 19:55:59 2021 +0200
+
+    avcapture: fix locking for pts
+    
+    Cherry-picked from commit 27489f99ccd8e56884d79359d30e7d499c415f03.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 8f60dd977b19b555983d339d4a1b87f221116630
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 18:36:13 2021 +0200
+
+    avcapture: improve the es_format_t exposed
+    
+    Cherry-picked from commit d105cfe42dda31d5403c01e71a44eae63b8b04a3.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 8eee92c333b4e1969c19486263032a31831e8f35
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 18:26:49 2021 +0200
+
+    avcapture: remove trailing characters
+    
+    Cherry-picked from commit de1339120dbef5ff9eb1afd6df964424f4bbff43.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 9218866061846e50027d18e1ca9d6392d23a7a5e
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 18:26:38 2021 +0200
+
+    avcapture: fix typo
+    
+    Cherry-picked from commit 34111f324433e93d250c17129fc2d52bb6955b8e.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit c593d59c90bac4122c34d6e83344395dc563bb5e
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Tue Sep 14 18:25:33 2021 +0200
+
+    avcapture: setup framerate correctly
+    
+    Set the framerate to 1 / framerate_base, avoiding the following warning
+    for a 30fps capture stream:
+    
+        rawvideo decoder warning: invalid frame rate 0/30000, using 25 fps
+        instead
+    
+    Cherry-picked from commit 84a5179345c9ec0b2bb687db0d3ad7b0eb61664c.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 2c077f260eaa8d17370d35ad47b8ba10bf987bae
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Oct 6 08:07:42 2021 +0200
+
+    configure: fix VLC_COMPILE_BY/VLC_COMPILE_HOST empty by default
+    
+    After 9e7ed0247dd298fe8597431ae0738882e734011b the test for the environment
+    variable wasn't done properly. Resulting in empty variables (and error messages
+    during configure).
+    
+    Fixes #26165
+    
+    (cherry picked from commit 0357c443e2f9e26f70bccc1cca9f8d376ffe9c1c) (rebased)
+    
+    rebased:
+    - the 3.0 branch doesn't have [] around the variable names
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 84cf9554826212a7bae1486f2e5aad144ffe27b7
+Author: Vagrant Cascadian <vagrant@reproducible-builds.org>
+Date:   Wed Sep 29 23:18:26 2021 +0000
+
+    configure.ac: Allow passing VLC_COMPILE_BY and VLC_COMPILE_HOST.
+    
+    This allows passing a specific value instead of inheriting these
+    values from the build environment.
+    
+    Fixes #26035
+    
+    (cherry picked from commit 9e7ed0247dd298fe8597431ae0738882e734011b) (edited)
+    
+    edited:
+    - the 3.0 branch doesn't have [] around the variable names
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6e16880810fcdbfd5d2ab89226f0b76c4a4fbf22
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Aug 12 19:29:16 2021 +0200
+
+    macosx: fixup user-provided URIs
+    
+    Fixup user-provided URIs, similar to what most browser nowadays do.
+    
+    Fix #21661
+    
+    (cherry picked from commit cc6a5a7370467e7f0fb51578f06f68dfe19dca3b)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 456116c583c709404134e510892e238e584c7c84
+Author: Romain Vimont <rom1v@videolabs.io>
+Date:   Wed May 29 11:29:43 2019 +0200
+
+    Fix compilation from a git worktree
+    
+    >From within a git worktree, "git describe" failed due to the explicit
+    --git-dir option:
+    
+          GEN      stamp-revision
+        fatal: not a git repository: '../../.git/'
+    
+    Let git find the actual git dir by just providing the path (-C) from
+    which we want to execute the git command.
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+    
+    Cherry-picked from commit d5a705346df950c5f860879b9bd095c1c45c41b6.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit e0014cffb487b25275789911cfa9d352af75ca47
+Author: Pierre Lamot <pierre@videolabs.io>
+Date:   Mon Oct 15 14:31:44 2018 +0200
+
+    src: Fix revision.txt generation in a worktree
+    
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+    
+    Cherry-picked from commit b6111311259abf87ed72035f0c0abe5c5d442217.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit f8cf2ff05834abfc9167b5e92badcb43dd00e69a
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Fri Oct 8 16:41:01 2021 +0200
+
+    CI: Update win32, win64 & android images
+    
+    This will allow those configurations to use HTTPS again
+
+commit 843860a7f70aa2d8ef6f598b20493860754ce4cd
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Sep 24 10:14:44 2021 +0200
+
+    contrib: gnutls: fix CertEnumCRLsInStore in UWP builds
+    
+    There was a ming32-only check to use LoadLibrary for this call. It was not
+    supposed to be done on any mingw64 builds. But the define used was only defined
+    on mingw64 for 64-bits builds.
+    
+    Fixes https://code.videolan.org/videolan/LibVLCSharp/-/issues/295
+    
+    Patch from upstream master.
+    
+    (cherry picked from commit 540a7a14e008a7d39d59e992d51110bf56509c98)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6ea058bf2d0813dab247f973b2d7bc9804486d81
+Author: Johannes Kauffmann <johanneskauffmann@hotmail.com>
+Date:   Mon Aug 30 22:03:39 2021 +0200
+
+    audio_output/winstore: report initial volume/mute status
+    
+    Previously, the volume and mute properties would read their default
+    values (0 and false respectively) since neither Open() or Start()
+    would call aout_{Volume,Mute}Report by themselves.
+    Now, the initial volume and mute status are read during Start(), which
+    means that setting the volume should work after the first
+    volume_changed event is received by a libvlc consumer.
+    
+    Partial workaround for #26032.
+    
+    As a result, reporting the volume level after (un)muting is no longer
+    necessary (d104faec191b47630871aaab546ccd76e08b730d).
+    
+    (cherry picked from commit 3a163f8190319c09db3b4c31640f0f53fbbe885f) (edited)
+    
+    edited:
+    - omitted cast to void** for pc_AudioVolume
+
+commit 9e48d340d4177fefc0bf2edefe462d7baf88e586
+Author: Alaric Senat <dev.asenat@posteo.net>
+Date:   Tue Jun 22 11:45:26 2021 +0200
+
+    avcodec: fill audio frame channel field
+    
+    Since ffmpeg 4.4 specifying channel layout or channel number is required
+    to call `avcodec_send_frame()` without error.
+    This is new requirement is due to a change in the avcodec internal API
+    brought by 827d6fe73d2f5472c1c2128eb14fab6a4db29032 (ffmpeg repo). They
+    now call `av_frame_ref` which needs the channels fields to be valid.
+    
+    (cherry picked from commit 321a29b0a234c946fa3328caf2b5345d316704b8)
+
+commit 248a8e567aaa6e1d7051cdccac45d79281246e5c
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Sep 8 18:09:00 2021 +0300
+
+    http: account for queue in congestion window
+    
+    The code would credit the congestion window whenever the server had
+    consumed half of the credits. If the client read data slower than the
+    server sent it, it would lead to arbitrarily large queues.
+    
+    To avoid this, only credit the congestion window when the client has
+    read half the data.
+    
+    Fixes #26082.
+    
+    (cherry picked from commit f831ed899c4d2d3af15ad8ff706cae3f6c98fb2a)
+
+commit 6496bb300bcdcb80918dcd68ba84af4b168ff062
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Sep 8 17:04:36 2021 +0300
+
+    http: fix closing HTTP 1.x connection
+    
+    When the client closes the stream, then underlying HTTP 1.x
+    connection must be terminated in any of the following cases:
+    - The server uses HTTP version 1.0.
+    - The server specified the "close" token in the Connection header line
+      of the HTTP response header.
+    - Fewer bytes than specified in the Content-Length header line of the
+      HTTP response header were read.
+    - The response body is encoded with chunked encoding and the end of the
+      body has not been reached.
+    
+    In the first two cases, flag `connection_close` will be set. It was
+    write-only before this patch.
+    
+    In the third case, the `content_length` will be non-zero but not
+    unknown (`UINTMAX_MAX`).
+    
+    The last case is already handled by the chunked encoding decoder.
+    
+    Fixes #26084.
+    
+    (cherry picked from commit 113e98f6665e86f10aac53dcbe50fa2689ae6659)
+
+commit 8625e53a91027fd1e2179d2dcc78cc28d17c50df
+Author: Alaric Senat <dev.asenat@posteo.net>
+Date:   Wed Sep 1 11:12:23 2021 +0200
+
+    input: fix input-slave url parsing regression
+    
+    Fix a regression introduced by 6cbe6f5b1774ce491157f8ccaedb5ce36e1159c0
+    where some access MRL would, by design, make the url parsing fail.
+    Url parsing failing should not be a blocker to add the input slave,
+    instead we just warn the user that we couldn't deduce the slave file
+    type based on the given MRL.
+    
+    Fixes #26054
+    
+    (cherry picked from commit 85e1eb7a50cb7e59bba3a3990af2f149cec5eac9)
+
+commit 42f00e185478ada296dbcba942c4c0928667f1b3
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Sep 2 11:04:58 2021 +0200
+
+    contrib: ffmpeg: avoid using uninitialized mutex/condition in VP9
+    
+    Fixes #26017
+    
+    (cherry picked from commit 679a3c9c94fe78e2901c9d426e6aa6a1e332c2ed) (edited)
+    edited:
+    - the 3.0 branch had extra patches
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit a63f30d2ddcc0ccc709ca3b96841e2959996d4fb
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Sep 2 12:42:59 2021 +0200
+
+    contrib: use http links instead of ftp
+    
+    (cherry picked from commit a09a78748a879eb4ee8bcfe9f3bc71e1817b9c0c) (edited)
+    edited:
+    - added pthreadGC2 FTP link fix
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 98657e385b59a0f4368ca5d7ba46d6cedcb42172
+Author: Kung Lao <i.know.kungfu@outlook.com>
+Date:   Tue Aug 31 17:25:34 2021 +0000
+
+    youtube.lua - js_descramble function name return fix: the string pattern match now returns 2 or 3 char length function names. Issue ref: #25988, #25995 (closed)
+    
+    (cherry picked from commit c05eb00c25168f4693e09cb8fc1a8f2490883af6)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 1388e3fb8b81cb2a88a5910255c17ba39ee83910
+Author: Martin Storsjö <martin@martin.st>
+Date:   Tue Jun 4 09:21:50 2019 +0300
+
+    access: cdda: Fix compilation without CDDB
+    
+    (cherry picked from commit ecdfc29c23cf4245589e3201d292a838e3d6a457)
+
+commit 0220c14bc0e1e1548f2920fcab031324034f5f68
+Author: Thomas De Rocker <thomasderocker@outlook.com>
+Date:   Sun Sep 5 09:18:22 2021 +0000
+
+    Update nl.po
+
+commit 5af494a1d3d27c9f4ce04d10a481052545e52264
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Sep 1 13:14:27 2021 +0200
+
+    direct3d11: add the texture pointer to fake slices
+    
+    On NVIDIA and mobile/xbox we let the decoder allocate its own decoder pool
+    rather than using the one from the vout. But to check that the vout pool has
+    enough slices for the decoder, we need to have the ID3D11Texture2D used by the
+    display module.
+    
+    So far only the real slices had the ID3D11Texture2D. Now we set it on all of
+    them in case all the good ones are in use, so that the decoder can still probe
+    what the decoder is using, even if it's not going to use that picture for
+    anything but probing the number of slices.
+    
+    And we don't create shader resource view (SRV) for the fake slices.
+    
+    All fake slices point to slice 0.
+    
+    Fixes #26009
+
+commit 5c15ca867dbadb25a7e032c0d6cf7d389cc3df08
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Aug 12 20:56:36 2021 +0200
+
+    qt: fixup url from open network panel
+    
+    Fix #21661
+    
+    (cherry picked from commit 50728ae64510294784371335fafe8f7d575251fb)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 19c008b38e015250de82ecd6564c61076b09a925
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Aug 12 20:46:49 2021 +0200
+
+    qt: fixup url from openurl dialog
+    
+    Fix #21661
+    
+    (cherry picked from commit 02836796dc8f2b782173f131877865ca117536eb)
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+
+commit 38ff0a0f1f45e91ee5b0ab2b7311499b1fdc609f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Thu Aug 19 13:19:27 2021 +0200
+
+    demux: adaptive: reset keepalive for connection reuse
+    
+    (cherry picked from commit a7e5e0a900771ae460bbd1dfa9dd1ec5cd8bd408)
+
+commit 1c2035227b138f00576a1c5aef71084c43ec6beb
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Aug 18 16:55:03 2021 +0200
+
+    demux: adaptive: remove pipelining restriction for TLS
+    
+    was related to replaced API
+    refs #26012
+    
+    (cherry picked from commit a62fd0338958704378a146f7070fbe443b9c2647)
+
+commit 4c49c64e813be16b9b98e2e96717fab1f7912ee2
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri May 31 15:35:56 2019 +0200
+
+    access: cdda: add support for musicbrainz (fix #21796)
+    
+    deprecates CDDB which has too low entropy for lookups
+    
+    (cherry picked from commit 7fde19d9d23a7a075f1e532ef3144dab86d4306b)
+
+commit f2ef3fee5fec904d6bca2a21f14e1f5091271589
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 27 17:14:49 2019 +0200
+
+    misc: webservices: add musicbrainz
+    
+    (cherry picked from commit e8f5c617dfcf6dc571701eaa8c5d41b5a23d57a5)
+
+commit f0598afd2cc91fb432844b2d8a3210977e57729d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri May 31 15:13:56 2019 +0200
+
+    acoustid: parametrize server options
+    
+    (cherry picked from commit 06e1aafd0d7d39db236723fa394205d956404070)
+
+commit ebd88159802d7c1679c3fecb341d93ee3b342da2
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri May 31 14:43:59 2019 +0200
+
+    acoustid: refactor
+    
+    (cherry picked from commit cdb7b9d8b21815d6dbe06aed25d9bf3621634e9d)
+
+commit c48778b2f9d40fcc6df6642f387855304cdda725
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed May 29 12:16:02 2019 +0200
+
+    acoustid: rename mb structure
+    
+    (cherry picked from commit 6065ecc4217102d73af6d2266d25b27811647dd8)
+
+commit 7e656c3b8ef3baf37e3c2e44b1184700774ef444
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri May 31 18:04:40 2019 +0200
+
+    access: cdda: fix audio/data mixed mode
+    
+    best way to kill your speakers
+    
+    (cherry picked from commit 182133eab2c6cf3c9ae98dd6383a774d07b5762d)
+
+commit 3941c7b856442045b1e4981b3b4c6a581b879c09
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 27 17:13:21 2019 +0200
+
+    access: cdrom: return TOC struct instead of only sectors
+    
+    (cherry picked from commit 890db4f7e7b04dc1c28bc3ba5eeebf76b102b9d0)
+
+commit e496d3776da5f5b84e09996c31f2089d1299a8a3
+Author: Mehdi Sabwat <mehdi@videolabs.io>
+Date:   Mon Aug 9 17:13:40 2021 +0200
+
+    contribs: update dav1d to 0.9.1
+    
+    (cherry picked from commit fcba92731ae5651fb4b8707fa07c3ee425e09929)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 871bb9030081dba85f686735e46bca72227b6d81
+Author: KO Myung-Hun <komh78@gmail.com>
+Date:   Thu May 10 21:41:47 2018 +0900
+
+    logger/console: print messages in system locale on OS/2
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit 0adb6dc67ab563f14347bdad6eb2cce3d27432a7)
+
+commit 5290585d13e9f5585b160e1753775a87a3620cc5
+Author: KO Myung-Hun <komh@chollian.net>
+Date:   Tue Jan 19 17:46:54 2021 +0900
+
+    vlc_fixups.h: define INET6_ADDRSTRLEN for OS/2
+    
+    This fixes the following compilation errors of access/rist.[ch] on OS/2:
+    
+    -----
+      CC       access/librist_plugin_la-rist.lo
+    In file included from access/rist.c:41:
+    access/rist.h: In function 'populate_cname':
+    access/rist.h:161:22: error: 'INET6_ADDRSTRLEN' undeclared (first use in this function); did you mean 'INET_ADDRSTRLEN'?
+      161 |             char str[INET6_ADDRSTRLEN];
+          |                      ^~~~~~~~~~~~~~~~
+          |                      INET_ADDRSTRLEN
+    access/rist.h:161:22: note: each undeclared identifier is reported only once for each function it appears in
+    access/rist.h:161:18: warning: unused variable 'str' [-Wunused-variable]
+      161 |             char str[INET6_ADDRSTRLEN];
+          |                  ^~~
+    access/rist.c: In function 'print_sockaddr_info_change':
+    access/rist.c:448:21: error: 'INET6_ADDRSTRLEN' undeclared (first use in this function); did you mean 'INET_ADDRSTRLEN'?
+      448 |         char oldstr[INET6_ADDRSTRLEN];
+          |                     ^~~~~~~~~~~~~~~~
+          |                     INET_ADDRSTRLEN
+    access/rist.c:449:14: warning: unused variable 'newstr' [-Wunused-variable]
+      449 |         char newstr[INET6_ADDRSTRLEN];
+          |              ^~~~~~
+    access/rist.c:448:14: warning: unused variable 'oldstr' [-Wunused-variable]
+      448 |         char oldstr[INET6_ADDRSTRLEN];
+          |              ^~~~~~
+    access/rist.c: In function 'print_sockaddr_info':
+    access/rist.c:467:18: error: 'INET6_ADDRSTRLEN' undeclared (first use in this function); did you mean 'INET_ADDRSTRLEN'?
+      467 |         char str[INET6_ADDRSTRLEN];
+          |                  ^~~~~~~~~~~~~~~~
+          |                  INET_ADDRSTRLEN
+    access/rist.c:467:14: warning: unused variable 'str' [-Wunused-variable]
+      467 |         char str[INET6_ADDRSTRLEN];
+          |              ^~~
+    -----
+
+commit dc44f306a4bf8b10b5c56d7f41da903e1c68b377
+Author: KO Myung-Hun <komh@chollian.net>
+Date:   Mon Jul 26 23:37:48 2021 +0900
+
+    kva: change a color key to 0x000001
+    
+    0x000001 is more unique than 0x0F0F0F.
+    
+    (cherry picked from commit 51bb2b4c5e23d9932d41d10c3b94a1023a4c7a21)
+
+commit 10e0c8e1cb643198d229df0f86680c9e7d8bc50b
+Author: KO Myung-Hun <komh@chollian.net>
+Date:   Fri Feb 26 19:00:51 2021 +0900
+
+    freetype: use UCS-4 encoding on OS/2, too
+    
+    This fixes subtitle texts are not shown correctly on OS/2.
+    
+    Freetype module expects UCS-4 string. However, OS/2 iconv() does not
+    support UCS-4 encoding, so UCS-2 encoding is used on OS/2. Because of
+    this mis-match, subtitle texts on OS/2 are mis-interpreted. As a result,
+    subtitle texts are not shown correctly.
+    
+    (cherry picked from commit 89b561eaa213582fff9625541edb5d7dbb299fb6)
+    
+      Conflicts:
+        modules/text_renderer/freetype/freetype.c
+        modules/text_renderer/freetype/text_layout.c
+
+commit f18819c4a4d37bd98f83a72d705bbfae974237a4
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Jul 18 00:44:56 2021 +0100
+
+    qt: fix tabstop ordering for effects video subpanels
+    
+    fixes one of the accessibility issues reported in #25896.
+    
+    (cherry picked from commit caab17f1d0bb672e8db5691295e7e82a99093917)
+
+commit a498b0d125f6fa2f5c2633107c5bf3d35e0b7236
+Author: Jérémy VIGNELLES <jeremy.vignelles@gmail.com>
+Date:   Mon Jul 19 15:28:31 2021 +0000
+
+    hls: Increase the precision of the time scale
+    
+    (cherry picked from commit 8db20416ea137027bad34ee5e3d14c1f7daf223e)
+    
+    duration computations were made with precision loss, which add up and leads to unprecise seeking if the stream is really long (like a day or two)
+
+commit 17a2ed216477d749120aaef71758ff31cb1b34d0
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Jul 26 14:19:06 2021 +0200
+
+    contrib: Ensure cmake won't interpret the provided prefix
+    
+    We already provide an absolute path, which cmake might try to interpret
+    and convert to an equivalent value.
+    This works, except when we try to replace the prefix we provided by
+    @@CONTRIB_PREFIX@@ in change_prefix.sh, which leads to .pc files being
+    present but unusable
+    
+    (cherry picked from commit 512dd9495f49c8129a2e0341c7c8834f3154235f)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 5880da1029630827c45e7a1f9f0bffc9367ccb19
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Jul 27 09:20:45 2021 +0200
+
+    contrib: zlib: Fix prefix replacement on win32
+    
+    (cherry picked from commit a828a4f7d93e91b008bcd9ae7093f333ad48e150)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 7367146bab9b1fb0f364e58108d7ffadfff4a1b2
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Fri Jul 23 12:43:50 2021 +0200
+
+    contrib: asdcp: Fix .pc generation
+    
+    This will abide by the configured prefix, and install the .pc as any
+    other file instead of copying it manually
+    
+    (cherry picked from commit 46e590f012199fe32590b0a107d87d0997120a2c)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 8eb32da67e0cf47ea814769e4ef130279830c9be
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Mon Apr 6 11:24:14 2020 +0200
+
+    contrib: lua: rewrite prefix in pkg-config file
+    
+    This patch enable the writing of the pkg-config file for all platforms
+    and enforce the correct prefix= value in the file. Previously the
+    pkg-config file was never installed for linux platforms so it was using
+    the file detection in the configure.ac, which is the last method of
+    detection.
+    
+    If a newer lua was detected that was not in the contrib file
+    autodetection, it would build the lua contrib but still configure with
+    the newer one, which means that contrib includes will be used and then
+    it will be linked to the detected external lua.
+    
+    In particular, on Archlinux, when using the default lua (5.3) version,
+    the contrib would be built but it will still link lua5.3 which has no
+    symbol for the luaL_register function used when header version is less
+    than or equal to 5.2.
+    
+    With previous change, as `lua >= 5.1` is tested first, contrib will be
+    used first if built whatever the version of lua on the platform, so in
+    the worst case we only build lua from the contrib too often (like
+    previously) instead of failing link on some platforms too.
+    
+    (cherry picked from commit 401743565a1387340611a3adbbd3105e3cffa7df)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit a29845472049fcfad2d48343d4dc4c6440873d49
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Fri Jul 23 16:24:33 2021 +0200
+
+    contrib: glew: Ensure the .pc has a valid prefix configured
+
+commit 15be8514b1475012853106c242dd7eaf80d7e0f1
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Fri Jul 16 17:49:00 2021 +0200
+
+    audiotrack: don't use DynamicsProcessing with passthrough
+    
+    Fixes #25921
+    
+    (cherry picked from commit e41b435304aaaf84b2d6fc23f629614b7d115d47)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 31bf2a82576c6c43e32aa9fce176aaca7ee2b277
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Fri Jul 16 14:44:06 2021 +0200
+
+    macosx: respect previous media key option for touchbar integration
+    
+    Currently, the touchbar and the system were always provided with
+    playback information on macOS 10.12.2 and higher. This patch respects
+    option used for the previous implementation to optionally disable this
+    behavior for increased privacy and to potential conflicts with third
+    party apps.
+
+commit 917b4ccbf107fef99a93f28e77e54e970558b921
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon May 31 11:16:28 2021 +0200
+
+    contrib: ffmpeg: upgrade to FFmpeg 4.4
+    
+    Co-Authored-By: Jean-Baptiste Kempf <jb@videolan.org>
+    
+    (cherry picked from commit 8092f480fe02a6562319b18f839531a94d286ab6) (edited)
+    edited:
+    - 3.0 already had MPEG1/2 patches from older versions
+    - use pthread instead of w32thread as w32thread doesn't support XP anymore
+    - remove patches merged upstream
+    - disable MediaFoundation and Schannel which are Vista+ and incorrectly
+      detected as available
+    - disable bcrypt which is detected as available but is not on XP
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 3ba1614d0d66c7fd099710a6704b4a22157a6c97
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 12 07:57:15 2021 +0100
+
+    contrib: ffmpeg: fix existing surface check in DVXA2
+    
+    Since 3804ff2dffc2a46ead5598881d0a08db977000d3 data[0] is not filled anymore.
+    The proper way to check a surface is set is to use buf[0] as used in VP9 and VC1
+    DXVA2 decoders.
+    
+    Ref. #18916
+    
+    (cherry picked from commit e7c128a9b94c6c139132ce1a98accb048ec74caa)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit bc366afe30babcdf87d0aa1ab32e3be11bbfd18b
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jul 6 09:55:47 2020 +0200
+
+    contrib: remove contribs needed for old versions on mingw-w64
+    
+    We require mingw 5.0 in configure.ac so there's no need to support contribs for
+    older versions.
+    
+    (cherry picked from commit 8931aefb35176daf46db64df5039f44f84cc2230)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit c1286044a6dd961ba83e5aca47d4ac132a9b422c
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Jun 17 15:36:50 2020 +0200
+
+    contrib: ffmpeg: use -Og in non optimized builds
+    
+    It's better than -O0 in some cases, like clang on i686 that gives this error:
+    
+     In file included from libavcodec/h264_cabac.c:46:
+    libavcodec/x86/h264_cabac.c:66:9: error: inline assembly requires more registers than available
+            "3:                                     \n\t"
+            ^
+    1 error generated.
+    make[1]: *** [ffbuild/common.mak:59: libavcodec/h264_cabac.o] Error 1
+    
+    (cherry picked from commit c20a10f06bd4f5469fcbe8616abcd64469efd09a)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit f9db57e66bff332c5bcfc5efa36844b2ce3cd44a
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Fri Apr 24 17:02:03 2020 +0200
+
+    contrib: ffmpeg: also pass ranlib to configure
+    
+    This is particularily needed when ar and $(HOST)-ar are not producing
+    the same type of archive, like linux -> iOS cross compilation.
+    
+    (cherry picked from commit b0583e76fd3fec8d0b57b1b2581ab28b9c35ae17)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 47532d4b1565ff4e1bed10a67df5edf90da41f64
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Dec 13 12:01:00 2019 +0100
+
+    contrib: ffmpeg: add DXVA code to handle extra data for HEVC Range Extension
+    
+    (cherry picked from commit ef400315cd2d34edf1aabc0975de6593d472c03c) (edited)
+    edited:
+    - 3.0 already had MPEG2 fixes
+
+commit 4cafe270cfb1e2e48554623771427ff2d7590942
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Fri Jan 24 11:08:53 2020 +0100
+
+    contrib/ffmpeg: fix compilation with bitcode for iOS/tvOS
+    
+    (cherry picked from commit bfb245618116f53eb4ddeab4e1e8233e85f06356)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 32a91bbee763a8d960e6c1419c94bc5c83ae0b29
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sun Nov 10 22:47:21 2019 +0800
+
+    contrib: ffmpeg: remove gas-preprocessor on Android
+    
+    Build vlc-android on macOS was broken since gas-preprocessor fix_unreq
+    is enabled by default on macOS.
+    
+    Signed-off-by: Marvin Scholz <epirat07@gmail.com>
+    (cherry picked from commit 5d9e6fb7505dba219bbaf4cb9ebca7b4128061c2)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 7f7c2c663c327a79a5aed4eaec5c322eace7e0a4
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Oct 17 09:12:28 2019 +0200
+
+    contrib: ffmpeg: update the hashes to more recent versions
+    
+    (cherry picked from commit 93aa18d1771d69b2fc3d24cb450d2089a89898f1) (edited)
+    edited:
+    - 3.0 still list SNAP URLs
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 3123ab55695d6c7c64f38fb23ab4669f06700278
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 9 14:56:59 2018 +0100
+
+    codec: substx3g: clear var aliasing warning
+    
+    (cherry picked from commit 6e1c8dc19a3a243a30b97281712a7544a7ff7cb3)
+
+commit 6fef66cd6fe736de4c770a40de576b271207a8e4
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 9 14:36:07 2018 +0100
+
+    codec: substx3g: fix off by one styling
+    
+    (cherry picked from commit 0a791f45f10e0c1c8b1411a77911a826f2e8da4d)
+
+commit 69b8211a540433e108e7d15eb41dac5c5254d783
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 2 16:56:26 2018 +0100
+
+    codec: substx3g: merge w/overwrite instead of replace
+    
+    (cherry picked from commit 56f5aa0158dee247c303a8fefc5788c99959f262)
+
+commit fd16c59a314667b737412dce856e27205e923d0d
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 2 16:54:02 2018 +0100
+
+    codec: substx3g: use strndup
+    
+    (cherry picked from commit a874fbbfd7522733847ada2c5970290c90b9c64d)
+
+commit a37d7fe3e96a39997c1457fecdcde4473fb8dc25
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 2 15:50:53 2018 +0100
+
+    codec: substx3g: use minibox
+    
+    (cherry picked from commit db8220fa3e80426c74d605f7494927b7aa3e155b)
+
+commit 1994d312547818f2c1fc8155dd96cac060e55095
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jan 2 15:02:45 2018 +0100
+
+    codec: substx3g: rename parameter
+    
+    (cherry picked from commit 5c5251652c66a223e60a76d81a09dc7e04a7d9ac)
+
+commit c0bad4c754ec2312ac14d5c96da7e3e4cb388360
+Author: Martin Storsjö <martin@martin.st>
+Date:   Sat Jul 3 23:52:42 2021 +0300
+
+    contrib: lame: Don't use -mtune=native/-march=native
+    
+    When building a distribution package, tuning specifically for the
+    system building it is pointless. (If we want to tune specifically
+    for something else than the compiler's default, we should specify
+    that and not rely on it being implied from the system doing the
+    compilation.)
+    
+    When cross compiling VLC for x86 from a non-x86 system, -mtune=native
+    and -march=native cause compiler errors (in practice, e.g. for
+    i686-w64-mingw32 targets built on aarch64, GCC doesn't mind
+    -mtune=native but errors out for -march=native, while Clang errors
+    out for -mtune=native too).
+    
+    This generalizes an existing fix, getting rid of more cases of
+    -mtune=native/-march=native, applying it for any target, not only
+    darwin, fixing cross compilation for i686 mingw from aarch64 linux.
+    
+    (cherry picked from commit bd553fbb542ec3e5bbab0aac94b03a893af819a6)
+
+commit d2f20a9010f3fea814d78ef84efb526894d19e51
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Wed Apr 21 17:22:47 2021 +0200
+
+    Contribs: update libarchive to 3.5.1
+    
+    (cherry picked from commit 4928e31b37bed33f7aa891b229c0f7d476fc3aba)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 465a67de449c7b2c1ba70be7a4b9cd09c081b725
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Sun Apr 25 21:22:44 2021 +0200
+
+    Contribs: update libdvbpsi to 1.3.3
+    
+    (cherry picked from commit 91767679ef6ae2abd9617d427963a0b5ec062ee7)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 22999703ad6c3bf544c82cf0b9df235e2e7ddcc8
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Thu Apr 29 11:55:24 2021 +0200
+
+    contribs: Bump libfluidsynth to 2.1.8
+    
+    In order to include support the fix CVE-2021-28421
+    
+    (cherry picked from commit 39f444c32d262d6e10928c69ab6070f6c1a49eef)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 14433c2e363cbef9d1ac1206c44805beb81983ea
+Author: Martin Finkel <martin@videolabs.io>
+Date:   Wed May 19 09:58:51 2021 +0700
+
+    contribs: add vncclient GPL check
+    
+    (cherry picked from commit 40664df3e951a17fc1f8da425d4d89c7b86a2af4)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 67f92551253f98b451c6856d4041ded5f9dc1ba7
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon May 31 15:37:30 2021 +0200
+
+    contrib: breakpad: correctly install dump_syms
+    
+    If no bin folder existed, it would install the dump_syms binary
+    to a binary called bin, causing all other contribs built after to
+    fail with a rather confusing error as they are of course unable to
+    install into an executable named bin instead of a folder.
+    
+    (cherry picked from commit ff81edf3883f742c91c746f36ef29c9828e4a267)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 8937674b29486d6b470c31fc1ebf5f4ed9f715ec
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jul 2 13:52:23 2021 +0200
+
+    demux: ts: fix user_pmt selection regression
+    
+    (cherry picked from commit b725288e1fe1fde6ee9c2a11e060eb85185b9824)
+
+commit 97a6bc79e7c57842141ce0e23fe62fa12f152a94
+Author: LE QUEC Nicolas <Nicolas.Le_Quec@bordeaux-inp.fr>
+Date:   Tue Jun 22 09:04:19 2021 +0200
+
+    contrib: update libsmb2 to fix ";" and "@" issues
+    
+    (cherry picked from commit 3f5ced291d83024d9dcb2030447b8250032a4c0d)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit e7eeab2bc61a6fffd61138e805dcaf71d6c63579
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Wed Jun 23 13:09:06 2021 -0400
+
+    contrib: aom: update to 3.1.1
+    
+    (cherry picked from commit 65a32a68d11d18ca6fcc843ea6a13aaeeb2813fb)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit b3827139d6efb8d54435948e68fc71280ddf45c2
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Fri May 7 11:14:08 2021 -0400
+
+    contrib: aom: update to 3.1.0
+    
+    (cherry picked from commit 3924a5dab72a0bf87572696c6d1519fd7f16363c)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 6b9f864d8600f20199b04b34efef1e85c10a0732
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Wed Mar 24 15:42:07 2021 -0400
+
+    contrib: aom: update to 3.0.0
+    
+    Bug fixes:
+     * Issue 2940: Segfault when encoding with --use-16bit-internal and --limit > 1
+     * Issue 2941: Decoder mismatch with --rt --bit-depth=10 and --cpu-used=8
+     * Issue 2895: mingw-w64 i686 gcc fails to build
+     * Issue 2874: Separate ssse3 functions from sse2 file.
+    
+    Source: https://aomedia.googlesource.com/aom/+/v3.0.0
+    (cherry picked from commit 58c8b6aba888c666612e91d1cbb012aea630c853)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit c0ea7e026ac2748ebd8f91595c1bef794a28d9cc
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Tue Jan 19 14:59:08 2021 -0500
+
+    contrib: aom: update to v2.0.1
+    
+    (cherry picked from commit 01d75eb6cdb4dc25b221bcfb39666bb51839b8db)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 56859634e5d44b4996b4edc218a95efb4527e1dc
+Author: Tristan Matthews <tmatth@videolan.org>
+Date:   Mon Jul 6 15:41:13 2020 -0400
+
+    contrib: aom: update to AOM v2.0.0
+    
+    This is the first "official" release, see:
+    https://aomedia.googlesource.com/aom/+/HEAD/CHANGELOG
+    
+    (cherry picked from commit ab8f0e57720b454f9ccdb86887d391956870f68b)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit c845f786f2d4bd790a3edcfe6b490a501f956fd0
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jul 6 15:36:10 2020 +0200
+
+    contrib: aom: use the regular UNPACK_DIR variable
+    
+    (cherry picked from commit b8e5d70cbff09df845a7ab293ac091ff5dedd3a8)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 3c4da2059efe4a1461d01bdd4076a1601155edcb
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Jan 23 13:06:57 2020 +0100
+
+    contrib: aom: remove old headers before building
+    
+    The headers are often incompatible and create compilation issues when
+    rebuilding.
+    
+    (cherry picked from commit c9a5e551ba556ebab9e8bfaf1814bd0ed64f9cfe)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 03a5f1da6a3ee3adb0a690dfdfde36bac6b1b3a7
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Jan 23 13:06:57 2020 +0100
+
+    contrib: aom: remove old headers before building
+    
+    The headers are often incompatible and create compilation issues when
+    rebuilding.
+    
+    (cherry picked from commit c9a5e551ba556ebab9e8bfaf1814bd0ed64f9cfe)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit d2cd5c719232ace234b1c50a7ab8b123edb07db3
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Wed Mar 6 13:03:35 2019 +0100
+
+    contrib: aom: Use VideoLAN mirror if available
+    
+    (cherry picked from commit 30b116d88b2f952cf928c84039bffe12b10aaf63)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 801a5090e9ba39cf5661d8aa5907da3ee0def9f9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Jun 18 16:41:33 2021 +0200
+
+    demux: adaptive: fix fractional part in iso 8601
+    
+    (cherry picked from commit 254cc167bcafeebd003d15c9c7787b7d7f8ab2b3)
+
+commit d1b8c674f81b65b7fe0c15c4b37bac38988a83dd
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Dec 22 21:17:49 2020 +0100
+
+    demux: adaptive: fix parsing of half timezone offset
+    
+    (cherry picked from commit ca7bb743072f2aaa19c892b5e11438a9c3da0f51)
+
+commit ae2717c98f53825dbe2fc7c6e7ca8377f988e92a
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Oct 29 12:42:24 2018 +0100
+
+    demux/adaptive: Catch all exceptions
+    
+    These catches look like they intend to catch all exceptions, not just
+    exceptions of integer type (which is not a common exception type).
+    For example all exceptions derived from std::exception would not be
+    caught by catch(int).
+    
+    (cherry picked from commit 08ae5918414f3e82ebeb31faea52f7c772b4b3bd)
+
+commit a91323eab375bc713dacc411814e06caddce7397
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Mon Oct 29 12:42:23 2018 +0100
+
+    demux/adaptive: Handle failures of istringstream
+    
+    (cherry picked from commit ad82fec9d253fad0344fa682aa860ff9609bf850)
+
+commit 6ac4fd9e839979f1832f56ba7f832a5277231ab3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 15 16:27:41 2021 +0200
+
+    demux: adaptive: always restart if declared fourcc differs
+    
+    es_format_IsSimilar compares tranlated fourcc, ending matching AVC1 &
+    H264
+    
+    avcodec then truncates NAL and glitches hard from wrong format
+    
+    refs #25606
+    
+    (cherry picked from commit 0657b84ec8d64b07b80eeafd8512f8fd32dc55ea)
+
+commit cd18bd167d221412576d974673cd3f0718a80b36
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 17:59:39 2021 +0200
+
+    packetizer: h264: gather and store SPSEXT
+    
+    (cherry picked from commit 35251232e281be37ecb994ae8714c32dc2e40c30)
+
+commit a3df90aaf2dd8551bb8ec7f9e72682cdc35e7ed0
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 18:05:34 2021 +0200
+
+    packetizer: h264: remove scan lookup
+    
+    (cherry picked from commit 8404b8c6b79d4e94ed9f1170b089620614cb7a7f)
+
+commit 8530682dcd26469cbe7f725496fa9739368602ea
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 17:38:43 2021 +0200
+
+    hxxx_helper: process SPS_EXT
+    
+    (cherry picked from commit 33a34ae731ce03aa4910c680cae1eb6bfd3a56f3)
+
+commit 7f85a5ad39f33decf7de9650ffa7d979154bc65e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 17:28:14 2021 +0200
+
+    packetizer: h264: add basic decoding for sequence set extension
+    
+    (cherry picked from commit a9d002e84b49fe395f5564f0fcee57a1f7f25229)
+
+commit ff632589437fe0035c081e29e6ca2c9380ebd296
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 17:16:18 2021 +0200
+
+    packetizer: h264: write avcC with HIGH extended info
+    
+    (cherry picked from commit 8d5dd5ead3340db5591ef09b703432723aaa1886)
+
+commit 4c537f29b0ca27377badf7b7ed77bc4b0b4a9f32
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 15:20:48 2021 +0200
+
+    demux: ts: improve desync debug messages
+    
+    (cherry picked from commit a4ddf154af1dbf2ade9ba0bd72ff0c4a02ae7269)
+
+commit e381cd4b8485772a43da4a7e652235a5039cd043
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 8 15:21:10 2021 +0200
+
+    demux: ts: check adaptation field when reading PCR
+    
+    (cherry picked from commit 8a51b4f97bbc2b1bec8ba8bec7caee0518895569)
+
+commit 44ed58ee9d9271c0ae08d52f8a9411026a783804
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jun 28 17:50:49 2021 +0200
+
+    d3d11_fmt: lookup the GPU in the registry in case-insensitive way
+    
+    It seems newer AMD drivers/GPUs use upper case for the MatchingDeviceId string.
+    
+    Fixes #25863
+    
+    (cherry picked from commit fe250af922d3a927643ecf3287a03996700c9363)(edited)
+    - the 3.0 branch uses TCHAR instead of wchar_t
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit f31ec27bc24a194b0d91a1ed285aae4bb3dd96e0
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Jun 25 13:56:15 2021 +0200
+
+    dwrite: use a LONG for the IDWriteTextAnalysisSource refcount
+    
+    That's what is expected by InterlockedIncrement/InterlockedDecrement and how
+    it's done elsewhere.
+    
+    (cherry picked from commit 2daf3cbf719d490bbb05d14a9d6cbacfd3126064)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 5fe1fc9f7380ece6910cb26221f9b3e5f5299802
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Wed Jun 23 15:41:58 2021 +0200
+
+    audiounit_ios: set the mute_set callback from start
+    
+    Fixes inconsistency with the "mute" variable state.
+    
+    (cherry picked from commit 50eaa2ad68157d74264fa614554d516e9522959b)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit cb1e02fb4c3b361408c1b48a3e16a1c22cd0da5d
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Tue Jun 22 09:08:59 2021 +0200
+
+    directx_va: only call profile readers if we don't have one
+    
+    That's how MediaCodec does it. These readers can be wrong so rely on lavc
+    and container values instead.
+    
+    Fixes #25850
+    
+    (cherry picked from commit a69b492a6272c84b9c2efa912ad0b1dc612a2b83) (edited)
+    edited:
+    - the 3.0 branch sets the is_supported later
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 5a491c2022650af3f09ce448b4f906d615ed1bd7
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Mon Jun 21 13:43:58 2021 +0200
+
+    coreaudio: fix channel reordering
+    
+    The chans_to_reorder variable was reset after being set up. Channel
+    reordering was *not* needed for 5.1 and below, but was needed for upper
+    configurations.
+    
+    (cherry picked from commit 37af7083dea415012139cf903af5de6f715e2609)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit bb903dd5e0d0525b0c39c78d421c5910278ae5cd
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Fri Apr 19 04:03:35 2019 +0100
+
+    qt: fix and simplify module lookup in preferences search
+    
+    1) for module (plugin) tree nodes, the object already holds a pointer to
+    the associated module object is was created for, so we can use that
+    directly instead of wastefully doing a module_find() search.
+    
+    2) the module_find() search actually is unreliable; modules can be
+    mis-identified through it.
+    
+    to explain the second point: from investigating a crash with the Qt prefs
+    search facility, in relation to a commit that happens to expand the number
+    of plugins with empty config sets, a flaw was identified (fixed separately)
+    relating to the search code not getting the NULL pointer it was expecting
+    in the case of empty module sets, however it did not explain why the search
+    code was actually encountering modules with empty option sets in the first
+    place, since only plugins with non-empty sets were being added to the
+    prefs tree; digging into this, an example module where this was the case
+    was an 'a52' module; the one being looked at by the search code was the
+    packetizer one, which has no options, but the entry in the tree for which
+    the code was working on was the codec one, which has an option; it turned
+    out that the search code was wrongly assessing the option set of the
+    packetizer 'a52' module instead of the codec one because the
+    module_search() call had pointed to the wrong 'a52' module.
+    
+    (cherry picked from commit eb7c25a7e29632ffe8f68bcfa649ab216c12148a)
+
+commit 7ced10027683995683a38b5dfe21d311dfccd7aa
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Dec 1 17:01:48 2020 +0100
+
+    audiotrack: use DynamicsProcessing to increase the gain
+    
+    This fixes a delay of up to 2 seconds when increasing the volume up to
+    100%.
+    
+    (cherry picked from commit a9c6d334482db5bc28b9a4b8b499dea9cb1bddc0)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit a2d5b24edafb4534af4eff1f7a9c4f5c51e0e88b
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Dec 1 16:53:38 2020 +0100
+
+    audiotrack: restore volume if audiotrack is restarted
+    
+    (cherry picked from commit 7315bc54f75f1825152eb03e43892cd9c70440b8)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit b4a690a40054bcb2f81ca2aebd24222444da09ea
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Dec 1 16:51:42 2020 +0100
+
+    audiotrack: save original volume
+    
+    In order to re-apply the gain > 1.f when audiotrack is restarted.
+    Fixes #25833
+    
+    (cherry picked from commit 80d00edc0f8f528842ec04a962e8e84bcd4238d6)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit fa5e39dbf1a46729a89f2948eb3d8b80ac148180
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Dec 1 16:48:58 2020 +0100
+
+    audiotrack: refactor AudioTrack_SetVolume
+    
+    (cherry picked from commit 784a74bfb7f62790e356c0231c2fcab1d9cd7825)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 5e70837d8d766db6ca5052a2d4f503ad37243d9c
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Fri Jun 18 17:39:50 2021 +0200
+
+    Update NEWS
+
+commit 720d731609ec8ece50f635c43745533aff1f1e67
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Nov 22 18:53:28 2020 +0200
+
+    httpd: do not disable timeout for RTSP
+    
+    Use the same timeout for the RTSP connection as for the RTSP session.
+    A shorter timeout is inefficient, as it requires clients to reconnect
+    to refresh the session anyway. A longer timeout is pointless as the
+    session would timeout and the RTP streams would stop regardless of the
+    connection staying alive.
+    
+    Refs #25812.
+    
+    (cherry picked from commit 38d214bc4f2ef68dfe6859383e12a20ae91e62de)
+
+commit 3f9e2d54c22ee8a911faad522b459ac56dba7f4a
+Author: Stavros Vagionitis <stavros.vagionitis@gmail.com>
+Date:   Tue Jun 15 17:42:44 2021 +0300
+
+    httpd: set timeout duration per host rather than client
+    
+    Refs #25812.
+    
+    (cherry picked from commit ce3269d4a20aba2f87fc3e512131cb31b9561b3e)
+
+commit d6db88ba4029a2f148e87577322028c74c524a83
+Author: Stavros Vagionitis <stavros.vagionitis@gmail.com>
+Date:   Tue Jun 15 17:42:22 2021 +0300
+
+    httpd: store timeout date rather than activity date
+    
+    This should not make any functional differences.
+    
+    Refs #25812.
+    
+    (cherry picked from commit 2fd2b843c4af0e42c6848bc88ab03173500cc52c)
+
+commit 08db536c9921b0b5654bc954e335051efa1130c1
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Wed Jun 16 13:52:40 2021 +0200
+
+    macosx/prefs: always show media key control as enabled
+    
+    On macOS Sierra and higher, we will use the official API to enable
+    control of VLC, which will always be enabled as potential conflicts are
+    mitigated by the OS and it is possible to control more than one
+    application at the same time, so the option is ignored. On earlier
+    releases of macOS, SPMediaKeyTap can still be optionally disabled.
+
+commit e43321ef93adc41a67632c86182c086281ab4848
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Wed Jun 16 09:44:50 2021 +0200
+
+    On the road to 3.0.16
+
+commit 8f4f4b19e0e67f9ac66175df5bd422af476e77ed
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Wed Jun 16 09:35:37 2021 +0200
+
+    Update NEWS
+
+commit 2d5997118d7f0078827682c3dca155235ecf1454
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun May 12 22:31:54 2019 +0100
+
+    afile: check equality, not starts with
+    
+    (cherry picked from commit ae6af4007e7b957052ad88dee3af8958e31ca7f0)
+
+commit c76cb856732de985a0701bcefe88037c3822a92b
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Wed May 29 05:51:17 2019 +0100
+
+    qt: (hotkeys) remove incorrect hotkey table label tooltip
+    
+    the item pointer provided to the constructor is that of a single hotkey
+    config item. using the longtext from this item in a tooltip on the label
+    for the entire hotkey table makes zero sense, so let's remove it.
+    
+     - for the table shown in the simple view, the "key-play" option was
+       arbitrarily used for this.
+     - for the table shown in the advanced view, the text from the first
+       hotkey config item encountered was used.
+    
+    (cherry picked from commit b0385e9324a0f342e51bf5b61a50904adb4d47dd)
+
+commit dba1fa4e978b5b63d7254b452c21a4a69a12f84c
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 21 06:51:05 2019 +0100
+
+    qt: fix subtitle tabstop ordering
+    
+    (cherry picked from commit b407307b78575f90a64c4f2fb1103140f3458f16)
+
+commit 6a1530291e08755714a2513d90004e03b0596bff
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Tue Apr 9 19:56:42 2019 +0100
+
+    qt: remove general tooltop on module checkbox group
+    
+    With module selection controls which feature a groupbox of module
+    checkboxes, if individual modules have their own longtext, that is
+    displayed in a tooltip when hovering on them; for all others, the help
+    text for the entire control (groupbox) gets displayed, which is just
+    confusing from a UX point of view.
+    
+    This removes the general groupbox tooltip, thus fixing this.
+    
+    It remains for the textbox portion of the control however, so hovering over
+    that still provides the helptext!
+    
+    (cherry picked from commit e85dd955278e08fbf309120f0a360b414f76815c)
+
+commit de17adf1f8f71ef8f38e271cea4f48bf11964564
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 21 05:44:20 2019 +0100
+
+    qt: hide all empty groupboxes
+    
+    if a panel only has one groupbox and it is empty, it was hidden, but
+    otherwise they were shown; this was surely a bug, and at any rate is
+    undesirably messy. all empty groupboxes are now hidden.
+    
+    an example case: this fixes the empty "Performance options" groupbox (on
+    my system) under the top-level "Advanced" tree node in the advanced
+    preferences view, which happens to be very visible as the first panel
+    shown when switching to advanced mode.
+    
+    (cherry picked from commit 9214590343c9b8d55a88efaa3ca1f3c16109d553)
+
+commit 90dc0b2e06317dad5acad2b480ce5f6d80815bea
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 7 13:09:51 2019 +0100
+
+    transcode: fix broken --sout-transcode-sfilter option
+    
+    the capability is "sub source" not "spu source"
+    
+    this mistake came from 1f5744e92e89d0d46a4a5b38b28564a698fe63c9.
+    
+    (cherry picked from commit afc593fbfc1569d8b4b31ef19239d974fb231952)
+
+commit faa4e1b49ef707a9791941332494b1012a826475
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 28 06:45:27 2019 +0100
+
+    macosx: respect hidden cat/subcat "hack"
+    
+    Certain sets of options in the core option set use a cat/subcat of -1 as
+    a "hack" to avoid those options showing up in the GUI prefs set. This is
+    the case for options like --help for instance. While the Qt GUI plugin
+    respects this, the MacOSX one was missing checks for this, and so surely
+    (I don't have a mac so I can't look and see) it was including them when
+    it shouldn't.
+    
+    (cherry picked from commit 05e2f75ad01decaf1c83c7f45e6cabbf3833d5b1)
+
+commit f07984b8a938bd242787e9d77ab70f50a7abcd66
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Fri May 7 02:23:42 2021 +0100
+
+    gnutls: fix --gnutls-dir-trust longtext
+    
+    was mistakenly using shorttext instead of the defined longtext.
+    
+    (cherry picked from commit a0a7666095c4965616bb44111685e796ab27ec64)
+
+commit 1a121dd80784840a487215f80799c73b79f5e8f6
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Thu Sep 17 20:14:07 2020 +0100
+
+    x264: fix wrong h264 option longtext
+    
+    This option should be using DEADZONE_INTER_LONGTEXT instead of
+    DEADZONE_INTRA_LONGTEXT.
+    
+    (cherry picked from commit 50e2350110042ccf2b88652418af0a953fbfca55)
+
+commit fafe8f236d1bf10d5cdc913c5ef29db2e35d9593
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Tue Apr 9 04:16:57 2019 +0100
+
+    macosx: fix use-after-free / double-free
+    
+    (cherry picked from commit 886824ab7797dd5dc7c165144251c78cc4caf0db)
+
+commit 4843e8e520c302a217bcdeacc8d28f755e7eb604
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jun 14 08:53:33 2021 +0000
+
+    direct3d11: fix potential crash when ID3D11DeviceContext4 is not found
+    
+    If ID3D11DeviceContext4 is not found we should not release is when we call the
+    error cleanup.
+    
+    
+    (cherry picked from commit 719dd732872f1542836308ea78627164270472da)
+
+commit c3787eaecfef6f36a9d0ae945387287bea8849a7
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun May 12 23:15:23 2019 +0100
+
+    ftp: set password option to password type
+    
+    (cherry picked from commit 546d0210895140a83d8ffe35ac257560a05fe3f8)
+
+commit 5326fdbd8162e168af8134760103cf415447ba9f
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Mon May 13 00:23:32 2019 +0100
+
+    core: --socks-pwd is a password option
+    
+    (cherry picked from commit 8aeef92e21ab32170a0aed01e7215c5c13c1a12e)
+
+commit d9de9c3e49d3f252943b547de9f86036f2d97b0a
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Tue Jun 15 08:32:00 2021 +0200
+
+    macosx: disable SPMediaKeyTap on macOS Sierra and later
+    
+    On later releases, we will use the public API.
+
+commit 8fd31abc5d803c00557b1ca778153ee1b696aad7
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Sun Jun 13 16:03:43 2021 +0200
+
+    macosx: do not try to seek unseekable content
+    
+    Previously, external apps such as the Touchbar and AppleScript bindings
+    could attempt to seek non-seekable content leading to persistent silence
+    until playback was restarted.
+
+commit b5b55004e23475a8e7741996bcd585401c468766
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Sun Jun 13 16:02:03 2021 +0200
+
+    macosx: add support for the Touch Bar in current MacBooks
+    
+    This implements playback control via touch bar and the activity widgets.
+    It also exposes related playback meta data. It is a manual backport of
+    the respective code on the master branch and fixes #25744.
+
+commit 627a60fee0325a26672e4f35c771d967ea3e8d6a
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Sat Feb 20 14:05:55 2021 +0100
+
+    contrib/vpx: fix cross-compiling for macOS from macOS
+
+commit ade18afcc72598d95f36b4806de9797435e71e9a
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Fri May 7 11:00:25 2021 +0200
+
+    contrib/lame: fix cross-compilation for i386 on AArch64
+
+commit 5c053b5e8d92fc498b2be537083eabba02def081
+Author: Felix Paul Kühne <felix@feepk.net>
+Date:   Tue May 18 11:26:17 2021 +0200
+
+    contrib/zvbi: remove no-longer needed hack
+
+commit afb0acef054046673a7636246da53979762cf9f1
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Mon Jun 7 07:11:10 2021 +0200
+
+    contrib: update mpg123 to 1.28.0
+    
+    Quoting mpg123.de website:
+    
+    "Fix misguided handling of part2_3_length checks in
+    III_get_scale_factors_1() and III_get_scale_factors_2() which
+    invalidated decoding of a mono source encoded as ms+i-stereo.
+    This was a regression introduced with version 1.25.7."
+    
+    Fixes #25798
+    
+    (cherry picked from commit 62bf14a8563855aeb77441083e38824cddedaf30)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit b3adcde0dc6175382b3c268f4dc329bffd751c89
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Fri Mar 22 23:22:54 2019 +0000
+
+    dcp: fix options being hidden in GUI
+    
+    options need to be specified after the cat+subcat declarations otherwise
+    they may be ignored when constructing the preferences tree in Qt (and
+    possibly others).
+    
+    (cherry picked from commit 92654192d6c912a0448016d397d87be39aa95fdb)
+
+commit 23a38bc0eb06d9a27abf7d36c9bb76bbe823eb92
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 7 03:00:32 2019 +0100
+
+    meta/folder: fix options being hidden in GUI
+    
+    not having a cat+subcat specified means that the options were ignored
+    when constructing the preferences tree in Qt (and possibly others).
+    
+    (cherry picked from commit bc6700f7d1f5a483dc59f74fb42a1baacea716c1)
+
+commit b988f2801498cb6ada84194fa5122f94be739030
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Fri Apr 26 02:22:43 2019 +0100
+
+    chromaprint: fix options being hidden in GUI
+    
+    not having a cat+subcat specified means that the options were ignored
+    when constructing the preferences tree in Qt (and possibly others).
+    
+    (cherry picked from commit 90e1fe40dad7317426ffe980e8a05c8590984ed7)
+
+commit 9e15d24c598c89b04fa1197be39d59081a2f529e
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sun Apr 7 02:56:21 2019 +0100
+
+    mosaic_bridge: fix options being hidden in GUI
+    
+    not having a cat+subcat specified means that the options were ignored
+    when constructing the preferences tree in Qt (and possibly others).
+    
+    (cherry picked from commit f9b5677ada19cff818737cbc4533f31376c4b90c)
+
+commit d4d82f7758e6336a0f77b153460c2e491978c282
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Thu Apr 18 20:59:03 2019 +0100
+
+    svg: fix option categorisation
+    
+    fixes problem of option not being shown in GUI
+    
+    (cherry picked from commit 73e00de604c85b82b0fd9d5e974572300ea4fb4b)
+
+commit 8cdc61cb8fce58e57f9a934adc354b23f7ecd64f
+Author: Lyndon Brown <jnqnfe@gmail.com>
+Date:   Sat Mar 23 01:44:29 2019 +0000
+
+    daala: fix likely plugin descriptor compile issue without sout
+    
+    (cherry picked from commit 801dc62e81872a8402e451240d5b8a75273f0591)
+
+commit 98ba1351bad2927a257160af4dad01bc5211dd0b
+Author: Martin Storsjö <martin@martin.st>
+Date:   Wed Jun 2 09:52:22 2021 +0300
+
+    contrib: harfbuzz: Don't treat -Wunused as an error, fix building with Clang 13
+    
+    This fixes building with the very latest nightly of Clang.
+    
+    (cherry picked from commit 37cdeb672ed47ced022316ddf9f9e85c49f68913)
+
+commit d3094196acd53fe8c231cb90e067d2f99c4b7d00
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Jun 8 14:12:46 2021 +0200
+
+    Update NEWS
+
+commit d2f26a210ca7e4f193d4c2847164b72598cec1ee
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue Jun 8 14:22:30 2021 +0200
+
+    CI: Target 3.0.x branch instead of the old dedicated repo
+
+commit 7516a4f4103012f98596cf251d5ee9b5ab00b421
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Thu May 13 11:04:50 2021 +0200
+
+    iso-639: add iw old code for hebrew for old DVDs
+    
+    Close #23602
+    
+    (cherry picked from commit e411f5f993489616229ef9f4a8803ff298c5ea26)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 02b784c0cefe6d0d36bbc3b668a7f238c7f7b3ed
+Author: Petri Hintukainen <phintuka@gmail.com>
+Date:   Tue Jun 8 09:54:47 2021 +0000
+
+    access: libdvdread 6.1.2 supports UTF-8 paths in Windows.
+    
+    (cherry picked from commit 262b546066c6fde1458beb467966bbc1972a24d8)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit e30973a45e8c4f075cf5a6094f500cd3100665f5
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue May 18 20:15:26 2021 +0200
+
+    demux: asf: fix regression with broadcasts
+    
+    some transmit empty <50 bytes data object
+    
+    (cherry picked from commit 4ae85635e5998d1b386b834ad22586e807d60969)
+
+commit 999057966390c25a3203e9980028f4a07360eebe
+Author: Brad Smith <brad@comstyle.com>
+Date:   Thu Jun 3 09:50:52 2021 +0200
+
+    sndio: fix crash when volume is adjusted while stopped
+    
+    Set volume/mute function pointers when handle is freed, to ensure
+    sio_setvol() is not called on a freed handle. Fixes crashes when volume
+    is adjusted while playback is stopped.
+    
+    Fixes #25796
+    
+    (cherry picked from commit e94b04c8f867382ce6835254d29ee54fe855c686)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 95cce99f562bf220ca70660ee0640a478dac7f02
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Jun 1 10:40:01 2021 +0200
+
+    vlc_codecs: add missing Opus and alac waveformats
+    
+    >= Win10
+    
+    refs #25794
+    
+    (cherry picked from commit 4f7eeafa6561170d838ad23be350aa59e061e592)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit bb7022aed9b88cd519848de19d1cb6ba3795d1b2
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Jun 1 17:54:45 2021 +0200
+
+    macosx: Workaround crash in PXSourceList dealloc
+    
+    [super setDataSource] crashes on macOS 10.11 until 10.13.
+    The code in question should not be needed (the recieving
+    properties are weak in new macOS frameworks).
+    Also whole deallocation of this object is not consistent.
+    Therefore remove the code in question.
+    
+    Closes videolan/vlc#21267
+
+commit db23bfe6decab6b00f3eba2f8f134169d7fbac4c
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon May 31 11:15:42 2021 +0200
+
+    Update NEWS
+
+commit 29e97856cde48fb8567bf5d97fe170d0a1144af3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 31 14:44:55 2021 +0200
+
+    demux: mp4: fix missing intra-trun sample increment on seek
+    
+    ends up reading wrong sample size/time
+    
+    refs #25784
+    
+    (cherry picked from commit 86b1ffe50f7cb5cbe273f14e1c4e0ba2b3572f93)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit ca7adc93ee444748671ea71c35abcc6d46850028
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 31 14:46:30 2021 +0200
+
+    demux: mp4: report current trun sample pos in debug
+    
+    (cherry picked from commit 2028c4b9cba36a56eb54264bb47819c8b2b3b797)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 19cde3c6b3e28e1092ac5328c996a41789a9cee8
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Sun Apr 25 21:58:21 2021 +0200
+
+    Contribs: update harfbuzz to 2.6.8
+    
+    Last of the 2.6.x series
+    
+    (cherry picked from commit c4cc73299c6531b060a758725a4668ec73aa207c)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 5216e1bd09b0f3efdff856db8088b11f63fae4ec
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Sun Apr 25 21:28:22 2021 +0200
+
+    Contribs: update Freetype2 to 2.10.4
+    
+    CVE-2020-15999 (but we shouldn't be impacted)
+    
+    (cherry picked from commit a6fb42a20a4b8e77c5cdbd83458d489fa523dc5d)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 6835e923d5c04a4036e66f4ccb8221683be72756
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Fri May 28 11:10:50 2021 +0200
+
+    contrib: aom: Disable assembly for 32bits windows builds
+    
+    Fix #25745
+
+commit 66e287ea014eef76dcbd224a84322ab136c1e291
+Author: Salah-Eddin Shaban <salah@videolan.org>
+Date:   Fri May 21 18:15:07 2021 +0300
+
+    Freetype: use FT_Glyph_Stroke to create outlines
+    
+    FT_Glyph_Stroke is more tolerant of font files that do not follow
+    contour orientation conventions, like Helvetica Neue.
+    It also creates unfilled outline glyphs that can be more efficiently
+    blended.
+    
+    Fixes #21043
+    
+    (cherry picked from commit 074b4f3c4adf21b574c4a5127bac18cf7e94d821)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 9f7be9f18bb875d8261f8e28dc2baf68c5a93997
+Author: Ewout ter Hoeven <e.m.terhoeven@student.tudelft.nl>
+Date:   Tue May 18 10:10:49 2021 +0000
+
+    Contribs: update dav1d to 0.9.0
+    
+    (cherry picked from commit 722afbfe36517581d3d4618e4296411185684519) (edited)
+    edited:
+    - 3.0 was still on 0.7.1
+
+commit c6505f0f8b3090eec9688d11eb2b0165158d48bd
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri May 21 08:12:27 2021 +0200
+
+    d3d11: remove Query based rendering wait
+    
+    It is imprecise and on seek it may wait a lot of time as, while it's waiting,
+    the decoder threads will flood new frames, delaying that much longer until the
+    ID3D11DeviceContext is finished doing things. This workaround did more harm
+    than good.
+    
+    Now that we have ID3D11Fence support (any recent Win10) the query based system
+    should not be used. For older Windows using D3D11 we'll have less precise
+    estimation of the time it took to actually render, meaning the frame drop will
+    be less effective.
+    
+    (cherry picked from commit 141e07e12fd73ebd957d3d1227aa9bdbe58e3ef3) (edited)
+    edited:
+    - the 3.0 code differed from the 4.0 one
+    - date is not passed to Prepare()
+
+commit be33a34535e838fce01a86cd44f7b0eb637b4f7b
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 19 08:37:55 2021 +0200
+
+    direct3d11: log the time waited for the render to finish in verbose mode
+    
+    (cherry picked from commit 2550346b5f609b6c7626281a906bdaa6523ffbb7) (edited)
+    edited:
+    - the code unlock is only for D3D11 opaque
+    - mtime_t instead of vlc_tick_t
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 3bc537162eae628afcc09c3cbdba4f4b7fd45be6
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 19 11:18:00 2021 +0200
+
+    direct3d11: don't lock the ID3D11VideoContext when waiting for the query to finish
+    
+    This leaves some time for the decoder to do things.
+    
+    This is how it was before 42011b9fb105b4b5de832fdafd097b86c8154eda.
+    
+    Fixes #25728
+    
+    (cherry picked from commit 4cb73cccce3a413263b697b88acafe172978c325) (edited)
+    edited:
+    - the display callback is in a different location
+    - the d3d_dev is not a pointer
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 13efda19410b3b65fa75c70bb573438e8fa8037d
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 19 15:20:30 2021 +0200
+
+    direct3d11: call var_InheritInteger("verbose") less often
+    
+    (cherry picked from commit f166bc2a7c56646489da35af743895c8011be238) (edited)
+    edited:
+    - the display_sys_t has a different layout
+    - the original log is in a different location
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 6a2903d3e61861664474ed0158ae770c67dc439c
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed May 19 09:58:07 2021 +0200
+
+    contrib: add d3d11 11.1 to 11.4 headers
+    
+    This is necessary to use ID3D11Fence on Windows 10.
+
+commit e786f493f0609db7d737186d6b167c30375c0265
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Wed May 19 09:58:33 2021 +0200
+
+    On the road to 3.0.15
+
+commit 16519beed0cfcf989e98da3aa13623601c38ad85
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Wed May 19 09:58:15 2021 +0200
+
+    Update NEWS
+
+commit 98a9f98e7a40abd7bfba0eef8ba6032438cc5e52
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Tue May 18 11:08:00 2021 +0200
+
+    contrib: gnutls: Don't use function introduced in Windows Vista
+    
+    Fix #25746
+
+commit d9b684a9249cc0243051da97d9a25065140e6eee
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon May 17 15:16:54 2021 +0200
+
+    vout: osd widgets: update colors & sizes
+    
+    (cherry picked from commit 32451a7ad9ab52fba7463a3ad3a00048412c288e)
+
+commit a840dbb6905119931e0540f4cbd842c6b37610c3
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue May 18 20:14:15 2021 +0200
+
+    demux: asf: have data_end match libasf broadcast dump detection
+    
+    (cherry picked from commit f7bd45a75080b81116369b9869bdf7337b97429c)
+
+commit 41878ff4f2a4b566cf0a1bd15f72037b2be98a18
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon May 10 15:59:58 2021 +0200
+
+    Update NEWS
+
+commit d456994213b98933664bd6aee2e8f09d5dea5628
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon May 10 12:07:07 2021 +0200
+
+    core: update: Fix winstore detection
+    
+    (cherry picked from commit c15e2691ef24b1eae01b29dca8fcbdfed64963ed)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 306a43b5abd011b375b0a55468d70ed3ee491855
+Author: Valerii Zapodovnikov <val.zapod.vz@gmail.com>
+Date:   Tue Apr 27 22:32:37 2021 +0000
+
+    builtin_shaders.h: update to BT.709-2 coefficients
+    
+    (cherry picked from commit 68b27c23fd6f87577d2f1c49821008fc5b86f75d)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 0937dbb5c217d6845fa9efea7828dc12f18be719
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon May 10 12:19:49 2021 +0200
+
+    On the road to 3.0.14
+
+commit 2fb86c634d92ec8aeb93a52ed97aa1f9d8565a65
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon May 10 12:19:07 2021 +0200
+
+    Update NEWS
+
+commit 6f160ae1784364aa9324f9cfcb7fbda592cc3dd9
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Fri Apr 30 14:53:47 2021 +0200
+
+    smb2: fix build with libsmb2 3.0.0
+    
+    Fixes #25680
+
+commit 9f1a68226ba337bdf673f95caef95a10ef2920b4
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon May 3 21:39:32 2021 +0200
+
+    macOS package: Increase image size for dmg package
+    
+    Increase to 300M to allow to build universal releases.
+    This is the maximum size of the release image, the final
+    file will be only at the usual compressed size.
+    
+    (cherry picked from commit 6a8dcbee0f3925af7ace8afb0b1a5b58c69f354f)
+    Signed-off-by: David Fuhrmann <dfuhrmann@videolan.org>
+
+commit bc53d6edc62772765924118e7e6ed39ac7464a11
+Author: Alaric Senat <dev.asenat@posteo.net>
+Date:   Thu Apr 22 11:42:12 2021 +0200
+
+    input: parse `:input-slave" options earlier
+    
+    Move the option parsing right before the input-item slaves copy.  This
+    avoid input-slaves unnecessary duplication each time the input is
+    reparsed as the input-item slaves copy itself avoid duplicating.
+    
+    Fixes #19977
+    
+    (cherry picked from commit 4f7522e620be01a3662bd985aeca1a2b8c4b7ff4)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 4cd66139cef61e9a7390db304e99ee80f01bf555
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Apr 19 11:49:27 2021 +0200
+
+    core: update_crypto: Ensure we don't overflow while shifting
+    
+    (cherry picked from commit 984407ba32a0f3d4ed5dd69510b943003bb3bd63)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 4df4378f433fb5b175bf0792f32bb7014f055c10
+Author: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+Date:   Mon Apr 19 11:46:56 2021 +0200
+
+    core: update_crypto: Use uint32_t for buffer sizes
+    
+    (cherry picked from commit 1778e11aaffc628f62cfb6e35ba9d64b1953620e)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 86e2cdd41557664e2a13b79be4d415ccd61428ea
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Apr 12 13:39:46 2021 +0200
+
+    av1_unpack: check header overflow
+    
+    could trigger -1 offset move
+    
+    reported by Zhen Zhou of NSFOCUS Security Team
+    
+    (cherry picked from commit 44200dea8c4d2767886b553a7a5887f2191de88f)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit c35f6712bbf133f6a1223012e63a6161c4e79d47
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 12 08:45:53 2021 +0100
+
+    contrib: ffmpeg: fix crash on use after free buffer in MPEG2 DXVA
+    
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+    (cherry picked from commit f43cad135a6feccd6422114a00d9bc438e9d5af9)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit 7e92daadfa0723d1b423d2caeee6929bb6880374
+Author: Lukas Euler <lukas@positive.security>
+Date:   Fri Feb 12 11:55:14 2021 +0100
+
+    qt: playlist_controller: Ensure the path points to a directory
+    
+    Not doing so could end up opening a file with the default application
+    associated with it, instead of opening a folder, leading to a potential
+    remote code execution.
+    
+    Reported-by: Fabian Bräunlein <fabian@positive.security>
+    Reported-by: Lukas Euler <lukas@positive.security>
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit acf7da63f1ebebc1ee6e40e6077783634d5ad063
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Jan 12 15:26:33 2021 +0100
+
+    kate: remove invalid clean
+    
+    palette doesn't need to be freed since it's stack allocated.
+    
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+    (cherry picked from commit 73f7b186190ecf5811594b16c7eac4520159ef2d)
+    Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+
+commit fff5aa90bf657984648409e7345af890ef893c94
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 17:16:38 2021 +0200
+
+    package/macosx: Fix bundling without Growl framework
+    
+    When the macOS notifications module was disabled due to lack of Growl
+    framework in contribs, this was not properly checked for in the package
+    Makefile, resulting in a failure due to the missing framework.
+
+commit 25b4b3577985d69d285682a562b85b248b058ad7
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 17:13:38 2021 +0200
+
+    package/macosx: Fix bundling when locales are missing
+
+commit df9fade84d268eec42c6235f0ca398aed3769b24
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 03:12:06 2021 +0200
+
+    macosx: SPMediaKeyTap: Move event parsing to library
+    
+    Instead of doing the event parsing in VLCCoreInteraction, do it
+    in the library. That way the VLC code does not get cluttered with
+    details how to parse the event and everything is properly dealt with
+    by the SPMediaKeyTap class.
+
+commit d877c6147a7a010c1705dea33260b1b3b1afe8c1
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:25:47 2021 +0200
+
+    macosx: SPMediaKeyTap: Clean up public header
+    
+    Remove unused constant and move a private method
+    out of the public header.
+
+commit e79f17f63978eeb4b5cb8fb58d24f8fa9995a5fa
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:24:45 2021 +0200
+
+    macosx: SPMediaKeyTap: Use correct define
+    
+    Use the proper define from IOLLEvent.h instead of a magic value.
+
+commit 98629054ac4d6d8beb90439702d2f7d65ee90b3e
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:20:16 2021 +0200
+
+    macosx: SPMediaKeyTap: Codestyle adjustments
+
+commit 1133f053a09aed5b0f19470d58e2f8cf772d781a
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:13:17 2021 +0200
+
+    macosx: SPMediaKeyTap: Remove interception state
+    
+    Do not keep an additional interception state which can get
+    out of sync with the actual interception state. Just call
+    CGEventTapEnable with the desired state directly.
+
+commit 07af25206f9e0662e3462c27ff9e5966695d70dd
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:05:08 2021 +0200
+
+    macosx: SPMediaKeyTap: Check earlier for event type
+    
+    Do not create the NSEvent before checking if the event is actually a
+    NX_SYSDEFINED. It should never happen, but just in case, there is no
+    point in creating the NSEvent first.
+
+commit 68cffcff2bcb6d14d459112831e3ae00291b053b
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Fri Apr 23 01:01:37 2021 +0200
+
+    macosx: SPMediaKeyTap: Consolidate callbacks
+    
+    One callback only existed to call the other one with the
+    autorelease pool. Move that to the other one and get rid of
+    the unnecessary callback.
+
+commit cb6cf0cf91a82cce487f560fa83b4dc4c9ed967b
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 17:13:15 2021 +0200
+
+    macosx: SPMediaKeyTap: Improve log message
+    
+    Make it clearer where this message comes from, so it is more obvious
+    if it ever pops up in the system log, especially now that VLC has a
+    quite different SPMediaKeyTap compared to the (no longer maintained)
+    upstream project.
+
+commit 2d358c7fbb78efbd3e371a461c5e9fd2cef7a3f7
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 17:11:40 2021 +0200
+
+    macosx: SPMediaKeyTap: Assert main thread is used
+
+commit 0ba6d1d78046cab4ce4293e47050aa44e3882245
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 17:10:09 2021 +0200
+
+    macosx: SPMediaKeyTap: Move to main thread
+    
+    Move the event tap to the main thread, as the event tap callback
+    makes use of NSEvent APIs which apparently crash at least on M1
+    machines running Big Sur when called from a non-main thread.
+    
+    Additionally remove the now unnecessary @synchronized recursive lock.
+    
+    Fix videolan/vlc#25650
+
+commit cec7f58f83d1d241508125366611d3cac811c24a
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Thu Apr 22 16:44:06 2021 +0200
+
+    macosx: SPMediaKeyTap: Remove unused class method
+
+commit 144bdd5d694949d82a42f310aa70882e4f46bad8
+Author: Brad Smith <brad@comstyle.com>
+Date:   Sat Apr 3 16:47:52 2021 -0400
+
+    thread: Have vlc_GetCPUCount make use of _SC_NPROCESSORS_ONLN
+    
+    OpenBSD and other OS's use _SC_NPROCESSORS_ONLN to indicate the number
+    of online CPUs.
+    
+    Signed-off-by: Rémi Denis-Courmont <remi@remlab.net>
+    (cherry picked from commit 4824af4df2a4b4f5a3337e48fe5677da85e043e3)
+
+commit 7c03d16fb2b1e41f1ce61caee51b861db9fe1a7b
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Fri Apr 23 01:48:06 2021 +0200
+
+    l10n: fix a typo
+
+commit 4a583d606aa2c12c12d2d176f9e0609b6ffd2421
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Tue Apr 6 12:00:01 2021 +0200
+
+    codec: dav1d: do not use VLC_CLIP
+
+commit 53455ac5b3d7ff197a54ac927ec383bc9950c84e
+Author: Marvin Scholz <epirat07@gmail.com>
+Date:   Wed Dec 2 12:08:12 2020 +0100
+
+    codec: dav1d: limit automatic frame thread count
+    
+    Without this limit, on a processor with many cores it would use
+    so many frame threads that it would fail picture pool allocation.
+    
+    Fix videolan/vlc#25190
+
+commit 0c8044f28a09c2adb71d15e6a3f96194c1614e48
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Sun Jul 26 14:44:31 2020 +0200
+
+    packetizer: hevc: fix frame rate update
+    refs #24973
+    
+    (cherry picked from commit 80c2957e3fca835ff63199a35a16db1420b73191)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 84d23b6a2cbccd1ad0005e374f7fbdff62549e25
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Tue Apr 20 17:50:56 2021 +0200
+
+    Contribs: update dvdnav to 6.1.1
+    
+    (cherry picked from commit e00e13bfbfce5f4991b03d2117669e4527276f60)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 505bbab157eda7abfb4acd62011bbd192abf9944
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Tue Apr 20 17:41:22 2021 +0200
+
+    Contribs: update libdvcss to 1.4.3
+    
+    (cherry picked from commit 6a192333bd6cea4a5a6d6edb904e985c49691bbe)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit f6d5a74877d5de1fb429d12713f582afc12ea23d
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Sun Apr 18 12:46:08 2021 +0200
+
+    Contribs: update dvdread to 6.1.2
+    
+    Ref #18487
+    
+    (cherry picked from commit f7cfb90d01e2963fb9e5979d584f543ab8a71cf0)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 6b6969977ce818afec240ef95d1d170336978e32
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Thu Apr 15 18:16:34 2021 +0200
+
+    Update vlc.pot
+
+commit 832a58631ca235d2a5bc558a55f8c0172fb86ac9
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Apr 13 12:58:33 2021 +0200
+
+    POTFILES.in: Update for macosx UI files
+    
+    Add all files in directory.
+    Fixes missing VLCSidebarSource and VLCLogWindowController,
+    notably.
+
+commit 7148fcf3e8840ef3295e71ee2a8e6231606245e9
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Mon Apr 12 22:28:17 2021 +0200
+
+    l10n: change po header version to 3.0.13
+
+commit 401aaf55deaa8bf0e3cabbf9661bcce4147e76ed
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Mon Apr 12 22:23:25 2021 +0200
+
+    l10n: vlc.desktop update
+
+commit bac65e980da1b28983bb44e9775723786188daa8
+Author: Phạm Gia Hưng <hungpg7@gmail.com>
+Date:   Mon Apr 12 14:31:14 2021 +0200
+
+    l10n: Vietnamese update
+    
+    73% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit d0d42f7140e6da5c56e8968fd7aa98a5882722c2
+Author: Timur Seber <seber.tatsoft@gmail.com>
+Date:   Fri Apr 9 21:01:25 2021 +0200
+
+    l10n: Tatar update
+    
+    14% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 0acdb7963e90d4ab8f1912ad7bccba5bf0ae30fa
+Author: VideoLAN <videolan@videolan.org>
+Date:   Sun Mar 28 22:27:13 2021 +0200
+
+    l10n: Russian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 3785b4528b7cf4d8f72569105c43f4805be4f10c
+Author: abuyop <abuyop@gmail.com>
+Date:   Tue Mar 30 01:52:53 2021 +0200
+
+    l10n: Malay update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit f4d7b6cfb48b056918ec0dffdc10379cbd8e5d4f
+Author: Ingmārs Dīriņš <melhiors14@gmail.com>
+Date:   Sun Apr 11 12:39:40 2021 +0200
+
+    l10n: Latvian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 7b30f80be93233448de9f602ef5b300312604212
+Author: VideoLAN <videolan@videolan.org>
+Date:   Thu Apr 1 08:09:08 2021 +0200
+
+    l10n: Japanese update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 389c0e80423c03cdec23493eb782c4935cf49031
+Author: Vincenzo Reale <vinx.reale@gmail.com>
+Date:   Mon Mar 29 08:17:38 2021 +0200
+
+    l10n: Italian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 622c55bce61b58c34e3876bf22357e3e834a2e99
+Author: Bashishtha Narayan Singh <bashishtha.singh@gmail.com>
+Date:   Mon Apr 12 11:19:58 2021 +0200
+
+    l10n: Hindi update
+    
+    20% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit e2ac49a5c8f65f37c3c9202a8de1f40f04929a3c
+Author: Yaron Shahrabani <sh.yaron@gmail.com>
+Date:   Thu Apr 1 14:34:37 2021 +0200
+
+    l10n: Hebrew update
+    
+    76% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 9df5a7d38944a5d9e60e48e1c82127ca83df9dc3
+Author: Fabio Tomat <f.t.public@gmail.com>
+Date:   Mon Apr 5 13:13:03 2021 +0200
+
+    l10n: Friulian update
+    
+    15% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit af240fb394703e859f14f2eb5dcf3d4032730720
+Author: Txopi <txopi@ikusimakusi.eus>
+Date:   Mon Mar 29 10:31:59 2021 +0200
+
+    l10n: Basque update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit fa9faf5af6cb3d60281207b4399eea126450f4f1
+Author: Joan Monguillot <jmonguillot@gmail.com>
+Date:   Mon Apr 12 18:04:29 2021 +0200
+
+    l10n: Catalan update
+    
+    98% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit cb3d26778ae423f68f8b3ad16a817e09ab2a2e4a
+Author: Симеон Цветков <sicvetkov@uni-sofia.bg>
+Date:   Fri Mar 26 19:45:42 2021 +0100
+
+    l10n: Bulgarian update
+    
+    67% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit a679115429efb7ea3e8e9f322596056d126c9ffa
+Author: Txopi <txopi@ikusimakusi.eus>
+Date:   Mon Mar 29 10:14:08 2021 +0200
+
+    l10n: Basque update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 1c8ca5d9479b0111e1de6d92b349aa993f16b101
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Apr 13 03:09:48 2021 +0200
+
+    po: add missing rist modules
+
+commit 64562f29edbbf368e95f7c3ebfa4a7ce1958c11e
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Apr 13 03:00:54 2021 +0200
+
+    po: add missing dav1d.c
+    
+    (cherry picked from commit 342edae7ecea3aa322890d098a70429c43b86711)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit dbb962e595fff46b5959ebbff4092580003deb9d
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Apr 13 03:01:33 2021 +0200
+
+    rist: add missing translations
+    
+    (cherry picked from commit eb6b8474f6cf2cc170c706d226aaeade2e8e55fc)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit cd5a4f5f9cb8bd58833cafd72086f01fa699fe02
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Tue Apr 13 03:07:39 2021 +0200
+
+    Update MODULES_LIST
+
+commit 1991d6636fe76d0091e0ee2090d89e2ae3a731da
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Sat Apr 10 17:41:10 2021 +0200
+
+    NEWS: update for 3.0.13
+
+commit 6cbe6f5b1774ce491157f8ccaedb5ce36e1159c0
+Author: Alaric Senat <dev.asenat@posteo.net>
+Date:   Fri Apr 2 16:30:07 2021 +0200
+
+    input: add url parsing of `input-slave` option
+    
+    As shown in #25549, we need to extract the path from the url in order to
+    check the file extension without the eventual HTTP's options noise.
+    
+    Fixes: #25549
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit bbdaa0b64a0626282d1dca2051c233969f00e1d7)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 3a4f2ad03a19e759def65e455c4b684983a77061
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Thu Apr 8 12:27:33 2021 +0200
+
+    Update NEWS for freetype/harfbuzz fix
+
+commit b864b80b9b208c8e1703d6b9a4c92e463eb6239e
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 6 18:27:17 2021 +0200
+
+    packetizer: avparser: remove useless realloc/copy
+    
+    (cherry picked from commit 73b0d14c170a1ce6407a235eecd890e3a21bf68d)
+
+commit b620b2c3b07982a608f26a31a62de33d9b85c0a7
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 6 18:21:05 2021 +0200
+
+    packetizer: avparser: set proper frame flags
+    
+    (cherry picked from commit 0b94015abe92f2e2380bafe4232dc84c66585b9c)
+
+commit 5cd64a36c55b3564cf5e63d899f70843ae0041f9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Apr 6 18:16:37 2021 +0200
+
+    packetizer: avparser: properly propagate flags
+    
+    (cherry picked from commit 0ddedd363c23347d4474563897eec1ce0db722ba)
+
+commit 4e013b27c927a6794a0e348e7c75fa965e49631d
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Wed Apr 7 08:51:20 2021 +0200
+
+    contrib: harfbuzz: fix WINAPI detection
+    
+    The safe way to detect a UWP or Desktop app with mingw64 is to check the
+    WINAPI_PARTITION_DESKTOP partition.
+    
+    (cherry picked from commit e5b1962306d7bf39521a30454ea8058d463b8d61)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 58d8dd6c7d31a15519dc69dcd5f6ad4b88e1b4f1
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Apr 6 13:38:49 2021 +0200
+
+    macosx: Fix compilation of sidebar source with old SDKs
+
+commit 84847c28514a802585094338d2622be4bcdd0c89
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Apr 6 11:31:05 2021 +0200
+
+    macosx: Modernize code style for VLCTimeField
+
+commit 30ce9f876c9d56122e94450a4c988e45fea7b6cc
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Apr 6 11:12:06 2021 +0200
+
+    macosx: time fields: Cache alternative time representation
+    
+    This allows to toggle between remaining and elapsed
+    time at any time, also while the media is paused.
+    
+    Close #25433
+    (backport of 497fc4216d776fc81d241578eaf9abd17dbeedcb)
+
+commit 701ae51e3f841fb760cf3707682ae491f71c61f1
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Tue Apr 6 11:11:46 2021 +0200
+
+    macosx: Fix format specifier
+
+commit 198fb6c0e60cbe6e4836761814b9d263a38ddc54
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon Apr 5 19:09:15 2021 +0200
+
+    macosx: Fix autolayout issues for simple prefs
+    
+    For all views shown in simple preferences, all UI elements
+    with intrinsic sizes (e.g. labels / checkboxes) need a
+    vertical content hugging priority of 750 (bigger than 500)
+    because those views should adapt its height based on the content.
+
+commit b17069595772d64888aa388cfbe0d5a163e32edd
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon Apr 5 18:18:12 2021 +0200
+
+    macosx: Fix translation of "general settings box"
+    
+    refs #25558
+
+commit edd5319c1a95210edac9d9544d77998747605419
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Fri Apr 2 12:18:00 2021 +0200
+
+    macosx: Initialize sidebar in main window
+
+commit abbc95861f12992a773e67867851801fb1ea9858
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Fri Apr 2 11:50:11 2021 +0200
+
+    macosx: Move out sidebar handling in own data source object
+    
+    Move delegate and datasource handling of sidebar into own
+    object. This decouples and cleans up the VLCMainWindow class.
+    
+    Additionally, delegate and dataSource object cannot inherit
+    from an NSWindow class, as it is not allowed to contruct weak
+    references for such objects on old OS versions (Mac OS 10.7).
+    
+    close vlc#25403
+
+commit 1d111a92edfd5eec4562879112f7aeb34545dff2
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Tue Apr 6 11:37:13 2021 +0200
+
+    Contribs: update libbluray to 1.3.0
+    
+    Close #19925
+    
+    (cherry picked from commit 025cbe2df9a21175194c556628a14247e7d960ac)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 704ccf4ea627458dd374d2936146c55ba00ffa12
+Author: Maxim Sergeev <gudvinr@gmail.com>
+Date:   Sun Jun 28 17:07:42 2020 +0200
+
+    qt: support 2d surfaces for horizontal scroll
+    
+    Fixes #20498
+    
+    To avoid detection of erratic movements along the lines
+    introduce allowance zone for each axis.
+    
+    Angle determines how close to axis angle delta is.
+    For horizontal events it is set to 30 degrees (15 for each side).
+    For vertical events angle is 53 degrees (30 * 16/9).
+    It is a little wider since touchpads are asymmetrical.
+    
+    Signed-off-by: Pierre Lamot <pierre@videolabs.io>
+
+commit 5d1fc0945815c1412e349c4deafee4abb9315641
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Apr 5 12:20:58 2021 +0200
+
+    Update Changelogs
+    
+    Close #21463
+    
+    (cherry picked from commit 5f990b0cd372c86f8846c74c1809bca9b6b721ee)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit d58b7748a1ce997bc86f1c5619bd9276cf981bc1
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Sat Apr 3 15:46:41 2021 +0200
+
+    liveleak.lua: fix video resolution selection
+    
+    (cherry picked from commit 55456d7c1e2892d430f93645972e389e7e8462a8)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit 3fcc32fcddbbb67adb15c98626db9ba90c7144c5
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Sat Apr 3 15:40:35 2021 +0200
+
+    liveleak.lua: fix title metadata parsing
+    
+    (cherry picked from commit e02e408c34bb5569fd1e139d10b696f3c03fa6c6)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit e70b376940ee664a8f4dabaff7ec661d9eb7e673
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Sat Apr 3 15:38:08 2021 +0200
+
+    liveleak.lua: support new video URL format
+    
+    (cherry picked from commit 3f401932985fcbe8b006f14f3a845e0708ef87fd)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit f26577f12c20f63bb698255ac03ffd3eaa4700cc
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Sat Apr 3 12:02:34 2021 +0200
+
+    youtube.lua: disable cookies if redirected to consent page
+    
+    In the past few days, YouTube has started redirecting requests for video
+    pages to a cookie consent and preference prompt, on a whole separate
+    page and domain; which prevents playback. We are not interested in
+    YouTube cookies, nor in consenting to them on behalf of our users, so
+    this just retries with cookies disabled. YouTube gets the hint and
+    simply redirects back to the original video page.
+    
+    Fixes #25616
+    
+    (cherry picked from commit f21c063ea3b8050541e5c8f4430378dfec85f4a5)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit 8fe00499352f149f2fd6d6e1e065a3fca1a6b163
+Author: Alaric Senat <dev.asenat@posteo.net>
+Date:   Tue Mar 30 15:29:53 2021 +0200
+
+    input: fix `input-slave` option for subtitles
+    
+    Since c34d719f, all files passed by the option `input-slave` were set as
+    audio tracks no matter what.
+    Theses changes force subtitle demux on files with a known spu extension.
+    
+    Fixes #25549
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit 08a3c76355b0ba9eb6658a730cc6c763775b63b6)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 659f569c3a0a77256bbca8a0745d35da7aab3ada
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Mar 31 22:27:39 2021 +0200
+
+    macosx: Add two size configurations for fullscreen panel
+    
+    Freely choosing an increased size for fullscreen panel
+    control buttons has been an error prone drag and drop
+    operation which was hard to perform right. Compiled with the
+    latest macOS SDKs, this method does not work at all anymore.
+    
+    As an alternative, this patch implements two size
+    configurations (large and normal), which additionally increased
+    font size.
+    
+    close vlc#20720
+
+commit f2e872c78dfdadf8dbbbc4db0a2aa6a3cfb353db
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Mar 31 22:51:17 2021 +0200
+
+    macosx: open panel: fix MRL generation for multiple input devices
+    
+    Fix issue in MRL generation for  multiple audio / video input devices.
+    Now updates the correct MRL in case the device selection changed.
+    
+    (manual bp of c21bf10646a6c432a0d1fb695256778a84c83a13)
+
+commit 6977abc430a889e19348a55533884bad2c6b1fa5
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Sat Sep 8 18:41:58 2018 +0800
+
+    es_out_timeshift: fix inverted logic
+    
+    A test case:
+    vlc -vv --rate 0.5 ~/.local/share/vlc/ml.xspf
+    es_out_GetEmpty return false forever
+    
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+    (cherry picked from commit 80f1e7235b7b6a769e6924ed96c739b62f7e3385)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 53359e6f9bbcc101f84935d272b4be5b6bd1fb3b
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon Mar 29 10:54:19 2021 +0200
+
+    macosx: Fix crash on exit related to PXSourceList
+    
+    The delegate object (aka VLCMainWindow) is sometimes not valid
+    anymore when the destructor of PXSourceListDelegateDataSourceProxy
+    is called. Also, VLCMainWindow removes all observers from the
+    notification center in its own dealloc method already.
+    
+    This should fix the majority of current on-exit related crashes
+    on macOS.
+    
+    close #25403
+
+commit adf964a472568981393ad407143c54abbbd4c9ed
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon Mar 29 10:53:59 2021 +0200
+
+    macosx proj: Add Internal directory for PXSourceList
+
+commit c9e30349523345260d7db6cdc8007edd2a45552d
+Author: Alexander Lakhin <exclusion@gmail.com>
+Date:   Sat Mar 27 08:12:46 2021 +0100
+
+    l10n: Russian update
+    
+    99% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 3c615514e109eeb6e18fe223f18d4ea5ff5edcac
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Sat Mar 27 00:06:25 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit 54ec0bb8dfdd73f7b5da784963a8d45a33156721
+Author: VideoLAN <videolan@videolan.org>
+Date:   Fri Mar 26 19:15:23 2021 +0100
+
+    l10n: Indonesian update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 89f921b80c54a96d211518e11eae52fe3fc73485
+Author: A S Alam <alam.yellow@gmail.com>
+Date:   Thu Mar 18 04:55:00 2021 +0100
+
+    l10n: Punjabi update
+    
+    55% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 4f783dfea8bab6c7d48a58165dd6853eaf805d9b
+Author: Ingmārs Dīriņš <melhiors14@gmail.com>
+Date:   Wed Mar 24 14:02:00 2021 +0100
+
+    l10n: Latvian update
+    
+    99% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 7b38ca584bcffb5c57e4a38350a070c6c104e4f7
+Author: Bashishtha Narayan Singh <bashishtha.singh@gmail.com>
+Date:   Tue Mar 23 07:29:32 2021 +0100
+
+    l10n: Hindi update
+    
+    20% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 5e61c79dc85ac3a3f2937873f2874792ae539a85
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Danish update
+    
+    93% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 3649d075f1e51523d70e22722e0442b2d1d0d8dc
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Catalan update
+    
+    95% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 125d358f3c320957e8615bca52cd16afc3e9cb35
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Fri Mar 26 15:26:34 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit d133ccd5879c1d0d8efd41014fc99f2cedd8ee6e
+Author: Konstantin Pavlov <thresh@videolan.org>
+Date:   Mon Mar 29 01:31:20 2021 +0300
+
+    CI: build pages on a nightly job
+
+commit f348c4aae8b5b029fbc642d7f9299e34fa27a567
+Author: Robert-André Mauchin <zebob.m@gmail.com>
+Date:   Mon Dec 14 03:23:52 2020 +0100
+
+    adaptive: add missing <limits> include
+    
+    Compilation would fail with:
+    
+    > error: 'numeric_limits' is not a member of 'std'
+    
+    without this include because of some hardening build
+    flags mandated on Fedora Linux, with GCC 11.
+    
+    Refs #25325
+    
+    Signed-off-by: Robert-André Mauchin <zebob.m@gmail.com>
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    (cherry picked from commit e3de1b709b258d2b0e316d927f5c828bdb1a738a)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit f4474d821f9a5865e1e45a34e53ff59ccfaae403
+Author: Robert-André Mauchin <zebob.m@gmail.com>
+Date:   Mon Dec 14 03:23:52 2020 +0100
+
+    hls: add missing <limits> include
+    
+    Compilation would fail with:
+    
+    > error: 'numeric_limits' is not a member of 'std'
+    
+    without this include because of some hardening build
+    flags mandated on Fedora Linux, with GCC 11.
+    
+    Refs #25325
+    
+    Signed-off-by: Robert-André Mauchin <zebob.m@gmail.com>
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    (cherry picked from commit 3aea33378b0b317b99fce2eeaca8b31bf7cc6aba)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit fb3cc45877f3bc8e47d5bd1f8a21827c95a68f34
+Author: Robert-André Mauchin <zebob.m@gmail.com>
+Date:   Mon Dec 14 03:23:52 2020 +0100
+
+    mkv: add missing <limits> include
+    
+    Compilation would fail with:
+    
+    > error: 'numeric_limits' is not a member of 'std'
+    
+    without this include because of some hardening build
+    flags mandated on Fedora Linux, with GCC 11.
+    
+    Fix #25325
+    
+    Signed-off-by: Robert-André Mauchin <zebob.m@gmail.com>
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    (cherry picked from commit 1d001c2084cdf440bb768f79f1b3c936a3fa1460)
+    Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+
+commit 34712ad05bab4f2919dc9b1ef2bf13df6d1678ac
+Author: Sidney Doria <ssdoria@gmail.com>
+Date:   Wed Mar 24 04:43:31 2021 +0100
+
+    l10n: Portuguese (Brazil) update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 3ec48559dc0ee2a17592340af184b9716465c453
+Author: Aefgh Threenine <aefgh3962@gmail.com>
+Date:   Wed Mar 17 15:04:25 2021 +0100
+
+    l10n: Chinese (Taiwan) update
+    
+    68% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit ce8119512ba835a261d68ec14b6ec0081aee3274
+Author: VideoLAN <videolan@videolan.org>
+Date:   Sat Mar 13 08:24:47 2021 +0100
+
+    l10n: Vietnamese update
+    
+    73% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 1e1694e5b7a54388e61bd63679de4474cc9b2e7b
+Author: Aefgh Threenine <aefgh3962@gmail.com>
+Date:   Sun Mar 14 07:02:52 2021 +0100
+
+    l10n: Thai update
+    
+    58% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit d04726a533b3be7da59579744dbaf8bc93e54cc0
+Author: Thomas De Rocker <thomasderocker@outlook.com>
+Date:   Sat Mar 13 10:36:11 2021 +0100
+
+    l10n: Dutch update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 8522c654de72e4a6be830d89ec56c4df4c980c9c
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Malay update
+    
+    99% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 32a96c0b5b63f95e05d1ab0ee2f0bfeef040a561
+Author: VideoLAN <videolan@videolan.org>
+Date:   Tue Mar 2 08:58:34 2021 +0100
+
+    l10n: Mongolian update
+    
+    22% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 6fdb291da1d42c5256071b56158327be8c1d2b33
+Author: Ingmārs Dīriņš <melhiors14@gmail.com>
+Date:   Sun Mar 14 09:52:41 2021 +0100
+
+    l10n: Latvian update
+    
+    99% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit fead63a1ebd1da13121d5f700d21cb3c91e968ce
+Author: Syahmin Sukhairi <syahmin@gmail.com>
+Date:   Sun Mar 21 14:21:54 2021 +0100
+
+    l10n: Indonesian update
+    
+    78% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit b627a024d5ca3facf240d7d7c9be79fa3a21732a
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Croatian update
+    
+    81% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 72989f7f4979c5659ae21af25e46b70436009de2
+Author: Bashishtha Narayan Singh <bashishtha.singh@gmail.com>
+Date:   Wed Mar 17 13:31:42 2021 +0100
+
+    l10n: Hindi update
+    
+    19% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 1624d61384b1910c43f5b640946376d7cf9843b8
+Author: Yaron Shahrabani <sh.yaron@gmail.com>
+Date:   Sun Mar 14 12:13:25 2021 +0100
+
+    l10n: Hebrew update
+    
+    76% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 24b5a77ee55c6c872e67010d0d5a5012a861574c
+Author: Elias Meyer <elektrovirus@protonmail.com>
+Date:   Fri Mar 19 15:27:10 2021 +0100
+
+    l10n: Finnish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 75336483642fae1191a0a261ca324ca62997ce86
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Estonian update
+    
+    78% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 8a136bafad8c50ccb32832ddabd303ce08e52132
+Author: Angelos Chraniotis <chraniotis@gmail.com>
+Date:   Fri Mar 19 20:44:39 2021 +0100
+
+    l10n: Greek update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 4cabcaba04429e67b92d36149ca49be377207fbb
+Author: Roktim Ibne Hasan <roktimih2006@gmail.com>
+Date:   Wed Feb 24 19:21:38 2021 +0100
+
+    l10n: Bengali (Bangladesh) update
+    
+    77% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 0d722b807b4da97daf603551470eea75df89b036
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Mon Mar 22 23:14:25 2021 +0100
+
+    l10n: activate new NSIS languages: Hindi and Vietnamese
+
+commit 9d26dc4d63e1fcc30dd7255ddc17050154c71877
+Author: VideoLAN <videolan@videolan.org>
+Date:   Mon Mar 22 08:39:40 2021 +0100
+
+    l10n: Vietnamese NSIS update
+    
+    84% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 77cb5c6e8e12f183e1a6fde35dc74655b6a915c0
+Author: Bashishtha Narayan Singh <bashishtha.singh@gmail.com>
+Date:   Sun Mar 14 06:18:21 2021 +0100
+
+    l10n: Hindi NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 0e47dbaa9a23540b2a9201499489e12af1b09a8d
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Mon Mar 22 23:06:44 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit b5257ddad9ca49b3b8739aee4ac583b9b37f8d7c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 24 13:55:35 2021 +0100
+
+    codec: webvtt: add missing SPU timestamp offset
+    
+    fix #21945
+    
+    (cherry picked from commit 757939a703c2f95cd8e09495e9f6c9928f5af500)
+
+commit a473d0215c77ed878dec32a9c780082a77cf5c6c
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 24 15:27:54 2021 +0100
+
+    codec: webvtt: rename/nz prefix time vars
+    
+    (cherry picked from commit aee5e3884c20cc03ed0adf29de32232c6949e77d)
+
+commit 461b00afe2c27219774638d00aa731e391aad493
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Mar 24 11:16:34 2021 +0100
+
+    demux: avi: fix fLAC read size
+    
+    (cherry picked from commit 5c6ca5c1da38a7d5981b3222e95facefd5f46a55)
+
+commit 989c616b1a479edb9ee73d836aa066a681d6906f
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Mar 23 18:35:40 2021 +0100
+
+    demux: h26x: rewrite output dts
+    
+    fed dts is always bogus as it can't match AU boundaries
+    
+    (cherry picked from commit dcca36793a58776a5cf48ece3dd9a574d75123e0)
+
+commit 48afd4296d86830d4efa99ffa2cda5504cdc9ce1
+Author: Michael Kaufmann <mail@michael-kaufmann.ch>
+Date:   Mon Mar 1 21:59:35 2021 +0100
+
+    demux: ts: fix MPGA and ADTS probing
+    
+    MPEG-1 Audio Layer II (MP2) was erroneously detected as ADTS.
+    
+    MPGA: The previous check used wrong bitmasks (1 bit too far to the right).
+    The layer check was also wrong, the layer must not be 0.
+    
+    ADTS: Previously only one bit of the layer was checked. Check both bits.
+    The check is now identical to the one in HasADTSHeader() in mpeg4audio.c.
+    
+    References:
+    - http://mpgedit.org/mpgedit/mpeg_format/mpeghdr.htm
+    - https://wiki.multimedia.cx/index.php/ADTS
+    
+    Signed-off-by: Francois Cartegnie <fcvlcdev@free.fr>
+    (cherry picked from commit 90a54ccb4c57a61523279e410cd957b1671a29df)
+
+commit 9f83cc7e96cfc4e33f613f13dd65ae14226dc34e
+Author: Martin Storsjö <martin@martin.st>
+Date:   Sat Mar 13 13:06:49 2021 +0200
+
+    contrib: nfs: Patch win32_compat.h to not override snprintf
+    
+    Mingw toolchains always provide snprintf, and modern MSVC versions
+    do too.
+    
+    The define of snprintf to sprintf_s is applied before stdio headers
+    are included, causing it to be applied to the headers themselves,
+    breaking mingw-w64 headers targeting UCRT (because the headers provide
+    declarations for both snprintf and sprintf_s, but one of them is
+    declared as a static inline while the other is not).
+    
+    In upstream libnfs, this define was entirely commented out in
+    6564abaa1f979c0b62044f695030a32b60620163, so this backports one bit
+    of that commit.
+    
+    (cherry picked from commit 970248c1e409b1fef0d8f50f97de6259c6f849a6)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit bf7e992a1ee01acbed47baaec6dee4c55b0730a0
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 16:20:02 2021 +0100
+
+    contrib: nfs: update to 4.0.0
+    
+    Many bug and crash fixes, and add NFSv4 support.
+    
+    (cherry picked from commit e2f48b1a51102f47ab7931e91eae30060cec25b4)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 132e9057dc2d4afe2255c43852eda8e1d23008e4
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:44:49 2021 +0100
+
+    smb2: print connected ipaddr
+    
+    (cherry picked from commit 63329029a150f412b7a10b1ebd1fd40cdad847c0)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit a6ec6bef8a31f35d4a62ccffdf15530abb03674c
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:33:54 2021 +0100
+
+    smb2: always include arpa/inet.h
+    
+    Since it will be needed by the next commit.
+    
+    (cherry picked from commit 43424eaada818895f2bf02b2c72175f6444ceb83)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit e44f69983a408df2bbc7d614f7ffe912e644c6b6
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:44:24 2021 +0100
+
+    smb2: use smb2_get_fds
+    
+    This API allow to connect to all resolved addresses and ports in
+    parallel, waiting 100ms between each new connection.
+    
+    This resolves very long timeout or error when the host has more then one
+    IPs but is listening on only one.
+    
+    (cherry picked from commit cfa75e38a0715ce158d5d7f9f831cd1e4b780713)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit b91a5da35927f442551c829cfecafe0faa6a0147
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:43:45 2021 +0100
+
+    smb2: always print the encoded url in the dialog
+    
+    (cherry picked from commit ebcfc500f5a6f1bd4c719013fe55e997ef09ac72)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 12492c1142497b87c492718f405f6a14af3f51ea
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:43:09 2021 +0100
+
+    smb2: use INET_ADDRSTRLEN directly
+    
+    (cherry picked from commit c26c7de515f5e0622101d26cf6faf59daab8c66f)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit 5f862d1dba5da899f1543aeabb93e3e1a35c3c09
+Author: Thomas Guillem <thomas@gllm.fr>
+Date:   Tue Mar 2 15:32:25 2021 +0100
+
+    contrib: smb2: update to master
+    
+    Fixes login/signatures issues and add happy eyeballs support.
+    
+    (cherry picked from commit d42ddc12c1cfa416b4c8d1aa554bb660f28d3248)
+    Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+commit b4c7317abbbd1b91d1bb4899e7a5fa2b1b78f6c6
+Author: Vladim Štér <vladim.ster94@gmail.com>
+Date:   Sun Mar 7 22:38:14 2021 +0100
+
+    l10n: Czech update
+    
+    66% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 01b463b77094ba82b29bd6c1fd6f170e24f9f44e
+Author: Marián Hikaník <podnety@mojepreklady.net>
+Date:   Sun Mar 7 20:12:56 2021 +0100
+
+    l10n: Slovak update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit b6d1e34d2b98694f4b5cedf9aed8b19423036d24
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Sun Mar 7 20:01:33 2021 +0100
+
+    l10n: update copyright+version in all untranslated po files
+
+commit 2d1371830f7d38f0bdac217040903587b1b910fb
+Author: Aefgh Threenine <aefgh3962@gmail.com>
+Date:   Mon Mar 1 13:14:56 2021 +0100
+
+    l10n: Chinese (Taiwan) update
+    
+    68% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 98a9ed7d5e317e2872a478fbbd8b1f4fcf788062
+Author: Kaya Zeren <kayazeren@gmail.com>
+Date:   Tue Mar 2 08:28:57 2021 +0100
+
+    l10n: Turkish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit acc74b3b14e390a9cc468fc88b1e35e37d654f94
+Author: Thomas De Rocker <thomasderocker@outlook.com>
+Date:   Thu Mar 4 12:48:37 2021 +0100
+
+    l10n: Dutch update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 2abc101a182c7d3c6a96dae31be5d283e6967473
+Author: VideoLAN <videolan@videolan.org>
+Date:   Tue Mar 2 08:42:54 2021 +0100
+
+    l10n: Nepali update
+    
+    42% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit e1bcd4c03b87fe539cb28874f9ac4cbf556171a7
+Author: VideoLAN <videolan@videolan.org>
+Date:   Mon Mar 1 12:08:52 2021 +0100
+
+    l10n: Georgian update
+    
+    13% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit a9e5a240eb36b205e8810c882870cf42b3360b5a
+Author: Sveinn í Felli <sv1@fellsnet.is>
+Date:   Tue Mar 2 09:27:29 2021 +0100
+
+    l10n: Icelandic update
+    
+    71% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit eca27736990046f31ee019b4c8df0a9a344e345f
+Author: Bashishtha Narayan Singh <bashishtha.singh@gmail.com>
+Date:   Sun Mar 7 08:35:59 2021 +0100
+
+    l10n: Hindi update
+    
+    18% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 0d91a25b4bdcd8e0f1876db25577426d289d85e1
+Author: Yaron Shahrabani <sh.yaron@gmail.com>
+Date:   Tue Mar 2 08:43:58 2021 +0100
+
+    l10n: Hebrew update
+    
+    75% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 57eb7bc268cb99c41cbf33512ab54be9eb397b90
+Author: antiparvos <marcoslansgarza@gmail.com>
+Date:   Mon Mar 1 19:10:52 2021 +0100
+
+    l10n: Galician update
+    
+    98% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit b2a7aee927090700f23f51decea1fdbb275653b2
+Author: VideoLAN <videolan@videolan.org>
+Date:   Mon Mar 1 16:11:45 2021 +0100
+
+    l10n: Scottish Gaelic update
+    
+    41% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit bfbbec6e50abe028ba7ae8d746e2aae55564cd8e
+Author: Wallon Wallon <franckjl@hotmail.com>
+Date:   Mon Mar 1 12:11:22 2021 +0100
+
+    l10n: French update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit b82bff3ba17e80bd1cb97e05047eb41d677dcc34
+Author: Kimmo Kujansuu <mrkujansuu@gmail.com>
+Date:   Thu Mar 4 10:00:29 2021 +0100
+
+    l10n: Finnish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit e56bfa792dbf1aadd1ed4c4e5c1652db0d1a2739
+Author: picodotdev <pico.dev@gmail.com>
+Date:   Thu Mar 4 09:13:55 2021 +0100
+
+    l10n: Spanish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 9030d90d092fc7f7dd44e6f2b8dce73a69da358d
+Author: Angelos Chraniotis <chraniotis@gmail.com>
+Date:   Tue Mar 2 13:18:10 2021 +0100
+
+    l10n: Greek update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 898898b02288368aa825c349ee49a4ef2b393561
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Sun Mar 7 19:39:05 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit 13ed1894659d7ce705b59f789b60cac35a53ced9
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 8 15:42:04 2021 +0100
+
+    demux: mp4: don't set invalid rate in audio v1
+    
+    refs #25481
+
+commit 0c7bf0f4da90778d5784efc9b9886677d71134ca
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 8 13:33:23 2021 +0100
+
+    demux: mp4: fix stsd v1 regression
+    
+    refs #25481
+
+commit 372a93c0286653cb2f45df19905bb728adf16960
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Mon Mar 8 10:06:57 2021 +0100
+
+    lua: fix build with lua 5.4
+
+commit 41c9c8538c360838356e29bb246955b42ed1472e
+Author: Pierre Ynard <linkfanel@yahoo.fr>
+Date:   Sun Mar 7 00:44:41 2021 +0100
+
+    soundcloud.lua: don't treat JavaScript assets as line-based
+    
+    Following changes in the SoundCloud JavaScript web assets, the API
+    magic is only found anymore in assets with lines exceeding the VLC API
+    line-length limit of 200 kB, making it impossible to extract this way
+    and causing playback failure.
+    
+    These JavaScript assets are minified into one-liners, so it makes no
+    sense anyway to attempt to read and parse them line by line. Instead,
+    this now reads up to 4 MB of text from them (the relevant asset
+    currently weighs 1 MB). This way is arguably better and also more
+    efficient to begin with.
+    
+    Refs #24957
+    Fixes #25508
+    
+    (cherry picked from commit 302d55967b127a3519b714f8cdabd0257fbb3b45)
+    Signed-off-by: Pierre Ynard <linkfanel@yahoo.fr>
+
+commit 14192fe30953858b2ffde9ab6a3f93909fe93647
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Tue Feb 9 10:33:10 2021 +0100
+
+    contribs: live555: disable multicast intf lookups on android
+
+commit 5a02fe693e96ca4f37c3eb5f103824dd7dd4f743
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Mon Mar 1 19:08:59 2021 +0100
+
+    macosx: Fix make dist after l10n update
+
+commit 0731f54ed833abd9a4361fc8308566b0c02453ca
+Author: VideoLAN <videolan@videolan.org>
+Date:   Thu Feb 25 02:45:23 2021 +0100
+
+    l10n: Chinese (China) update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 7b135b587a6464d09cc6185f500c3c9e027992c8
+Author: Андрій Бандура <andriykopanytsia@gmail.com>
+Date:   Wed Feb 24 22:19:48 2021 +0100
+
+    l10n: Ukrainian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit c75d3d799f5f85f0c66ef3a510088dfe328fa45f
+Author: Hasan Yıldız <hasanyildiz0@yaani.com>
+Date:   Sun Feb 28 11:38:59 2021 +0100
+
+    l10n: Turkish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 13f1bd459bb6cced6fc8a6844c9438a6fc9319dc
+Author: Arnold Marko <arnold.marko@gmail.com>
+Date:   Thu Feb 25 21:39:20 2021 +0100
+
+    l10n: Slovenian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 99e348315841bb0e00036b7b08ce92f649fbf4e2
+Author: Marián Hikaník <podnety@mojepreklady.net>
+Date:   Thu Feb 25 23:51:40 2021 +0100
+
+    l10n: Slovak update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 105c3ceab209e5033f4e1947f678eef23a43d686
+Author: Sidney Doria <ssdoria@gmail.com>
+Date:   Thu Feb 25 11:36:39 2021 +0100
+
+    l10n: Portuguese (Brazil) update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 4c4e054cc762a18dcbb03c74fbd3c54fd83657a9
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Wed Feb 24 22:19:57 2021 +0100
+
+    l10n: Polish update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit de26964948b2823c02336249c9337203d71588e5
+Author: Thomas De Rocker <thomasderocker@outlook.com>
+Date:   Wed Feb 24 23:16:20 2021 +0100
+
+    l10n: Dutch update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit d70ccb497d67daf2a6f32f3d09ee311c561cd954
+Author: Dilip Re <dilip_meet@rediffmail.com>
+Date:   Thu Feb 25 14:11:51 2021 +0100
+
+    l10n: Malayalam update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 11f227f90d0b763f82674f12b1334758a7aed32f
+Author: Ingmārs Dīriņš <melhiors14@gmail.com>
+Date:   Sun Feb 28 10:07:17 2021 +0100
+
+    l10n: Latvian update
+    
+    99% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit ac6905b789a2c4aa531acbfe246df85b88ebc2c9
+Author: Vincenzo Reale <vinx.reale@gmail.com>
+Date:   Sun Feb 28 10:49:35 2021 +0100
+
+    l10n: Italian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 5bc70a1f5555ae887c24fcde87a4d1bcdf77ef84
+Author: VideoLAN <videolan@videolan.org>
+Date:   Wed Feb 24 20:19:44 2021 +0100
+
+    l10n: Hungarian update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 83c7365f502d85809d8e426f86fc3ed84d6e60f1
+Author: Yaron Shahrabani <sh.yaron@gmail.com>
+Date:   Sun Feb 28 06:17:26 2021 +0100
+
+    l10n: Hebrew update
+    
+    75% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit a02ce887104312501d284493a1e76a627dc80614
+Author: VideoLAN <videolan@videolan.org>
+Date:   Sun Feb 28 17:12:11 2021 +0100
+
+    l10n: Scottish Gaelic update
+    
+    39% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 090a3820fbb21e239db99ed52d09e4c4b529ff14
+Author: Kimmo Kujansuu <mrkujansuu@gmail.com>
+Date:   Thu Feb 25 21:53:33 2021 +0100
+
+    l10n: Finnish update
+    
+    93% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 75926346b3830034592ad22d5fbe5caaf93633af
+Author: Alexander Gabilondo <alexgabi@disroot.org>
+Date:   Sun Feb 28 16:29:48 2021 +0100
+
+    l10n: Basque update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit bdaaa66f6d2e97edc4e8cbd7e0b6851df8a1a100
+Author: Angelos Chraniotis <chraniotis@gmail.com>
+Date:   Thu Feb 25 19:05:55 2021 +0100
+
+    l10n: Greek update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 5bb089afa2cbdab695e8d48667188246dc84ca77
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Wed Feb 24 22:18:48 2021 +0100
+
+    l10n: German update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 8e5df651baa753d6ec2155c8837e6baef17c5487
+Author: خليل مراطلة <meratkha@gmail.com>
+Date:   Fri Feb 26 07:25:27 2021 +0100
+
+    l10n: Arabic update
+    
+    57% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 9da028650e4327a5b071b57b351cbe5b46c29e70
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Sun Feb 28 21:36:19 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit e8166617a400603cdf44547fb8e93387e5ede915
+Author: VideoLAN <videolan@videolan.org>
+Date:   Sun Feb 28 15:25:05 2021 +0100
+
+    l10n: Scottish Gaelic NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 88c0201ce09217fb10529343eebfaa0f7af19c72
+Author: VideoLAN <videolan@videolan.org>
+Date:   Sat Feb 27 10:46:01 2021 +0100
+
+    l10n: Georgian update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit defa7d0e7b2a42346b66faf059fc184e4b2fa906
+Author: VideoLAN <videolan@videolan.org>
+Date:   Mon Feb 8 13:48:27 2021 +0100
+
+    l10n: Hindi update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 17f64a4dae93e22505fe58577cd38dd8146ab236
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Feb 24 18:59:26 2021 +0100
+
+    Update PO files after vlc.pot update
+
+commit 81b00e9b64f6f36f587d318a1ff65d27dc665d03
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Wed Feb 24 00:28:09 2021 +0100
+
+    l10n: update vlc.pot to version 3.0.12
+
+commit 81968a757aec852858e92c3d94e944d614773d9e
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Wed Feb 24 18:46:06 2021 +0100
+
+    macosx: Fix make dist after l10n update
+
+commit 27616c97efc0fd06473851569b76ce05996858a1
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Wed Feb 24 00:25:26 2021 +0100
+
+    l10n: added source strings in Info.plist
+
+commit f606648383e675d4ee9f10d04a24f928693f7648
+Author: Irriep Nala Novram <allannkorh@yahoo.fr>
+Date:   Fri Feb 12 11:49:03 2021 +0100
+
+    l10n: Breton update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 82a3fbacfe96b6a7dfef48fae5b661fb5c3999ab
+Author: Aefgh Threenine <aefgh3962@gmail.com>
+Date:   Wed Jan 6 05:19:20 2021 +0100
+
+    l10n: Thai update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 8b53d08b4c0986db5930b6f3fdff366b5b3495ae
+Author: Alexander Lakhin <exclusion@gmail.com>
+Date:   Wed Dec 30 14:52:48 2020 +0100
+
+    l10n: Russian update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 789e9390026fe4b39283a24d811d6219e430abd4
+Author: Anup Timilsina <anuptim001@gmail.com>
+Date:   Sun Jan 10 03:44:26 2021 +0100
+
+    l10n: Nepali update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit a2372a689871890191e0747e2828cc5126478a28
+Author: abuyop <abuyop@gmail.com>
+Date:   Fri Jan 8 01:02:27 2021 +0100
+
+    l10n: Malay update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit b431daeaf147186a39a9ff30a430ad5208869b24
+Author: VideoLAN <videolan@videolan.org>
+Date:   Fri Feb 12 11:53:43 2021 +0100
+
+    l10n: Malayalam update
+    
+    InfoPlist.strings: 50% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 2fa7217b626fb25240516199e2c62433c4254960
+Author: Kimmo Kujansuu <mrkujansuu@gmail.com>
+Date:   Mon Dec 28 12:58:30 2020 +0100
+
+    l10n: Finnish update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 31afcf37720f0e9cf6ffb12e0e6b4c5805bacf9e
+Author: Angelos Chraniotis <chraniotis@gmail.com>
+Date:   Wed Feb 10 18:33:39 2021 +0100
+
+    l10n: Greek update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 763417082f7fb5c58649d59c0101df66fb9098aa
+Author: scootergrisen <scootergrisen@gmail.com>
+Date:   Wed Jan 13 13:26:52 2021 +0100
+
+    l10n: Danish update
+    
+    InfoPlist.strings: 100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 995049e2ab326ea89b5a3fdf42815fd190e4ecf9
+Author: abuyop <abuyop@gmail.com>
+Date:   Thu Jan 28 07:35:00 2021 +0100
+
+    l10n: Malay NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit a7c216fad8e055f0d952f1a3968f07ccd229ed2e
+Author: Angelos Chraniotis <chraniotis@gmail.com>
+Date:   Wed Feb 10 18:56:11 2021 +0100
+
+    l10n: Greek NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 5fc02e3535dd5f1878619063d638eb9bed95ab39
+Author: Priit Uring <priit.uring@gmail.com>
+Date:   Sat Feb 13 19:05:14 2021 +0100
+
+    l10n: Estonian NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit 501e85484631034431b80897660b1672d85ead89
+Author: Irriep Nala Novram <allannkorh@yahoo.fr>
+Date:   Wed Feb 10 09:56:38 2021 +0100
+
+    l10n: Breton NSIS update
+    
+    100% translated
+    
+    Signed-off-by: Michał Trzebiatowski <michtrz@gmail.com>
+
+commit de1f213b17d9780561bd6c7e521d1dd3e59c78db
+Author: Michał Trzebiatowski <michtrz@gmail.com>
+Date:   Tue Feb 23 23:54:51 2021 +0100
+
+    l10n: vlc.desktop update
+
+commit f548dea94863b107032eca0a4bb4d16a5dc2edeb
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 19 10:09:48 2021 +0100
+
+    contrib: matroska: update libmatroska to 1.6.3
+    
+    (cherry picked from commit 71fcbaffcfde510af423d17a84869fc9ceb15c32)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit b765db8f5bebf740459562efd60de1bb5be0ae99
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Feb 19 10:09:21 2021 +0100
+
+    contrib: ebml: update libebml to 1.4.2
+    
+    (cherry picked from commit 7d6872d033333315b47acb8b4faff3a2452b970d)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 749948666d471e5e890aca731be1b49d1808e909
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Feb 17 20:49:38 2021 +0200
+
+    fluidsynth: search /usr/share/soundfonts (fixes #25742)
+    
+    (cherry picked from commit 4f3ebb95b92195b82eea68e2e0510534bf13fec1)
+
+commit 09cc13c481c03a2c4d0cb553d05886b89ab4a91b
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Fri Feb 12 13:56:24 2021 +0100
+
+    demux: adaptive: do not trust profile/level
+    
+    refs #25459
+    
+    (cherry picked from commit d44e8655384a2c5cbbd0b5deb6eb6c1475d4cf5d)
+
+commit f128680a57f9c06928100c12b37d4b7850d179f3
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Fri Feb 12 18:35:59 2021 +0200
+
+    omxil: fix integer types on LP64 platforms
+    
+    This resyncs the integer type definition with the official
+    OpenMAX IL 1.1.2 sources. In particular, this fixes U32 and S32 which
+    were wrongly defined as long thus breaking binary compatibility on
+    Linux/arm64.
+    
+    Fixes LP#1913530.
+    
+    (cherry picked from commit 368c2f3762ae7aff909ae008c58d967e63d2efaf)
+
+commit af6c9e78cf4f5595ba55976138177a4b0b4fe140
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Fri Feb 5 23:50:29 2021 +0200
+
+    Revert "url: Remove duplicated path separators" (fixes #25374)
+    
+    This was just plain wrong. Multiple forward slashes does not generally
+    have the same meaning as a single one. This notably broke some FTP and
+    DLNA servers.
+    
+    This reverts commit 043988a2519f557856f14578b790da66283645fc.
+    
+    (cherry picked from commit 2090c051abb8d3b15fd1824c394897eedda63c7f)
+
+commit 3463f12d15aa8ae793b4e96518fa44f4f19edf7f
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Fri Feb 5 19:46:15 2021 +0200
+
+    qt: reparent video window to root whence UI closes
+    
+    The video window has to exist until it is closed by its owner, i.e.
+    WindowClose() is called. If it stayed as a child of the main UI window,
+    it would be destroyed with the main UI window.
+    
+    This reparents it (back) to the root window before the main UI window
+    gets destroyed. This works around #21875.
+
+commit 7b7f767b4e1d0c97db918e07dbf0dc41cb4138d8
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Fri Feb 5 19:25:48 2021 +0200
+
+    qt: create another indirection X11 window
+    
+    The main window may be destroyed before the video window. This notably
+    occurs if the user requests to close the main UI via window decorations.
+    While Qt allows those requests to be rejected, doing so would
+    reintroduce obnoxious bug #4606.
+    
+    The Qt-X11 display connection will be closed as well as it belongs to
+    the QApplication instance.
+    
+    This creates a separate window belonging to a separate display
+    connection, and which is not tied to the QApplication and QMainWindow
+    instances. Unfortunately, this adds yet another connection to the X11
+    display server in the VLC process in addition to QApplication's and the
+    video display's. And that connection won't process events.
+    
+    Refs #21875.
+
+commit 562331eda1dbe35e98dc0cd057fc1a5c58cf0210
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sat Feb 6 15:00:02 2021 +0200
+
+    qt: add a private structure for window provider
+
+commit 9db5721b0e10f47eb93493aaa399c52a15e3d80b
+Author: Konstantin Pavlov <thresh@videolan.org>
+Date:   Thu Jan 14 20:19:02 2021 +0300
+
+    contrib: cddb: get rid of gettext dependency
+    
+    We build cddb --without-iconv so it's not needed anyway
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+    
+    Cherry-picked from d0d4ca6aa0fe6fc73779b1fa261fde4f1009093f.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 2b94f1527bc9f494c2215ebfebb115fd17600fe8
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Mon Jan 11 15:27:22 2021 +0100
+
+    contrib: libarchive: fix CPP being detected incorrectly
+    
+    The preprocessor is not detected and it leads to failure with empty
+    $CPP variable being used on la_TYPE_UID_T, leading to a cascade of
+    detection errors and redefinition of some types.
+    
+    PR sent upstream as https://github.com/libarchive/libarchive/pull/1481.
+    
+    Cherry-picked from 17652505b49e98721a6351102c8fd7b026bc61dc.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit aad6ab89fe4ee0931c9d04a81e210e8b40e77d30
+Author: Alexandre Janniaux <ajanni@videolabs.io>
+Date:   Fri Jan 22 16:34:00 2021 +0100
+
+    mediacodec: fix orientation in --no-mediacodec-dr
+    
+    Fix #25210
+    
+    Cherry-picked from 8e37293767c5c00eab6fae2c3dd488c78e0d9fef.
+    
+    Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+
+commit 3aad852a05d9a3b2469328cb9ea2e20b0acbce5c
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Sun Jan 17 12:16:51 2021 +0200
+
+    configure: ignore too new SRT
+    
+    SRT does not maintain backward source compatibility. This breaks the
+    build on, e.g., Debian unstable.
+
+commit 7d5552d6bb0462543c1f5530529be79f6d5c707b
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Sun Jan 24 12:28:17 2021 +0100
+
+    gitlab-ci: Let the build scripts fetch the prebuilt contribs
+    
+    Like it is done for the other platforms.
+
+commit 5dd2501b3ebdab86ad8f9238aceb403d0e7ffa7c
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Sun Jan 24 12:18:08 2021 +0100
+
+    macOS build.sh: Respect VLC_PREBUILT_CONTRIBS_URL, rebuild luac
+    
+    luac is a native tool not being bundled in the prebuilt contribs
+    so far. Therefore this needs to be rebuilt.
+    Also respect VLC_PREBUILT_CONTRIBS_URL, analog to the windows
+    build scripts.
+
+commit 47c1832816393900975fa5c1eb2606cbc7733361
+Author: David Fuhrmann <dfuhrmann@videolan.org>
+Date:   Thu Jan 21 22:12:32 2021 +0100
+
+    gitlab-ci: Add builders for macOS ARM
+    
+    Restructure scripts into common builders for mac and mac nightly.
+    Add dedicated jobs to build for macos-arm64, and rename the
+    old macos jobs to macos-x86_64.
+    
+    The arm builds are running on the catalina machine, the old builds
+    stay on old-macmini.
+
+commit b370823e9a9ac6bdf9deced685939864d578f078
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 20 22:52:33 2021 +0100
+
+    codec: libass: add additional fonts dir option
+    
+    (cherry picked from commit 4298d6310c840e56b4b4b590bc727aff608cfab3)
+
+commit 72fd3b20f855198959e0dfb6b331acc5cb4502c6
+Author: Francois Cartegnie <fcvlcdev@free.fr>
+Date:   Wed Jan 20 23:16:18 2021 +0100
+
+    codec: libass: add support for sub-text-scale
+
+commit 4f8ca0de7864775b2b701f97dafd403bc4a86cbd
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jan 18 15:36:53 2021 +0100
+
+    subtitle: fix AQT subtitle parsing
+    
+    The numbers we read are frame numbers. There's a start and a stop frame number,
+    not just the start frame. The stop frame number was discarded so far as the
+    next start frame.
+    (based on http://web.archive.org/web/20070210095721/http://www.volny.cz/aberka/czech/aqt.html
+    and libavformat)
+    
+    (cherry picked from commit 874f6d8115ed68bac202f66e84b5e0e7da544b6d)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit b1b98fafb5c1b1a3c7a6bae36f7004ccb6d07ed4
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Jan 18 17:40:39 2021 +0100
+
+    Update configure Years
+
+commit feb70b473e8b6a6d6181c7a192c3d410f9002d0f
+Author: Jean-Baptiste Kempf <jb@videolan.org>
+Date:   Mon Jan 18 17:35:27 2021 +0100
+
+    Update NEWS
+
+commit 44f56f4a16cf264d3cab6ae70d1ea8077da45e81
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Mon Jan 18 09:55:53 2021 +0100
+
+    direct3d11: add missing long from 61dbb36ebd3d58f230bfeb1c171eabe770affedd
+
+commit 429ff5cebdb43b42783db4116cfd3638e96a243f
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Jan 15 15:01:22 2021 +0100
+
+    direct3d11: use a ID3D11Fence to tell when the rendering is done
+    
+    This is a lot more accurate and wastes a lot less time than the Query approach.
+    The D3D11 Fence value is set when the GPU is done doing the previous
+    (rendering) commands. Then we can wait in the CPU for this event and return when
+    it's done. All decoder/filter commands seem to not have any impact so that's
+    really the signal we're looking for to tell the core we're done rendering.
+    
+    This is only supported on newer mingw toolchains and only on Windows 10
+    Creators Update, which should cover pretty much all Win10 installed machines.
+    
+    Better fixes #21600
+    
+    (cherry picked from commit 61dbb36ebd3d58f230bfeb1c171eabe770affedd) (edited)
+    
+    edited:
+    - the release of resources is done in a more flat function
+    - this branch didn't use pointers for d3dev
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit bdfd31f4899d4c0febe32b902b00e9e7f2dbed00
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Jan 15 13:50:24 2021 +0100
+
+    direct3d11: rework the rendering wait
+    
+    The core needs to know how long the rendering takes place to estimate when a
+    frame needs to be dropped preemptively or not.
+    
+    So far we waited until the render (plus decoding and filtering?) is done before
+    we allowed the picture swap to happen. Now we only wait until (almost) the swap
+    date. If we still have to wait, we'll do it after the swap, hoping it will
+    still happen in time.
+    
+    It is reversing the strict waiting (all?) commands issued to be processed,
+    including all decoder threads and filters on the ID3D11DeviceContext. We no
+    longer allow waiting past the display date and we do the swap when we're told.
+    
+    We no longer release the ID3D11DeviceContext lock either as it allows more
+    commands in and makes the waiting time/performance worse.
+    
+    We do wait until the initial wait condition is done, if anything to silence
+    some D3D11 warnings saying we wanted to wait for something but never got to the
+    point it was actually finished. It also keeps the waiting in the display thread
+    so it doesn't think it can do more things when it's still busy with the
+    previous call. This will allow it do drop frames more accurately.
+    
+    A cleaner way would be to count the Display call in the time to render of the
+    core, but it's not possible as in some case we wait and the work is actually
+    finished and in some others we wait and the work is not finished. We can't tell
+    the difference in the core.
+    
+    Fixes #21600
+    
+    (cherry picked from commit 42011b9fb105b4b5de832fdafd097b86c8154eda) (edited)
+    
+    edited:
+    - this branch doesn't pass the render date to prepare. We use display->date instead
+      which ends up being similar, in pause we'll wait more in the display
+    - this branch didn't use vlc_tick_t
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 8d109c61d34ba1361a0444128c4fb441be56876e
+Author: Steve Lhomme <robux4@ycbcr.xyz>
+Date:   Fri Jan 15 13:08:01 2021 +0100
+
+    adaptive: fix potential compilation error
+    
+    vlc_tick_t doesn't exist in 3.0
+    
+    05d9097987b57f6a36533f47e86a0eaeef17f453 had a partial fix for this.
+
+commit ef615ff0cb6390656e84f7218c561e21bc4c39d8
+Author: Zhao Zhili <quinkblack@foxmail.com>
+Date:   Thu Dec 31 14:02:00 2020 +0100
+
+    contrib: d3d9: fix patch file path
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit 22be91a6ffb34a2c087ccf22fd7a29ab1f9624ff
+Author: Martin Storsjö <martin@martin.st>
+Date:   Tue May 5 20:33:48 2020 +0300
+
+    contrib: gettext: Backport a gettext patch for fixing building on latest mingw-w64
+    
+    The current git master version of mingw-w64 activates
+    __USE_MINGW_ANSI_STDIO by default if targeting C99 (which is the
+    default C version in both GCC and Clang), unless using UCRT.
+    
+    This patch (a backport of ca6f6cfbb4c78c063f2a50bb758edfc95c9d64a2
+    from gettext git) fixes building gettext when __USE_MINGW_ANSI_STDIO
+    is enabled - i.e. fixing building gettext with latest mingw-w64 when
+    using msvcrt.dll.
+    
+    (cherry picked from commit f419823685f95e196f7a1ef8821b401b5bce89ea)
+    
+    Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+
+commit ce327db9c472e15606c7736980f0a512aaa4ab1e
+Author: David Berdik <dgberdik@gmail.com>
+Date:   Tue Dec 29 21:57:41 2020 -0500
+
+    Fixed Santa hat not showing on cone after playback ends or is stopped even if it should
+    
+    Signed-off-by: Pierre Lamot <pierre@videolabs.io>
