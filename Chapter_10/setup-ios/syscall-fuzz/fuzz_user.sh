@@ -1,11 +1,11 @@
 #!/bin/sh
 
-AFL/afl-fuzz -m 16G -i input_user -o output_user $@ \
-qemu-t8030/build/qemu-system-aarch64 -s -M t8030,trustcache-filename=Firmware/038-44135-124.dmg.trustcache,ticket-filename=rootticket.der,boot-mode=enter_recovery \
+../AFL/afl-fuzz -m 16G -i input_user -o output_user $@ \
+../qemu-t8030/build/qemu-system-aarch64 -s -M t8030,trustcache-filename=Firmware/038-44135-124.dmg.trustcache,ticket-filename=rootticket.der,boot-mode=enter_recovery \
 -kernel kernelcache.research.iphone12b \
 -dtb Firmware/all_flash/DeviceTree.n104ap.im4p \
 -append "debug=0x14e kextlog=0xffff serial=3 -v launchd_unsecure_cache=1 tlto_us=300000 wdt=-1 iomfb_system_type=2 iomfb_disable_rt_bw=1" \
--initrd fuzz.dmg \
+-initrd ios_scfuzzer.dmg \
 -cpu max -smp 1 -nographic -d nochain \
 -m 1G -icount shift=0 -serial stdio -monitor none \
 -drive file=nvme.1.qcow2,format=qcow2,if=none,id=drive.1 \
