@@ -1,6 +1,6 @@
 # Fuzzing Against the Machine
 
-<a href="https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012"><img src="" alt="Fuzzing Against the Machine" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012"><img src="https://content.packt.com/B18866/cover_image_small.jpg" alt="Fuzzing Against the Machine" height="256px" align="right"></a>
 
 This is the code repository for [Fuzzing Against the Machine](https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012), published by Packt.
 
@@ -24,14 +24,15 @@ If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1804
 alt="https://www.packtpub.com/" border="5" /></a>
 
 ## Instructions and Navigations
-All of the code is organized into folders. For example, Chapter02.
+All of the code is organized into folders. For example, Chapter_4.
 
 The code will look like the following:
 ```
 #include <stdio.h> 
 
 int main() { 
-     printf("Hello, qemu fans!\n"); return 0; 
+     printf("Hello, qemu fans!\n");
+     return 0; 
 }
 ```
 
@@ -58,7 +59,11 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ## Get to Know the Author
 **Antonio Nappa**
 is the Application Analysis Team Leader at Zimperium Inc. He has been in the cybersecurity game since 17 years old. He holds a PhD in Software and Systems from the Madrid Institute of Advanced Studies. He has been a visiting scholar at UC Berkeley. His contributions have been published and recognized in international peer-reviewed venues. Since the DEFCON 2008 Finals, he never goes to sleep with a segfault.
+
 **Eduardo Blázquez**
 is a PhD student of the University Carlos III of Madrid. He has been working in the cybersecurity area since 2017, with interests in Reverse Engineering and Malware Analysis. Currently, he is doing a PhD thesis about Android Security, but in his spare time he likes to study different topics like program analysis or operating system internals, and from time to time he likes to play different wargames about software exploitation.
 
+### Download a free PDF
 
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781804614976">https://packt.link/free-ebook/9781804614976 </a> </p>
