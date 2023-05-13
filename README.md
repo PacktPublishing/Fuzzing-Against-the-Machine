@@ -1,5 +1,9 @@
 # Fuzzing Against the Machine
 
+The making og the book
+
+<a href="https://fare9.github.io/fuzzing/book/Fuzzing-Against-The-Machine/"><img src="https://fare9.github.io/assets/images/FuzzingATM/first_draft.jpeg" alt="The Making of: FuzzATM" height="256px" align="right"></a>
+
 <a href="https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012"><img src="https://content.packt.com/B18866/cover_image_small.jpg" alt="Fuzzing Against the Machine" height="256px" align="right"></a>
 
 This is the code repository for [Fuzzing Against the Machine](https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012), published by Packt.
