@@ -1,6 +1,6 @@
 # Fuzzing Against the Machine
 
-The making og the book
+To know bore about the making of the book: click on the whiteboard
 
 <a href="https://fare9.github.io/fuzzing/book/Fuzzing-Against-The-Machine/"><img src="https://fare9.github.io/assets/images/FuzzingATM/first_draft.jpeg" alt="The Making of: FuzzATM" height="256px" align="right"></a>
 
