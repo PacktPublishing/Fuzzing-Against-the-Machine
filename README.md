@@ -8,6 +8,9 @@ To know more about the making of the book: click on the whiteboard
 
 This is the code repository for [Fuzzing Against the Machine](https://www.packtpub.com/product/fuzzing-against-the-machine/9781804614976?utm_source=github&utm_medium=repository&utm_campaign=9781801076012), published by Packt.
 
+For the Docker Images please refer to this link
+<a href="https://packt.link/FuzzingAgainsttheMachine">Filesystem Images</a> They are pretty large. Be patient
+
 **Automate vulnerability research with emulated IoT devices on QEMU**
 
 ## What is this book about?
